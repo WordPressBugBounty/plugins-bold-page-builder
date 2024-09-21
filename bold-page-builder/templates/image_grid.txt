@@ -1,0 +1,1 @@
+[bt_bb_css_image_grid img_base_size="large" lightbox_img_base_size="full" bb_version="4.9.1" images="" columns="6" gap="no_gap" shape="inherit" format="" no_lightbox="" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation" el_id="" el_class="" el_style=""][/bt_bb_css_image_grid]

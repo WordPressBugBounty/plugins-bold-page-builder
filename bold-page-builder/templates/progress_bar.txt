@@ -1,0 +1,1 @@
+[bt_bb_progress_bar bb_version="4.9.1" percentage="75" text="Progress Bar text" align="inherit,;,,;,,;,,;,,;," size="small,;,,;,,;,,;,,;," style="filled" shape="square" color_scheme="White/Black" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation" el_id="" el_class="" el_style=""][/bt_bb_progress_bar]

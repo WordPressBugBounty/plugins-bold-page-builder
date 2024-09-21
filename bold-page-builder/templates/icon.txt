@@ -1,0 +1,1 @@
+[bt_bb_icon size="normal,;,,;,,;,,;,,;," bb_version="4.9.1" icon="fa_f042" text="" url="" url_title="" target="_self" align="inherit,;,,;,,;,,;,,;," style="outline" shape="circle" color_scheme="" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation" el_id="" el_class="" el_style=""][/bt_bb_icon]

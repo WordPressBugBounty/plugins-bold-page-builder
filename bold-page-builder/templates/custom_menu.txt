@@ -1,0 +1,1 @@
+[bt_bb_custom_menu direction="vertical" bb_version="4.9.1" menu="" font_weight="" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation" el_id="" el_class="" el_style=""]

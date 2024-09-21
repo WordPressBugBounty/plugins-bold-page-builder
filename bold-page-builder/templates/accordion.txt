@@ -1,0 +1,13 @@
+[bt_bb_accordion bb_version="4.9.1" color_scheme="" style="outline" shape="square" closed="" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation" el_id="" el_class="" el_style=""][bt_bb_accordion_item title="Item 1"][bt_bb_text bb_version="4.9.1" ai_prompt_helper="eyJrZXl3b3JkcyI6IiIsInRvbmUiOiIiLCJtb2RlIjoiZ2VuZXJhdGUiLCJsYW5ndWFnZSI6IiIsImxlbmd0aCI6IiJ9"]
+
+Some text here...
+
+[/bt_bb_text][/bt_bb_accordion_item][bt_bb_accordion_item title="Item 2"][bt_bb_text bb_version="4.9.1" ai_prompt_helper="eyJrZXl3b3JkcyI6IiIsInRvbmUiOiIiLCJtb2RlIjoiZ2VuZXJhdGUiLCJsYW5ndWFnZSI6IiIsImxlbmd0aCI6IiJ9"]
+
+Some text here...
+
+[/bt_bb_text][/bt_bb_accordion_item][bt_bb_accordion_item title="Item 3"][bt_bb_text bb_version="4.9.1" ai_prompt_helper="eyJrZXl3b3JkcyI6IiIsInRvbmUiOiIiLCJtb2RlIjoiZ2VuZXJhdGUiLCJsYW5ndWFnZSI6IiIsImxlbmd0aCI6IiJ9"]
+
+Some text here...
+
+[/bt_bb_text][/bt_bb_accordion_item][/bt_bb_accordion]

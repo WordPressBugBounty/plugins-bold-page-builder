@@ -1,0 +1,5 @@
+[bt_bb_text bb_version="4.9.1" ai_prompt_helper="eyJrZXl3b3JkcyI6IiIsInRvbmUiOiIiLCJtb2RlIjoiZ2VuZXJhdGUiLCJsYW5ndWFnZSI6IiIsImxlbmd0aCI6IiJ9"]
+
+Enter your text here...
+
+[/bt_bb_text]

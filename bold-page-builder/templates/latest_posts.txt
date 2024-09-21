@@ -1,0 +1,1 @@
+[bt_bb_latest_posts rows="1" lazy_load="yes" bb_version="4.9.1" columns="4" gap="no_gap" category="" target="_self" image_shape="square" show_category="" show_date="" show_author="" show_comments="" show_excerpt="" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation" el_id="" el_class="" el_style=""][/bt_bb_latest_posts]

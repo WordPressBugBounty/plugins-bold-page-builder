@@ -1,0 +1,1 @@
+[bt_bb_slider show_arrows="show" pause_on_hover="yes" bb_version="4.9.1" images="" height="half_screen" size="full" animation="slide" show_dots="bottom" slides_to_show="1,;,,;,,;,,;,,;," additional_settings="" auto_play="" use_lightbox="" responsive="" publish_datetime="" expiry_datetime="" el_id="" el_class="" el_style=""][/bt_bb_slider]

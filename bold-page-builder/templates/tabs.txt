@@ -1,0 +1,13 @@
+[bt_bb_tabs bb_version="4.9.1" style="outline" shape="square" color_scheme="" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation" el_id="" el_class="" el_style=""][bt_bb_tab_item title="Tab 1"][bt_bb_text bb_version="4.9.1" ai_prompt_helper="eyJrZXl3b3JkcyI6IiIsInRvbmUiOiIiLCJtb2RlIjoiZ2VuZXJhdGUiLCJsYW5ndWFnZSI6IiIsImxlbmd0aCI6IiJ9"]
+
+Tab 1 text...
+
+[/bt_bb_text][/bt_bb_tab_item][bt_bb_tab_item title="Tab 2"][bt_bb_text bb_version="4.9.1" ai_prompt_helper="eyJrZXl3b3JkcyI6IiIsInRvbmUiOiIiLCJtb2RlIjoiZ2VuZXJhdGUiLCJsYW5ndWFnZSI6IiIsImxlbmd0aCI6IiJ9"]
+
+Tab 2 text...
+
+[/bt_bb_text][/bt_bb_tab_item][bt_bb_tab_item title="Tab 3"][bt_bb_text bb_version="4.9.1" ai_prompt_helper="eyJrZXl3b3JkcyI6IiIsInRvbmUiOiIiLCJtb2RlIjoiZ2VuZXJhdGUiLCJsYW5ndWFnZSI6IiIsImxlbmd0aCI6IiJ9"]
+
+Tab 3 text...
+
+[/bt_bb_text][/bt_bb_tab_item][/bt_bb_tabs]

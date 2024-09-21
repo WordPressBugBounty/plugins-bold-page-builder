@@ -1,0 +1,53 @@
+:host {
+	all: initial; 
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	font-size: 13px;
+	color: #777;
+}
+
+.disabled {
+	opacity: .5;
+	pointer-events: none;
+}
+
+span {
+	flex-basis: 33%;
+	text-align: center;
+	padding: 1rem;
+	cursor: pointer;
+	transition: 270ms ease all;
+}
+span:hover { 
+	background: #2196f3;
+    color: #fff;
+}
+span:hover:before { 
+	color: #fff;
+}
+span:before { 
+	font: normal 21px/1 bold-builder;
+	transition: 270ms ease all;
+}
+
+span#delete:hover {
+	color: #fff;
+	background: #cf0700;
+}
+span#delete:hover:before {
+	color: #fff;
+}
+
+
+#up:before { 
+	content: '\e957';
+}
+
+#clone:before { 
+	content: '\e935';
+}
+
+
+#delete:before { 
+	content: '\e94c';
+}
+
