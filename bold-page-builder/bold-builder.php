@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.1.3
+ * Version: 5.1.4
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.1.3' );
+define( 'BT_BB_VERSION', '5.1.4' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -569,9 +569,11 @@ add_action( 'wp_ajax_bt_bb_save_custom_css', 'bt_bb_save_custom_css' );
  
 function bt_bb_get_custom_css() {
 	$post_id = intval( $_POST['post_id'] );
-	$opt_arr = get_option( 'bt_bb_custom_css' );
-	if ( isset( $opt_arr[ $post_id ] ) ) {
-		echo stripslashes( wp_strip_all_tags( $opt_arr[ $post_id ] ) );
+	if ( current_user_can( 'edit_post', $post_id ) ) {
+		$opt_arr = get_option( 'bt_bb_custom_css' );
+		if ( isset( $opt_arr[ $post_id ] ) ) {
+			echo stripslashes( wp_strip_all_tags( $opt_arr[ $post_id ] ) );
+		}
 	}
 	die();
 }
@@ -1754,9 +1756,9 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 		
 		$params[] = array( 'param_name' => 'publish_datetime', 'type' => 'datetime-local', 'heading' => esc_html__( 'Publish date', 'bold-builder' ), 'description' => esc_html__( 'Fill both the date and time', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 990 );
 		$params[] = array( 'param_name' => 'expiry_datetime', 'type' => 'datetime-local', 'heading' => esc_html__( 'Expiry date', 'bold-builder' ), 'description' => esc_html__( 'Fill both the date and time', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 995 );
-		$params[] = array( 'param_name' => 'el_id', 'preview' => true, 'type' => 'textfield', 'heading' => esc_html__( 'Element ID', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1000 );
-		$params[] = array( 'param_name' => 'el_class', 'type' => 'textfield', 'heading' => esc_html__( 'Extra class name(s)', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1005 );
-		$params[] = array( 'param_name' => 'el_style', 'type' => 'textfield', 'heading' => esc_html__( 'Inline CSS style', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1010 );
+		$params[] = array( 'param_name' => 'el_id', 'preview' => true, 'type' => 'textfield', 'heading' => esc_html__( 'Element ID', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. #myid', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1000 );
+		$params[] = array( 'param_name' => 'el_class', 'type' => 'textfield', 'heading' => esc_html__( 'Extra class name(s)', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. .myclass', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1005 );
+		$params[] = array( 'param_name' => 'el_style', 'type' => 'textfield', 'heading' => esc_html__( 'Inline CSS style', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. opacity: 0.5;', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1010 );
 		
 		$params[] = array( 'param_name' => 'bb_version', 'type' => 'hidden', 'value' => BT_BB_VERSION );
 		

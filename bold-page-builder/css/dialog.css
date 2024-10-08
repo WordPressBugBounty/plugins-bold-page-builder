@@ -416,6 +416,9 @@
 
 .bt_bb_dialog_inline_buttons.bt_bb_left {
 	text-align: left;
+	.rtl & {
+		text-align: right;
+	}
 }
 
 .bt_bb_dialog_inline_buttons input.button.button-small {

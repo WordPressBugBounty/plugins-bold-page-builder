@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, page builder, visual composer, free page builder, builder, free visual composer, drag and drop page builder, visual builder, visual editor, webpage builder, webpage editor, page builder wordpress
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 5.1.3
+Stable tag: 5.1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,6 +135,10 @@ It is not possible to test Bold Builder with all themes - it should work fine wi
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.1.4 =
+* Added more options to FE editor.
+* Improved security.
 
 = 5.1.3 =
 * Minor bug fixes.

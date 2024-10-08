@@ -431,7 +431,7 @@ function bt_bb_fe_init() {
 			),
 		);
 
-		/*foreach( BT_BB_Root::$elements as $el_name => $arr ) {
+		foreach( BT_BB_Root::$elements as $el_name => $arr ) {
 			if ( ! isset( BT_BB_FE::$elements[ $el_name ] ) ) {
 				BT_BB_FE::$elements[ $el_name ] = array( 'edit_box_selector' => '', 'params' => array() );
 			}
@@ -442,7 +442,7 @@ function bt_bb_fe_init() {
 					BT_BB_FE::$elements[ $el_name ]['params'][ $param_name ] = array();
 				}
 			}
-		}*/
+		}
 		
 		BT_BB_FE::$elements = apply_filters( 'bt_bb_fe_elements', BT_BB_FE::$elements );
 		

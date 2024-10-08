@@ -206,21 +206,6 @@ class bt_bb_content_slider extends BT_BB_Element {
 						esc_html__( 'Right to left', 'bold-builder' ) 				=> 'rtl'
 					)
 				),
-				array( 'param_name' => 'arrows_size', 'type' => 'dropdown', 'preview' => true, 'default' => 'normal', 'heading' => esc_html__( 'Navigation arrows size', 'bold-builder' ),
-					'value' => array(
-						esc_html__( 'No arrows', 'bold-builder' ) 		=> 'no_arrows',
-						esc_html__( 'Small', 'bold-builder' ) 			=> 'small',
-						esc_html__( 'Normal', 'bold-builder' ) 			=> 'normal',
-						esc_html__( 'Large', 'bold-builder' ) 			=> 'large'
-					)
-				),
-				array( 'param_name' => 'show_dots', 'type' => 'dropdown', 'heading' => esc_html__( 'Dots navigation', 'bold-builder' ),
-					'value' => array(
-						esc_html__( 'Bottom', 'bold-builder' ) 			=> 'bottom',
-						esc_html__( 'Below', 'bold-builder' ) 			=> 'below',
-						esc_html__( 'Hide', 'bold-builder' ) 			=> 'hide'
-					)
-				),
 				array( 'param_name' => 'pause_on_hover', 'default' => 'yes', 'type' => 'dropdown', 'heading' => esc_html__( 'Pause slideshow on hover', 'bold-builder' ),
 					'value' => array(
 						esc_html__( 'Yes', 'bold-builder' ) 			=> 'yes',
@@ -252,7 +237,24 @@ class bt_bb_content_slider extends BT_BB_Element {
 						esc_html__( 'Large', 'bold-builder' ) 			=> 'large'
 					)
 				),
-				array( 'param_name' => 'auto_play', 'type' => 'textfield', 'heading' => esc_html__( 'Autoplay interval (ms)', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 2000', 'bold-builder' ) )
+				array( 'param_name' => 'auto_play', 'type' => 'textfield', 'heading' => esc_html__( 'Autoplay interval (ms)', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 2000', 'bold-builder' ) ),
+
+
+				array( 'param_name' => 'arrows_size', 'type' => 'dropdown', 'preview' => true, 'default' => 'normal', 'heading' => esc_html__( 'Navigation arrows size', 'bold-builder' ), 'group' => esc_html__( 'Navigation', 'bold-builder' ),
+					'value' => array(
+						esc_html__( 'No arrows', 'bold-builder' ) 		=> 'no_arrows',
+						esc_html__( 'Small', 'bold-builder' ) 			=> 'small',
+						esc_html__( 'Normal', 'bold-builder' ) 			=> 'normal',
+						esc_html__( 'Large', 'bold-builder' ) 			=> 'large'
+					)
+				),
+				array( 'param_name' => 'show_dots', 'type' => 'dropdown', 'heading' => esc_html__( 'Dots navigation', 'bold-builder' ), 'group' => esc_html__( 'Navigation', 'bold-builder' ),
+					'value' => array(
+						esc_html__( 'Bottom', 'bold-builder' ) 			=> 'bottom',
+						esc_html__( 'Below', 'bold-builder' ) 			=> 'below',
+						esc_html__( 'Hide', 'bold-builder' ) 			=> 'hide'
+					)
+				),
 			)
 		) );
 	}

@@ -420,11 +420,13 @@ class bt_bb_section extends BT_BB_Element {
 				array( 'param_name' => 'parallax_opacity_end', 'type' => 'textfield', 'heading' => esc_html__( 'Background parallax opacity end', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 0', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ) ),
 				array( 'param_name' => 'top_section_coverage_image', 'type' => 'attach_image',  'preview' => true, 'heading' => esc_html__( 'Top coverage image', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ) ),
 				array( 'param_name' => 'bottom_section_coverage_image', 'type' => 'attach_image',  'preview' => true, 'heading' => esc_html__( 'Bottom coverage image', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ) ),
-				array( 'param_name' => 'background_video_yt', 'type' => 'textfield', 'heading' => esc_html__( 'YouTube background video', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
+				
+				array( 'param_name' => 'background_video_yt', 'type' => 'textfield', 'heading' => esc_html__( 'YouTube background video', 'bold-builder' ), 'placeholder' => esc_html__( 'Enter video URL', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
 				array( 'param_name' => 'yt_video_settings', 'type' => 'textfield', 'heading' => esc_html__( 'YouTube video settings', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. startAt:20, mute:true, stopMovieOnBlur:false', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
-				array( 'param_name' => 'background_video_mp4', 'type' => 'textfield', 'heading' => esc_html__( 'MP4 background video', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
-				array( 'param_name' => 'background_video_ogg', 'type' => 'textfield', 'heading' => esc_html__( 'OGG background video', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
-				array( 'param_name' => 'background_video_webm', 'type' => 'textfield', 'heading' => esc_html__( 'WEBM background video', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
+				array( 'param_name' => 'background_video_mp4', 'type' => 'textfield', 'heading' => esc_html__( 'MP4 background video', 'bold-builder' ), 'placeholder' => esc_html__( 'Enter video URL'
+					, 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
+				array( 'param_name' => 'background_video_ogg', 'type' => 'textfield', 'heading' => esc_html__( 'OGG background video', 'bold-builder' ), 'placeholder' => esc_html__( 'Enter video URL', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
+				array( 'param_name' => 'background_video_webm', 'type' => 'textfield', 'heading' => esc_html__( 'WEBM background video', 'bold-builder' ), 'placeholder' => esc_html__( 'Enter video URL', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) ),
 				array( 'param_name' => 'show_video_on_mobile',  'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'yes' ), 'default' => '', 'heading' => esc_html__( 'Show video on mobile devices', 'bold-builder' ), 'group' => esc_html__( 'Video', 'bold-builder' ) )
 			)
 		) );		
