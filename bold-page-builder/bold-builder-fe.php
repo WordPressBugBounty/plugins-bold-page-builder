@@ -435,11 +435,13 @@ function bt_bb_fe_init() {
 			if ( ! isset( BT_BB_FE::$elements[ $el_name ] ) ) {
 				BT_BB_FE::$elements[ $el_name ] = array( 'edit_box_selector' => '', 'params' => array() );
 			}
-			foreach( $arr['params'] as $param ) {
-				$param_name = $param['param_name'];
-				$param_type = $param['type'];
-				if ( ! isset( BT_BB_FE::$elements[ $el_name ]['params'][ $param_name ] ) && $param_type != 'hidden' ) {
-					BT_BB_FE::$elements[ $el_name ]['params'][ $param_name ] = array();
+			if ( isset( $arr['params'] ) ) {
+				foreach( $arr['params'] as $param ) {
+					$param_name = $param['param_name'];
+					$param_type = $param['type'];
+					if ( ! isset( BT_BB_FE::$elements[ $el_name ]['params'][ $param_name ] ) && $param_type != 'hidden' ) {
+						BT_BB_FE::$elements[ $el_name ]['params'][ $param_name ] = array();
+					}
 				}
 			}
 		}
