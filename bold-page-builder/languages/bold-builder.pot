@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-09 20:39+0200\n"
+"POT-Creation-Date: 2024-10-10 17:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -473,48 +473,48 @@ msgstr ""
 msgid "Edit Footer"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:771
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:772
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:210
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:221
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:912
 msgid "Edit"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:772
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:773
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:211
 msgid "Edit in back-end editor"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:772
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:773
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:211
 msgid "(new tab)"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:773
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:774
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:212
 msgid "Cut"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:774
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:775
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:213
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:930
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:999
 msgid "Copy"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:775
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:776
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:214
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:932
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:1494
 msgid "Paste"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:775
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:776
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:214
 msgid "(above)"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:776
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:777
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:215
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:917
 msgid "Delete"

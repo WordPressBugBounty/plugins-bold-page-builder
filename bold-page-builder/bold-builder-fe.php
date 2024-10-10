@@ -746,8 +746,9 @@ function bt_bb_fe_get_template_html() {
 	check_ajax_referer( 'bt_bb_fe_nonce', 'nonce' );
 	$post_id = intval( $_POST['post_id'] );
 	$edit_url = esc_url( $_POST['edit_url'] );
-	$layout = wp_kses_post( $_POST['layout'] );
-	$type = wp_kses_post( $_POST['type'] );
+	$layout = sanitize_text_field( $_POST['layout'] );
+	$layout = preg_replace( '/[^a-zA-Z0-9_\-\+]/', '', $layout );
+	$type = sanitize_text_field( $_POST['type'] );
 	$content = @file_get_contents( get_stylesheet_directory() . '/bold-page-builder/templates/' . $layout . '.txt' );
 	if ( ! $content ) {
 		$content = @file_get_contents( get_template_directory() . '/bold-page-builder/templates/' . $layout . '.txt' );
