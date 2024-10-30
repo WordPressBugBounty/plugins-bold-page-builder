@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.1.6
+ * Version: 5.2.0
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.1.6' );
+define( 'BT_BB_VERSION', '5.2.0' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -1000,6 +1000,9 @@ function bt_bb_translate() {
 	echo 'window.bt_bb_text.dd.before = "' . esc_html__( 'before', 'bold-builder' ) . '";';
 	echo 'window.bt_bb_text.dd.after = "' . esc_html__( 'after', 'bold-builder' ) . '";';
 	echo 'window.bt_bb_text.dd.to = "' . esc_html__( 'to', 'bold-builder' ) . '";';
+	
+	echo 'window.bt_bb_text.documentation = "' . esc_html__( 'Need help?', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text.read_documentation = "' . esc_html__( 'Read Documentation', 'bold-builder' ) . '";';
 	
 	echo '</script>';
 }

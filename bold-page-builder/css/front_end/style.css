@@ -855,24 +855,10 @@ body.bt_bb_fe_dialog_on:not(.bt_bb_fe_preview_toggle) #bt_bb_fe_dialog {
 	
 }
 
-/* Scrollbar styling */
+/* Hide scrollbar for Safari */
 #bt_bb_fe_dialog_main #bt_bb_fe_dialog_content::-webkit-scrollbar {
-	background-color: rgba(0,0,0,0.1);
-	width: 12px;
-	&:hover {
-		background-color: rgba(0,0,0,0.2);
-	}
-}
-#bt_bb_fe_dialog_main #bt_bb_fe_dialog_content::-webkit-scrollbar-thumb {
-	background-color: rgba(0,0,0,0.2);
-	transition: background-color 200ms ease;
-	cursor: pointer;
-	&:hover {
-		background-color: rgba(0,0,0,0.4);
-	}
-} 
-#bt_bb_fe_dialog_main #bt_bb_fe_dialog_content::-webkit-scrollbar-button {
-	display: none;
+	background-color: rgba(0,0,0,0);
+	width: 0px;
 }
 
 /* Add elements */
@@ -1766,17 +1752,13 @@ body.bt_bb_edit_footer {
 	z-index: 100;
 	transform: translate3d(0px,0,0);
 	transition: all 270ms ease;
+	cursor: pointer;
 	&:not([disabled]):hover {
 		opacity: 1;
 	}
-	&:before {
-		cursor: pointer;
-	}
 	&[disabled]{
 		opacity: .4;
-		&:before {
-			cursor: default;
-		}	
+		cursor: default;
 	}
 }
 

@@ -799,26 +799,10 @@ body.bt_bb_fe_dialog_on:not(.bt_bb_fe_preview_toggle) #bt_bb_fe_dialog {
     display: flex;
     }
 
-/* Scrollbar styling */
+/* Hide scrollbar for Safari */
 #bt_bb_fe_dialog_main #bt_bb_fe_dialog_content::-webkit-scrollbar {
-    background-color: rgba(0,0,0,.1);
-    width: 12px;
-    }
-#bt_bb_fe_dialog_main #bt_bb_fe_dialog_content::-webkit-scrollbar:hover {
-    background-color: rgba(0,0,0,.2);
-    }
-#bt_bb_fe_dialog_main #bt_bb_fe_dialog_content::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,.2);
-    -webkit-transition: background-color 200ms ease;
-    -moz-transition: background-color 200ms ease;
-    transition: background-color 200ms ease;
-    cursor: pointer;
-    }
-#bt_bb_fe_dialog_main #bt_bb_fe_dialog_content::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0,0,0,.4);
-    }
-#bt_bb_fe_dialog_main #bt_bb_fe_dialog_content::-webkit-scrollbar-button {
-    display: none;
+    background-color: rgba(0,0,0,0);
+    width: 0;
     }
 
 /* Add elements */
@@ -1795,21 +1779,15 @@ body.bt_bb_edit_footer .bt-site-footer {
     -webkit-transition: all 270ms ease;
     -moz-transition: all 270ms ease;
     transition: all 270ms ease;
+    cursor: pointer;
     }
 #bt_bb_fe_undo:not([disabled]):hover,
 #bt_bb_fe_redo:not([disabled]):hover {
     opacity: 1;
     }
-#bt_bb_fe_undo:before,
-#bt_bb_fe_redo:before {
-    cursor: pointer;
-    }
 #bt_bb_fe_undo[disabled],
 #bt_bb_fe_redo[disabled] {
     opacity: .4;
-    }
-#bt_bb_fe_undo[disabled]:before,
-#bt_bb_fe_redo[disabled]:before {
     cursor: default;
     }
 #bt_bb_fe_undo {

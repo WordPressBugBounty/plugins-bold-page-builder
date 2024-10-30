@@ -40,4 +40,20 @@ span#delete:hover:before {
 #delete:before { 
 	content: '\e94c';
 }
-
+#doc:before { 
+	content: '\e647';
+	font: normal 18px/1 Icon7Stroke;
+	color: #0367b4;
+}
+#doc a {
+	font-size: 12px;
+	padding-left: 0.25rem;
+	color: #0367b4;
+	text-decoration: none;
+}
+#doc {
+	padding-right: 0;
+	flex-basis: 50%;
+	display: flex;
+	align-items: center;
+}
