@@ -77,6 +77,8 @@
 	}
 }
 
+/* Grid Fixes */
+
 @media (max-width: 992px) {
 	.bt_bb_column, .bt_bb_column_inner {
 		&[data-width="12"],
@@ -148,7 +150,6 @@
 	}
 }
 
-/* Grid Fix */
 @media (max-width: 992px) and (min-width: 621px) {
 	.bt_bb_row_holder[data-structure="9-3"], .bt_bb_row_holder[data-structure="3-9"] {
 		.bt_bb_column[data-width="9"]:not(.col-md-12) {

@@ -110,7 +110,7 @@
         if (entry.isIntersecting) {
 
           $(entry.target).addClass("btLazyLoaded");
-          $(entry.target).attr("src", $elm.data("image_src"));
+          $(entry.target).attr("src", $(entry.target).data("image_src"));
 
           observer1_load.unobserve(entry.target);
         }
@@ -134,7 +134,7 @@
         if (entry.isIntersecting) {
 
           $(entry.target).addClass("btLazyLoaded");
-          $(entry.target).attr("xlink:href", $elm.data("image_src"));
+          $(entry.target).attr("xlink:href", $(entry.target).data("image_src"));
 
           observer2_load.unobserve(entry.target);
         }

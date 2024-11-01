@@ -125,7 +125,7 @@
 		opacity: 0.9;
 	}
 	i {
-	 text-align: right;
+		text-align: right;
 	}
 	&.bt_bb_dialog_add_element:hover {
 		&:last-child {

@@ -1225,6 +1225,27 @@ textarea {
     }
 }
 
+.bt_bb_param_desc {
+    display: none !important;
+    }
+.bt_bb_dialog_item > b > sup {
+    cursor: pointer;
+    padding: 2px;
+    height: 1em;
+    line-height: 1;
+    width: 1em;
+    text-align: center;
+    border-radius: 50%;
+    background: #bbb;
+    color: white;
+    display: inline-block;
+    margin-left: 3px;
+    font-size: 10px;
+    }
+.bt_bb_dialog_item > b > sup:hover {
+    background: #ccc;
+    }
+
 /* Controls */
 /* Dialog item */
 .bt_bb_dialog_item {

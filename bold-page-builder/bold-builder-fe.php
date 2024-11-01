@@ -298,7 +298,8 @@ function bt_bb_fe_init() {
 			'bt_bb_row' => array(
 				'edit_box_selector' => '',
 				'params' => array(
-					'column_gap'       => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ),
+					// 'column_gap'       => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ),
+					'column_gap'        => array( 'ajax_filter' => array( 'class', 'style' ) ),
 					'row_width'        => array( 'ajax_filter' => array( 'class', 'style' ) ),
 					'color_scheme'     => array( 'ajax_filter' => array( 'class', 'style' ) ),
 					'background_color' => array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'background_color' ) ),
@@ -697,6 +698,7 @@ function bt_bb_fe_footer() {
 	}
 	
 	echo '<div class="bt_bb_dd_tip"></div>';
+	echo '<div class="bt_bb_desc_tip"></div>';
 	
 	echo '<div id="bt_bb_fe_init_mouseover"></div>';
 }

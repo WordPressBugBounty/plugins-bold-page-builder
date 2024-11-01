@@ -49,7 +49,6 @@ class bt_bb_column extends BT_BB_Element {
 		if ( $width_lg != '' ) {
 			$class[] = $this->get_responsive_class( $width_lg, 'lg' );
 		}
-
 		if ( $el_class != '' ) {
 			$class[] = $el_class;
 		}
@@ -187,6 +186,8 @@ class bt_bb_column extends BT_BB_Element {
 		}
 		
 		$style_attr = '';
+		$el_style .= '; --column-width:' . $this->get_width2( $width ) . ';';
+		
 		$el_style = apply_filters( $this->shortcode . '_style', $el_style, $atts );
 		if ( $el_style != '' ) {
 			$style_attr = 'style="' . esc_attr( $el_style ) . '"';

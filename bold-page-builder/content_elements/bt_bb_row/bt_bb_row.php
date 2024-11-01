@@ -50,25 +50,16 @@ class bt_bb_row extends BT_BB_Element {
 		if ( $color_scheme_colors ) $el_style .= '; --row-primary-color:' . $color_scheme_colors[0] . '; --row-secondary-color:' . $color_scheme_colors[1] . ';';
 		if ( $color_scheme != '' ) $class[] = $this->prefix . 'color_scheme_' .  $color_scheme_id;
 
-
-		$style_attr = '';
-		if ( $el_style != '' ) {
-			$style_attr = 'style="' . esc_attr( $el_style ) . '"';
-		}
-		
-		$style_inner_attr = '';
-		if ( $el_inner_style != '' ) {
-			$style_inner_attr = 'style="' . esc_attr( $el_inner_style ) . '"';
-		}
-
-
 		if ( $column_gap != '' ) {
 			$class[] = $this->prefix . 'column_gap' . '_' . $column_gap;
+			if ( is_numeric( $column_gap ) ) $el_style .= '; --column-gap:' . $column_gap . 'px;'; // Values for small, normal etc are in css
 		}
 
 		if ( $row_width != '' && $row_width != 'default' ) {
-			$outer_class_1200_base = $this->prefix . 'row_width' . '_' . 'boxed_1200';
-			$outer_class_1400_base = $this->prefix . 'row_width' . '_' . 'boxed_1400';
+			$outer_class_1200_base = $this->prefix . 'row_width' . '_' . 'boxed_1200 ' . $this->prefix . 'row_width' . '_' . 'boxed';
+			$outer_class_1400_base = $this->prefix . 'row_width' . '_' . 'boxed_1400 ' . $this->prefix . 'row_width' . '_' . 'boxed';
+			
+			// TODO: srediti $el_style .= '; --row-width: 1200px;';
 			
 			if ( $row_width == 'boxed_1200' ) { $outer_class[] = $outer_class_1200_base; }
 			else if ( $row_width == 'boxed_1200_left' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1200_base; }
@@ -86,6 +77,16 @@ class bt_bb_row extends BT_BB_Element {
 			else if ( $row_width == 'boxed_1400_left_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1400_base; }
 			else if ( $row_width == 'boxed_1400_left_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1400_base; }
 			else { $outer_class[] = $this->prefix . 'row_width' . '_' . $row_width; /* fix for old custom classes */ }
+		}
+
+		$style_attr = '';
+		if ( $el_style != '' ) {
+			$style_attr = 'style="' . esc_attr( $el_style ) . '"';
+		}
+		
+		$style_inner_attr = '';
+		if ( $el_inner_style != '' ) {
+			$style_inner_attr = 'style="' . esc_attr( $el_inner_style ) . '"';
 		}
 
 		do_action( $this->shortcode . '_before_extra_responsive_param' );

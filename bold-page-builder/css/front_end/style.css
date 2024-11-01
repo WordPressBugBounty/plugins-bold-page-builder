@@ -448,7 +448,7 @@ body.logged-in.bt_bb_plugin_active:not(.bt_bb_fe_preview_toggle) {
 	}
 }
 
-.bt_bb_dd_tip {
+.bt_bb_dd_tip, .bt_bb_desc_tip {
 	position: fixed;
 	margin-bottom: 3px;
 	margin-left: 3px;
@@ -465,6 +465,12 @@ body.logged-in.bt_bb_plugin_active:not(.bt_bb_fe_preview_toggle) {
 	font-family: sans-serif;
 	font-size: 12px;
 	display: none;
+}
+
+.bt_bb_desc_tip {
+	max-width: 45ch;
+	line-height: 1.5;
+	padding: .5ch 1ch;
 }
 
 body:not(.bt_bb_fe_preview_toggle) .bt_bb_dragging_element {
