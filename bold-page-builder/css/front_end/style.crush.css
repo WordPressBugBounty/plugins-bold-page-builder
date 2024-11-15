@@ -1752,7 +1752,8 @@ body.bt_bb_edit_footer .bt-site-footer {
     display: none;
     }
 
-/* undo-redo */
+/* Undo / Redo 
+------------------------------------- */
 #bt_bb_fe_undo,
 #bt_bb_fe_redo {
     position: fixed;
@@ -1825,6 +1826,13 @@ body:not(.bt_bb_fe_preview_toggle) [data-bt-bb-fe-atts].animated {
     -moz-transform: none !important;
     -ms-transform: none !important;
     transform: none !important;
+    }
+
+/* FE - RTL
+----------------------------------------------------------------------------- */
+body.rtl #bt_bb_fe_dialog_main .bt_bb_dialog_header .bt_bb_dialog_close {
+    padding-left: 0;
+    padding-right: 1em;
     }
 
 /*# sourceMappingURL=style.crush.css.map */

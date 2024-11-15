@@ -680,6 +680,9 @@
 	}
 
 	/* Deprecated */
+	.bt_bb_icon_bt_bb_cost_calculator {
+		opacity: 0.3;
+	}
 	.bt_bb_icon_bt_bb_cost_calculator_simple {
 		opacity: 0.3;
 	}
@@ -918,6 +921,37 @@
 	}
 }
 
+.bt_bb_ro_switch { 
+	font-family: 'bold-builder';
+	cursor: pointer;
+    display: block;
+    float: right;
+	position: relative;
+}
+
+.bt_bb_ro_switch:before {
+	content: '\e95f';
+}
+
+.bt_bb_ro_switch:after {
+	content: '\e95d';
+    position: absolute;
+    left: -9px;
+    bottom: -5px;
+    background-color: white;
+    padding: 1px;
+}
+
+/* FE - RTL
+----------------------------------------------------------------------------- */
+body.rtl {
+	.bt_bb_ro_switch {
+		padding-left: 1.5em;
+	}
+	.bt_bb_ro_switch:after {
+		left: 9px;
+	}
+}
 
 .bt_bb_responsive_override_container {
 	display: flex;

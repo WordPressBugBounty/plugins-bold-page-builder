@@ -337,7 +337,9 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 
 .bt_bb_cell {
 	width: 100%;
+	flex: 0 1 100%;
 	.bt_bb_layout_boxed & {
+		flex-basis: $(gutterWidth)px;
 		width: $(gutterWidth)px;
 		max-width: calc(100% - math($(horizontalPadding) * 2)px);
 	}
@@ -350,6 +352,7 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 
 @for i in 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600 {
 	.bt_bb_layout_boxed_#(i) .bt_bb_cell {
+		flex-basis: #(i)px;
 		width: #(i)px;
 		max-width: calc(100% - math($(horizontalPadding) * 2)px);
 	}

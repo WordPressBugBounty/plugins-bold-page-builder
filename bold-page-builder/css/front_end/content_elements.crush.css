@@ -1537,8 +1537,13 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
     }
 .bt_bb_cell {
     width: 100%;
+    -webkit-flex: 0 1 100%;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
     }
 .bt_bb_layout_boxed .bt_bb_cell {
+    -webkit-flex-basis: 1200px;
+    flex-basis: 1200px;
     width: 1200px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
@@ -1550,66 +1555,88 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
     overflow-x: clip;
     }
 .bt_bb_layout_boxed_600 .bt_bb_cell {
+    -webkit-flex-basis: 600px;
+    flex-basis: 600px;
     width: 600px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_700 .bt_bb_cell {
+    -webkit-flex-basis: 700px;
+    flex-basis: 700px;
     width: 700px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_800 .bt_bb_cell {
+    -webkit-flex-basis: 800px;
+    flex-basis: 800px;
     width: 800px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_900 .bt_bb_cell {
+    -webkit-flex-basis: 900px;
+    flex-basis: 900px;
     width: 900px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_1000 .bt_bb_cell {
+    -webkit-flex-basis: 1000px;
+    flex-basis: 1000px;
     width: 1000px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_1100 .bt_bb_cell {
+    -webkit-flex-basis: 1100px;
+    flex-basis: 1100px;
     width: 1100px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_1200 .bt_bb_cell {
+    -webkit-flex-basis: 1200px;
+    flex-basis: 1200px;
     width: 1200px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_1300 .bt_bb_cell {
+    -webkit-flex-basis: 1300px;
+    flex-basis: 1300px;
     width: 1300px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_1400 .bt_bb_cell {
+    -webkit-flex-basis: 1400px;
+    flex-basis: 1400px;
     width: 1400px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_1500 .bt_bb_cell {
+    -webkit-flex-basis: 1500px;
+    flex-basis: 1500px;
     width: 1500px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);
     max-width: calc(100% - 40px);
     }
 .bt_bb_layout_boxed_1600 .bt_bb_cell {
+    -webkit-flex-basis: 1600px;
+    flex-basis: 1600px;
     width: 1600px;
     max-width: -webkit-calc(100% - 40px);
     max-width: -moz-calc(100% - 40px);

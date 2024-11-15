@@ -1846,6 +1846,9 @@
 .bt_bb_dialog_content .bt_bb_icon_bt_bb_headline:before {
     content: '\e90a';
     }
+.bt_bb_dialog_content .bt_bb_icon_bt_bb_cost_calculator {
+    opacity: .3;
+    }
 .bt_bb_dialog_content .bt_bb_icon_bt_bb_cost_calculator_simple {
     opacity: .3;
     }
@@ -2168,6 +2171,33 @@
     }
 }
 
+.bt_bb_ro_switch {
+    font-family: 'bold-builder';
+    cursor: pointer;
+    display: block;
+    float: right;
+    position: relative;
+    }
+.bt_bb_ro_switch:before {
+    content: '\e95f';
+    }
+.bt_bb_ro_switch:after {
+    content: '\e95d';
+    position: absolute;
+    left: -9px;
+    bottom: -5px;
+    background-color: white;
+    padding: 1px;
+    }
+
+/* FE - RTL
+----------------------------------------------------------------------------- */
+body.rtl .bt_bb_ro_switch {
+    padding-left: 1.5em;
+    }
+body.rtl .bt_bb_ro_switch:after {
+    left: 9px;
+    }
 .bt_bb_responsive_override_container {
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -2430,8 +2460,13 @@
 #bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item:before {
     font-size: 1.1em;
     }
-#bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item {
+#bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item:not(.bt_bb_dialog_add_element) {
     padding-bottom: 0;
+    }
+#bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item.bt_bb_dialog_add_element {
+    padding-bottom: .115em;
+    }
+#bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item {
     overflow: visible;
     }
 #bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item[data-param_name="row_width"][data-type="radio"] {
@@ -2466,6 +2501,7 @@
 #bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item[data-param_name="responsive"][data-type="checkbox_group"] label input[type=checkbox]:hover + span:before {
     opacity: .8;
     }
+.bt_bb_dialog_item.bt_bb_dialog_add_element.bt_bb_icon.bt_bb_icon_bt_bb_cost_calculator,
 .bt_bb_dialog_item.bt_bb_dialog_add_element.bt_bb_icon.bt_bb_icon_bt_bb_cost_calculator_simple,
 .bt_bb_dialog_item.bt_bb_dialog_add_element.bt_bb_icon.bt_bb_icon_bt_bb_masonry_post_grid,
 .bt_bb_dialog_item.bt_bb_dialog_add_element.bt_bb_icon.bt_bb_icon_bt_bb_masonry_image_grid {

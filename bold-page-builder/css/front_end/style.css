@@ -1737,8 +1737,8 @@ body.bt_bb_edit_footer {
 	}
 }
 
-/* undo-redo */
-
+/* Undo / Redo 
+------------------------------------- */
 #bt_bb_fe_undo, #bt_bb_fe_redo {
 	position: fixed;
 	bottom: 55px;
@@ -1767,7 +1767,6 @@ body.bt_bb_edit_footer {
 		cursor: default;
 	}
 }
-
 #bt_bb_fe_undo {
 	right: 140px;
 	.rtl:not(.bt_bb_fe_dialog_switch_side) &, .bt_bb_fe_dialog_switch_side:not(.rtl) & {
@@ -1778,8 +1777,6 @@ body.bt_bb_edit_footer {
 		content: '\f0e2';
 	}
 }
-
-
 #bt_bb_fe_redo {
 	right: 100px;
 	.rtl:not(.bt_bb_fe_dialog_switch_side) &, .bt_bb_fe_dialog_switch_side:not(.rtl) & {
@@ -1792,7 +1789,15 @@ body.bt_bb_edit_footer {
 }
 
 /* animation / disable transform in editor (enable editing when float is used and elements are overlapping) */
-
 body:not(.bt_bb_fe_preview_toggle) [data-bt-bb-fe-atts].animated {
 	transform: none !important;
+}
+
+/* FE - RTL
+----------------------------------------------------------------------------- */
+body.rtl {
+	#bt_bb_fe_dialog_main .bt_bb_dialog_header .bt_bb_dialog_close {
+		padding-left: 0em;
+		padding-right: 1em;
+	}
 }

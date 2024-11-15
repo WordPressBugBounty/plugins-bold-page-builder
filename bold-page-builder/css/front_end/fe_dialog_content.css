@@ -130,6 +130,13 @@ button, input, select, textarea {
 	}
 }
 
+body.rtl {
+	.bt_bb_dialog_item > b > sup {
+		margin-left: 0;
+		margin-right: 3px;
+	}
+}
+
 /* Controls */
 @import url("../controls.css"); 
 

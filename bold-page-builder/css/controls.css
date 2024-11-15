@@ -155,8 +155,13 @@
 			font-size: 1.1em;
 		}
 	}
-	#bt_bb_fe_dialog_content_wrapper & {
+	#bt_bb_fe_dialog_content_wrapper &:not(.bt_bb_dialog_add_element) {
 		padding-bottom: 0;
+	}
+	#bt_bb_fe_dialog_content_wrapper &.bt_bb_dialog_add_element {
+		padding-bottom: .115em;
+	}
+	#bt_bb_fe_dialog_content_wrapper & {
 		overflow: visible;
 		&[data-param_name="row_width"][data-type="radio"] {
 			padding-right: 0;
@@ -194,6 +199,7 @@
 	}
 
 	/* Deprecated elements */
+	&.bt_bb_dialog_add_element.bt_bb_icon.bt_bb_icon_bt_bb_cost_calculator,
 	&.bt_bb_dialog_add_element.bt_bb_icon.bt_bb_icon_bt_bb_cost_calculator_simple,
 	&.bt_bb_dialog_add_element.bt_bb_icon.bt_bb_icon_bt_bb_masonry_post_grid,
 	&.bt_bb_dialog_add_element.bt_bb_icon.bt_bb_icon_bt_bb_masonry_image_grid {
