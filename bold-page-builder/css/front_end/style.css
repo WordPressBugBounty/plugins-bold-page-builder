@@ -471,6 +471,7 @@ body.logged-in.bt_bb_plugin_active:not(.bt_bb_fe_preview_toggle) {
 	max-width: 45ch;
 	line-height: 1.5;
 	padding: .5ch 1ch;
+	pointer-events: all;
 }
 
 body:not(.bt_bb_fe_preview_toggle) .bt_bb_dragging_element {

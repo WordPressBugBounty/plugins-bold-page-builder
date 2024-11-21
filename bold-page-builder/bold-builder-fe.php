@@ -51,6 +51,7 @@ function bt_bb_fe_init() {
 					'target' 			=> array( 'js_handler'	=> array( 'target_selector' => ' > a', 'type' => 'attr', 'attr' => 'target' ) ),
 					'size' 				=> array( 'ajax_filter' => array( 'class', 'data-bt-override-class' ) ),
 					'color_scheme' 		=> array( 'ajax_filter' => array( 'class', 'style' ) ),
+					'font'              => array( 'js_callback' => array( 'bt_bb_js_google_font' ) ),
 					'font_weight' 		=> array( 'js_handler'	=> array( 'target_selector' => '', 'type' => 'class' ) ),
 					'text_transform' 	=> array( 'js_handler'	=> array( 'target_selector' => '', 'type' => 'class' ) ),
 					'style' 			=> array( 'js_handler'	=> array( 'target_selector' => '', 'type' => 'class' ) ),
@@ -156,13 +157,14 @@ function bt_bb_fe_init() {
 				'params' => array(
 					'ai_prompt'				    	=> array(),
 					'superheadline'					=> array( 'js_handler'  => array( 'target_selector' => '.bt_bb_headline_superheadline', 'type' => 'inner_html' ) ),
-					'headline'						=> array( 'js_handler'  => array( 'target_selector' => '.bt_bb_headline_content', 'type' => 'inner_html_nl2br' ) ),
+					'headline'						=> array( 'js_handler'  => array( 'target_selector' => '.bt_bb_headline_content > span', 'type' => 'inner_html_nl2br' ) ),
 					'subheadline'					=> array( 'js_handler'  => array( 'target_selector' => '.bt_bb_headline_subheadline', 'type' => 'inner_html_nl2br' ) ),
 					'html_tag'						=> array(),
 					'size'							=> array( 'ajax_filter' => array( 'class', 'data-bt-override-class' ) ),
 					'align'							=> array( 'ajax_filter' => array( 'class', 'data-bt-override-class' ) ),
 					'dash'							=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'class' ) ),
 					'color_scheme'					=> array( 'ajax_filter' => array( 'class', 'style' ) ),
+					'font'                          => array( 'js_callback' => array( 'bt_bb_js_google_font' ) ),
 					'font_weight'					=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'class' ) ),
 					'text_transform'				=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'class' ) ),
 					'superheadline_font_weight'		=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'class' ) ),
@@ -431,21 +433,30 @@ function bt_bb_fe_init() {
 				),
 			),
 		);
+		
+		$temp_elements = array();
 
 		foreach( BT_BB_Root::$elements as $el_name => $arr ) {
 			if ( ! isset( BT_BB_FE::$elements[ $el_name ] ) ) {
-				BT_BB_FE::$elements[ $el_name ] = array( 'edit_box_selector' => '', 'params' => array() );
+				$temp_elements[ $el_name ] = array( 'edit_box_selector' => '', 'params' => array() );
+			} else {
+				$temp_elements[ $el_name ] = BT_BB_FE::$elements[ $el_name ];
 			}
+			$temp_elements[ $el_name ]['params'] = array();
 			if ( isset( $arr['params'] ) ) {
 				foreach( $arr['params'] as $param ) {
 					$param_name = $param['param_name'];
 					$param_type = $param['type'];
 					if ( ! isset( BT_BB_FE::$elements[ $el_name ]['params'][ $param_name ] ) && $param_type != 'hidden' ) {
-						BT_BB_FE::$elements[ $el_name ]['params'][ $param_name ] = array();
+						$temp_elements[ $el_name ]['params'][ $param_name ] = array();
+					} else if ( $param_type != 'hidden' ) {
+						$temp_elements[ $el_name ]['params'][ $param_name ] = BT_BB_FE::$elements[ $el_name ]['params'][ $param_name ];
 					}
 				}
 			}
 		}
+		
+		BT_BB_FE::$elements = $temp_elements;
 		
 		BT_BB_FE::$elements = apply_filters( 'bt_bb_fe_elements', BT_BB_FE::$elements );
 		

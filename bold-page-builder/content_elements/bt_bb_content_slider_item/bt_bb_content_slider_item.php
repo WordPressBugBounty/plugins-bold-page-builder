@@ -46,6 +46,7 @@ class bt_bb_content_slider_item extends BT_BB_Element {
 			$class[] = 'bt_bb_background_overlay' . '_' . $background_overlay;
 		}
 
+		do_action( $this->shortcode . '_before_extra_responsive_param' );
 		foreach ( $this->extra_responsive_data_override_param as $p ) {
 			if ( ! is_array( $atts ) || ! array_key_exists( $p, $atts ) ) continue;
 			$this->responsive_data_override_class(

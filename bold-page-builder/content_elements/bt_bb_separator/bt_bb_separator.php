@@ -99,6 +99,7 @@ class bt_bb_separator extends BT_BB_Element {
 		
 		if ( $icon == '' && $text == '' ) $class[] = 'bt_bb_separator_v2_without_content';
 
+		do_action( $this->shortcode . '_before_extra_responsive_param' );
 		foreach ( $this->extra_responsive_data_override_param as $p ) {
 			if ( ! is_array( $atts ) || ! array_key_exists( $p, $atts ) ) continue;
 			$this->responsive_data_override_class(

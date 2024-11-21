@@ -93,6 +93,7 @@ class bt_bb_service extends BT_BB_Element {
 			if ( $title != '' ) $title = '<a href="' . esc_url( $link ) . '" target="' . esc_attr( $target ) . '">' . $title . '</a>';
 		}
 		
+		do_action( $this->shortcode . '_before_extra_responsive_param' );
 		foreach ( $this->extra_responsive_data_override_param as $p ) {
 			if ( ! is_array( $atts ) || ! array_key_exists( $p, $atts ) ) continue;
 			$this->responsive_data_override_class(

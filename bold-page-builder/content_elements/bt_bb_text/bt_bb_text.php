@@ -23,6 +23,7 @@ class bt_bb_text extends BT_BB_Element {
 			$style_attr = 'style="' . esc_attr( $el_style ) . '"';
 		}
 
+		do_action( $this->shortcode . '_before_extra_responsive_param' );
 		foreach ( $this->extra_responsive_data_override_param as $p ) {
 			if ( ! is_array( $atts ) || ! array_key_exists( $p, $atts ) ) continue;
 			$this->responsive_data_override_class(

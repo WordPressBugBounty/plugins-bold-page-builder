@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.2.2
+ * Version: 5.2.3
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.2.2' );
+define( 'BT_BB_VERSION', '5.2.3' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -321,7 +321,7 @@ BT_BB_Root::$fe_wrap_count = 0;
 
 BT_BB_Root::$has_footer = false;
 
-add_action( 'wp_loaded', 'bt_bb_has_footer' );
+add_action( 'wp_head', 'bt_bb_has_footer' );
 function bt_bb_has_footer() {
 	if ( function_exists( 'boldthemes_get_option' ) && function_exists( 'boldthemes_get_id_by_slug' ) && class_exists( 'BoldThemes_Customize_Default' ) && isset( BoldThemes_Customize_Default::$data['footer_page_slug'] ) ) {
 		$page_slug = boldthemes_get_option( 'footer_page_slug' );
@@ -1652,19 +1652,23 @@ class BT_BB_Basic_Element {
 		$this->extra_responsive_data_override_param = [];
 		add_shortcode( $this->shortcode, array( $this, 'handle_shortcode' ) );
 		
-		// add_action( 'wp_loaded', array( $this, 'map_shortcode' ) );
 		add_action( 'admin_bar_init', array( $this, 'map_shortcode' ), 8 ); // priority 9 in admin_bar_init in bold-builder-fe.php
 		
 		if ( ! is_admin() ) {
 			add_action( 'admin_bar_init', array( $this, 'enqueue' ) );
 		}
-		
-		//$this->map_shortcode();
+
 		$this->add_params();
 		add_filter( 'bt_bb_extract_atts_' . $this->shortcode, array( $this, 'atts_callback' ) );
 		add_filter( 'bt_bb_extract_atts', array( $this, 'atts_callback' ) ); // older themes override content elements
 		add_filter( $this->shortcode . '_class', array( $this, 'responsive_hide_callback' ), 10, 2 );
-		add_filter( $this->shortcode . '_class', array( $this, 'animation_callback' ), 10, 2 );
+		add_filter( $this->shortcode . '_extra_responsive_data_override_param', function( $params ) { 
+			$p = 'animation';
+			if ( ! in_array( $p, $params ) ) {
+				$params[] = $p;
+			}
+			return $params;
+		});	
 		add_action( $this->shortcode . '_before_extra_responsive_param', array( $this, 'extra_responsive_param' ) );
 		add_filter( $this->shortcode . '_output', array( $this, 'data_shortcode_fe_editor' ), 10, 2 );
 	}
@@ -1684,17 +1688,6 @@ class BT_BB_Basic_Element {
 	function responsive_hide_callback( $class, $atts ) {
 		if ( isset( $atts['responsive'] ) && $atts['responsive'] != '' ) {
 			$class = array_merge( $class, preg_filter('/^/', $this->prefix, explode( ' ', $atts['responsive'] ) ) );
-		}
-		return $class;
-	}
-
-	function animation_callback( $class, $atts ) {
-		if ( isset( $atts['animation'] ) && $atts['animation'] != 'no_animation' ) {
-			foreach ( explode( ' ', $atts['animation'] ) as $index) {
-				$class[] = $this->prefix . 'animation' . '_' . $index;
-			}
-			/*$class[] = $this->prefix . 'animation' . '_' . $atts['animation'];*/
-			$class[] = 'animate';
 		}
 		return $class;
 	}
@@ -1770,7 +1763,7 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 		$bt_bb_skip_animation_arr = [ 'bt_bb_slider', 'bt_bb_content_slider', 'bt_bb_content_slider_item', 'bt_bb_accordion_item', 'bt_bb_tab_item', 'bt_bb_google_maps_location', 'bt_bb_leaflet_map_location' ];
 		
 		if ( ! in_array( $this->shortcode, $bt_bb_skip_animation_arr ) ) {
-			$params[] = array( 'param_name' => 'animation', 'type' => 'dropdown', 'heading' => esc_html__( 'Animation', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'preview' => true, 'weight' => 997,
+			$params[] = array( 'param_name' => 'animation', 'type' => 'dropdown', 'heading' => esc_html__( 'Animation', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'responsive_override' => true, 'preview' => true, 'weight' => 997,
 				'value' => array(
 					esc_html__( 'No Animation', 'bold-builder' ) => 'no_animation',
 					esc_html__( 'Fade In', 'bold-builder' ) => 'fade_in',
@@ -1873,43 +1866,54 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 			
 			$main = $arr['prefix'] . $arr['param'] . $suffix . $value_arr[0];
 			
-			$class[] = $main;
+			$animate = false;
+			if ( $arr['param'] == 'animation' ) { // animation is a special case
+				if ( implode( '', $value_arr ) != 'no_animation' ) {
+					$animate = true;
+				}
+				if ( $value_arr[0] != 'no_animation' && implode( '', array_slice( $value_arr, 1 ) ) == '' ) { 
+					$class[] = $main;
+					$class[] = 'animate';
+				}
+			} else {
+				$class[] = $main;
+			}
 			
 			if ( count( $value_arr ) == 5 ) {
-				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'current_class' ] = $main;
-				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xxl' ] = $value_arr[0];
-				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xl' ] = $value_arr[0];
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'current_class' ] = $main . ( $animate ? ' ' . 'animate' : '' );
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xxl' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xl' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
 
 				if ( $value_arr[1] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'lg' ] = $value_arr[1];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'lg' ] = $value_arr[1] . ( $animate ? ' ' . 'animate' : '' );
 				}
 				if ( $value_arr[2] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'md' ] = $value_arr[2];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'md' ] = $value_arr[2] . ( $animate ? ' ' . 'animate' : '' );
 				}
 				if ( $value_arr[3] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'sm' ] = $value_arr[3];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'sm' ] = $value_arr[3] . ( $animate ? ' ' . 'animate' : '' );
 				}
 				if ( $value_arr[4] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xs' ] = $value_arr[4];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xs' ] = $value_arr[4] . ( $animate ? ' ' . 'animate' : '' );
 				}
 			} else if ( count( $value_arr ) == 6 ) {
-				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'current_class' ] = $main;
-				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xxl' ] = $value_arr[0];
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'current_class' ] = $main . ( $animate ? ' ' . 'animate' : '' );
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xxl' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
 
 				if ( $value_arr[1] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xl' ] = $value_arr[1];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xl' ] = $value_arr[1] . ( $animate ? ' ' . 'animate' : '' );
 				}
 				if ( $value_arr[2] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'lg' ] = $value_arr[2];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'lg' ] = $value_arr[2] . ( $animate ? ' ' . 'animate' : '' );
 				}
 				if ( $value_arr[3] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'md' ] = $value_arr[3];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'md' ] = $value_arr[3] . ( $animate ? ' ' . 'animate' : '' );
 				}
 				if ( $value_arr[4] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'sm' ] = $value_arr[4];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'sm' ] = $value_arr[4] . ( $animate ? ' ' . 'animate' : '' );
 				}
 				if ( $value_arr[5] != '' ) {
-					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xs' ] = $value_arr[5];
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xs' ] = $value_arr[5] . ( $animate ? ' ' . 'animate' : '' );
 				}
 			}
 		}
@@ -1955,11 +1959,11 @@ if ( ! class_exists( 'BoldThemes_BB_Settings' ) || ! BoldThemes_BB_Settings::$cu
 	
 	$theme = wp_get_theme( get_template() );
 	$template = $theme->template;
-	$author = $theme->author;
+	//$author = $theme->author; // triggers this: Notice: Function _load_textdomain_just_in_time was called incorrectly.
 
 	require_once plugin_dir_path( __FILE__ ) . 'content_elements/_deprecated.php';
 	
-	if ( strpos( $author, 'BoldThemes' ) !== false && in_array( $template, BT_BB_Root::$deprecated['bt_bb_separator'] ) ) {
+	if ( /*strpos( $author, 'BoldThemes' ) !== false &&*/ in_array( $template, BT_BB_Root::$deprecated['bt_bb_separator'] ) ) {
 		$elements[ 'bt_bb_separator' ] = plugin_dir_path( __FILE__ ) . 'content_elements/_deprecated/bt_bb_separator/bt_bb_separator.php';
 	}
 

@@ -112,6 +112,7 @@ class bt_bb_button extends BT_BB_Element {
 			$target = '_self';
 		}
 
+		do_action( $this->shortcode . '_before_extra_responsive_param' );
 		foreach ( $this->extra_responsive_data_override_param as $p ) {
 			if ( ! is_array( $atts ) || ! array_key_exists( $p, $atts ) ) continue;
 			$this->responsive_data_override_class(

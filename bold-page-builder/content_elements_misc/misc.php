@@ -216,7 +216,7 @@ if ( ! function_exists( 'bt_bb_enqueue_google_font' ) ) {
 
 		if ( ! in_array( $font, BT_BB_State::$fonts_added ) ) {
 			
-			$default_load_font_extension = ':ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900';
+			$default_load_font_extension = ':ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700;1,800;1,900';
 			// $default_load_font_extension = ':ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,100;1,9..144,200;1,9..144,300;1,9..144,400';
 			
 			$font_load_extension = $font_load_extension != '' ? $font_load_extension : $default_load_font_extension;
@@ -238,7 +238,6 @@ if ( ! function_exists( 'bt_bb_enqueue_google_fonts' ) ) {
 	function bt_bb_enqueue_google_fonts() {
 
 		if ( count( BT_BB_State::$fonts_added ) > 0 ) {
-
 
 			$font_families = array();
 
