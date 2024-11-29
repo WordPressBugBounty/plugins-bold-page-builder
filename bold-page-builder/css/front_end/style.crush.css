@@ -1636,6 +1636,12 @@ body.bt_bb_fe_add_section .bt_bb_fe_count {
     transform: translate(-50%,-50%) scale(1);
     width: 30%;
     }
+.rtl .bt_bb_dialog_header_tools .bt_bb_group_tab.bt_bb_group_tab_active:before {
+    -webkit-transform: translate(50%,-50%) scale(1);
+    -moz-transform: translate(50%,-50%) scale(1);
+    -ms-transform: translate(50%,-50%) scale(1);
+    transform: translate(50%,-50%) scale(1);
+    }
 .bt_bb_dialog_header_tools .bt_bb_group_tab.bt_bb_group_tab_active:only-child {
     max-width: 10em;
     -webkit-transform: none;
@@ -1665,6 +1671,10 @@ body.bt_bb_fe_add_section .bt_bb_fe_count {
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     transform: scale(0);
+    }
+.rtl .bt_bb_dialog_header_tools .bt_bb_group_tab:before {
+    left: 0;
+    right: 50%;
     }
 
 /* Add template */

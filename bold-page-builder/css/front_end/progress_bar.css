@@ -15,7 +15,7 @@
 		padding: 0.5em 1em;
 		z-index: 1;
 		transition: transform 500ms ease;
-		transform: translateX(-100%);
+		transform: translateX(-99.9%);
 		&.animated {
 			transform: translateX(0%);
 		}
@@ -67,7 +67,7 @@
 	.rtl & {
 		.bt_bb_progress_bar_inner {
 			float: right;
-			transform: translateX(100%);
+			transform: translateX(99.9%);
 			&.animated {
 				transform: translateX(0%);
 			}

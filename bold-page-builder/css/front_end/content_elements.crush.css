@@ -7109,10 +7109,10 @@ button.slick-arrow:focus {
     -webkit-transition: transform 500ms ease;
     -moz-transition: transform 500ms ease;
     transition: transform 500ms ease;
-    -webkit-transform: translateX(-100%);
-    -moz-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-99.9%);
+    -moz-transform: translateX(-99.9%);
+    -ms-transform: translateX(-99.9%);
+    transform: translateX(-99.9%);
     }
 .bt_bb_progress_bar .bt_bb_progress_bar_inner.animated {
     -webkit-transform: translateX(0%);
@@ -7179,10 +7179,10 @@ button.slick-arrow:focus {
     }
 .rtl .bt_bb_progress_bar .bt_bb_progress_bar_inner {
     float: right;
-    -webkit-transform: translateX(100%);
-    -moz-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%);
+    -webkit-transform: translateX(99.9%);
+    -moz-transform: translateX(99.9%);
+    -ms-transform: translateX(99.9%);
+    transform: translateX(99.9%);
     }
 .rtl .bt_bb_progress_bar .bt_bb_progress_bar_inner.animated {
     -webkit-transform: translateX(0%);

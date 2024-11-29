@@ -277,6 +277,12 @@ textarea {
     transform: translate(-50%,-50%) scale(1);
     width: 30%;
     }
+.rtl #bt_bb_dialog .bt_bb_dialog_header_tools .bt_bb_group_tab.bt_bb_group_tab_active:before {
+    -webkit-transform: translate(50%,-50%) scale(1);
+    -moz-transform: translate(50%,-50%) scale(1);
+    -ms-transform: translate(50%,-50%) scale(1);
+    transform: translate(50%,-50%) scale(1);
+    }
 #bt_bb_dialog .bt_bb_dialog_header_tools .bt_bb_group_tab.bt_bb_group_tab_active:after {
     height: 7.5px;
     bottom: -6.5px;
@@ -297,6 +303,10 @@ textarea {
     -webkit-transition: all 260ms ease;
     -moz-transition: all 260ms ease;
     transition: all 260ms ease;
+    }
+.rtl #bt_bb_dialog .bt_bb_dialog_header_tools .bt_bb_group_tab:before {
+    left: 0;
+    right: 50%;
     }
 #bt_bb_dialog .bt_bb_dialog_header_tools .bt_bb_group_tab:after {
     content: ' ';
@@ -1159,8 +1169,12 @@ textarea {
     font-family: 'bold-builder';
     cursor: pointer;
     display: block;
-    float: right;
     position: relative;
+    float: right;
+    }
+.rtl .bt_bb_ro_switch {
+    float: left;
+    margin-left: 9px;
     }
 .bt_bb_ro_switch:before {
     content: '\e95f';
@@ -1168,10 +1182,13 @@ textarea {
 .bt_bb_ro_switch:after {
     content: '\e95d';
     position: absolute;
-    left: -9px;
-    bottom: -5px;
     background-color: white;
     padding: 1px;
+    bottom: -5px;
+    left: -9px;
+    }
+.bt_bb_dialog_item:has(.bt_bb_responsive_override option[selected]) .bt_bb_ro_switch {
+    color: #0367B4;
     }
 
 /* FE - RTL
@@ -1269,13 +1286,13 @@ body.rtl .bt_bb_ro_switch:after {
     background: #bbb;
     color: white;
     display: inline-block;
-    margin-left: 3px;
     font-size: 10px;
+    margin-left: 3px;
     }
 .bt_bb_dialog_item > b > sup:hover {
     background: #999;
     }
-body.rtl .bt_bb_dialog_item > b > sup {
+.rtl .bt_bb_dialog_item > b > sup {
     margin-left: 0;
     margin-right: 3px;
     }

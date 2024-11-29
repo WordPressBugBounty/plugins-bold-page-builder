@@ -92,7 +92,6 @@
 			transition: all 300ms ease 0s;
 			min-width: auto;
 			text-wrap: nowrap;
-
 			.rtl & {
 				float: right;
 			}
@@ -113,6 +112,9 @@
 				&:before {
 					transform: translate(-50%,-50%) scale(1);
 					width: 30%;
+					.rtl & {
+						transform: translate(50%, -50%) scale(1);
+					}
 				}
 				&:after {
 					height: 7.5px;
@@ -126,6 +128,10 @@
 				position: absolute;
 				left: 50%;
 				right: 0;
+				.rtl & {
+					left: 0;
+					right: 50%;
+				}
 				bottom: 0;
 				height: 0.2em;
 				background-color: $(alternateColor);
@@ -925,8 +931,12 @@
 	font-family: 'bold-builder';
 	cursor: pointer;
     display: block;
-    float: right;
 	position: relative;
+    float: right;
+	.rtl & {
+		float: left;
+		margin-left: 9px;
+	}
 }
 
 .bt_bb_ro_switch:before {
@@ -936,10 +946,14 @@
 .bt_bb_ro_switch:after {
 	content: '\e95d';
     position: absolute;
-    left: -9px;
-    bottom: -5px;
     background-color: white;
     padding: 1px;
+    bottom: -5px;
+    left: -9px;
+}
+
+.bt_bb_dialog_item:has(.bt_bb_responsive_override option[selected]) .bt_bb_ro_switch {
+	color: $(accentDark);
 }
 
 /* FE - RTL

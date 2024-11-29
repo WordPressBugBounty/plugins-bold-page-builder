@@ -1612,7 +1612,10 @@ body.bt_bb_fe_add_section {
 			transition: 0.2s ease-out;
 			&:before {
 				transform: translate(-50%,-50%) scale(1);
-				width: 30%;
+				width: 30%;					
+				.rtl & {
+					transform: translate(50%, -50%) scale(1);
+				}
 			}
 			&:only-child {
 				max-width: 10em;
@@ -1628,6 +1631,10 @@ body.bt_bb_fe_add_section {
 			right: 0;
 			bottom: 0;
 			left: 50%;
+			.rtl & {
+				left: 0;
+				right: 50%;
+			}
 			transform: translate(-50%,-50%) scale(0);
 			height: 0.1rem;
 			width: 0;

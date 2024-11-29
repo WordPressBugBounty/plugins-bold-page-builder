@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.2.3
+ * Version: 5.2.4
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.2.3' );
+define( 'BT_BB_VERSION', '5.2.4' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -21,7 +21,7 @@ define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
  * Enqueue scripts and styles
  */
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . 'css-crush/CssCrush.php' ) /*&& strpos( $_SERVER['SERVER_NAME'], '-dev' )*/ ) {
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'css-crush/CssCrush.php' ) && strpos( $_SERVER['SERVER_NAME'], '-dev' ) ) {
 	require_once( 'css-crush/CssCrush.php' );
 }
 
