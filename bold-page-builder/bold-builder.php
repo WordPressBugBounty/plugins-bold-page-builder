@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.2.4
+ * Version: 5.2.5
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.2.4' );
+define( 'BT_BB_VERSION', '5.2.5' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -846,6 +846,8 @@ function bt_bb_js_settings() {
 		echo 'window.bt_bb_settings.slug_url = "' . esc_js( $slug_url ) . '";';
 		
 		echo 'window.bt_bb_ajax_url = "' . esc_js( admin_url( 'admin-ajax.php' ) ) . '";'; // back. compat.
+		
+		echo 'window.bt_bb_ajax_nonce = "' . wp_create_nonce( 'bt_bb_nonce' ) . '";'; // fix nonce issue on local sites with ai.js (not working with wp_localize_script window.bt_bb_ajax.nonce)
 		
 		global $shortcode_tags;
 		$all_sc = $shortcode_tags;

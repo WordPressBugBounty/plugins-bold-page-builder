@@ -159,7 +159,7 @@ class bt_bb_image extends BT_BB_Element {
 					$attr_arr['title'] = esc_attr( $title );
 				}
 				if ( $lazy_load != 'yes' ) {
-					$attr_arr['loading'] = false;
+					$attr_arr['loading'] = 'eager';
 				}
 				$output .= wp_get_attachment_image( $image, $size, false, $attr_arr );
 			} else {

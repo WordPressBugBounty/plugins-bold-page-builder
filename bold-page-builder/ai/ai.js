@@ -95,7 +95,7 @@
 		
 		var data = {
 			'action': 'bt_bb_ai',
-			'nonce': window.bt_bb_ajax.nonce,
+			'nonce': window.bt_bb_ajax_nonce,
 			'keywords': $( that ).closest( '.bt_bb_dialog_item' ).find( '.bt_bb_ai_keywords' ).val(),
 			'system_prompt': $( that ).closest( '.bt_bb_dialog_item' ).data( 'system_prompt' ),
 			'target': JSON.stringify( target ),

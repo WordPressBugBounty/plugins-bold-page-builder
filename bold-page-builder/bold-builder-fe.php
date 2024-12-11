@@ -674,7 +674,11 @@ function bt_bb_fe_head() {
 			require_once( dirname(__FILE__) . '/content_elements_misc/s7_icons.php' );
 			$icon_arr = array( 'Font Awesome' => bt_bb_fa_icons(), 'Font Awesome 5 Regular' => bt_bb_fa5_regular_icons(), 'Font Awesome 5 Solid' => bt_bb_fa5_solid_icons(), 'Font Awesome 5 Brands' => bt_bb_fa5_brands_icons(), 'S7' => bt_bb_s7_icons() );
 		}
+		
+		echo 'window.bt_bb_ajax_nonce = "' . wp_create_nonce( 'bt_bb_nonce' ) . '";'; // fix nonce issue on local sites with ai.js (not working with wp_localize_script window.bt_bb_ajax.nonce)
+		
 		echo 'window.bt_bb_icons = JSON.parse(\'' . bt_bb_json_encode( $icon_arr ) . '\')';
+
 	echo '</script>';
 }
 
