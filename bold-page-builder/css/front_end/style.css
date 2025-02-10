@@ -235,6 +235,7 @@
 	box-shadow: 0 0 0.75em 0 rgba(0,0,0,.2);
 	/*padding: 0 16px 0 0;*/
 	transition: all 270ms ease;
+	width: 40px !important; /* twentytwenty fix */
 	height: 40px;
 	overflow: hidden;
 	opacity: .5;

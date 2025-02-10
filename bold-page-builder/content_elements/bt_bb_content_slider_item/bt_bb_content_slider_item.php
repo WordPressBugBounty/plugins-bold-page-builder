@@ -6,9 +6,9 @@ class bt_bb_content_slider_item extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
 		extract( shortcode_atts( apply_filters( 'bt_bb_extract_atts_' . $this->shortcode, array(
-			'image'      => '',
-			'background_overlay'    => '',
-			'image_size' => ''
+			'image'              => '',
+			'background_overlay' => '',
+			'image_size'         => ''
 		) ), $atts, $this->shortcode ) );
 		
 		$class = array( $this->shortcode );
@@ -38,8 +38,6 @@ class bt_bb_content_slider_item extends BT_BB_Element {
 				$el_style .= ';background-image:url(\'' . $background_image_url . '\');';
 				$class[] = 'bt_bb_column_background_image';				
 			}
-				
-			
 		}
 		
 		if ( $background_overlay != '' ) {
@@ -82,13 +80,13 @@ class bt_bb_content_slider_item extends BT_BB_Element {
 				array( 'param_name' => 'image', 'type' => 'attach_image', 'heading' => esc_html__( 'Background image', 'bold-builder' ), 'preview' => true ),
 				array( 'param_name' => 'background_overlay', 'type' => 'dropdown', 'heading' => esc_html__( 'Background overlay', 'bold-builder' ), 
 					'value' => array(
-						esc_html__( 'No overlay', 'bold-builder' )    => '',
-						esc_html__( 'Light stripes', 'bold-builder' ) => 'light_stripes',
-						esc_html__( 'Dark stripes', 'bold-builder' )  => 'dark_stripes',
-						esc_html__( 'Light solid', 'bold-builder' )	  => 'light_solid',
-						esc_html__( 'Dark solid', 'bold-builder' )	  => 'dark_solid',
-						esc_html__( 'Light gradient', 'bold-builder' )	  => 'light_gradient',
-						esc_html__( 'Dark gradient', 'bold-builder' )	  => 'dark_gradient'
+						esc_html__( 'No overlay', 'bold-builder' )     => '',
+						esc_html__( 'Light stripes', 'bold-builder' )  => 'light_stripes',
+						esc_html__( 'Dark stripes', 'bold-builder' )   => 'dark_stripes',
+						esc_html__( 'Light solid', 'bold-builder' )    => 'light_solid',
+						esc_html__( 'Dark solid', 'bold-builder' )     => 'dark_solid',
+						esc_html__( 'Light gradient', 'bold-builder' ) => 'light_gradient',
+						esc_html__( 'Dark gradient', 'bold-builder' )  => 'dark_gradient'
 					)
 				),
 				array( 'param_name' => 'image_size', 'type' => 'dropdown', 'heading' => esc_html__( 'Background image size', 'bold-builder' ), 'preview' => true,

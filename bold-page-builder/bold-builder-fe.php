@@ -106,10 +106,27 @@ function bt_bb_fe_init() {
 					'target_selector' => '.bt_bb_column_inner_content'
 				)
 			),
+			'bt_bb_content_slider' => array(
+				'edit_box_selector' => '',
+				'ajax_slick' => true,
+				'params' => array(
+					'height'              => array(),
+					'animation'           => array(),
+					'direction'           => array(),
+					'arrows_size'         => array(),
+					'show_dots'           => array(),
+					'pause_on_hover'      => array(),
+					'slides_to_show'      => array(),
+					'additional_settings' => array(),
+					'gap'                 => array(),
+					'auto_play'           => array(),
+				),
+			),
 			'bt_bb_content_slider_item' => array(
 				'edit_box_selector' => '',
 				'params' => array(
-					'image' => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'background_image' ) ),
+					'image'              => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'background_image' ) ),
+					'background_overlay' => array( 'js_handler'	=> array( 'target_selector' => '', 'type' => 'class' ) ),
 				),
 				'condition_params' => true,
 			),
@@ -414,22 +431,6 @@ function bt_bb_fe_init() {
 				'params' => array(
 					'video'            => array(),
 					'disable_controls' => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ),
-				),
-			),
-			'bt_bb_content_slider' => array(
-				'edit_box_selector' => '',
-				'ajax_slick' => true,
-				'params' => array(
-					'height'              => array(),
-					'animation'           => array(),
-					'direction'           => array(),
-					'arrows_size'         => array(),
-					'show_dots'           => array(),
-					'pause_on_hover'      => array(),
-					'slides_to_show'      => array(),
-					'additional_settings' => array(),
-					'gap'                 => array(),
-					'auto_play'           => array(),
 				),
 			),
 		);
@@ -762,10 +763,10 @@ add_action( 'wp_ajax_bt_bb_fe_get_html', 'bt_bb_fe_get_html' );
 function bt_bb_fe_get_template_html() {
 	check_ajax_referer( 'bt_bb_fe_nonce', 'nonce' );
 	$post_id = intval( $_POST['post_id'] );
-	$edit_url = esc_url( $_POST['edit_url'] );
+	$edit_url = isset( $_POST['edit_url'] ) ? esc_url( $_POST['edit_url'] ) : '';
 	$layout = sanitize_text_field( $_POST['layout'] );
 	$layout = preg_replace( '/[^a-zA-Z0-9_\-\+]/', '', $layout );
-	$type = sanitize_text_field( $_POST['type'] );
+	$type = isset( $_POST['type'] ) ? sanitize_text_field( $_POST['type'] ) : '';
 	$content = @file_get_contents( get_stylesheet_directory() . '/bold-page-builder/templates/' . $layout . '.txt' );
 	if ( ! $content ) {
 		$content = @file_get_contents( get_template_directory() . '/bold-page-builder/templates/' . $layout . '.txt' );

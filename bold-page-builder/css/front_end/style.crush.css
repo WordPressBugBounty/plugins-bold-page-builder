@@ -164,6 +164,7 @@
     -webkit-transition: all 270ms ease;
     -moz-transition: all 270ms ease;
     transition: all 270ms ease;
+	width: 40px !important; /* twentytwenty fix */
     height: 40px;
     overflow: hidden;
     opacity: .5;

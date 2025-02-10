@@ -1,9 +1,9 @@
 === Bold Page Builder ===
 Contributors: boldthemes
-Tags: wordpress page builder, page builder, visual composer, free page builder, builder, free visual composer, drag and drop page builder, visual builder, visual editor, webpage builder, webpage editor, page builder wordpress
+Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 5.2.5
+Stable tag: 5.2.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,6 +135,9 @@ It is not possible to test Bold Builder with all themes - it should work fine wi
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.2.6 =
+* Fixed Slider Item Background overlay option in FE editor.
 
 = 5.2.5 =
 * Fixed option to disable lazy loading.

@@ -1515,7 +1515,7 @@
 				} else {
 					setTimeout(function () {
 						bt_bb_animate_elements_optim();
-					}, 5000);
+					}, 500);
 				}
 
 				bt_bb_lazy_load_images_optim();
