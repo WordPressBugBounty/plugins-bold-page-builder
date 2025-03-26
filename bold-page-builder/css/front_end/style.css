@@ -242,6 +242,7 @@
 	z-index: 100;
 	align-items: center;
 	&.bt_bb_fe_preview_toggler_footer {
+		width: auto !important;
 		position: fixed;
 		right: auto;
 		left: 50px;
@@ -425,9 +426,15 @@ body.logged-in.bt_bb_plugin_active:not(.bt_bb_fe_preview_toggle) {
 	}
 	.bt_bb_row,
 	.bt_bb_row.bt_bb_fe_editing_box {
-		padding: 10px 0px;
+		//padding: 10px 0px;
 		> .bt_bb_fe_before {
 			margin: 0px -60px;
+		}
+	}
+	.bt_bb_fe_wrap {
+		.bt_bb_row,
+		.bt_bb_row.bt_bb_fe_editing_box {
+			padding: 10px 0px;
 		}
 	}
 	.bt_bb_row_inner:hover > .bt_bb_fe_before,
