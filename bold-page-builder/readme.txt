@@ -136,6 +136,9 @@ It is not possible to test Bold Builder with all themes - it should work fine wi
 
 == Changelog ==
 
+= 5.2.8 =
+* Minor bug fixes.
+
 = 5.2.7 =
 * Minor bug fixes.
 
