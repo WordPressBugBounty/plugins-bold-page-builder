@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.2.8
+ * Version: 5.2.9
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.2.8' );
+define( 'BT_BB_VERSION', '5.2.9' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -1997,10 +1997,12 @@ if ( $glob_match ) {
 	}
 }
 
-foreach( $elements as $key => $value ) {
-	require( $value );
-	new $key();
-}
+add_action( 'init', function() use ( $elements ) {
+	foreach( $elements as $key => $value ) {
+		require( $value );
+		new $key();
+	}
+} );
 
 add_filter( 'wp_get_attachment_url', 'bt_bb_honor_ssl_for_attachments' );
 function bt_bb_honor_ssl_for_attachments( $url ) {

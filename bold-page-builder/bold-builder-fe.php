@@ -262,6 +262,7 @@ function bt_bb_fe_init() {
 			),
 			'bt_bb_css_post_grid' => array(
 				'edit_box_selector' => '',
+				'ajax_callback' => 'bt_bb_css_post_grid_reinit',
 				'params' => array(
 					'gap'   => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ),
 					'shape' => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ),

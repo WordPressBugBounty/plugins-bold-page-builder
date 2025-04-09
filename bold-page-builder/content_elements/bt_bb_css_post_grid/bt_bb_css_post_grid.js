@@ -191,3 +191,7 @@ jQuery( document ).ready(function() {
 	bt_bb_css_post_grid.init();
 	bt_bb_css_post_grid.reinit();
 });
+
+function bt_bb_css_post_grid_reinit() {
+	bt_bb_css_post_grid.reinit();
+}
