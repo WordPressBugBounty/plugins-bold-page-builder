@@ -224,7 +224,9 @@ class bt_bb_column_inner extends BT_BB_Element {
 	
 		$output = '<div ' . $id_attr . ' class="' . esc_attr( implode( ' ', $class ) ) . '" ' . $style_attr . $background_data_attr . ' data-width="' . esc_attr( $this->get_width2( $width ) ) . '" data-bt-override-class="' . htmlspecialchars( json_encode( $data_override_class, JSON_FORCE_OBJECT ), ENT_QUOTES, 'UTF-8' ) . '">';
 			$output .= '<div class="' . implode( ' ', $inner_class ) . '"' . $el_inner_style . $inner_background_data_attr . '>';
-				$output .= do_shortcode( $content );
+				$output .= '<div class="' . esc_attr( $this->shortcode . '_content_inner' ) . '">';
+					$output .= do_shortcode( $content );
+				$output .= '</div>';
 			$output .= '</div>';
 		$output .= '</div>';
 		
