@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.3.0
+ * Version: 5.3.1
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.3.0' );
+define( 'BT_BB_VERSION', '5.3.1' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -758,7 +758,7 @@ function bt_bb_settings() {
 						<th scope="row"><?php _e( 'OpenAI API key', 'bold-builder' ); ?></th>
 						<td><fieldset><legend class="screen-reader-text"><span><?php _e( 'OpenAI API key', 'bold-builder' ); ?></span></legend>
 						<p>
-						<input type="text" name="bt_bb_settings[openai_api_key]" value="<?php echo sanitize_textarea_field( $openai_api_key ); ?>">
+						<input type="text" name="bt_bb_settings[openai_api_key]" value="<?php echo esc_attr( $openai_api_key ); ?>">
 						</p>
 						</fieldset></td>
 					</tr>
@@ -766,7 +766,7 @@ function bt_bb_settings() {
 						<th scope="row"><?php _e( 'OpenAI Model', 'bold-builder' ); ?></th>
 						<td><fieldset><legend class="screen-reader-text"><span><?php _e( 'OpenAI Model', 'bold-builder' ); ?></span></legend>
 						<p>
-						<input type="text" name="bt_bb_settings[openai_model]" value="<?php echo sanitize_textarea_field( $openai_model ); ?>" placeholder="gpt-4">
+						<input type="text" name="bt_bb_settings[openai_model]" value="<?php echo esc_attr( $openai_model ); ?>" placeholder="gpt-4">
 						</p>
 						</fieldset></td>
 					</tr>
