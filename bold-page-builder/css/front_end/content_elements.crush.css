@@ -1405,11 +1405,11 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
     padding-left: 20px;
     padding-right: 20px;
     }
-.bt_bb_row_holder .bt_bb_column.bt_bb_padding_text_indent .bt_bb_column_content > .bt_bb_image {
+.bt_bb_row_holder .bt_bb_column.bt_bb_padding_text_indent .bt_bb_column_content > .bt_bb_column_content_inner > .bt_bb_image {
     margin-left: -20px;
     margin-right: -20px;
     }
-.bt_bb_row_holder .bt_bb_column.bt_bb_padding_text_indent .bt_bb_column_content > .bt_bb_image img {
+.bt_bb_row_holder .bt_bb_column.bt_bb_padding_text_indent .bt_bb_column_content > .bt_bb_column_content_inner > .bt_bb_image img {
     display: block;
     width: 100%;
     height: auto;
@@ -1472,11 +1472,11 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
     padding-left: 20px;
     padding-right: 20px;
     }
-.bt_bb_row_inner_holder .bt_bb_column_inner.bt_bb_padding_text_indent .bt_bb_column_inner_content > .bt_bb_image {
+.bt_bb_row_inner_holder .bt_bb_column_inner.bt_bb_padding_text_indent .bt_bb_column_inner_content > .bt_bb_column_inner_content_inner > .bt_bb_image {
     margin-left: -20px;
     margin-right: -20px;
     }
-.bt_bb_row_inner_holder .bt_bb_column_inner.bt_bb_padding_text_indent .bt_bb_column_inner_content > .bt_bb_image img {
+.bt_bb_row_inner_holder .bt_bb_column_inner.bt_bb_padding_text_indent .bt_bb_column_inner_content > .bt_bb_column_inner_content_inner > .bt_bb_image img {
     display: block;
     width: 100%;
     height: auto;

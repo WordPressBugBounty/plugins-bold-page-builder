@@ -240,7 +240,7 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 			.bt_bb_column_content {
 				padding-left: $(horizontalPadding)px;
 				padding-right: $(horizontalPadding)px;
-				> .bt_bb_image {
+				> .bt_bb_column_content_inner > .bt_bb_image {
 					margin-left: -$(horizontalPadding)px;
 					margin-right: -$(horizontalPadding)px;
 					img {
@@ -300,7 +300,7 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 			.bt_bb_column_inner_content {
 				padding-left: $(horizontalPadding)px;
 				padding-right: $(horizontalPadding)px;
-				> .bt_bb_image {
+				> .bt_bb_column_inner_content_inner > .bt_bb_image {
 					margin-left: -$(horizontalPadding)px;
 					margin-right: -$(horizontalPadding)px;
 					img {

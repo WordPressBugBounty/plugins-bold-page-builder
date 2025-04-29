@@ -413,7 +413,7 @@
 						var ZOOM_START = parseFloat($(this).attr('data-parallax-zoom-start'));
 						var ZOOM_END = parseFloat($(this).attr('data-parallax-zoom-end'));
 
-						if (ZOOM_START >= 1 && ZOOM_END >= 1 && (ZOOM_START != 1 || ZOOM_END != 1)) {
+						if (ZOOM_START >= 0 && ZOOM_END >= 0 && (ZOOM_START != 1 || ZOOM_END != 1)) {
 							var zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * (1 - scroll_distance);
 							$(this)[0].style.transform = ' scale(' + zoom + ')';
 						}
