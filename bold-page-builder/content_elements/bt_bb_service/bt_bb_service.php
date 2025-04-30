@@ -21,7 +21,7 @@ class bt_bb_service extends BT_BB_Element {
 		$class = array( $this->shortcode );
 		$data_override_class = array();
 		
-		$html_tag = str_replace( [ ' ', '=', '&' ], '', $html_tag );
+		$html_tag = str_replace( [ ' ', '=', '&', 'script' ], '', $html_tag );
 
 		if ( $el_class != '' ) {
 			$class[] = $el_class;
