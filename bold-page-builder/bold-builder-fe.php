@@ -632,6 +632,7 @@ function bt_bb_fe_head() {
 	echo '<script>';
 		echo 'window.bt_bb_fe_elements = ' . bt_bb_json_encode( BT_BB_FE::$elements ) . ';';
 		echo 'window.bt_bb_fe_templates = ' . bt_bb_json_encode( BT_BB_FE::$templates ) . ';';
+		echo 'window.bt_bb_fe_wpml_lang = "' . ( function_exists( 'wpml_get_current_language' ) ? apply_filters( 'wpml_current_language', null ) : null ) . '";';
 		BT_BB_Root::$elements = apply_filters( 'bt_bb_elements', BT_BB_Root::$elements );
 		$elements = BT_BB_Root::$elements;
 		foreach ( $elements as $key => $value ) {
@@ -728,12 +729,30 @@ function bt_bb_fe_save() {
 	check_ajax_referer( 'bt_bb_fe_nonce', 'nonce' );
 	$post_id = intval( $_POST['post_id'] );
 	$post_content = wp_kses_post( $_POST['post_content'] );
+	$wpml_lang = sanitize_text_field( $_POST['wpml_lang'] );
+	
 	if ( current_user_can( 'edit_post', $post_id ) ) {
-		$post = array(
-			'ID'           => $post_id,
-			'post_content' => $post_content,
-		);
-		wp_update_post( $post );
+		// Check if WPML is active
+		if ( function_exists( 'wpml_get_current_language' ) ) {
+			
+			// Get the post ID in the current language
+			$translated_post_id = apply_filters( 'wpml_object_id', $post_id, 'post', true, $wpml_lang );
+			
+			// Update the post in the correct language
+			$post = array(
+				'ID'           => $translated_post_id,
+				'post_content' => $post_content,
+			);
+			wp_update_post( $post );
+		} else {
+			// WPML not active, proceed with normal update
+			$post = array(
+				'ID'           => $post_id,
+				'post_content' => $post_content,
+			);
+			wp_update_post( $post );
+		}
+		
 		echo 'ok';
 	}
 	wp_die();

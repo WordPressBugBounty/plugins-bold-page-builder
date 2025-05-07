@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 11:17+0200\n"
+"POT-Creation-Date: 2025-05-07 15:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -461,60 +461,60 @@ msgstr ""
 msgid "Video player"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:693
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:694
 msgid "Close dialog"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:694
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:695
 msgid "Switch side"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:714
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:715
 msgid "Edit Footer"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:791
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:810
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:210
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:221
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:914
 msgid "Edit"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:792
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:811
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:211
 msgid "Edit in back-end editor"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:792
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:811
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:211
 msgid "(new tab)"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:793
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:812
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:212
 msgid "Cut"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:794
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:813
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:213
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:932
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:1001
 msgid "Copy"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:795
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:814
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:214
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:934
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:1501
 msgid "Paste"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:795
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:814
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:214
 msgid "(above)"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:796
+#: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:815
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:215
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:919
 msgid "Delete"
