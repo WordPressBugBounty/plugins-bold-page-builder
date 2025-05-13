@@ -695,7 +695,12 @@
 			days_html += '<span>' + days_arr[i] + '</span>';
 		}
 
-		elem.find('.days').html(days_html + '<span class="days_text"><span>' + elem.find('.days').data('text') + '</span></span>');
+		// Create a text node instead of inserting raw HTML
+		elem.find('.days').html(days_html + '<span class="days_text"><span></span></span>');
+
+		// Then safely set the text content (not HTML) of the inner span
+		var textContent = elem.find('.days').data('text');
+		elem.find('.days_text span').text(textContent); // .text() escapes HTML automatically
 
 		elem.attr('data-init-seconds', s);
 
