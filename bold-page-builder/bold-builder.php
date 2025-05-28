@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.3.6
+ * Version: 5.3.7
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.3.6' );
+define( 'BT_BB_VERSION', '5.3.7' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -356,8 +356,8 @@ function bt_bb_enqueue() {
 	}
 
 	if ( function_exists( 'csscrush_file' ) ) {
-		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/style.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'style.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'loop', 'ease' ) ) );
-		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/front_end/fe_dialog_content.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'fe_dialog_content.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'loop', 'ease' ) ) );
+		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/style.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'style.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'ease' ) ) );
+		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/front_end/fe_dialog_content.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'fe_dialog_content.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'ease' ) ) );
 	}
 
 	wp_enqueue_style( 'bt_bb_font-awesome.min', plugins_url( 'css/font-awesome.min.css', __FILE__ ), array(), BT_BB_VERSION );

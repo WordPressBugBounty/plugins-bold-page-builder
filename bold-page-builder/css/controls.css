@@ -149,6 +149,8 @@
 		vertical-align: middle;
 		margin: 0.2em 0 0;
 		text-align: center;
+		box-shadow: 0 0 0 0 rgba(0,0,0,0);
+		transition: box-shadow 300ms ease;
 		.rtl & {
 			left: auto;
 			right: 1em;
@@ -156,6 +158,9 @@
 		#bt_bb_fe_dialog_content_wrapper & {
 			font-size: 1.1em;
 		}
+	}
+	&:hover:before {     
+		box-shadow: 0 1px 6px 4px rgba(0,0,0,.25);;
 	}
 	#bt_bb_fe_dialog_content_wrapper &:not(.bt_bb_dialog_add_element) {
 		padding-bottom: 0;

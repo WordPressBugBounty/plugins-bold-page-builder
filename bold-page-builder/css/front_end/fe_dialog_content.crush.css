@@ -1481,6 +1481,11 @@ body.rtl .bt_bb_ro_switch:after {
     vertical-align: middle;
     margin: .2em 0 0;
     text-align: center;
+    -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    -webkit-transition: box-shadow 300ms ease;
+    -moz-transition: box-shadow 300ms ease;
+    transition: box-shadow 300ms ease;
     }
 .rtl .bt_bb_dialog_item:before {
     left: auto;
@@ -1488,6 +1493,10 @@ body.rtl .bt_bb_ro_switch:after {
     }
 #bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item:before {
     font-size: 1.1em;
+    }
+.bt_bb_dialog_item:hover:before {
+    -webkit-box-shadow: 0 1px 6px 4px rgba(0,0,0,.25);
+    box-shadow: 0 1px 6px 4px rgba(0,0,0,.25);
     }
 #bt_bb_fe_dialog_content_wrapper .bt_bb_dialog_item:not(.bt_bb_dialog_add_element) {
     padding-bottom: 0;

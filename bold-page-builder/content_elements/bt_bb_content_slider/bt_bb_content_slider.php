@@ -153,7 +153,7 @@ class bt_bb_content_slider extends BT_BB_Element {
 		}
 		
 		if ( $additional_settings != '' ) {
-			$data_slick .= ', ' . $additional_settings;
+			$data_slick .= ', ' . esc_attr( $additional_settings );
 		}
 		
 		$data_slick = $data_slick . '}\' ';
