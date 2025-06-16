@@ -432,7 +432,7 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 	}
 }
 
-@for i in 5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  {
+@for i in 5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  {  
   .bt_bb_column.bt_bb_padding_#(i) .bt_bb_column_content { padding-left: #(i)px; padding-right: #(i)px; }
 }
 
@@ -862,9 +862,15 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 }
 
 
+@media (min-width: 1201px) {
+	@for i in -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 {
+		@fragment column-order(_xxl,#(i));
+	}
+}
+
 @media (min-width: 1201px) and (max-width: 1400px) {
 	@for i in -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 {
-		@fragment column-order(_lg,#(i));
+		@fragment column-order(_xl,#(i));
 	}
 }
 

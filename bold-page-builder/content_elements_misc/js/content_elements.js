@@ -382,7 +382,7 @@
 		const SPEED_DELTA = 0.0001;
 
 		$('html.bt_bb_backgroud_fixed_supported .bt_bb_parallax').each(function () {
-			if ($('html').attr('data-bt_bb_screen_resolution') !== 'xxl' && $('html').attr('data-bt_bb_screen_resolution') !== 'xl') {
+			if ( window.bt_bb_res !== 'xxl' && window.bt_bb_res !== 'xl') {
 				$(this)[0].style.backgroundPosition = 'center center';
 				return false;
 			} else {
@@ -460,113 +460,46 @@
 
 	// screen detect
 
-	window.bt_bb_get_screen_resolution = function (not_resize = false) {
-		var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	window.bt_bb_get_screen_resolution = function ( not_resize = false ) {
+		var width = Math.max( document.documentElement.clientWidth, window.innerWidth || 0 );
 		var res = 'xxl';
-		if (width <= 1400) res = 'xl';
-		if (width <= 1200) res = 'lg';
-		if (width <= 992) res = 'md';
-		if (width <= 768) res = 'sm';
-		if (width <= 480) res = 'xs';
+		if ( width <= 1400 ) res = 'xl';
+		if ( width <= 1200 ) res = 'lg';
+		if ( width <= 992) res = 'md';
+		if ( width <= 768 ) res = 'sm';
+		if ( width <= 480 ) res = 'xs';
+		
+		window.bt_bb_res = res;
 
-		$('html').attr('data-bt_bb_screen_resolution', res);
+		$( 'html' ).attr( 'data-bt_bb_screen_resolution', window.bt_bb_res );
 
-		$('[data-bt-override-class]').each(function () {
-			var override_classes = $(this).data('bt-override-class');
-			for (var prefix in override_classes) {
-				if (override_classes[prefix][res] !== undefined) {
-					var new_class = prefix + override_classes[prefix][res];
+		$( '[data-bt-override-class]' ).each(function() {
+			var override_classes = $( this ).data( 'bt-override-class' );
+			for ( var prefix in override_classes ) {
+				if ( override_classes[ prefix ][ window.bt_bb_res ] !== undefined ) {
+					var new_class = prefix + override_classes[ prefix ][ window.bt_bb_res ];
 				} else {
-					var new_class = prefix + override_classes[prefix]['xxl'];
+					var new_class = prefix + override_classes[ prefix ]['def'];
 				}
-				$(this).removeClass(override_classes[prefix]['current_class']);
+				$( this ).removeClass( override_classes[ prefix ]['current_class'] );
 				var animate = false;
-				if (new_class.includes(' animate')) {
+				if ( new_class.includes( ' animate' ) ) {
 					animate = true;
-					if (not_resize) $(this).css('transition', 'none');
+					if ( not_resize ) $( this ).css( 'transition', 'none' );
 				}
-				$(this).addClass(new_class);
-				if (animate) {
-					setTimeout(() => {
-						$(this).css('transition', '');
-					}, 0);
+				$( this ).addClass( new_class );
+				if ( animate ) {
+					setTimeout( () => {
+						$( this ).css( 'transition', '' );
+					}, 0 );
 				}
-				override_classes[prefix]['current_class'] = new_class;
-				$(this).data('override_classes', override_classes);
+				override_classes[ prefix ]['current_class'] = new_class;
+				$( this ).data( 'override_classes', override_classes );
 			};
 
 		});
 
 	}
-
-	// new startup
-
-	window.bt_bb_get_screen_resolution_startup = function () {
-		var width = Math.max(
-			document.documentElement.clientWidth,
-			window.innerWidth || 0
-		);
-		var res = "xxl";
-		if (width <= 1400) res = "xl";
-		if (width <= 1200) res = "lg";
-		if (width <= 992) res = "md";
-		if (width <= 768) res = "sm";
-		if (width <= 480) res = "xs";
-
-		$("html").attr("data-bt_bb_screen_resolution", res);
-
-		const options = {
-			root: null,
-			rootMargin: "200px",
-			treshold: 0,
-		};
-
-		const targetElements_Overrides = document.querySelectorAll(
-			"[data-bt-override-class]"
-		);
-
-		const observer_Overrides = new IntersectionObserver(function (
-			entries,
-			observer
-		) {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-
-					var override_classes = $(entry.target).data("bt-override-class");
-					for (var prefix in override_classes) {
-						if (override_classes[prefix][res] !== undefined) {
-							var new_class = prefix + override_classes[prefix][res];
-						} else {
-							var new_class = prefix + override_classes[prefix]["xxl"];
-						}
-						$(entry.target).removeClass(
-							override_classes[prefix]["current_class"]
-						);
-						var animate = false;
-						if (new_class.includes(' animate')) {
-							animate = true;
-							$(entry.target).css('transition', 'none');
-						}
-						$(entry.target).addClass(new_class);
-						if (animate) {
-							setTimeout(() => {
-								$(entry.target).css('transition', '');
-							}, 0);
-						}
-						override_classes[prefix]["current_class"] = new_class;
-						$(entry.target).data("override_classes", override_classes);
-					}
-
-					observer_Overrides.unobserve(entry.target);
-				}
-			});
-		},
-			options);
-
-		targetElements_Overrides.forEach((element) => {
-			observer_Overrides.observe(element);
-		});
-	};
 
 	// Test fixed background support for iOS devices
 
@@ -1010,10 +943,6 @@
 		setTimeout(() => {
 			bt_detect_touch();
 		}, 0);
-
-		// Get screen resolution
-
-		bt_bb_get_screen_resolution_startup();
 
 		// parallax
 

@@ -972,7 +972,7 @@ body.rtl {
 	flex-wrap: wrap;
 	.bt_bb_responsive_override {
 		display: flex;
-		flex: 1 1 20%;
+		flex: 1 1 16.5%;
 		#bt_bb_fe_dialog_content_wrapper & {
 			flex: 1 1 50%;
 		}
@@ -989,6 +989,11 @@ body.rtl {
 				font: normal 1em/1 bold-builder;
 			}
 		}
+		.bt_bb_ro_xxl:before {
+			content: '\e95f';
+			transform: scaleX(1.2);
+		}
+		
 		.bt_bb_ro_xl:before {
 			content: '\e95f';
 		}

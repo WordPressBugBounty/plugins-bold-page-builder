@@ -379,15 +379,15 @@ class bt_bb_section extends BT_BB_Element {
 				),
 				array( 'param_name' => 'full_screen', 'type' => 'dropdown', 'heading' => esc_html__( 'Full screen', 'bold-builder' ), 
 					'value' => array(
-						esc_html__( 'No', 'bold-builder' ) 		=> '',
-						esc_html__( 'Yes', 'bold-builder' ) 	=> 'yes'
+						esc_html__( 'No', 'bold-builder' )  => '',
+						esc_html__( 'Yes', 'bold-builder' ) => 'yes'
 					)
 				),
 				array( 'param_name' => 'vertical_align', 'type' => 'dropdown', 'heading' => esc_html__( 'Vertical align (for fullscreen section)', 'bold-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( 'Top', 'bold-builder' )     => 'top',
-						esc_html__( 'Middle', 'bold-builder' )  => 'middle',
-						esc_html__( 'Bottom', 'bold-builder' )  => 'bottom'					
+						esc_html__( 'Top', 'bold-builder' )    => 'top',
+						esc_html__( 'Middle', 'bold-builder' ) => 'middle',
+						esc_html__( 'Bottom', 'bold-builder' ) => 'bottom'					
 					)
 				),
 				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' )  ),
@@ -395,19 +395,19 @@ class bt_bb_section extends BT_BB_Element {
 				array( 'param_name' => 'background_image', 'type' => 'attach_image',  'preview' => true, 'heading' => esc_html__( 'Background image', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ) ),
 				array( 'param_name' => 'lazy_load', 'type' => 'dropdown', 'default' => 'yes', 'heading' => esc_html__( 'Lazy load background image', 'bold-builder' ),
 					'value' => array(
-						esc_html__( 'No', 'bold-builder' ) => 'no',
+						esc_html__( 'No', 'bold-builder' )  => 'no',
 						esc_html__( 'Yes', 'bold-builder' ) => 'yes'
 					)
 				),
 				array( 'param_name' => 'background_overlay', 'type' => 'dropdown', 'heading' => esc_html__( 'Background overlay', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ), 
 					'value' => array(
-						esc_html__( 'No overlay', 'bold-builder' )    => '',
-						esc_html__( 'Light stripes', 'bold-builder' ) => 'light_stripes',
-						esc_html__( 'Dark stripes', 'bold-builder' )  => 'dark_stripes',
-						esc_html__( 'Light solid', 'bold-builder' )	  => 'light_solid',
-						esc_html__( 'Dark solid', 'bold-builder' )	  => 'dark_solid',
-						esc_html__( 'Light gradient', 'bold-builder' )	  => 'light_gradient',
-						esc_html__( 'Dark gradient', 'bold-builder' )	  => 'dark_gradient'
+						esc_html__( 'No overlay', 'bold-builder' )     => '',
+						esc_html__( 'Light stripes', 'bold-builder' )  => 'light_stripes',
+						esc_html__( 'Dark stripes', 'bold-builder' )   => 'dark_stripes',
+						esc_html__( 'Light solid', 'bold-builder' )    => 'light_solid',
+						esc_html__( 'Dark solid', 'bold-builder' )     => 'dark_solid',
+						esc_html__( 'Light gradient', 'bold-builder' ) => 'light_gradient',
+						esc_html__( 'Dark gradient', 'bold-builder' )  => 'dark_gradient'
 					)
 				),
 				array( 'param_name' => 'parallax', 'type' => 'textfield', 'heading' => esc_html__( 'Parallax', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 0.7, 2 = fixed', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ) ),

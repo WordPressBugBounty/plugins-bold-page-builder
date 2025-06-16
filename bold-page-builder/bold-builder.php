@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.3.7
+ * Version: 5.3.8
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.3.7' );
+define( 'BT_BB_VERSION', '5.3.8' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -450,6 +450,80 @@ function bt_bb_enqueue_fe_always() {
 }
 
 function bt_bb_wp_head() {
+	?>
+	<script>
+		var bt_bb_update_res = function() {
+			var width = Math.max( document.documentElement.clientWidth, window.innerWidth || 0 );
+			window.bt_bb_res = 'xxl';
+			if ( width <= 1400 ) window.bt_bb_res = 'xl';
+			if ( width <= 1200 ) window.bt_bb_res = 'lg';
+			if ( width <= 992) window.bt_bb_res = 'md';
+			if ( width <= 768 ) window.bt_bb_res = 'sm';
+			if ( width <= 480 ) window.bt_bb_res = 'xs';
+			document.documentElement.setAttribute( 'data-bt_bb_screen_resolution', window.bt_bb_res ); // used in CSS
+		}
+		bt_bb_update_res();
+		var bt_bb_observer = new MutationObserver(function( mutations ) {
+			for ( var i = 0; i < mutations.length; i++ ) {
+				var nodes = mutations[ i ].addedNodes;
+				for ( var j = 0; j < nodes.length; j++ ) {
+					var node = nodes[ j ];
+					// Only process element nodes
+					if ( 1 === node.nodeType ) {
+						// Check if element or its children have override classes
+						if ( ( node.hasAttribute && node.hasAttribute( 'data-bt-override-class' ) ) || ( node.querySelector && node.querySelector( '[data-bt-override-class]' ) ) ) {
+							
+							[ ...node.querySelectorAll( '[data-bt-override-class]' ),
+							...( node.matches( '[data-bt-override-class]' ) ? [ node ] : [] ) ].forEach(function( element ) {
+								// Get the attribute value
+								let override_classes = JSON.parse( element.getAttribute( 'data-bt-override-class' ) );
+								
+								for ( let prefix in override_classes ) {
+									let new_class;
+									if ( override_classes[ prefix ][ window.bt_bb_res ] !== undefined ) {
+										new_class = prefix + override_classes[ prefix ][ window.bt_bb_res ];
+									} else {
+										new_class = prefix + override_classes[ prefix ]['def'];
+									}
+									
+									// Remove the current class
+									element.classList.remove( override_classes[ prefix ]['current_class'] );
+									
+									// Add the new class
+									element.classList.add( new_class );
+			
+									// Update the current_class
+									override_classes[ prefix ]['current_class'] = new_class;
+								}
+								
+								// Store the updated data back to the attribute
+								element.setAttribute( 'data-bt-override-class', JSON.stringify( override_classes ) );
+							} );
+							
+						}
+					}
+				}
+			}
+		} );
+		
+		// Start observing
+		bt_bb_observer.observe( document.documentElement, {
+			childList: true,
+			subtree: true
+		} );
+		
+		// Cancel observer when ready
+		var bt_bb_cancel_observer = function() {
+			if ( 'interactive' === document.readyState || 'complete' === document.readyState ) {
+				bt_bb_observer.disconnect();
+				document.removeEventListener( 'readystatechange', bt_bb_cancel_observer );
+			}
+		};
+		
+		document.addEventListener( 'readystatechange', bt_bb_cancel_observer );
+	</script>
+	<?php
+	
 	$post_id = get_the_ID();
 	$opt_arr = get_option( 'bt_bb_custom_css' );
 	if ( isset( $opt_arr[ $post_id ] ) ) {
@@ -478,14 +552,14 @@ add_action( 'wp_head', 'bt_bb_wp_head', 200 );
 
 function bt_bb_enqueue_fe() {
 	if ( function_exists( 'csscrush_file' ) ) {
-		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/front_end/style.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'style.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'loop', 'ease' ) ) );
+		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/front_end/style.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'style.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'ease' ) ) );
 	}
 	wp_enqueue_style( 'bt_bb', plugins_url( 'css/front_end/style.crush.css', __FILE__ ), array(), BT_BB_VERSION );
 }
 
 function bt_bb_enqueue_content_elements() {
 	if ( function_exists( 'csscrush_file' ) ) {
-		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/front_end/content_elements.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'content_elements.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'loop', 'ease' ) ) );
+		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/front_end/content_elements.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'content_elements.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'ease' ) ) );
 	}
 	wp_enqueue_style( 'bt_bb_content_elements', plugins_url( 'css/front_end/content_elements.crush.css', __FILE__ ), array(), BT_BB_VERSION );
 	
@@ -1821,6 +1895,7 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 			}
 			if ( count( $value_arr ) == 5 ) {
 				if ( $value_arr[1] != '' ) {
+					//$class[] = $arr['prefix'] . $arr['param'] . '_xxl' . $suffix . $value_arr[1];
 					$class[] = $arr['prefix'] . $arr['param'] . '_xl' . $suffix . $value_arr[1];
 					$class[] = $arr['prefix'] . $arr['param'] . '_lg' . $suffix . $value_arr[1];
 				}
@@ -1835,6 +1910,7 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 				}
 			} else if ( count( $value_arr ) == 6 ) {
 				if ( $value_arr[1] != '' ) {
+					//$class[] = $arr['prefix'] . $arr['param'] . '_xxl' . $suffix . $value_arr[1];
 					$class[] = $arr['prefix'] . $arr['param'] . '_xl' . $suffix . $value_arr[1];
 				}
 				if ( $value_arr[2] != '' ) {
@@ -1848,6 +1924,25 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 				}
 				if ( $value_arr[5] != '' ) {
 					$class[] = $arr['prefix'] . $arr['param'] . '_xs' . $suffix . $value_arr[5];
+				}
+			} else if ( count( $value_arr ) == 7 ) {
+				if ( $value_arr[1] != '' ) {
+					$class[] = $arr['prefix'] . $arr['param'] . '_xxl' . $suffix . $value_arr[1];
+				}
+				if ( $value_arr[2] != '' ) {
+					$class[] = $arr['prefix'] . $arr['param'] . '_xl' . $suffix . $value_arr[2];
+				}
+				if ( $value_arr[3] != '' ) {
+					$class[] = $arr['prefix'] . $arr['param'] . '_lg' . $suffix . $value_arr[3];
+				}
+				if ( $value_arr[4] != '' ) {
+					$class[] = $arr['prefix'] . $arr['param'] . '_md' . $suffix . $value_arr[4];
+				}
+				if ( $value_arr[5] != '' ) {
+					$class[] = $arr['prefix'] . $arr['param'] . '_sm' . $suffix . $value_arr[5];
+				}
+				if ( $value_arr[6] != '' ) {
+					$class[] = $arr['prefix'] . $arr['param'] . '_xs' . $suffix . $value_arr[6];
 				}
 			}
 		}
@@ -1883,7 +1978,7 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 			
 			if ( count( $value_arr ) == 5 ) {
 				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'current_class' ] = $main . ( $animate ? ' ' . 'animate' : '' );
-				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xxl' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'def' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
 				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xl' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
 
 				if ( $value_arr[1] != '' ) {
@@ -1900,8 +1995,7 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 				}
 			} else if ( count( $value_arr ) == 6 ) {
 				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'current_class' ] = $main . ( $animate ? ' ' . 'animate' : '' );
-				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xxl' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
-
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'def' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
 				if ( $value_arr[1] != '' ) {
 					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xl' ] = $value_arr[1] . ( $animate ? ' ' . 'animate' : '' );
 				}
@@ -1916,6 +2010,27 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 				}
 				if ( $value_arr[5] != '' ) {
 					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xs' ] = $value_arr[5] . ( $animate ? ' ' . 'animate' : '' );
+				}
+			} else if ( count( $value_arr ) == 7 ) {
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'current_class' ] = $main . ( $animate ? ' ' . 'animate' : '' );
+				$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'def' ] = $value_arr[0] . ( $animate ? ' ' . 'animate' : '' );
+				if ( $value_arr[1] != '' ) {
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xxl' ] = $value_arr[1] . ( $animate ? ' ' . 'animate' : '' );
+				}
+				if ( $value_arr[2] != '' ) {
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xl' ] = $value_arr[2] . ( $animate ? ' ' . 'animate' : '' );
+				}
+				if ( $value_arr[3] != '' ) {
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'lg' ] = $value_arr[3] . ( $animate ? ' ' . 'animate' : '' );
+				}
+				if ( $value_arr[4] != '' ) {
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'md' ] = $value_arr[4] . ( $animate ? ' ' . 'animate' : '' );
+				}
+				if ( $value_arr[5] != '' ) {
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'sm' ] = $value_arr[5] . ( $animate ? ' ' . 'animate' : '' );
+				}
+				if ( $value_arr[6] != '' ) {
+					$data_override_class[ $arr['prefix'] . $arr['param'] . $suffix ][ 'xs' ] = $value_arr[6] . ( $animate ? ' ' . 'animate' : '' );
 				}
 			}
 		}

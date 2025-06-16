@@ -10,6 +10,7 @@ class bt_bb_image extends BT_BB_Element {
 			'lazy_load'  						=> 'no',
 			'image_height'  					=> '',
 			'align'  							=> '',
+			'show_caption'    					=> '',
 			'caption'    						=> '',
 			'url'    							=> '',
 			'target' 							=> '',
@@ -190,6 +191,10 @@ class bt_bb_image extends BT_BB_Element {
 		} else {
 			$output = '<span>' . $output . '</span>';
 		}
+		
+		if ( $show_caption == 'yes' ) { 
+			$output = '<figure>' . $output . '<figcaption>' . $caption . '</figcaption></figure>';
+		}
 
 		do_action( $this->shortcode . '_before_extra_responsive_param' );
 		foreach ( $this->extra_responsive_data_override_param as $p ) {
@@ -238,7 +243,7 @@ class bt_bb_image extends BT_BB_Element {
 				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'preview' => true,
 					'value' => bt_bb_get_image_sizes()
 				),
-				array( 'param_name' => 'image_height', 'type' => 'textfield', 'heading' => esc_html__( 'Image height', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 90px', 'bold-builder' ) ),
+				array( 'param_name' => 'image_height', 'type' => 'textfield', 'heading' => esc_html__( 'Image height', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 90px', 'bold-builder' ) ), 
 				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-builder' ),
 					'value' => array(
 						esc_html__( 'Square', 'bold-builder' ) 			=> 'square',
@@ -252,7 +257,8 @@ class bt_bb_image extends BT_BB_Element {
 						esc_html__( 'Yes', 'bold-builder' ) 	=> 'yes'
 					)
 				),
-				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Alignment', 'bold-builder' ), 'responsive_override' => true,
+				array( 
+					'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Alignment', 'bold-builder' ), 'responsive_override' => true,
 					'value' => array(
 						esc_html__( 'Inherit', 'bold-builder' ) 		=> 'inherit',
 						esc_html__( 'Left', 'bold-builder' ) 			=> 'left',
@@ -260,8 +266,16 @@ class bt_bb_image extends BT_BB_Element {
 						esc_html__( 'Right', 'bold-builder' ) 			=> 'right'
 					)
 				),
-				array( 'param_name' => 'caption', 'type' => 'textfield', 'heading' => esc_html__( 'Caption', 'bold-builder' ) ),
-				array( 'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us), post slug (e.g. about-us)', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ) ),
+				array( 
+					'param_name' => 'caption', 'type' => 'textfield', 'heading' => esc_html__( 'Caption/Alt/Title override', 'bold-builder' ), 'description' => esc_html__( 'Use this field to override the alt, title, and caption values from the media library.', 'bold-builder' ) 
+				),
+				array( 
+					'param_name' => 'show_caption', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'yes' ), 'default' => '', 'heading' => esc_html__( 'Show HTML caption tag', 'bold-builder' ) 
+				),
+				array( 
+					'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us), post slug (e.g. about-us).', 'bold-builder' ), 
+					'group' => esc_html__( 'URL', 'bold-builder' ) 
+				),
 				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-builder' ), 'description' => esc_html__( 'To open current image in full size select Lightbox and leave URL field empty.', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ),
 					'value' => array(
 						esc_html__( 'Self (open in same tab)', 'bold-builder' ) 		=> '_self',
@@ -300,6 +314,7 @@ class bt_bb_image extends BT_BB_Element {
 			)
 		) );
 	}
+	
 	static function hex2rgb( $hex ) {
 		$hex = str_replace( '#', '', $hex );
 		if ( strlen( $hex ) == 3 ) {

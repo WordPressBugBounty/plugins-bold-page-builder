@@ -108,7 +108,6 @@ function bt_bb_fe_init() {
 			),
 			'bt_bb_content_slider' => array(
 				'edit_box_selector' => '',
-				'ajax_slick' => true,
 				'params' => array(
 					'height'              => array(),
 					'animation'           => array(),
@@ -214,6 +213,7 @@ function bt_bb_fe_init() {
 				'params' => array(
 					'image'				=> array( 'ajax_filter' => array( array( 'exclude' => '.bt_bb_image_content' ) ) ),
 					'caption'			=> array( 'ajax_filter' => array( array( 'exclude' => '.bt_bb_image_content' ) ) ),
+					'show_caption'		=> array( 'ajax_filter' => array( array( 'exclude' => '.bt_bb_image_content' ) ) ),
 					'size'				=> array( 'ajax_filter' => array( array( 'exclude' => '.bt_bb_image_content' ) ) ),
 					'shape'				=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'class' ) ),
 					'align'				=> array( 'ajax_filter' => array( 'class', 'data-bt-override-class' ) ),
@@ -318,8 +318,7 @@ function bt_bb_fe_init() {
 			'bt_bb_row' => array(
 				'edit_box_selector' => '',
 				'params' => array(
-					// 'column_gap'       => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ),
-					'column_gap'        => array( 'ajax_filter' => array( 'class', 'style' ) ),
+					'column_gap'       => array( 'ajax_filter' => array( 'class', 'style' ) ),
 					'row_width'        => array( 'ajax_filter' => array( 'class', 'style' ) ),
 					'color_scheme'     => array( 'ajax_filter' => array( 'class', 'style' ) ),
 					'background_color' => array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'background_color' ) ),
@@ -328,9 +327,8 @@ function bt_bb_fe_init() {
 			'bt_bb_row_inner' => array(
 				'edit_box_selector' => '',
 				'params' => array(
-					// 'column_gap'       => array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ),
-					'column_gap'        => array( 'ajax_filter' => array( 'class', 'style' ) ),
-					'row_width'        => array( 'ajax_filter' => array( 'class', 'style' ) ),
+					'column_gap' => array( 'ajax_filter' => array( 'class', 'style' ) ),
+					'row_width'  => array( 'ajax_filter' => array( 'class', 'style' ) ),
 				),
 			),
 			'bt_bb_section' => array(
@@ -340,12 +338,12 @@ function bt_bb_fe_init() {
 					'top_spacing'			=> array( 'ajax_filter' => array( 'class', 'data-bt-override-class' ) ),
 					'bottom_spacing'		=> array( 'ajax_filter' => array( 'class', 'data-bt-override-class' ) ),
 					'full_screen'			=> array( 'ajax_filter' => array( 'class' ) ), // non-standard class handling in bt_bb_section.php - can not use js_handler
-					'vertical_align'		=> array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ), 
+					'vertical_align'		=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'class' ) ), 
 					'background_image'		=> array( 'js_handler'  => array( 'target_selector' => '.bt_bb_background_image_holder', 'type' => 'background_image' ) ),
 					'parallax'				=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'attr', 'attr' => 'data-parallax' ) ),
 					'parallax_offset'		=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'attr', 'attr' => 'data-parallax-offset' ) ),
 					'color_scheme'			=> array( 'ajax_filter' => array( 'class', 'style' ) ), 
-					'background_overlay'	=> array( 'js_handler' => array( 'target_selector' => '', 'type' => 'class' ) ),
+					'background_overlay'	=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'class' ) ),
 					'background_color'		=> array( 'js_handler'  => array( 'target_selector' => '', 'type' => 'background_color' ) ),
 				),
 				'drag_and_drop' => array(
@@ -392,7 +390,6 @@ function bt_bb_fe_init() {
 			),
 			'bt_bb_slider' => array(
 				'edit_box_selector' => '',
-				'ajax_slick' => true,
 				'params' => array(
 					'images'              => array(),
 					'height'              => array(),
@@ -680,7 +677,9 @@ function bt_bb_fe_head() {
 		
 		echo 'window.bt_bb_ajax_nonce = "' . wp_create_nonce( 'bt_bb_nonce' ) . '";'; // fix nonce issue on local sites with ai.js (not working with wp_localize_script window.bt_bb_ajax.nonce)
 		
-		echo 'window.bt_bb_icons = JSON.parse(\'' . bt_bb_json_encode( $icon_arr ) . '\')';
+		echo 'window.bt_bb_icons = JSON.parse(\'' . bt_bb_json_encode( $icon_arr ) . '\');';
+		
+		echo 'window.bt_bb_version = "' . BT_BB_VERSION . '";';
 
 	echo '</script>';
 }

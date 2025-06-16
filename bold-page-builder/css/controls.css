@@ -134,7 +134,7 @@
 			border-bottom: 0px;
 		}
 	}
-	&:before {
+	&:before { 
 		font: normal 1.3em/2.3em bold-builder;
 		display: block;
 		position: absolute;
@@ -159,8 +159,8 @@
 			font-size: 1.1em;
 		}
 	}
-	&:hover:before {     
-		box-shadow: 0 1px 6px 4px rgba(0,0,0,.25);;
+	&:hover:before { 
+		box-shadow: 0 1px 6px 4px rgba(0,0,0,.15); 
 	}
 	#bt_bb_fe_dialog_content_wrapper &:not(.bt_bb_dialog_add_element) {
 		padding-bottom: 0;
@@ -187,17 +187,20 @@
 				margin-bottom: 1em;
 			}
 			label {
+				min-width: 6em;
+			}
+			label {
 				cursor: pointer;
 			}
 			label input {
 				right: -0.5em;
 			}
-			label:nth-of-type(2) input {
+			/*label:nth-of-type(2) input {
 				right: 0em;
 			}
 			label:nth-of-type(6) input {
 				right: -1.5em;
-			}
+			}*/
 			label input[type=radio]:hover + span:before, 
 			label input[type=checkbox]:hover + span:before {
 				opacity: 0.8;

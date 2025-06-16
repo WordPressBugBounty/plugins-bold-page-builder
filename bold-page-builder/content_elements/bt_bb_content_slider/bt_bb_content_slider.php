@@ -99,47 +99,44 @@ class bt_bb_content_slider extends BT_BB_Element {
 			$dir_attr = " dir='ltr'";
 		}
 				
-		$slides_to_show_arr =  explode( ',;,', $slides_to_show );
+		$slides_to_show_arr = explode( ',;,', $slides_to_show );
 		
-		
-		if ( count( $slides_to_show_arr ) == 1 || count( array_count_values( $slides_to_show_arr ) ) < 3 ) {
-
-			// old format used, just saved in new format ( $slides_to_show and '' are the only values )
-			if ( count( array_count_values( $slides_to_show_arr ) ) == 2 ) {
-				$slides_to_show = $slides_to_show_arr[0];
-			}
-			// old format
-			$slides_to_show_arr = array( 6 );
-			
-			// switch to new format
-			$slides_to_show_arr[0] = $slides_to_show;
-			$slides_to_show_arr[1] = $slides_to_show;
-			$slides_to_show_arr[2] = $slides_to_show;
-			$slides_to_show_arr[3] = ( intval( $slides_to_show ) > 3 ) ? '3' : $slides_to_show;
-			$slides_to_show_arr[4] = ( intval( $slides_to_show ) > 2 ) ? '2' : $slides_to_show;
-			$slides_to_show_arr[5] = ( intval( $slides_to_show ) > 1 ) ? '1' : $slides_to_show;
+		if ( count( $slides_to_show_arr ) == 1 ) {
+			$slides_to_show_arr = array( $slides_to_show_arr[0], '', '', '', '', '', '' );
 		}
 		
-		// new format
-		if ( $slides_to_show_arr[1] == '' ) { $slides_to_show_arr[1] = $slides_to_show_arr[0]; } // 1400
-		if ( $slides_to_show_arr[2] == '' ) { $slides_to_show_arr[2] = $slides_to_show_arr[1]; } // 1200
-		if ( $slides_to_show_arr[3] == '' ) { $slides_to_show_arr[3] = $slides_to_show_arr[2]; } // 992
-		if ( $slides_to_show_arr[4] == '' ) { $slides_to_show_arr[4] = $slides_to_show_arr[3]; } // 768
-		if ( $slides_to_show_arr[5] == '' ) { $slides_to_show_arr[5] = $slides_to_show_arr[4]; } // 480
+		if ( count( $slides_to_show_arr ) == 6 ) {
+			array_splice( $slides_to_show_arr, 0, 0, array( $slides_to_show_arr[0] ) );
+		}
 		
-		if ( intval( $slides_to_show_arr[0] ) > 1 ) {
-			$data_slick .= ',"slidesToShow": ' . intval( $slides_to_show_arr[0] );
+		if ( $slides_to_show_arr[2] == '' ) { $slides_to_show_arr[2] = $slides_to_show_arr[0]; } // 1400
+		if ( $slides_to_show_arr[3] == '' ) { $slides_to_show_arr[3] = $slides_to_show_arr[0]; } // 1200
+		if ( $slides_to_show_arr[4] == '' ) { // 992
+			$slides_to_show_arr[4] = ( intval( $slides_to_show_arr[0] ) > 3 ) ? '3' : $slides_to_show_arr[0];
+		}
+		if ( $slides_to_show_arr[5] == '' ) { // 768
+			$slides_to_show_arr[5] = ( intval( $slides_to_show_arr[0] ) > 2 ) ? '2' : $slides_to_show_arr[0];
+		}
+		if ( $slides_to_show_arr[6] == '' ) { // 480
+			$slides_to_show_arr[6] = ( intval( $slides_to_show_arr[0] ) > 1 ) ? '1' : $slides_to_show_arr[0];
+		}
+		
+		$sts = intval( $slides_to_show_arr[0] );
+		if ( isset( $slides_to_show_arr[1] ) && $slides_to_show_arr[1] !== '' ) {
+			$sts = intval( $slides_to_show_arr[1] );
+		}
+		
+		if ( $sts > 1 ) {
+			$data_slick .= ',"slidesToShow": ' . $sts;
 			$class[] = $this->prefix . 'multiple_slides';
 			$data_slick .= ', "responsive": [';
-				$data_slick .= '{ "breakpoint": 480, "settings": { "slidesToShow": ' . $slides_to_show_arr[5] . ', "slidesToScroll": ' . $slides_to_show_arr[5] . ' } }';	
-				$data_slick .= ',{ "breakpoint": 768, "settings": { "slidesToShow": ' . $slides_to_show_arr[4] . ', "slidesToScroll": ' . $slides_to_show_arr[4] . ' } }';	
-				$data_slick .= ',{ "breakpoint": 992, "settings": { "slidesToShow": ' . $slides_to_show_arr[3] . ', "slidesToScroll": ' . $slides_to_show_arr[3] . ' } }';	
-				$data_slick .= ',{ "breakpoint": 1200, "settings": { "slidesToShow": ' . $slides_to_show_arr[2] . ', "slidesToScroll": ' . $slides_to_show_arr[2] . ' } }';	
-				$data_slick .= ',{ "breakpoint": 1400, "settings": { "slidesToShow": ' . $slides_to_show_arr[1] . ', "slidesToScroll": ' . $slides_to_show_arr[1] . ' } }';		
+				$data_slick .= '{ "breakpoint": 481, "settings": { "slidesToShow": ' . $slides_to_show_arr[6] . ', "slidesToScroll": ' . $slides_to_show_arr[6] . ' } }';	
+				$data_slick .= ',{ "breakpoint": 769, "settings": { "slidesToShow": ' . $slides_to_show_arr[5] . ', "slidesToScroll": ' . $slides_to_show_arr[5] . ' } }';	
+				$data_slick .= ',{ "breakpoint": 993, "settings": { "slidesToShow": ' . $slides_to_show_arr[4] . ', "slidesToScroll": ' . $slides_to_show_arr[4] . ' } }';	
+				$data_slick .= ',{ "breakpoint": 1201, "settings": { "slidesToShow": ' . $slides_to_show_arr[3] . ', "slidesToScroll": ' . $slides_to_show_arr[3] . ' } }';	
+				$data_slick .= ',{ "breakpoint": 1401, "settings": { "slidesToShow": ' . $slides_to_show_arr[2] . ', "slidesToScroll": ' . $slides_to_show_arr[2] . ' } }';		
 			$data_slick .= ']';
 		}
-		
-		// var_dump( $content );
 			
 		// turn of loop for dynamic elements (ghost slide does not work)
 		if ( 
