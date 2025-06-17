@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.3.8
+ * Version: 5.3.9
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.3.8' );
+define( 'BT_BB_VERSION', '5.3.9' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -487,10 +487,10 @@ function bt_bb_wp_head() {
 									}
 									
 									// Remove the current class
-									element.classList.remove( override_classes[ prefix ]['current_class'] );
+									element.classList.remove( ...override_classes[ prefix ]['current_class'].split( ' ' ) );
 									
 									// Add the new class
-									element.classList.add( new_class );
+									element.classList.add( ...new_class.split( ' ' ) );
 			
 									// Update the current_class
 									override_classes[ prefix ]['current_class'] = new_class;
