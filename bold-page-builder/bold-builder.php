@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.3.9
+ * Version: 5.4.0
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * Text Domain: bold-builder
@@ -12,7 +12,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.3.9' );
+define( 'BT_BB_VERSION', '5.4.0' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );

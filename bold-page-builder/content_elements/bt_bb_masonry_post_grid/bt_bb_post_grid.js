@@ -67,6 +67,7 @@
 			'show': root.data( 'show' ),
 			'bt-bb-masonry-post-grid-nonce': root.data( 'bt-bb-masonry-post-grid-nonce' ),
 			'post-type': root.data( 'post-type' ),
+			'ignore-nonce': root.data( 'ignore-nonce' ),
 			'offset': offset
 		};
 

@@ -61,6 +61,7 @@ class bt_bb_css_post_grid {
 			'category': root.data( 'category' ),
 			'bt-bb-css-post-grid-nonce': root.data( 'bt-bb-css-post-grid-nonce' ),
 			'post-type': root.data( 'post-type' ),
+			'ignore-nonce': root.data( 'ignore-nonce' ),
 			'offset': offset,
 			'show': root.data( 'show' ),
 			'show_superheadline': root.data( 'show-superheadline' ),

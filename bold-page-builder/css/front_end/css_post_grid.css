@@ -438,6 +438,7 @@
 					flex-direction: row;
 					justify-content: flex-end;
 					align-items: center;
+					position: relative;
 					.bt_bb_grid_item_post_thumbnail {
 						position: absolute;
 						inset: 0;

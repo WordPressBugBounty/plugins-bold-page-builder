@@ -9085,6 +9085,7 @@ button.slick-arrow:focus {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
     }
 .bt_bb_css_post_grid .bt_bb_grid_item.bt_bb_tile_format_21 .bt_bb_grid_item_inner .bt_bb_grid_item_post_thumbnail {
     position: absolute;

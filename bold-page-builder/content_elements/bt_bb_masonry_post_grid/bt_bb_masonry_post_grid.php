@@ -9,8 +9,8 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 	}
 
 	static function bt_bb_get_grid_callback() {	
-		check_ajax_referer( 'bt-bb-masonry-post-grid-nonce', 'bt-bb-masonry-post-grid-nonce' );
-		bt_bb_masonry_post_grid::dump_grid( intval( $_POST['number'] ), intval( $_POST['offset'] ), sanitize_text_field( urldecode( $_POST['category'] ) ), $_POST['show'], $_POST['post-type'] );
+		if ( $_POST['ignore-nonce'] != 'ignore_nonce' ) check_ajax_referer( 'bt-bb-masonry-post-grid-nonce', 'bt-bb-masonry-post-grid-nonce' );
+		bt_bb_masonry_post_grid::dump_grid( intval( $_POST['number'] ), intval( $_POST['offset'] ), sanitize_text_field( urldecode( $_POST['category'] ) ), $_POST['show'], $_POST['post-type'], $_POST['ignore-nonce'] );
 		die();
 	}
 	
@@ -150,6 +150,7 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 			'show_author'     => '',
 			'show_comments'   => '',
 			'show_excerpt'    => '',
+			'ignore_nonce'	  => '',
 			'show_share'      => ''
 		) ), $atts, $this->shortcode ) );
 
@@ -283,7 +284,7 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 		
 		$class = apply_filters( $this->shortcode . '_class', $class, $atts );
 
-		$output .= '<div class="bt_bb_masonry_post_grid_content bt_bb_grid_hide" data-bt-bb-masonry-post-grid-nonce="' . esc_attr( wp_create_nonce( 'bt-bb-masonry-post-grid-nonce' ) ) . '" data-number="' . esc_attr( $number ) . '" data-category="' . esc_attr( $category ) . '" data-show="' . esc_attr( urlencode( json_encode( $show ) ) ) . '" data-auto-loading="' . esc_attr( $auto_loading ) . '" data-post-type="' . esc_attr( $post_type ) . '"><div class="bt_bb_grid_sizer"></div></div>';
+		$output .= '<div class="bt_bb_masonry_post_grid_content bt_bb_grid_hide" data-bt-bb-masonry-post-grid-nonce="' . esc_attr( wp_create_nonce( 'bt-bb-masonry-post-grid-nonce' ) ) . '" data-number="' . esc_attr( $number ) . '" data-category="' . esc_attr( $category ) . '" data-show="' . esc_attr( urlencode( json_encode( $show ) ) ) . '" data-auto-loading="' . esc_attr( $auto_loading ) . '" data-post-type="' . esc_attr( $post_type ) . '" data-ignore-nonce="' . esc_attr( $ignore_nonce ) . '"><div class="bt_bb_grid_sizer"></div></div>';
 
 		$output .= '<div class="bt_bb_post_grid_loader"></div>';
 
@@ -349,7 +350,8 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 			array( 'param_name' => 'show_excerpt', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_excerpt' ), 'heading' => esc_html__( 'Show excerpt', 'bold-builder' ), 'preview' => true
 			),
 			array( 'param_name' => 'show_share', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_share' ), 'heading' => esc_html__( 'Show share icons', 'bold-builder' ), 'preview' => true 
-			)
+			),
+			array( 'param_name' => 'ignore_nonce', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'ignore_nonce' ), 'heading' => esc_html__( 'Skip nonce verification', 'bold-builder' ), 'description' => esc_html__( 'If using long-term caching, either skip nonce verification (less secure) or reduce cache TTL to prevent failures.', 'bold-builder' ), 'preview' => true )
 		) );
 
 		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Masonry Post Grid (deprecated)', 'bold-builder' ), 'description' => esc_html__( 'Use Post Grid element', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
