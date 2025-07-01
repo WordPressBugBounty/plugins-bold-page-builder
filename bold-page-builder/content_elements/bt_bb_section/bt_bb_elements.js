@@ -32,7 +32,7 @@
 	});
 	
 	$( document ).ready( function ( e ) {		
-		$( 'a[href*="#"]:not([href="#"]):not([href*="#tab-"])' ).not( '.menu-scroll-down' ).on( 'click', function() { // .menu-scroll-down - 2017 theme, #tab- woocommerce tabs
+		$( 'a[href*="#"]:not([href="#"]):not([href*="#tab-"])' ).not( '.menu-scroll-down' ).not( '.skip-link' ).on( 'click', function() { // .menu-scroll-down - 2017 theme, #tab- woocommerce tabs, .skip-link - Bold themes framework 3 skip to content link
 			if ( location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname ) {
 				var target = $( this.hash );
 				target = target.length ? target : $( '[name=' + this.hash.slice(1) +']' );
