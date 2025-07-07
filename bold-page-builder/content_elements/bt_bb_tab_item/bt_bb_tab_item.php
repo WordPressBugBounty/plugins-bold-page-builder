@@ -26,7 +26,7 @@ class bt_bb_tab_item extends BT_BB_Element {
 		
 		$output = '';
 		
-		$output1 = '<li><span>' . $title . '</span></li>';
+		$output1 = '<li><span>' . wp_kses_post( $title ) . '</span></li>';
 		
 		if ( strpos( $content, 'bt_bb_image' ) ) {
 			$class[] = 'has_bt_bb_image';
