@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-08 15:46+0200\n"
+"POT-Creation-Date: 2025-08-22 07:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -213,12 +213,12 @@ msgid "bt_bb_slider"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:520
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:196
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:198
 msgid "Image Slider"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/bold-builder-fe.php:521
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:196
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:198
 msgid "Slider with images"
 msgstr ""
 
@@ -566,7 +566,7 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_row/bt_bb_row.php:131
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_row/bt_bb_row.php:162
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_row_inner/bt_bb_row_inner.php:88
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:212
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:214
 msgid "Default"
 msgstr ""
 
@@ -626,8 +626,8 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:338
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_section/bt_bb_section.php:382
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_section/bt_bb_section.php:398
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:253
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:256
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:255
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:258
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_video/bt_bb_video.php:78
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_video/bt_bb_video.php:84
 msgid "No"
@@ -670,8 +670,8 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_section/bt_bb_section.php:383
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_section/bt_bb_section.php:399
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_section/bt_bb_section.php:430
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:252
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:256
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:254
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:258
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_video/bt_bb_video.php:79
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_video/bt_bb_video.php:85
 msgid "Yes"
@@ -1133,7 +1133,7 @@ msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/bold-builder.php:1842
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:193
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:210
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:212
 msgid "Animation"
 msgstr ""
 
@@ -1887,7 +1887,7 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_headline/bt_bb_headline.php:261
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_image/bt_bb_image.php:311
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_section/bt_bb_section.php:390
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:224
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:226
 msgid "Bottom"
 msgstr ""
 
@@ -2329,38 +2329,38 @@ msgid ""
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:69
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:62
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:64
 msgid "Previous"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:69
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:62
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:64
 msgid "Next"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:187
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:201
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:203
 msgid "Auto"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:188
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:202
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:204
 msgid "Keep height"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:189
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:203
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:205
 msgid "Half screen"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:190
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_section/bt_bb_section.php:380
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:204
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:206
 msgid "Full screen"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:193
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:210
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:212
 msgid "If fade is selected, number of slides to show will be 1"
 msgstr ""
 
@@ -2369,7 +2369,7 @@ msgid "Default (slide)"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:196
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:213
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:215
 msgid "Fade"
 msgstr ""
 
@@ -2395,12 +2395,12 @@ msgid "Right to left"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:206
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:250
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:252
 msgid "Pause slideshow on hover"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:212
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:229
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:231
 msgid "Number of slides to show"
 msgstr ""
 
@@ -2416,7 +2416,7 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:162
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:126
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:319
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:231
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:233
 msgid "1"
 msgstr ""
 
@@ -2428,7 +2428,7 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:163
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:127
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:320
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:232
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:234
 msgid "2"
 msgstr ""
 
@@ -2440,7 +2440,7 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:164
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:128
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:321
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:233
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:235
 msgid "3"
 msgstr ""
 
@@ -2452,7 +2452,7 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:165
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:129
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:322
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:234
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:236
 msgid "4"
 msgstr ""
 
@@ -2461,7 +2461,7 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:441
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:130
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:323
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:235
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:237
 msgid "5"
 msgstr ""
 
@@ -2471,52 +2471,52 @@ msgstr ""
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:166
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:131
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:324
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:236
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:238
 msgid "6"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:220
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:237
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:239
 msgid "7"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:221
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:238
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:240
 msgid "8"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:222
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:239
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:241
 msgid "9"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:223
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:240
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:242
 msgid "10"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:224
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:241
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:243
 msgid "11"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:225
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:242
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:244
 msgid "12"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:228
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:246
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:248
 msgid "Additional settings"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:228
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:246
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:248
 msgid "E.g. \"slidesToScroll\": 3, \"infinite\": false, \"centerMode\": true"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:228
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:246
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:248
 msgid ""
 "E.g. \"slidesToScroll\": 3, \"infinite\": false, \"centerMode\": true, "
 "\"centerPadding\": \"60px\" (<a href=\"https://kenwheeler.github.io/slick/\" "
@@ -2542,12 +2542,12 @@ msgid "No gap"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:237
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:248
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:250
 msgid "Autoplay interval (ms)"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:237
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:248
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:250
 msgid "E.g. 2000"
 msgstr ""
 
@@ -2566,18 +2566,18 @@ msgid "No arrows"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:248
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:222
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:224
 msgid "Dots navigation"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:251
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:225
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:227
 msgid "Below"
 msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_content_slider/bt_bb_content_slider.php:252
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:219
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:226
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:221
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:228
 msgid "Hide"
 msgstr ""
 
@@ -2769,7 +2769,7 @@ msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:127
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:123
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:198
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:200
 msgid "Images"
 msgstr ""
 
@@ -3062,7 +3062,7 @@ msgstr ""
 
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_google_maps/bt_bb_google_maps.php:159
 #: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:128
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:199
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:201
 msgid "Height"
 msgstr ""
 
@@ -4049,23 +4049,23 @@ msgstr ""
 msgid "Add your shortcode"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:207
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:209
 msgid "Images size"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:216
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:218
 msgid "Navigation arrows"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:218
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:220
 msgid "Show"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:229
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:231
 msgid "E.g. 1. If fade animation is selected, number will  be 1 anyway"
 msgstr ""
 
-#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:256
+#: D:/WP/BoldBuilder/trunk/content_elements/bt_bb_slider/bt_bb_slider.php:258
 msgid "Use lightbox (opens image in full size on click)"
 msgstr ""
 

@@ -22,6 +22,8 @@ class bt_bb_slider extends BT_BB_Element {
 		$slider_class = array( 'slick-slider' );
 		$class = array( $this->shortcode );
 		
+		$additional_settings = sanitize_text_field( $additional_settings );
+		
 		if ( $el_class != '' ) {
 			$class[] = $el_class;
 		}
@@ -115,7 +117,7 @@ class bt_bb_slider extends BT_BB_Element {
 		}
 		
 		if ( $additional_settings != '' ) {
-			$data_slick .= ', ' . $additional_settings;
+			$data_slick .= ', ' . esc_attr( $additional_settings );
 		}
 		
 		$data_slick = $data_slick . '}\' ';
