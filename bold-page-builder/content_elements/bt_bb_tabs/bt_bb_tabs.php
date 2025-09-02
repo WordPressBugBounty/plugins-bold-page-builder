@@ -61,6 +61,9 @@ class bt_bb_tabs extends BT_BB_Element {
 		$class = apply_filters( $this->shortcode . '_class', $class, $atts );
 
 		$content = do_shortcode( $content );
+
+		$content = preg_replace( '/data-bb-version=".*?" /m', '', $content );
+
 		$content = explode( '%$%', $content );
 
 		$output = '';
