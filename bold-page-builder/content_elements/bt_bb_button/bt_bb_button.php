@@ -73,10 +73,15 @@ class bt_bb_button extends BT_BB_Element {
 				'value' => $size
 			)
 		);
-		
-		if ( $width != '' ) {
-			$class[] = $this->prefix . 'width' . '_' . $width;
-		}
+
+		$this->responsive_data_override_class(
+			$class, $data_override_class,
+			array(
+				'prefix' => $this->prefix,
+				'param' => 'width',
+				'value' => $width
+			)
+		);
 		
 		if ( $shape != '' ) {
 			$class[] = $this->prefix . 'shape' . '_' . $shape;
@@ -228,7 +233,7 @@ class bt_bb_button extends BT_BB_Element {
 						esc_html__( 'Hard Rounded', 'bold-builder' ) 	=> 'round'
 					)
 				),
-				array( 'param_name' => 'width', 'type' => 'dropdown', 'heading' => esc_html__( 'Width', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ),
+				array( 'param_name' => 'width', 'type' => 'dropdown', 'heading' => esc_html__( 'Width', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ), 'responsive_override' => true,
 					'value' => array(
 						esc_html__( 'Inline', 'bold-builder' ) 			=> 'inline',
 						esc_html__( 'Full', 'bold-builder' ) 			=> 'full'

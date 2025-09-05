@@ -87,6 +87,12 @@
 		.bt_bb_service_content_title {
 			font-weight: 600;
 			font-size: 1.1em;
+			margin-bottom: 0;
+			a {
+				text-decoration: none;
+				box-shadow: none;
+				color: inherit;
+			}
 		}
 		:leftAlignSelector {
 			padding: 0 0 0 1em;

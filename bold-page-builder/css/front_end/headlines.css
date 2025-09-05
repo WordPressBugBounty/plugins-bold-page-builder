@@ -1,10 +1,11 @@
 .bt_bb_headline {
-	
+	color: var(--primary-color);
+
 	:rightAlignSelector { text-align: right; }
 	:leftAlignSelector { text-align: left; }
 	:centerAlignSelector { text-align: center; }
 	
-	h1,h2,h3,h4,h5,h6 {
+	h1,h2,h3,h4,h5,h6, p.bt_bb_headline_tag, span.bt_bb_headline_tag, .bt_bb_headline_tag {
 		
 		display: block;
 		margin-bottom: 0;
@@ -41,12 +42,10 @@
 		.bt_bb_text_transform_initial& { text-transform: initial; }
 		.bt_bb_text_transform_inherit& { text-transform: inherit; }
 		.bt_bb_text_transform_none& { text-transform: none; }
-
 	}
 	.bt_bb_headline_content {
 		display: block;
 		color: inherit;
-		/*font-family: inherit;*/
 		a {
 			color: inherit;
 			box-shadow: none;
@@ -150,7 +149,6 @@
 		.bt_bb_subheadline_text_transform_inheri& { text-transform: inherit; }
 		.bt_bb_subheadline_text_transform_none& { text-transform: none; }
 	}
-	color: var(--primary-color);
 	.bt_bb_headline_superheadline {
 		color: var(--secondary-color);
 	}

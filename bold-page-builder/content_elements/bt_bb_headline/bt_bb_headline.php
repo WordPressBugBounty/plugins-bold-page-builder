@@ -188,7 +188,7 @@ class bt_bb_headline extends BT_BB_Element {
 		
 		$headline = nl2br( $headline );
 		
-		$html_tag = substr( $html_tag, 0, 2 );
+		//$html_tag = substr( $html_tag, 0, 2 );
 
 		$output = '<header' . $id_attr . ' class="' . esc_attr( $class_attr ) . '"' . $style_attr . ' data-bt-override-class="' . htmlspecialchars( json_encode( $data_override_class, JSON_FORCE_OBJECT ), ENT_QUOTES, 'UTF-8' ) . '">';
 		if ( $superheadline_outside != '' ) $output .= '<div class="' . $this->shortcode . '_superheadline_outside' . '">' . $superheadline_outside . '</div>';
@@ -227,13 +227,16 @@ class bt_bb_headline extends BT_BB_Element {
 				array( 'param_name' => 'subheadline', 'type' => 'textarea', 'heading' => esc_html__( 'Subheadline', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Subheadline text', 'bold-builder' ), ),
 				array( 'param_name' => 'html_tag', 'type' => 'dropdown', 'heading' => esc_html__( 'Headline HTML tag', 'bold-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( 'h1', 'bold-builder' ) 	=> 'h1',
-						esc_html__( 'h2', 'bold-builder' ) 	=> 'h2',
-						esc_html__( 'h3', 'bold-builder' ) 	=> 'h3',
-						esc_html__( 'h4', 'bold-builder' ) 	=> 'h4',
-						esc_html__( 'h5', 'bold-builder' ) 	=> 'h5',
-						esc_html__( 'h6', 'bold-builder' ) 	=> 'h6'
+						esc_html__( 'h1', 'bold-builder' ) 			=> 'h1',
+						esc_html__( 'h2', 'bold-builder' ) 			=> 'h2',
+						esc_html__( 'h3', 'bold-builder' ) 			=> 'h3',
+						esc_html__( 'h4', 'bold-builder' ) 			=> 'h4',
+						esc_html__( 'h5', 'bold-builder' ) 			=> 'h5',
+						esc_html__( 'h6', 'bold-builder' ) 			=> 'h6',
+						esc_html__( 'span', 'bold-builder' ) 		=> 'span',
+						esc_html__( 'p', 'bold-builder' ) 			=> 'p'
 				) ),
+				array( 'param_name' => 'supertitle_position', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'outside' ), 'default' => 'outside', 'heading' => esc_html__( 'Put Superheadline outside HTML tag', 'bold-builder' ), 'preview' => true ),
 				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'description' => esc_html__( 'Predefined Headline sizes, independent of HTML tag', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
 						esc_html__( 'Inherit', 'bold-builder' ) 	=> 'inherit',
@@ -264,7 +267,7 @@ class bt_bb_headline extends BT_BB_Element {
 				),
 				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),
 				array( 'param_name' => 'color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Color', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'supertitle_position', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'outside' ), 'default' => 'outside', 'heading' => esc_html__( 'Put Superheadline outside HTML tag', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ), 'preview' => true ),
+				
 				array( 'param_name' => 'font', 'type' => 'dropdown', 'heading' => esc_html__( 'Font', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ), 'preview' => true,
 					'value' => array( esc_html__( 'Inherit', 'bold-builder' ) => 'inherit' ) + BT_BB_Root::$font_arr
 				),

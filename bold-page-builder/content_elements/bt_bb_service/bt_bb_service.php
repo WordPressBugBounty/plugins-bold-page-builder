@@ -145,29 +145,31 @@ class bt_bb_service extends BT_BB_Element {
 				array( 'param_name' => 'title', 'type' => 'textfield', 'heading' => esc_html__( 'Title', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Service title', 'bold-builder' ), 'preview' => true ),
 				array( 'param_name' => 'html_tag', 'type' => 'dropdown', 'heading' => esc_html__( 'Title HTML tag', 'bold-builder' ), 'preview' => true, 'default' => 'div',
 					'value' => array(
-						esc_html__( 'div', 'bold-builder' ) => 'div',
-						esc_html__( 'h1', 'bold-builder' ) 	=> 'h1',
-						esc_html__( 'h2', 'bold-builder' ) 	=> 'h2',
-						esc_html__( 'h3', 'bold-builder' ) 	=> 'h3',
-						esc_html__( 'h4', 'bold-builder' ) 	=> 'h4',
-						esc_html__( 'h5', 'bold-builder' ) 	=> 'h5',
-						esc_html__( 'h6', 'bold-builder' ) 	=> 'h6'
+						esc_html__( 'div', 'bold-builder' ) 	=> 'div',
+						esc_html__( 'h1', 'bold-builder' ) 		=> 'h1',
+						esc_html__( 'h2', 'bold-builder' ) 		=> 'h2',
+						esc_html__( 'h3', 'bold-builder' ) 		=> 'h3',
+						esc_html__( 'h4', 'bold-builder' ) 		=> 'h4',
+						esc_html__( 'h5', 'bold-builder' ) 		=> 'h5',
+						esc_html__( 'h6', 'bold-builder' ) 		=> 'h6',
+						esc_html__( 'span', 'bold-builder' ) 	=> 'span',
+						esc_html__( 'p', 'bold-builder' ) 		=> 'p'
 				) ),
 				array( 'param_name' => 'text', 'type' => 'textarea', 'heading' => esc_html__( 'Text', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Service text', 'bold-builder' ) ),
 				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Icon position', 'bold-builder' ), 'responsive_override' => true,
 					'value' => array(
 						esc_html__( 'Inherit', 'bold-builder' ) => 'inherit',
-						esc_html__( 'Left', 'bold-builder' ) => 'left',
-						esc_html__( 'Center', 'bold-builder' ) => 'center',
-						esc_html__( 'Right', 'bold-builder' ) => 'right'
+						esc_html__( 'Left', 'bold-builder' ) 	=> 'left',
+						esc_html__( 'Center', 'bold-builder' ) 	=> 'center',
+						esc_html__( 'Right', 'bold-builder' ) 	=> 'right'
 					)
 				),
 				array( 'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us) or post slug (e.g. about-us) or search for existing content.', 'bold-builder' ) ),
 				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ),
 					'value' => array(
-						esc_html__( 'Self (open in same tab)', 'bold-builder' ) => '_self',
-						esc_html__( 'Blank (open in new tab)', 'bold-builder' ) => '_blank',
-						esc_html__( 'Lightbox (open in new layer)', 'bold-builder' ) => '_lightbox',
+						esc_html__( 'Self (open in same tab)', 'bold-builder' ) 		=> '_self',
+						esc_html__( 'Blank (open in new tab)', 'bold-builder' ) 		=> '_blank',
+						esc_html__( 'Lightbox (open in new layer)', 'bold-builder' ) 	=> '_lightbox',
 					)
 				),
 				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Icon size', 'bold-builder' ), 'responsive_override' => true, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ),
@@ -181,16 +183,16 @@ class bt_bb_service extends BT_BB_Element {
 				),
 				array( 'param_name' => 'style', 'type' => 'dropdown', 'heading' => esc_html__( 'Icon style', 'bold-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ),
 					'value' => array(
-						esc_html__( 'Outline', 'bold-builder' ) => 'outline',
-						esc_html__( 'Filled', 'bold-builder' ) => 'filled',
-						esc_html__( 'Borderless', 'bold-builder' ) => 'borderless'
+						esc_html__( 'Outline', 'bold-builder' ) 		=> 'outline',
+						esc_html__( 'Filled', 'bold-builder' ) 			=> 'filled',
+						esc_html__( 'Borderless', 'bold-builder' ) 		=> 'borderless'
 					)
 				),
 				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Icon shape', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ),
 					'value' => array(
-						esc_html__( 'Circle', 'bold-builder' ) => 'circle',
-						esc_html__( 'Square', 'bold-builder' ) => 'square',
-						esc_html__( 'Rounded Square', 'bold-builder' ) => 'round'
+						esc_html__( 'Circle', 'bold-builder' ) 			=> 'circle',
+						esc_html__( 'Square', 'bold-builder' ) 			=> 'square',
+						esc_html__( 'Rounded Square', 'bold-builder' ) 	=> 'round'
 					)
 				),
 				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ) ),
