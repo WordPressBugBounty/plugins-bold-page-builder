@@ -4039,8 +4039,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_headline h5,
 .bt_bb_headline h6,
 .bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_headline span.bt_bb_headline_tag {
     display: block;
     margin-bottom: 0;
     margin-top: 0;
@@ -4054,8 +4053,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_size_extrasmall.bt_bb_headline h5,
 .bt_bb_size_extrasmall.bt_bb_headline h6,
 .bt_bb_size_extrasmall.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_size_extrasmall.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_size_extrasmall.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_size_extrasmall.bt_bb_headline span.bt_bb_headline_tag {
     font-size: 1rem;
     }
 .bt_bb_size_small.bt_bb_headline h1,
@@ -4065,8 +4063,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_size_small.bt_bb_headline h5,
 .bt_bb_size_small.bt_bb_headline h6,
 .bt_bb_size_small.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_size_small.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_size_small.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_size_small.bt_bb_headline span.bt_bb_headline_tag {
     font-size: 1.5rem;
     }
 .bt_bb_size_medium.bt_bb_headline h1,
@@ -4076,8 +4073,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_size_medium.bt_bb_headline h5,
 .bt_bb_size_medium.bt_bb_headline h6,
 .bt_bb_size_medium.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_size_medium.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_size_medium.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_size_medium.bt_bb_headline span.bt_bb_headline_tag {
     font-size: 2rem;
     }
 .bt_bb_size_normal.bt_bb_headline h1,
@@ -4087,8 +4083,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_size_normal.bt_bb_headline h5,
 .bt_bb_size_normal.bt_bb_headline h6,
 .bt_bb_size_normal.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_size_normal.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_size_normal.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_size_normal.bt_bb_headline span.bt_bb_headline_tag {
     font-size: 2.5rem;
     }
 .bt_bb_size_large.bt_bb_headline h1,
@@ -4098,8 +4093,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_size_large.bt_bb_headline h5,
 .bt_bb_size_large.bt_bb_headline h6,
 .bt_bb_size_large.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_size_large.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_size_large.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_size_large.bt_bb_headline span.bt_bb_headline_tag {
     font-size: 3rem;
     }
 .bt_bb_size_extralarge.bt_bb_headline h1,
@@ -4109,8 +4103,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_size_extralarge.bt_bb_headline h5,
 .bt_bb_size_extralarge.bt_bb_headline h6,
 .bt_bb_size_extralarge.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_size_extralarge.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_size_extralarge.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_size_extralarge.bt_bb_headline span.bt_bb_headline_tag {
     font-size: 3.5rem;
     }
 .bt_bb_size_huge.bt_bb_headline h1,
@@ -4120,8 +4113,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_size_huge.bt_bb_headline h5,
 .bt_bb_size_huge.bt_bb_headline h6,
 .bt_bb_size_huge.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_size_huge.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_size_huge.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_size_huge.bt_bb_headline span.bt_bb_headline_tag {
     font-size: 5rem;
     }
 .bt_bb_font_weight_normal.bt_bb_headline h1,
@@ -4131,8 +4123,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_normal.bt_bb_headline h5,
 .bt_bb_font_weight_normal.bt_bb_headline h6,
 .bt_bb_font_weight_normal.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_normal.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_normal.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_normal.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: normal;
     }
 .bt_bb_font_weight_bold.bt_bb_headline h1,
@@ -4142,8 +4133,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_bold.bt_bb_headline h5,
 .bt_bb_font_weight_bold.bt_bb_headline h6,
 .bt_bb_font_weight_bold.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_bold.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_bold.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_bold.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: bold;
     }
 .bt_bb_font_weight_bolder.bt_bb_headline h1,
@@ -4153,8 +4143,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_bolder.bt_bb_headline h5,
 .bt_bb_font_weight_bolder.bt_bb_headline h6,
 .bt_bb_font_weight_bolder.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_bolder.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_bolder.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_bolder.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: bolder;
     }
 .bt_bb_font_weight_lighter.bt_bb_headline h1,
@@ -4164,8 +4153,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_lighter.bt_bb_headline h5,
 .bt_bb_font_weight_lighter.bt_bb_headline h6,
 .bt_bb_font_weight_lighter.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_lighter.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_lighter.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_lighter.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 300;
     }
 .bt_bb_font_weight_light.bt_bb_headline h1,
@@ -4175,8 +4163,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_light.bt_bb_headline h5,
 .bt_bb_font_weight_light.bt_bb_headline h6,
 .bt_bb_font_weight_light.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_light.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_light.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_light.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 200;
     }
 .bt_bb_font_weight_thin.bt_bb_headline h1,
@@ -4186,8 +4173,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_thin.bt_bb_headline h5,
 .bt_bb_font_weight_thin.bt_bb_headline h6,
 .bt_bb_font_weight_thin.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_thin.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_thin.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_thin.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 100;
     }
 .bt_bb_font_weight_100.bt_bb_headline h1,
@@ -4197,8 +4183,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_100.bt_bb_headline h5,
 .bt_bb_font_weight_100.bt_bb_headline h6,
 .bt_bb_font_weight_100.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_100.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_100.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_100.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 100;
     }
 .bt_bb_font_weight_200.bt_bb_headline h1,
@@ -4208,8 +4193,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_200.bt_bb_headline h5,
 .bt_bb_font_weight_200.bt_bb_headline h6,
 .bt_bb_font_weight_200.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_200.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_200.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_200.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 200;
     }
 .bt_bb_font_weight_300.bt_bb_headline h1,
@@ -4219,8 +4203,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_300.bt_bb_headline h5,
 .bt_bb_font_weight_300.bt_bb_headline h6,
 .bt_bb_font_weight_300.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_300.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_300.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_300.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 300;
     }
 .bt_bb_font_weight_400.bt_bb_headline h1,
@@ -4230,8 +4213,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_400.bt_bb_headline h5,
 .bt_bb_font_weight_400.bt_bb_headline h6,
 .bt_bb_font_weight_400.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_400.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_400.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_400.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 400;
     }
 .bt_bb_font_weight_500.bt_bb_headline h1,
@@ -4241,8 +4223,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_500.bt_bb_headline h5,
 .bt_bb_font_weight_500.bt_bb_headline h6,
 .bt_bb_font_weight_500.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_500.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_500.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_500.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 500;
     }
 .bt_bb_font_weight_600.bt_bb_headline h1,
@@ -4252,8 +4233,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_600.bt_bb_headline h5,
 .bt_bb_font_weight_600.bt_bb_headline h6,
 .bt_bb_font_weight_600.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_600.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_600.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_600.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 600;
     }
 .bt_bb_font_weight_700.bt_bb_headline h1,
@@ -4263,8 +4243,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_700.bt_bb_headline h5,
 .bt_bb_font_weight_700.bt_bb_headline h6,
 .bt_bb_font_weight_700.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_700.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_700.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_700.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 700;
     }
 .bt_bb_font_weight_800.bt_bb_headline h1,
@@ -4274,8 +4253,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_800.bt_bb_headline h5,
 .bt_bb_font_weight_800.bt_bb_headline h6,
 .bt_bb_font_weight_800.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_800.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_800.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_800.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 800;
     }
 .bt_bb_font_weight_900.bt_bb_headline h1,
@@ -4285,8 +4263,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_font_weight_900.bt_bb_headline h5,
 .bt_bb_font_weight_900.bt_bb_headline h6,
 .bt_bb_font_weight_900.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_font_weight_900.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_font_weight_900.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_font_weight_900.bt_bb_headline span.bt_bb_headline_tag {
     font-weight: 900;
     }
 .bt_bb_text_transform_uppercase.bt_bb_headline h1,
@@ -4296,8 +4273,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_text_transform_uppercase.bt_bb_headline h5,
 .bt_bb_text_transform_uppercase.bt_bb_headline h6,
 .bt_bb_text_transform_uppercase.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_text_transform_uppercase.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_text_transform_uppercase.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_text_transform_uppercase.bt_bb_headline span.bt_bb_headline_tag {
     text-transform: uppercase;
     }
 .bt_bb_text_transform_lowercase.bt_bb_headline h1,
@@ -4307,8 +4283,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_text_transform_lowercase.bt_bb_headline h5,
 .bt_bb_text_transform_lowercase.bt_bb_headline h6,
 .bt_bb_text_transform_lowercase.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_text_transform_lowercase.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_text_transform_lowercase.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_text_transform_lowercase.bt_bb_headline span.bt_bb_headline_tag {
     text-transform: lowercase;
     }
 .bt_bb_text_transform_capitalize.bt_bb_headline h1,
@@ -4318,8 +4293,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_text_transform_capitalize.bt_bb_headline h5,
 .bt_bb_text_transform_capitalize.bt_bb_headline h6,
 .bt_bb_text_transform_capitalize.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_text_transform_capitalize.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_text_transform_capitalize.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_text_transform_capitalize.bt_bb_headline span.bt_bb_headline_tag {
     text-transform: capitalize;
     }
 .bt_bb_text_transform_initial.bt_bb_headline h1,
@@ -4329,8 +4303,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_text_transform_initial.bt_bb_headline h5,
 .bt_bb_text_transform_initial.bt_bb_headline h6,
 .bt_bb_text_transform_initial.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_text_transform_initial.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_text_transform_initial.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_text_transform_initial.bt_bb_headline span.bt_bb_headline_tag {
     text-transform: initial;
     }
 .bt_bb_text_transform_inherit.bt_bb_headline h1,
@@ -4340,8 +4313,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_text_transform_inherit.bt_bb_headline h5,
 .bt_bb_text_transform_inherit.bt_bb_headline h6,
 .bt_bb_text_transform_inherit.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_text_transform_inherit.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_text_transform_inherit.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_text_transform_inherit.bt_bb_headline span.bt_bb_headline_tag {
     text-transform: inherit;
     }
 .bt_bb_text_transform_none.bt_bb_headline h1,
@@ -4351,8 +4323,7 @@ body:not(.bt_bb_fe_preview_toggle) .bt_bb_separator.bt_bb_top_spacing_100.bt_bb_
 .bt_bb_text_transform_none.bt_bb_headline h5,
 .bt_bb_text_transform_none.bt_bb_headline h6,
 .bt_bb_text_transform_none.bt_bb_headline p.bt_bb_headline_tag,
-.bt_bb_text_transform_none.bt_bb_headline span.bt_bb_headline_tag,
-.bt_bb_text_transform_none.bt_bb_headline .bt_bb_headline_tag {
+.bt_bb_text_transform_none.bt_bb_headline span.bt_bb_headline_tag {
     text-transform: none;
     }
 .bt_bb_headline .bt_bb_headline_content {
