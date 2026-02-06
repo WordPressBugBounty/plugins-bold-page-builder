@@ -2,8 +2,8 @@
 Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 5.4.8
+Tested up to: 6.9.1
+Stable tag: 5.6.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,6 +135,54 @@ It is not possible to test Bold Builder with all themes - it should work fine wi
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.6.4 =
+* Improved security.
+
+= 5.6.3 =
+* Minor bug fixes.
+
+= 5.6.2 =
+* Minor bug fixes.
+
+= 5.6.1 =
+* Fixed scroll in FE editor.
+
+= 5.6.0 =
+* Minor bug fixes.
+
+= 5.5.9 =
+* Minor bug fixes.
+
+= 5.5.8 =
+* Minor bug fixes.
+
+= 5.5.7 =
+* Fixed color schemes & custom CSS.
+
+= 5.5.6 =
+* Fixed FE editing.
+
+= 5.5.5 =
+* Improved security.
+
+= 5.5.4 =
+* Improved security.
+
+= 5.5.3 =
+* Improved security.
+
+= 5.5.2 =
+* Minor bug fixes and improvements.
+
+= 5.5.1 =
+* Minor bug fixes and improvements.
+
+= 5.5.0 =
+* Minor bug fixes and improvements.
+
+= 5.4.9 =
+* Minor bug fixes and improvements.
 
 = 5.4.8 =
 * Minor bug fixes and improvements.

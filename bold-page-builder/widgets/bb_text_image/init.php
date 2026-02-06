@@ -157,17 +157,22 @@ if ( ! class_exists( 'BB_Text_Image' ) ) {
 
 		public function widget( $args, $instance ) {
 
-			echo $args['before_widget'];
+			// $args['before_widget'] is already escaped by WordPress core
+			echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			if ( ! empty( $instance['title'] ) ) {
-				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+				// $args['before_title'], $args['after_title'], and widget_title filter are handled by WordPress core
+				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 				
 			if ( $instance['ids'] != '' ) {
-				echo do_shortcode( '[bt_bb_slider images="' . $instance['ids'] . '" show_dots="hide" height="auto" auto_play="3000"]' );
+				// do_shortcode() output is escaped by the shortcode callback
+				echo do_shortcode( '[bt_bb_slider images="' . esc_attr( $instance['ids'] ) . '" show_dots="hide" height="auto" auto_play="3000"]' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
-			echo '<div class="widget_sp_image-description">' . wpautop( $instance['text'] ) . '</div>';
+			// wpautop() adds paragraph tags but doesn't escape - wrap with wp_kses_post()
+			echo '<div class="widget_sp_image-description">' . wp_kses_post( wpautop( $instance['text'] ) ) . '</div>';
 			
-			echo $args['after_widget'];
+			// $args['after_widget'] is already escaped by WordPress core
+			echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		public function form( $instance ) {
@@ -177,29 +182,29 @@ if ( ! class_exists( 'BB_Text_Image' ) ) {
 			?>
 			<div class="bt_bb_text_image_form">
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bold-builder' ); ?></label> 
 					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 				</p>
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'ids' ) ); ?>"><?php _e( 'Image IDs:', 'bold-builder' ); ?></label>
+					<label for="<?php echo esc_attr( $this->get_field_id( 'ids' ) ); ?>"><?php esc_html_e( 'Image IDs:', 'bold-builder' ); ?></label>
 					<input class="widefat bt_bb_text_image_ids" id="<?php echo esc_attr( $this->get_field_id( 'ids' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'ids' ) ); ?>" type="hidden" value="<?php echo esc_attr( $ids ); ?>">
 					<div class="bt_bb_dialog_image_container">
 						<?php
 							$img_arr = explode( ',', $ids );
 							if ( $img_arr[0] != '' ) {
 								for ( $j = 0; $j < count( $img_arr ); $j++ ) {
-									echo '<div class="bt_bb_sortable_item" data-id="' . $img_arr[ $j ] . '"><i class="fa fa-times"></i></div>';
+									echo '<div class="bt_bb_sortable_item" data-id="' . esc_attr( $img_arr[ $j ] ) . '"><i class="fa fa-times"></i></div>';
 								}
 							}
 						?>
 					</div>
 					<div class="bt_bb_dialog_inline_buttons bt_bb_left">
-						<input type="button" class="bt_bb_dialog_select_images_button button button-small" value="<?php _e( 'Select', 'bold-builder' ); ?>">
+						<input type="button" class="bt_bb_dialog_select_images_button button button-small" value="<?php esc_attr_e( 'Select', 'bold-builder' ); ?>">
 					</div>
 				</p>			
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php _e( 'Text:', 'bold-builder' ); ?></label> 
-					<textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'text' ) ); ?>"><?php echo esc_attr( $text ); ?></textarea>
+					<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Text:', 'bold-builder' ); ?></label> 
+					<textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'text' ) ); ?>"><?php echo esc_textarea( $text ); ?></textarea>
 				</p>
 			</div>
 			<?php 

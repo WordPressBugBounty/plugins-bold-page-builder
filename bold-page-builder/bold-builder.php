@@ -3,16 +3,18 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.4.7
+ * Version: 5.6.4
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: bold-builder
  */
  
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.4.7' );
+define( 'BT_BB_VERSION', '5.6.4' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -437,10 +439,10 @@ function bt_bb_enqueue_fe_always() {
 			array( 'iris', 'wp-i18n' )
 		);
 		$colorpicker_l10n = array(
-			'clear' => __( 'Clear' ),
-			'defaultString' => __( 'Default' ),
-			'pick' => __( 'Select Color' ),
-			'current' => __( 'Current Color' ),
+			'clear' => esc_html__( 'Clear', 'bold-builder' ),
+			'defaultString' => esc_html__( 'Default', 'bold-builder' ),
+			'pick' => esc_html__( 'Select Color', 'bold-builder' ),
+			'current' => esc_html__( 'Current Color', 'bold-builder' ),
 		);
 		wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n );
 		wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( 'wp-color-picker-alpha.min.js', __FILE__ ), array( 'wp-color-picker' ), BT_BB_VERSION );
@@ -524,11 +526,6 @@ function bt_bb_wp_head() {
 	</script>
 	<?php
 	
-	$post_id = get_the_ID();
-	$opt_arr = get_option( 'bt_bb_custom_css' );
-	if ( isset( $opt_arr[ $post_id ] ) ) {
-		echo '<style>' . stripslashes( wp_strip_all_tags( $opt_arr[ $post_id ] ) ) . '</style>';
-	}
 	if ( isset( $_GET['preview'] ) && $_GET['preview'] == 'true' ) {
 		echo '<script>window.bt_bb_preview = true</script>';
 	} else {
@@ -538,9 +535,6 @@ function bt_bb_wp_head() {
 		echo '<script>window.bt_bb_fe_preview = true</script>';
 	} else {
 		echo '<script>window.bt_bb_fe_preview = false</script>';
-	}
-	if ( function_exists( 'bt_bb_add_color_schemes' ) ) {
-		bt_bb_add_color_schemes();
 	}
 	if ( ! class_exists( 'BoldThemes_BB_Settings' ) || ! BoldThemes_BB_Settings::$custom_content_elements ) { // only with native BB elements
 		echo '<script>window.bt_bb_custom_elements = false;</script>';
@@ -560,8 +554,20 @@ function bt_bb_enqueue_fe() {
 function bt_bb_enqueue_content_elements() {
 	if ( function_exists( 'csscrush_file' ) ) {
 		csscrush_file( plugin_dir_path( __FILE__ ) . 'css/front_end/content_elements.css', array( 'source_map' => true, 'minify' => false, 'output_file' => 'content_elements.crush', 'formatter' => 'block', 'boilerplate' => false, 'plugins' => array( 'ease' ) ) );
-	}
+	}	
+	
 	wp_enqueue_style( 'bt_bb_content_elements', plugins_url( 'css/front_end/content_elements.crush.css', __FILE__ ), array(), BT_BB_VERSION );
+	
+	if ( function_exists( 'bt_bb_add_color_schemes' ) ) {
+		bt_bb_add_color_schemes();
+	}
+	
+	$post_id = get_the_ID();
+	$opt_arr = get_option( 'bt_bb_custom_css' );
+
+	if ( isset( $opt_arr[ $post_id ] ) ) {
+		wp_add_inline_style( 'bt_bb_content_elements', stripslashes( wp_strip_all_tags( $opt_arr[ $post_id ] ) ) );
+	}
 	
 	wp_enqueue_script( 
 		'bt_bb_slick',
@@ -646,7 +652,7 @@ function bt_bb_get_custom_css() {
 	if ( current_user_can( 'edit_post', $post_id ) ) {
 		$opt_arr = get_option( 'bt_bb_custom_css' );
 		if ( isset( $opt_arr[ $post_id ] ) ) {
-			echo stripslashes( wp_strip_all_tags( $opt_arr[ $post_id ] ) );
+			echo esc_textarea( stripslashes( wp_strip_all_tags( $opt_arr[ $post_id ] ) ) );
 		}
 	}
 	die();
@@ -658,59 +664,106 @@ add_action( 'wp_ajax_bt_bb_get_custom_css', 'bt_bb_get_custom_css' );
  */
  
 function bt_bb_search_links() {
-	$search = sanitize_text_field( $_POST['search'] );
-	$page = intval( $_POST['page'] );
 
+    $search = sanitize_text_field( $_POST['search'] ?? '' );
+    $page   = max( 1, intval( $_POST['page'] ?? 1 ) );
+
+    $per_page = 50;
+    $offset   = ( $page - 1 ) * $per_page;
+
+    /* ---------------------------------------------------------
+     * Post types (exclude attachment here)
+     * --------------------------------------------------------- */
     $pts = get_post_types( array( 'public' => true ), 'objects' );
+    unset( $pts['attachment'] );
     $pt_names = array_keys( $pts );
- 
-    $query = array(
-        'post_type'              => $pt_names,
-        'suppress_filters'       => true,
-        'update_post_term_cache' => false,
-        'update_post_meta_cache' => false,
-        'post_status'            => 'publish',
-        'posts_per_page'         => 20,
+
+    /* ---------------------------------------------------------
+     * 1️ Main content query (posts, pages, CPTs)
+     * --------------------------------------------------------- */
+    $main_query_args = array(
+        'post_type'              	=> $pt_names,
+        'post_status'            	=> 'publish',
+        'posts_per_page'         	=> $per_page,
+        'offset'                 	=> $offset,
+        'suppress_filters'      	=> true,
+        'update_post_term_cache' 	=> false,
+        'update_post_meta_cache' 	=> false,
+        's'                      	=> $search,
     );
-	
-	if ( $search != '' ) {
-		$query['s'] = $search;
-	}
-	
-	$query['offset'] = $page > 1 ? $query['posts_per_page'] * ( $page - 1 ) : 0;
-	
-    // Do main query.
-    $get_posts = new WP_Query;
-    $posts = $get_posts->query( $query );
- 
-    // Build results.
+
+    $main_posts = get_posts( $main_query_args );
+
+    /* ---------------------------------------------------------
+     * 2️ Media (attachment) query
+     * --------------------------------------------------------- */
+	$media_query_args = array(
+		'post_type'   				=> 'attachment',
+		'post_status' 				=> 'inherit',
+        'posts_per_page'        	=> $per_page,
+        'offset'                	=> $offset,
+		'update_post_meta_cache' 	=> false,
+		'update_post_term_cache' 	=> false,
+		'meta_query'  => array(
+			'relation' => 'OR',
+			array(
+				'key'     => '_wp_attached_file',
+				'value'   => $search,
+				'compare' => 'LIKE',
+			),
+			array(
+				'key'     => '_wp_attachment_metadata',
+				'value'   => $search,
+				'compare' => 'LIKE',
+			),
+		),
+	);
+
+    $media_posts = get_posts( $media_query_args );
+
+    /* ---------------------------------------------------------
+     * 3️ Merge results
+     * --------------------------------------------------------- */
+    $posts = array_merge( $main_posts, $media_posts );
+    // $posts = $media_posts;
+
+    /* ---------------------------------------------------------
+     * 4️ Build response
+     * --------------------------------------------------------- */
     $results = array();
-    foreach ( $posts as $post ) {
-        if ( 'post' === $post->post_type ) {
-            $info = mysql2date( __( 'Y/m/d' ), $post->post_date );
-        } else {
-            $info = $pts[ $post->post_type ]->labels->singular_name;
-        }
- 
-        $results[] = array(
-            'ID'        => $post->ID,
-            'title'     => trim( esc_html( strip_tags( get_the_title( $post ) ) ) ),
-            'permalink' => get_permalink( $post->ID ),
+
+	foreach ( $posts as $post ) {
+
+		if ( $post->post_type === 'attachment' ) {
+			$url  = wp_get_attachment_url( $post->ID );
+			$file = wp_get_attachment_metadata( $post->ID );
+			$path = get_attached_file( $post->ID );
+			$ext  = $path ? strtoupper( pathinfo( $path, PATHINFO_EXTENSION ) ) : 'FILE';
+			$info = $ext;
+		} else {
+			$url = get_permalink( $post->ID );
+
+			if ( $post->post_type === 'post' ) {
+				$info = mysql2date( 'Y/m/d', $post->post_date );
+			} else {
+				$info = $pts[ $post->post_type ]->labels->singular_name;
+			}
+		}
+
+		$results[] = array(
+			'ID'        => $post->ID,
+			'title'     => trim( esc_html( strip_tags( get_the_title( $post ) ) ) ),
+			'permalink' => esc_url( $url ),
 			'slug'      => $post->post_name,
-            'info'      => $info,
-        );
-    }
-	
-    if ( ! isset( $results ) ) {
-        wp_die( 0 );
-    }
- 
+			'info'      => $info,
+		);
+	}
+
     echo wp_json_encode( $results );
-    echo "\n";
- 
-    die();
+    wp_die();
 }
 add_action( 'wp_ajax_bt_bb_search_links', 'bt_bb_search_links' );
+
 
 /**
  * Get page HTML, used in Yoast compatibility plugin
@@ -726,7 +779,7 @@ function bt_bb_get_html() {
 		$html = str_ireplace( array( '``', '`{`', '`}`' ), array( '&quot;', '&#91;', '&#93;' ), $html );
 		$html = str_ireplace( array( '*`*`*', '*`*{*`*', '*`*}*`*' ), array( '``', '`{`', '`}`' ), $html );
 		
-		echo $html;
+		echo wp_kses_post( $html );
 	}
 	wp_die();
 }
@@ -758,25 +811,34 @@ function bt_bb_settings() {
 
 	?>
 		<div class="wrap">
-			<h2><?php _e( 'Bold Builder Settings', 'bold-builder' ); ?></h2>
-			<p class="description bt_bb_wrap_documentation dashicons-editor-help dashicons-before"><?php printf(
-				   _x( 'For additional help check out <a href="%1$s" title="%2$s" target="_blank">Online Documentation</a>.', 'bold-builder' ), 'https://documentation.bold-themes.com/bold-builder', _x( 'Bold Builder documentation', 'bold-builder' )
-			 ); ?>
+			<h2><?php esc_html_e( 'Bold Builder Settings', 'bold-builder' ); ?></h2>
+			<p class="description bt_bb_wrap_documentation dashicons-editor-help dashicons-before">
+				<?php
+				printf(
+					wp_kses(
+						/* translators: 1: Documentation URL, 2: Tooltip title text */
+						__( 'For additional help check out <a href="%1$s" title="%2$s" target="_blank">Online Documentation</a>.', 'bold-builder' ),
+						array( 'a' => array( 'href' => array(), 'title' => array(), 'target' => array() ) )
+					),
+					'https://documentation.bold-themes.com/bold-builder',
+					esc_attr__( 'Bold Builder documentation', 'bold-builder' )
+				);
+				?>
 			</p>
 			<form method="post" action="options.php">
 				<?php settings_fields( 'bt_bb_settings' ); ?>
 				<table class="form-table">
 					<tbody>
 					<tr>
-						<th scope="row"><?php _e( 'Show shortcode tag instead of mapped name', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php _e( 'Show shortcode tags instead of mapped names', 'bold-builder' ); ?></span></legend>
-						<p><label><input name="bt_bb_settings[tag_as_name]" type="radio" value="0" <?php echo $tag_as_name != '1' ? 'checked="checked"' : ''; ?>> <?php _e( 'No', 'bold-builder' ); ?></label><br>
-						<label><input name="bt_bb_settings[tag_as_name]" type="radio" value="1" <?php echo $tag_as_name == '1' ? 'checked="checked"' : ''; ?>> <?php _e( 'Yes', 'bold-builder' ); ?></label></p>
+						<th scope="row"><?php esc_html_e( 'Show shortcode tag instead of mapped name', 'bold-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Show shortcode tags instead of mapped names', 'bold-builder' ); ?></span></legend>
+						<p><label><input name="bt_bb_settings[tag_as_name]" type="radio" value="0" <?php echo $tag_as_name != '1' ? 'checked="checked"' : ''; ?>> <?php esc_html_e( 'No', 'bold-builder' ); ?></label><br>
+						<label><input name="bt_bb_settings[tag_as_name]" type="radio" value="1" <?php echo $tag_as_name == '1' ? 'checked="checked"' : ''; ?>> <?php esc_html_e( 'Yes', 'bold-builder' ); ?></label></p>
 						</fieldset></td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( 'Post types', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php _e( 'Post Types', 'bold-builder' ); ?></span></legend>
+						<th scope="row"><?php esc_html_e( 'Post types', 'bold-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Post Types', 'bold-builder' ); ?></span></legend>
 						<p>
 						<?php 
 						$n = 0;
@@ -786,24 +848,24 @@ function bt_bb_settings() {
 							if ( ! $options || ( ! array_key_exists( $pt, $options ) || ( array_key_exists( $pt, $options ) && $options[ $pt ] == '1' ) ) ) {
 								$checked = ' ' . 'checked="checked"';
 							}
-							echo '<input type="hidden" name="bt_bb_settings[' . $pt . ']" value="0">';
-							echo '<label><input name="bt_bb_settings[' . $pt . ']" type="checkbox" value="1"' . $checked . '> ' . $pt . '</label>';
+							echo '<input type="hidden" name="bt_bb_settings[' . esc_attr( $pt ) . ']" value="0">';
+							echo '<label><input name="bt_bb_settings[' . esc_attr( $pt ) . ']" type="checkbox" value="1"' . esc_html( $checked ) . '> ' . esc_html( $pt ) . '</label>';
 							if ( $n < count( $post_types ) ) echo '<br>';
 						} ?>
 						</p>
 						</fieldset></td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( 'Color schemes', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php _e( 'Color Schemes', 'bold-builder' ); ?></span></legend>
+						<th scope="row"><?php esc_html_e( 'Color schemes', 'bold-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Color Schemes', 'bold-builder' ); ?></span></legend>
 						<p>
-						<textarea name="bt_bb_settings[color_schemes]" rows="10" cols="50" placeholder="Black/White;#000;#fff"><?php echo sanitize_textarea_field( $color_schemes ); ?></textarea>
+						<textarea name="bt_bb_settings[color_schemes]" rows="10" cols="50" placeholder="Black/White;#000;#fff"><?php echo esc_textarea( $color_schemes ); ?></textarea>
 						</p>
 						<small>Add each Color Scheme separated by new line. E.g. Black/White;#000;#fff</small>
 						</fieldset></td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( 'Tips', 'bold-builder' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Tips', 'bold-builder' ); ?></th>
 						<td>
 						<p><?php
 						$checked = '';
@@ -811,12 +873,12 @@ function bt_bb_settings() {
 							$checked = ' ' . 'checked="checked"';
 						}
 						echo '<input type="hidden" name="bt_bb_settings[tips]" value="0">';
-						echo '<label><input name="bt_bb_settings[tips]" type="checkbox" value="1"' . $checked . '> ' . esc_html__( 'Show Tips', 'bold-builder' ) . '</label>';
+						echo '<label><input name="bt_bb_settings[tips]" type="checkbox" value="1"' . esc_html( $checked ) . '> ' . esc_html__( 'Show Tips', 'bold-builder' ) . '</label>';
 						?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( 'Slug in URL', 'bold-builder' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Slug in URL', 'bold-builder' ); ?></th>
 						<td>
 						<p><?php
 						$checked = '';
@@ -824,21 +886,21 @@ function bt_bb_settings() {
 							$checked = ' ' . 'checked="checked"';
 						}
 						echo '<input type="hidden" name="bt_bb_settings[slug_url]" value="0">';
-						echo '<label><input name="bt_bb_settings[slug_url]" type="checkbox" value="1"' . $checked . '> ' . esc_html__( 'Use post slug in URL input (when selecting existing content search result)', 'bold-builder' ) . '</label>';
+						echo '<label><input name="bt_bb_settings[slug_url]" type="checkbox" value="1"' . esc_html( $checked ) . '> ' . esc_html__( 'Use post slug in URL input (when selecting existing content search result)', 'bold-builder' ) . '</label>';
 						?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( 'OpenAI API key', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php _e( 'OpenAI API key', 'bold-builder' ); ?></span></legend>
+						<th scope="row"><?php esc_html_e( 'OpenAI API key', 'bold-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'OpenAI API key', 'bold-builder' ); ?></span></legend>
 						<p>
 						<input type="text" name="bt_bb_settings[openai_api_key]" value="<?php echo esc_attr( $openai_api_key ); ?>">
 						</p>
 						</fieldset></td>
 					</tr>
 					<tr>
-						<th scope="row"><?php _e( 'OpenAI Model', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php _e( 'OpenAI Model', 'bold-builder' ); ?></span></legend>
+						<th scope="row"><?php esc_html_e( 'OpenAI Model', 'bold-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'OpenAI Model', 'bold-builder' ); ?></span></legend>
 						<p>
 						<input type="text" name="bt_bb_settings[openai_model]" value="<?php echo esc_attr( $openai_model ); ?>" placeholder="gpt-4">
 						</p>
@@ -847,7 +909,7 @@ function bt_bb_settings() {
 					</tbody>
 				</table>
 
-				<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Save', 'bold-builder' ); ?>"></p>
+				<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e( 'Save', 'bold-builder' ); ?>"></p>
 			</form>
 		</div>
 	<?php
@@ -866,7 +928,7 @@ function bt_bb_customize_script() {
 			require_once( dirname(__FILE__) . '/content_elements_misc/s7_icons.php' );
 			$icon_arr = array( 'Font Awesome' => bt_bb_fa_icons(), 'Font Awesome 5 Regular' => bt_bb_fa5_regular_icons(), 'Font Awesome 5 Solid' => bt_bb_fa5_solid_icons(), 'Font Awesome 5 Brands' => bt_bb_fa5_brands_icons(), 'S7' => bt_bb_s7_icons() );
 		}
-		echo 'window.bt_bb_icons = JSON.parse(\'' . bt_bb_json_encode( $icon_arr ) . '\')';
+		echo 'window.bt_bb_icons = JSON.parse(\'' . wp_json_encode( $icon_arr ) . '\')';
 	echo '</script>';
 }
 add_action( 'customize_controls_print_scripts', 'bt_bb_customize_script' );
@@ -892,7 +954,7 @@ function bt_bb_js_settings() {
 			require_once( dirname(__FILE__) . '/content_elements_misc/s7_icons.php' );
 			$icon_arr = array( 'Font Awesome' => bt_bb_fa_icons(), 'Font Awesome 5 Regular' => bt_bb_fa5_regular_icons(), 'Font Awesome 5 Solid' => bt_bb_fa5_solid_icons(), 'Font Awesome 5 Brands' => bt_bb_fa5_brands_icons(), 'S7' => bt_bb_s7_icons() );
 		}
-		echo 'window.bt_bb_icons = JSON.parse(\'' . bt_bb_json_encode( $icon_arr ) . '\')';
+		echo 'window.bt_bb_icons = JSON.parse(\'' . wp_json_encode( $icon_arr ) . '\')';
 	echo '</script>';
 	
 	$options = get_option( 'bt_bb_settings' );
@@ -913,25 +975,25 @@ function bt_bb_js_settings() {
 	$slug_url = array_key_exists( 'slug_url', $options ) ? $options['slug_url'] : '';
 	
 	echo '<script>';
-		echo 'window.bt_bb_plugins_url = "' . plugins_url() . '";';
-		echo 'window.bt_bb_loading_gif_url = "' . plugins_url( 'img/ajax-loader.gif', __FILE__ ) . '";';
+		echo 'window.bt_bb_plugins_url = "' . esc_url( plugins_url() ) . '";';
+		echo 'window.bt_bb_loading_gif_url = "' . esc_url( plugins_url( 'img/ajax-loader.gif', __FILE__ ) ) . '";';
 		echo 'window.bt_bb_settings = [];';
 		echo 'window.bt_bb_settings.tag_as_name = "' . esc_js( $tag_as_name ) . '";';
 		echo 'window.bt_bb_settings.slug_url = "' . esc_js( $slug_url ) . '";';
 		
 		echo 'window.bt_bb_ajax_url = "' . esc_js( admin_url( 'admin-ajax.php' ) ) . '";'; // back. compat.
 		
-		echo 'window.bt_bb_ajax_nonce = "' . wp_create_nonce( 'bt_bb_nonce' ) . '";'; // fix nonce issue on local sites with ai.js (not working with wp_localize_script window.bt_bb_ajax.nonce)
+		echo 'window.bt_bb_ajax_nonce = "' . esc_js( wp_create_nonce( 'bt_bb_nonce' ) ) . '";'; // fix nonce issue on local sites with ai.js (not working with wp_localize_script window.bt_bb_ajax.nonce)
 		
 		global $shortcode_tags;
 		$all_sc = $shortcode_tags;
 		ksort( $all_sc );
 		
-		echo 'window.bt_bb.all_sc = ' . bt_bb_json_encode( array_keys( $all_sc ) ) . ';';
+		echo 'window.bt_bb.all_sc = ' . wp_json_encode( array_keys( $all_sc ) ) . ';';
 
 		global $bt_bb_is_bb_content;
 		if ( $bt_bb_is_bb_content === 'true' || $bt_bb_is_bb_content === 'false' ) {
-			echo 'window.bt_bb.is_bb_content = ' . $bt_bb_is_bb_content . ';';
+			echo 'window.bt_bb.is_bb_content = ' . esc_html( $bt_bb_is_bb_content ) . ';';
 		}
 		$ajax_nonce = wp_create_nonce( 'bt-bb-custom-css-nonce' );
 		?>
@@ -957,7 +1019,7 @@ function bt_bb_js_settings() {
 					'action': 'bt_bb_save_custom_css',
 					'post_id': jQuery( '#post_ID' ).val(),
 					'css': css,
-					'bt-bb-custom-css-nonce': '<?php echo $ajax_nonce; ?>'
+					'bt-bb-custom-css-nonce': '<?php echo esc_html( $ajax_nonce ); ?>'
 				};				
 
 				jQuery.ajax({
@@ -1064,9 +1126,10 @@ function bt_bb_translate() {
 	echo 'window.bt_bb_text.help = "' . esc_html__( 'Help', 'bold-builder' ) . '";';
 	echo 'window.bt_bb_text.leave_empty = "' . esc_html__( '(leave empty to use length of current content)', 'bold-builder' ) . '";';
 	echo 'window.bt_bb_text.ai_error = "' . sprintf(
+		/* translators: 1: Opening <a> tag for settings link, 2: Closing </a> tag */
 		esc_html__( 'Error. Please check OpenAI settings %1$shere%2$s.', 'bold-builder' ),
 		'<a href=\"' . esc_url_raw( get_admin_url( null, 'options-general.php?page=bt_bb_settings' ) ) . '\" target=\"_blank\">',
-		'</a>' 
+		'</a>'
 	) . '";';
 	echo 'window.bt_bb_text.no_content = "' . esc_html__( 'No content!', 'bold-builder' ) . '";';
 	
@@ -1129,9 +1192,9 @@ function bt_bb_map_js() {
 		if ( is_array( $opt_arr ) ) {
 			foreach( $opt_arr as $k => $v ) {
 				if ( shortcode_exists( $k ) ) {
-					echo 'window.bt_bb_map["' . $k . '"] = ' . stripslashes( $v ) . ';';
+					echo 'window.bt_bb_map["' . esc_html( $k ) . '"] = ' . esc_html( stripslashes( $v ) ) . ';';
 					$bt_bb_map[ $k ] = json_decode( stripslashes( $v ), true );
-					echo 'window.bt_bb_map_secondary["' . $k . '"] = true;';
+					echo 'window.bt_bb_map_secondary["' . esc_html( $k ) . '"] = true;';
 				}
 			}
 		}
@@ -1240,7 +1303,7 @@ class BT_BB_Map_Proxy {
 					wp_enqueue_style( 'bt_bb_admin_' . uniqid(), $item );
 				}
 			}
-			echo 'window.bt_bb_map["' . $this->base . '"] = window.bt_bb_map_primary.' . $this->base . ' = ' . bt_bb_json_encode( $this->params ) . ';';
+			echo 'window.bt_bb_map["' . esc_html( $this->base ) . '"] = window.bt_bb_map_primary.' . esc_html( $this->base ) . ' = ' . wp_json_encode( $this->params ) . ';';
 			$bt_bb_map[ $this->base ] = $this->params;
 		}
 	}
@@ -1488,12 +1551,13 @@ class BT_BB_Data_Proxy {
 	}
 
 	public function js() {
+		$data = json_decode( $this->data, true );
 		echo '<script>
 			var bt_bb_data = {	
 				title: "_root",
 				base: "_root",
-				key: "' . uniqid( 'bt_bb_' ) . '",
-				children: ' . $this->data . '
+				key: "' . esc_html( uniqid( 'bt_bb_' ) ) . '",
+				children: ' . wp_json_encode( $data ) . '
 			}
 		</script>';
 	}
@@ -2129,10 +2193,10 @@ function bt_bb_honor_ssl_for_attachments( $url ) {
 add_action( 'content_save_pre', 'bt_bb_save_pre' );
 function bt_bb_save_pre( $content ) {
 	if ( ! current_user_can( 'unfiltered_html' ) ) {
-		if ( str_contains( $content, '[bt_bb_price_list' ) ) {
+		if ( str_contains( $content, '[bt_bb_price_list' ) || str_contains( $content, '`{`bt_bb_price_list' ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to save Price List element.', 'bold-builder' ) );
 		}
-		if ( str_contains( $content, '[bt_bb_raw_content' ) ) {
+		if ( str_contains( $content, '[bt_bb_raw_content' ) || str_contains( $content, '`{`bt_bb_raw_content' ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to save Raw Content element.', 'bold-builder' ) );
 		}
 	}

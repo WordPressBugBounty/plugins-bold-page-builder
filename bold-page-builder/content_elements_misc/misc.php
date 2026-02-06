@@ -86,23 +86,6 @@ if ( ! function_exists( 'bt_bb_get_color_scheme_param_array' ) ) {
 
 if ( ! function_exists( 'bt_bb_add_color_schemes' ) ) {
 	function bt_bb_add_color_schemes() {
-		
-		/*$content_post = get_post();
-		$content = $content_post->post_content;
-		
-		$bt_bb_content = false;
-		if ( strpos( $content, '[bt_bb_' ) === 0 ) {
-			$bt_bb_content = true;
-		}
-
-		if ( ! $bt_bb_content ) {
-			return;
-		}
-		
-		$pattern = '/color_scheme="(.*?)"/';
-		preg_match_all( $pattern, $content, $matches );
-	
-		$color_schemes_to_use = array_unique( $matches[1] );*/
 
 		$color_scheme_arr = bt_bb_get_color_scheme_array();
 
@@ -119,10 +102,7 @@ if ( ! function_exists( 'bt_bb_add_color_schemes' ) ) {
 				
 				if ( count( $color_scheme ) == 4 ) {
 					array_shift( $color_scheme );
-					//$scheme_id = $this_scheme;
 				}
-
-				//if ( in_array( $this_scheme, $color_schemes_to_use ) ) {
 
 				require( 'color_scheme_template.php' );
 
@@ -142,10 +122,8 @@ if ( ! function_exists( 'bt_bb_add_color_schemes' ) ) {
 					$custom_css = str_replace( ': ', ':', $custom_css );
 					$custom_css = str_replace( array( "\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $custom_css);
 					$custom_css = preg_replace( '/\/\*.*?\*\//', ' ', $custom_css );
-					echo '<style data-id="bt_bb_color_schemes">' . $custom_css . '</style>';
+					wp_add_inline_style( 'bt_bb_content_elements', $custom_css );
 				}
-				
-				//}
 				
 				$i++;
 			}
@@ -197,7 +175,7 @@ if ( ! function_exists( 'bt_bb_get_color_scheme_array' ) ) {
 		
 		// Remove rows without ';'
 		$color_scheme_arr = array_filter( $color_scheme_arr, function ( $x ) { return strpos( $x, ';' ) !== false; });
-				
+
 		$color_scheme_arr = apply_filters( 'bt_bb_color_scheme_arr', $color_scheme_arr );
 
 		return $color_scheme_arr;

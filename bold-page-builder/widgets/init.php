@@ -5,14 +5,12 @@
 if ( ! function_exists( 'register_bb_widgets' ) ) {
 	function register_bb_widgets() {
 		$bb_dir = plugin_dir_path( __FILE__ );
-		require_once( $bb_dir . 'bb_gallery/init.php' );
 		require_once( $bb_dir . 'bb_text_image/init.php' );
 		require_once( $bb_dir . 'bb_icon/init.php' );
 		require_once( $bb_dir . 'bb_weather/init.php' );
 		require_once( $bb_dir . 'bb_time/init.php' );
 		require_once( $bb_dir . 'bb_recent_posts/init.php' );
 		require_once( $bb_dir . 'bb_recent_comments/init.php' );
-		register_widget( 'BB_Gallery' );
 		register_widget( 'BB_Text_Image' );
 		register_widget( 'BB_Icon_Widget' );
 		register_widget( 'BB_Weather_Widget' );

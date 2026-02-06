@@ -1600,9 +1600,6 @@ ul.menu .bt_bb_iconpicker .bt_bb_iconpicker_select {
 /* } */
 /* Radio group */
 /* #bt_bb_dialog { */
-.bt_bb_dialog_content {
-    overscroll-behavior: contain;
-    }
 .bt_bb_dialog_content .bt_bb_dialog_item[data-type="radio"] {
     display: flex;
     flex-wrap: wrap;

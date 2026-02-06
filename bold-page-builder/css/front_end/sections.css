@@ -282,6 +282,8 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 		}*/
 		padding-left: $(horizontalPadding)px;
 		padding-right: $(horizontalPadding)px;
+		color: var(--inner-column-primary-color);
+		background-color: var(--inner-column-secondary-color);
 		&.bt_bb_vertical_align_top {justify-content: flex-start;}
 		&.bt_bb_vertical_align_middle {justify-content: center;}
 		&.bt_bb_vertical_align_bottom {justify-content: flex-end;}
@@ -319,8 +321,6 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 				background-repeat: no-repeat;
 			}
 		}
-		color: var(--inner-column-primary-color);
-		background-color: var(--inner-column-secondary-color);
 		.bt_bb_column_inner_content {
 			color: var(--inner-column-inner-primary-color);
 			background-color: var(--inner-column-inner-secondary-color);
@@ -350,7 +350,7 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 	}
 }
 
-@for i in 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600 {
+@for i in 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800 {
 	.bt_bb_layout_boxed_#(i) .bt_bb_cell {
 		flex-basis: #(i)px;
 		width: #(i)px;
@@ -548,7 +548,6 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 /* -------------- */
 
 /* Boxed 1200 */
-
 .bt_bb_row.bt_bb_row_width_boxed_1200 {
 	max-width: 1200px;
 	--row-width: 1200px;
@@ -694,7 +693,6 @@ html[data-bt_bb_screen_resolution="xl"].bt_bb_backgroud_fixed_supported .bt_bb_p
 }
 
 /* Boxed 1400 */
-
 .bt_bb_row.bt_bb_row_width_boxed_1400 {
 	max-width: 1400px;
 	--row-width: 1400px;

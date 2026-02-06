@@ -16,7 +16,7 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 
 		public function widget( $args, $instance ) {
 			
-			wp_enqueue_script( 'bt_bb_moment', plugin_dir_url( __FILE__ ) . 'moment.js', array(), BT_BB_VERSION, true );
+			wp_enqueue_script( 'moment' );
 			wp_enqueue_script( 'bt_bb_moment_timezone', plugin_dir_url( __FILE__ ) . 'moment-timezone-with-data.js', array(), BT_BB_VERSION, true );
 			
 			$this->container_id = uniqid( 'time' );
@@ -31,7 +31,8 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 			
 			//echo $args['before_widget']; // TODO: fix CSS in themes
 			
-			echo '<span id="' . esc_attr( $this->container_id ) . '" class="btIconWidget"><span class="btIconWidgetIcon">' . bt_bb_icon::get_html( $this->icon ) . '</span><span class="btIconWidgetContent"><span class="btIconWidgetTitle">' . $this->place_name . '</span><span class="btIconWidgetText"></span></span></span>';
+			// $this->icon already escaped in get_html, can not escape here without breaking custom icons and backward compatibility (custom data-ico-... attribute, custom css based on it)
+			echo '<span id="' . esc_attr( $this->container_id ) . '" class="btIconWidget"><span class="btIconWidgetIcon">' . bt_bb_icon::get_html( $this->icon ) . '</span><span class="btIconWidgetContent"><span class="btIconWidgetTitle">' . esc_html( $this->place_name ) . '</span><span class="btIconWidgetText"></span></span></span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			
 			//echo $args['after_widget']; // TODO: fix CSS in themes
 		}
@@ -44,13 +45,13 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 
 			?>		
 			<div class="bt_bb_iconpicker_widget_container">
-				<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php _e( 'Icon:', 'bold-builder' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_html_e( 'Icon:', 'bold-builder' ); ?></label>
 				<input type="hidden" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" value="<?php echo esc_attr( $icon ); ?>">
 				<input type="hidden" name="<?php echo esc_attr( $this->get_field_name( 'bt_bb_iconpicker' ) ); ?>">
 				<div class="bt_bb_iconpicker_widget_placeholder" data-icon="<?php echo esc_attr( $icon ); ?>"></div>
 			</div>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'time_zone' ) ); ?>"><?php _e( 'Time zone:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'time_zone' ) ); ?>"><?php esc_html_e( 'Time zone:', 'bold-builder' ); ?></label> 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'time_zone' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'time_zone' ) ); ?>">
 					<?php
 					
@@ -60,20 +61,20 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 
 					foreach ( $tz as $item ) {
 						if ( $item == $time_zone ) {
-							echo '<option value="' . esc_attr( $item ) . '" selected>' . $item . '</option>';
+							echo '<option value="' . esc_attr( $item ) . '" selected>' . esc_html( $item ) . '</option>';
 						} else {
-							echo '<option value="' . esc_attr( $item ) . '">' . $item . '</option>';
+							echo '<option value="' . esc_attr( $item ) . '">' . esc_html( $item ) . '</option>';
 						}
 					}
 					?>
 				</select>
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'place_name' ) ); ?>"><?php _e( 'Place name:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'place_name' ) ); ?>"><?php esc_html_e( 'Place name:', 'bold-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'place_name' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'place_name' ) ); ?>" type="text" value="<?php echo esc_attr( $place_name ); ?>">
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'time_notation' ) ); ?>"><?php _e( 'Time notation:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'time_notation' ) ); ?>"><?php esc_html_e( 'Time notation:', 'bold-builder' ); ?></label> 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'time_notation' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'time_notation' ) ); ?>">
 					<?php
 					
@@ -83,9 +84,9 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 
 					foreach ( $tn as $k => $v ) {
 						if ( $v == $time_notation ) {
-							echo '<option value="' . esc_attr( $v ) . '" selected>' . $k . '</option>';
+							echo '<option value="' . esc_attr( $v ) . '" selected>' . esc_html( $k ) . '</option>';
 						} else {
-							echo '<option value="' . esc_attr( $v ) . '">' . $k . '</option>';
+							echo '<option value="' . esc_attr( $v ) . '">' . esc_html( $k ) . '</option>';
 						}
 					}
 					?>
@@ -121,17 +122,17 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 				(function( $ ) {
 					$( document ).ready(function() {
 						
-						var time_notation = '<?php echo $this->time_notation; ?>';
+						var time_notation = '<?php echo esc_js( $this->time_notation ); ?>';
 						
 						var time = function() {
 							
 							if ( time_notation == '12' ) {
-								var time = moment().tz( '<?php echo $this->time_zone; ?>' ).format( 'h:mm A' );
+								var time = moment().tz( '<?php echo esc_js( $this->time_zone ); ?>' ).format( 'h:mm A' );
 							} else {
-								var time = moment().tz( '<?php echo $this->time_zone; ?>' ).format( 'H:mm' );
+								var time = moment().tz( '<?php echo esc_js( $this->time_zone ); ?>' ).format( 'H:mm' );
 							}
 
-							$( '#<?php echo $this->container_id; ?> .btIconWidgetText' ).html( time );
+							$( '#<?php echo esc_js( $this->container_id ); ?> .btIconWidgetText' ).html( time );
 						}
 						setInterval( function() {
 							time();

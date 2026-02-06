@@ -17,6 +17,9 @@ class bt_bb_service extends BT_BB_Element {
 			'shape'        => '',
 			'align'        => ''
 		) ), $atts, $this->shortcode ) );
+		
+		$title = str_ireplace( array( '``' ), array( '"' ), $title );
+		$text = str_ireplace( array( '``' ), array( '"' ), $text );
 
 		$class = array( $this->shortcode );
 		$data_override_class = array();
@@ -90,7 +93,7 @@ class bt_bb_service extends BT_BB_Element {
 		$icon = bt_bb_icon::get_html( $icon, '', $link, $icon_title, $target );
 
 		if ( $link != '' ) {
-			if ( $title != '' ) $title = '<a href="' . esc_url( $link ) . '" target="' . esc_attr( $target ) . '">' . $title . '</a>';
+			if ( $title != '' ) $title = '<a href="' . esc_url( $link ) . '" target="' . esc_attr( $target ) . '" title="' . esc_attr( $title ) . '">' . $title . '</a>';
 		}
 		
 		do_action( $this->shortcode . '_before_extra_responsive_param' );
@@ -129,7 +132,7 @@ class bt_bb_service extends BT_BB_Element {
 		require_once( dirname(__FILE__) . '/../../content_elements_misc/misc.php' );
 		$color_scheme_arr = bt_bb_get_color_scheme_param_array();
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Service', 'bold-builder' ), 'description' => esc_html__( 'Icon with text (and AI help)', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Service', 'bold-builder' ), 'description' => esc_html__( 'Service with text (and AI help)', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
 				array(
 					'param_name' => 'ai_prompt',

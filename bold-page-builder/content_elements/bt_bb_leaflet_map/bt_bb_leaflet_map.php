@@ -24,7 +24,6 @@ class bt_bb_leaflet_map extends BT_BB_Element {
 		// enqueue leaflet framework js and css 
 		$leaflet_framework_path = plugin_dir_url( __FILE__ ) . '/';
 		require_once( 'enqueue_lib.php' );
-		// wp_enqueue_script( 'bt_bb_leaflet_map_js', plugin_dir_url( __FILE__ ) . '/bt_bb_leaflet_map.js' ); 
 
 		$class_master = 'bt_bb_map';
 		
@@ -52,7 +51,7 @@ class bt_bb_leaflet_map extends BT_BB_Element {
 
 		$style_height = '';
 		if ( $height != '' ) {
-			$style_height = ' ' . 'style="height:' . $height . '"';
+			$style_height = ' ' . 'style="height:' . esc_attr( $height ) . '"';
 		}
 	
 		$map_id = uniqid( 'map_canvas' );
@@ -121,35 +120,35 @@ class bt_bb_leaflet_map extends BT_BB_Element {
 			require_once( 'enqueue_lib.php' );
 		}		
 		
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'OpenStreetMap', 'boldthemes_framework_textdomain' ), 'description' => esc_html__( 'OpenStreetMap with custom content', 'boldthemes_framework_textdomain' ), 'toggle' => true, 'container' => 'vertical', 'accept' => array( 'bt_bb_leaflet_map_location' => true ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'OpenStreetMap', 'bold-builder' ), 'description' => esc_html__( 'OpenStreetMap with custom content', 'bold-builder' ), 'toggle' => true, 'container' => 'vertical', 'accept' => array( 'bt_bb_leaflet_map_location' => true ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'zoom', 'type' => 'textfield', 'heading' => esc_html__( 'Zoom', 'boldthemes_framework_textdomain' ), 'placeholder' => esc_html__( 'E.g. 9', 'bold-builder' ), 'default' => '9', 'preview' => true ),
-				array( 'param_name' => 'max_zoom', 'type' => 'textfield', 'heading' => esc_html__( 'Max zoom', 'boldthemes_framework_textdomain' ), 'placeholder' => esc_html__( 'E.g. 15', 'bold-builder' ), 'default' => '15', 'preview' => true ),
-				array( 'param_name' => 'height', 'type' => 'textfield', 'heading' => esc_html__( 'Height', 'boldthemes_framework_textdomain' ), 'placeholder' => esc_html__( 'E.g. 250px', 'bold-builder' ), 'description' => esc_html__( 'Used when there is no content', 'boldthemes_framework_textdomain' ) ),
-				array( 'param_name' => 'predefined_style', 'type' => 'dropdown', 'default' => '1', 'heading' => esc_html__( 'Predefined (base) map layer', 'boldthemes_framework_textdomain' ), 'preview' => true, 
+				array( 'param_name' => 'zoom', 'type' => 'textfield', 'heading' => esc_html__( 'Zoom', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 9', 'bold-builder' ), 'default' => '9', 'preview' => true ),
+				array( 'param_name' => 'max_zoom', 'type' => 'textfield', 'heading' => esc_html__( 'Max zoom', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 15', 'bold-builder' ), 'default' => '15', 'preview' => true ),
+				array( 'param_name' => 'height', 'type' => 'textfield', 'heading' => esc_html__( 'Height', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 250px', 'bold-builder' ), 'description' => esc_html__( 'Used when there is no content', 'bold-builder' ) ),
+				array( 'param_name' => 'predefined_style', 'type' => 'dropdown', 'default' => '1', 'heading' => esc_html__( 'Predefined (base) map layer', 'bold-builder' ), 'preview' => true, 
 					'value' => array(
-						esc_html__( 'No base layer (use only additional map layers)', 'boldthemes_framework_textdomain' ) 	=> '0',
-						esc_html__( 'Mapnik OSM', 'boldthemes_framework_textdomain' ) 										=> '1',
-						//__( 'Wikimedia', 'boldthemes_framework_textdomain' ) 										=> '2',
-						esc_html__( 'OSM Hot', 'boldthemes_framework_textdomain' ) 											=> '3',
-						esc_html__( 'Stamen Watercolor', 'boldthemes_framework_textdomain' ) 								=> '4',
-						esc_html__( 'Stamen Terrain', 'boldthemes_framework_textdomain' ) 									=> '5',
-						esc_html__( 'Stamen Toner', 'boldthemes_framework_textdomain' ) 									=> '6',
-						esc_html__( 'Carto Dark', 'boldthemes_framework_textdomain' )  										=> '7',
-						esc_html__( 'Carto Light', 'boldthemes_framework_textdomain' )  									=> '8'
+						esc_html__( 'No base layer (use only additional map layers)', 'bold-builder' ) 	=> '0',
+						esc_html__( 'Mapnik OSM', 'bold-builder' ) 										=> '1',
+						//__( 'Wikimedia', 'bold-builder' ) 										=> '2',
+						esc_html__( 'OSM Hot', 'bold-builder' ) 											=> '3',
+						esc_html__( 'Stamen Watercolor', 'bold-builder' ) 								=> '4',
+						esc_html__( 'Stamen Terrain', 'bold-builder' ) 									=> '5',
+						esc_html__( 'Stamen Toner', 'bold-builder' ) 									=> '6',
+						esc_html__( 'Carto Dark', 'bold-builder' )  										=> '7',
+						esc_html__( 'Carto Light', 'bold-builder' )  									=> '8'
 					)
 				),
-				array( 'param_name' => 'custom_style', 'type' => 'textarea_object', 'heading' => esc_html__( 'Additional map layers', 'boldthemes_framework_textdomain' ), 'description' => esc_html__( 'Add Map tiles URL. E.g. https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png, Attribution text separated by new line', 'boldthemes_framework_textdomain' ) ),
-				array( 'param_name' => 'center_map', 'type' => 'dropdown', 'heading' => esc_html__( 'Center map', 'boldthemes_framework_textdomain' ), 'description' => $center_map_desc,
+				array( 'param_name' => 'custom_style', 'type' => 'textarea_object', 'heading' => esc_html__( 'Additional map layers', 'bold-builder' ), 'description' => esc_html__( 'Add Map tiles URL. E.g. https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png, Attribution text separated by new line', 'bold-builder' ) ),
+				array( 'param_name' => 'center_map', 'type' => 'dropdown', 'heading' => esc_html__( 'Center map', 'bold-builder' ), 'description' => $center_map_desc,
 					'value' => array(
-						esc_html__( 'No (use first location as center)', 'boldthemes_framework_textdomain' ) 	=> 'no',
-						esc_html__( 'Yes', 'boldthemes_framework_textdomain' ) 									=> 'yes',
-						esc_html__( 'Yes (without overlay initially)', 'boldthemes_framework_textdomain' ) 		=> 'yes_no_overlay'
+						esc_html__( 'No (use first location as center)', 'bold-builder' ) 	=> 'no',
+						esc_html__( 'Yes', 'bold-builder' ) 									=> 'yes',
+						esc_html__( 'Yes (without overlay initially)', 'bold-builder' ) 		=> 'yes_no_overlay'
 					)
 				),
-				array( 'param_name' => 'scroll_wheel',  'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'boldthemes_framework_textdomain' ) => 'yes' ), 'default' => 'yes', 'heading' => esc_html__( 'Enable scroll wheel zoom on map', 'boldthemes_framework_textdomain' ), 'preview' => true
+				array( 'param_name' => 'scroll_wheel',  'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'yes' ), 'default' => 'yes', 'heading' => esc_html__( 'Enable scroll wheel zoom on map', 'bold-builder' ), 'preview' => true
 				),
-				array( 'param_name' => 'zoom_control',  'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'boldthemes_framework_textdomain' ) => 'yes' ), 'default' => 'yes', 'heading' => esc_html__( 'Enable zoom control on map', 'boldthemes_framework_textdomain' ), 'preview' => true
+				array( 'param_name' => 'zoom_control',  'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'yes' ), 'default' => 'yes', 'heading' => esc_html__( 'Enable zoom control on map', 'bold-builder' ), 'preview' => true
 				),
 			)
 		) );

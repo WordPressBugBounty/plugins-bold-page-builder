@@ -15,6 +15,8 @@ class bt_bb_icon extends BT_BB_Element {
 			'shape'        => '',
 			'align'        => 'inherit'
 		) ), $atts, $this->shortcode ) );
+		
+		$text = str_ireplace( array( '``' ), array( '"' ), $text );
 
 		$class = array( $this->shortcode );
 		$data_override_class = array();

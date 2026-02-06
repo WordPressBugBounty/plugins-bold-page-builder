@@ -163,21 +163,27 @@ if ( ! class_exists( 'BB_Weather_Widget' ) ) {
 				}
 			}
 
+			// Define allowed HTML for icon output
+			$allowed_icon_html = array(
+				'span' => array( 'class' => true, 'data-ico-wi' => true ),
+				'a' => array( 'href' => true, 'class' => true, 'data-ico-wi' => true ),
+			);
+
 			if ( $weather_data !== false && isset( $weather_data['temp'] ) ) {
 				if ( $this->type == 'now' ) {
 					echo '<span class="btIconWidget btWidgetWithText">';
 						echo '<span class="btIconWidgetIcon">';
-							echo bt_bb_icon::get_html( 'wi_' . $this->get_icon_code( $weather_data['icon'] ) );
+							echo wp_kses( bt_bb_icon::get_html( 'wi_' . $this->get_icon_code( $weather_data['icon'] ) ), $allowed_icon_html );
 						echo '</span>';
 						echo '<span class="btIconWidgetContent">';
 							echo '<span class="btIconWidgetTitle">' . esc_html__( 'Now', 'bold-builder' ) . '</span>';
-							echo '<span class="btIconWidgetText">' . $weather_data['temp'] . '&deg;' . ( $this->temp_unit == 'imperial' ? 'F' : 'C' ) . '</span>';
+							echo '<span class="btIconWidgetText">' . esc_html( $weather_data['temp'] ) . '&deg;' . ( $this->temp_unit == 'imperial' ? 'F' : 'C' ) . '</span>';
 						echo '</span>';
 					echo '</span>';
 				} else if ( $this->type == 'forecast12' || $this->type == 'forecast24' ) {
 					echo '<span class="btIconWidget">';
 						echo '<span class="btIconWidgetIcon">';
-							echo bt_bb_icon::get_html( 'wi_' . $this->get_icon_code( $weather_data['icon'] ) );
+							echo wp_kses( bt_bb_icon::get_html( 'wi_' . $this->get_icon_code( $weather_data['icon'] ) ), $allowed_icon_html );
 						echo '</span>';
 						echo '<span class="btIconWidgetContent">';
 							if ( $this->type == 'forecast12' ) {
@@ -185,7 +191,7 @@ if ( ! class_exists( 'BB_Weather_Widget' ) ) {
 							} else if ( $this->type == 'forecast24' ) {
 								echo '<span class="btIconWidgetTitle">' . esc_html__( '24 h', 'bold-builder' ) . '</span>';
 							}
-							echo '<span class="btIconWidgetText">' . $weather_data['temp_low'] . '/' . $weather_data['temp_high'] . '&deg;' . ( $this->temp_unit == 'imperial' ? 'F' : 'C' ) . '</span>';
+							echo '<span class="btIconWidgetText">' . esc_html( $weather_data['temp_low'] ) . '/' . esc_html( $weather_data['temp_high'] ) . '&deg;' . ( $this->temp_unit == 'imperial' ? 'F' : 'C' ) . '</span>';
 						echo '</span>';
 					echo '</span>';
 				}
@@ -228,52 +234,52 @@ if ( ! class_exists( 'BB_Weather_Widget' ) ) {
 			
 			?>
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'latitude' ) ); ?>"><?php _e( 'Latitude:', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'latitude' ) ); ?>"><?php esc_html_e( 'Latitude:', 'bold-builder' ); ?></label> 
 					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'latitude' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'latitude' ) ); ?>" type="text" value="<?php echo esc_attr( $latitude ); ?>">
 				</p>
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'longitude' ) ); ?>"><?php _e( 'Longitude:', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'longitude' ) ); ?>"><?php esc_html_e( 'Longitude:', 'bold-builder' ); ?></label> 
 					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'longitude' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'longitude' ) ); ?>" type="text" value="<?php echo esc_attr( $longitude ); ?>">
 				</p>
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'temp_unit' ) ); ?>"><?php _e( 'Temperature unit:', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'temp_unit' ) ); ?>"><?php esc_html_e( 'Temperature unit:', 'bold-builder' ); ?></label> 
 					<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'temp_unit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'temp_unit' ) ); ?>">
 						<?php
 						$target_arr = array( esc_html__( 'Celsius', 'bold-builder' ) => 'metric', esc_html__( 'Fahrenheit', 'bold-builder' ) => 'imperial' );
 						foreach( $target_arr as $key => $value ) {
 							if ( $value == $temp_unit ) {
-								echo '<option value="' . esc_attr( $value ) . '" selected>' . $key . '</option>';
+								echo '<option value="' . esc_attr( $value ) . '" selected>' . esc_html( $key ) . '</option>';
 							} else {
-								echo '<option value="' . esc_attr( $value ) . '">' . $key . '</option>';
+								echo '<option value="' . esc_attr( $value ) . '">' . esc_html( $key ) . '</option>';
 							}
 						}
 						?>
 					</select>
 				</p>				
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'type' ) ); ?>"><?php _e( 'Type:', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'type' ) ); ?>"><?php esc_html_e( 'Type:', 'bold-builder' ); ?></label> 
 					<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'type' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'type' ) ); ?>">
 						<?php
 						$target_arr = array( esc_html__( 'Now', 'bold-builder' ) => 'now', esc_html__( 'Next 12 hours', 'bold-builder' ) => 'forecast12', esc_html__( 'Next 24 hours', 'bold-builder' ) => 'forecast24' );
 						foreach( $target_arr as $key => $value ) {
 							if ( $value == $type ) {
-								echo '<option value="' . esc_attr( $value ) . '" selected>' . $key . '</option>';
+								echo '<option value="' . esc_attr( $value ) . '" selected>' . esc_html( $key ) . '</option>';
 							} else {
-								echo '<option value="' . esc_attr( $value ) . '">' . $key . '</option>';
+								echo '<option value="' . esc_attr( $value ) . '">' . esc_html( $key ) . '</option>';
 							}
 						}
 						?>
 					</select>
 				</p>
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'cache' ) ); ?>"><?php _e( 'Cache (minutes):', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'cache' ) ); ?>"><?php esc_html_e( 'Cache (minutes):', 'bold-builder' ); ?></label> 
 					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'cache' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'cache' ) ); ?>" type="text" value="<?php echo esc_attr( $cache ); ?>">			
 				</p>
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'api_key' ) ); ?>"><?php _e( 'API key:', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'api_key' ) ); ?>"><?php esc_html_e( 'API key:', 'bold-builder' ); ?></label> 
 					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'api_key' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'api_key' ) ); ?>" type="text" value="<?php echo esc_attr( $api_key ); ?>">
 					<br>
-					<i><?php _e( 'Get Openweather API key here: ', 'bold-builder' ); ?></i><a href="https://openweathermap.org/appid" target="_blank">https://openweathermap.org/appid</a>
+					<i><?php esc_html_e( 'Get Openweather API key here: ', 'bold-builder' ); ?></i><a href="https://openweathermap.org/appid" target="_blank">https://openweathermap.org/appid</a>
 				</p>		
 				
 			<?php 

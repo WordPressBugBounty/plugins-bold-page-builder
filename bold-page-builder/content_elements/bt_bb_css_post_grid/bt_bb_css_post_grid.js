@@ -10,9 +10,18 @@ class bt_bb_css_post_grid {
 			jQuery( this ).find( '.bt_bb_grid_item' ).each(function() {
 				var this_top = jQuery( this ).offset().top;
 				if ( this_top < page_bottom + jQuery( window ).height() ) {
-					var img_src = jQuery( this ).data( 'src' );
-					if ( img_src !== '' && jQuery( this ).find( '.bt_bb_grid_item_post_thumbnail a' ).html() == '' ) {
-						jQuery( this ).find( '.bt_bb_grid_item_post_thumbnail a' ).html( '<img src="' + img_src + '" alt="' + jQuery( this ).data( 'alt' ) + '">' );
+					const $item = jQuery( this );
+					const imgSrc = $item.data( 'src' );
+
+					const $link = $item.find( '.bt_bb_grid_item_post_thumbnail a' );
+
+					if ( imgSrc && $link.is( ':empty' ) ) {
+						const img = jQuery( '<img>' );
+
+						img.attr( 'src', imgSrc );
+						img.attr( 'alt', $item.data( 'alt' ) || '' );
+
+						$link.append( img );
 					}
 				}
 			});

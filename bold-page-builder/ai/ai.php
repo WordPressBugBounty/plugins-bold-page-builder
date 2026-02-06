@@ -176,13 +176,13 @@ function bt_bb_ai() {
 	if ( $result ) {
 		if ( is_array( $result ) ) {
 			if ( isset( $result['error'] ) ) {
-				echo $result['error']['message'];
+				echo esc_html( $result['error']['message'] );
 			} else {
 				if ( is_array( $target ) ) {
 					if ( $modify ) {
-						echo str_ireplace( '\\\\', '\\', $result['choices'][0]['message']['content'] );
+						echo esc_html( str_ireplace( '\\\\', '\\', $result['choices'][0]['message']['content'] ) );
 					} else {
-						echo $result['choices'][0]['message']['tool_calls'][0]['function']['arguments'];
+						echo esc_html( $result['choices'][0]['message']['tool_calls'][0]['function']['arguments'] );
 					}
 				} else { // _content
 					echo json_encode( array( '_content' => trim( $result['choices'][0]['message']['content'], '"' ) ) );

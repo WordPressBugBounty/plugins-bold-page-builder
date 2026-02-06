@@ -612,7 +612,7 @@ function bt_bb_fe_init() {
 			),
 		) );
 		
-		add_action( 'wp_head', 'bt_bb_fe_head' );
+		add_action( 'wp_enqueue_scripts', 'bt_bb_fe_head', 60 );
 		add_action( 'wp_head', 'bt_bb_translate' );
 		add_action( 'wp_footer', 'bt_bb_fe_footer' );
 		
@@ -626,62 +626,64 @@ function bt_bb_fe_init() {
 }
 
 function bt_bb_fe_head() {
-	echo '<script>';
-		echo 'window.bt_bb_fe_elements = ' . bt_bb_json_encode( BT_BB_FE::$elements ) . ';';
-		echo 'window.bt_bb_fe_templates = ' . bt_bb_json_encode( BT_BB_FE::$templates ) . ';';
-		echo 'window.bt_bb_fe_wpml_lang = "' . ( function_exists( 'wpml_get_current_language' ) ? apply_filters( 'wpml_current_language', null ) : null ) . '";';
-		BT_BB_Root::$elements = apply_filters( 'bt_bb_elements', BT_BB_Root::$elements );
-		$elements = BT_BB_Root::$elements;
-		foreach ( $elements as $key => $value ) {
-			$params = isset( $value[ 'params' ] ) ? $value[ 'params' ] : null;
-			$params1 = array();
-			if ( is_array( $params ) ) {
-				foreach ( $params as $param ) {
-					$params1[ $param['param_name'] ] = $param;
-				}
+	$script = '';
+	$script .= 'window.bt_bb_fe_elements = ' . bt_bb_json_encode( BT_BB_FE::$elements ) . ';';
+	$script .= 'window.bt_bb_fe_templates = ' . bt_bb_json_encode( BT_BB_FE::$templates ) . ';';
+	$script .= 'window.bt_bb_fe_wpml_lang = "' . esc_js( function_exists( 'wpml_get_current_language' ) ? apply_filters( 'wpml_current_language', null ) : null ) . '";';
+	
+	BT_BB_Root::$elements = apply_filters( 'bt_bb_elements', BT_BB_Root::$elements );
+	$elements = BT_BB_Root::$elements;
+	foreach ( $elements as $key => $value ) {
+		$params = isset( $value[ 'params' ] ) ? $value[ 'params' ] : null;
+		$params1 = array();
+		if ( is_array( $params ) ) {
+			foreach ( $params as $param ) {
+				$params1[ $param['param_name'] ] = $param;
 			}
-			$elements[ $key ][ 'params' ] = $params1;
 		}
-		echo 'window.bt_bb_elements = ' . bt_bb_json_encode( $elements ) . ';';
-		global $post;
-		echo 'window.bt_bb_post_id = ' . $post->ID . ';';
-		echo 'window.bt_bb_edit_url = "' . get_edit_post_link( get_the_ID(), '' ) . '";';
-		echo 'window.bt_bb_settings = [];';
-		$options = get_option( 'bt_bb_settings' );
-		$slug_url = array_key_exists( 'slug_url', $options ) ? $options['slug_url'] : '';
-		echo 'window.bt_bb_settings.slug_url = "' . esc_js( $slug_url ) . '";';
-		echo 'window.bt_bb_ajax_url = "' . esc_js( admin_url( 'admin-ajax.php' ) ) . '";'; // back. compat.
-		echo 'window.bt_bb_fa_url = "' . plugins_url( 'css/font-awesome.min.css', __FILE__ ) . '";';
-		echo 'window.bt_bb_fe_dialog_content_css_url = "' . plugins_url( 'css/front_end/fe_dialog_content.crush.css', __FILE__ ) . '";';
-		
-		if ( file_exists( get_parent_theme_file_path( '/admin-style.css' ) ) ) {
-			echo 'window.bt_bb_fe_dialog_admin_css = "' . get_parent_theme_file_uri( 'admin-style.css' ) . '";';
-		}
-		
-		echo 'window.bt_bb_fe_dialog_bottom_css_url = "' . plugins_url( 'css/front_end/fe_dialog_bottom.crush.css', __FILE__ ) . '";';
-		if ( is_rtl() ) {
-			echo 'window.bt_bb_rtl = true;';
-		} else {
-			echo 'window.bt_bb_rtl = false;';
-		}
-		if ( function_exists( 'boldthemes_get_icon_fonts_bb_array' ) ) {
-			$icon_arr = boldthemes_get_icon_fonts_bb_array();
-		} else {
-			require_once( dirname(__FILE__) . '/content_elements_misc/fa_icons.php' );
-			require_once( dirname(__FILE__) . '/content_elements_misc/fa5_regular_icons.php' );
-			require_once( dirname(__FILE__) . '/content_elements_misc/fa5_solid_icons.php' );
-			require_once( dirname(__FILE__) . '/content_elements_misc/fa5_brands_icons.php' );
-			require_once( dirname(__FILE__) . '/content_elements_misc/s7_icons.php' );
-			$icon_arr = array( 'Font Awesome' => bt_bb_fa_icons(), 'Font Awesome 5 Regular' => bt_bb_fa5_regular_icons(), 'Font Awesome 5 Solid' => bt_bb_fa5_solid_icons(), 'Font Awesome 5 Brands' => bt_bb_fa5_brands_icons(), 'S7' => bt_bb_s7_icons() );
-		}
-		
-		echo 'window.bt_bb_ajax_nonce = "' . wp_create_nonce( 'bt_bb_nonce' ) . '";'; // fix nonce issue on local sites with ai.js (not working with wp_localize_script window.bt_bb_ajax.nonce)
-		
-		echo 'window.bt_bb_icons = JSON.parse(\'' . bt_bb_json_encode( $icon_arr ) . '\');';
-		
-		echo 'window.bt_bb_version = "' . BT_BB_VERSION . '";';
-
-	echo '</script>';
+		$elements[ $key ][ 'params' ] = $params1;
+	}
+	
+	$script .= 'window.bt_bb_elements = ' . bt_bb_json_encode( $elements ) . ';';
+	global $post;
+	$script .= 'window.bt_bb_post_id = ' . absint( $post->ID ) . ';';
+	$script .= 'window.bt_bb_edit_url = "' . esc_js( get_edit_post_link( get_the_ID(), '' ) ) . '";';
+	$script .= 'window.bt_bb_settings = [];';
+	$options = get_option( 'bt_bb_settings' );
+	$slug_url = array_key_exists( 'slug_url', $options ) ? $options['slug_url'] : '';
+	$script .= 'window.bt_bb_settings.slug_url = "' . esc_js( $slug_url ) . '";';
+	$script .= 'window.bt_bb_ajax_url = "' . esc_js( admin_url( 'admin-ajax.php' ) ) . '";'; // back. compat.
+	$script .= 'window.bt_bb_fa_url = "' . esc_js( plugins_url( 'css/font-awesome.min.css', __FILE__ ) ) . '";';
+	$script .= 'window.bt_bb_fe_dialog_content_css_url = "' . esc_js( plugins_url( 'css/front_end/fe_dialog_content.crush.css', __FILE__ ) ) . '";';
+	
+	if ( file_exists( get_parent_theme_file_path( '/admin-style.css' ) ) ) {
+		$script .= 'window.bt_bb_fe_dialog_admin_css = "' . esc_js( get_parent_theme_file_uri( 'admin-style.css' ) ) . '";';
+	}
+	
+	$script .= 'window.bt_bb_fe_dialog_bottom_css_url = "' . esc_js( plugins_url( 'css/front_end/fe_dialog_bottom.crush.css', __FILE__ ) ) . '";';
+	if ( is_rtl() ) {
+		$script .= 'window.bt_bb_rtl = true;';
+	} else {
+		$script .= 'window.bt_bb_rtl = false;';
+	}
+	if ( function_exists( 'boldthemes_get_icon_fonts_bb_array' ) ) {
+		$icon_arr = boldthemes_get_icon_fonts_bb_array();
+	} else {
+		require_once( dirname(__FILE__) . '/content_elements_misc/fa_icons.php' );
+		require_once( dirname(__FILE__) . '/content_elements_misc/fa5_regular_icons.php' );
+		require_once( dirname(__FILE__) . '/content_elements_misc/fa5_solid_icons.php' );
+		require_once( dirname(__FILE__) . '/content_elements_misc/fa5_brands_icons.php' );
+		require_once( dirname(__FILE__) . '/content_elements_misc/s7_icons.php' );
+		$icon_arr = array( 'Font Awesome' => bt_bb_fa_icons(), 'Font Awesome 5 Regular' => bt_bb_fa5_regular_icons(), 'Font Awesome 5 Solid' => bt_bb_fa5_solid_icons(), 'Font Awesome 5 Brands' => bt_bb_fa5_brands_icons(), 'S7' => bt_bb_s7_icons() );
+	}
+	
+	$script .= 'window.bt_bb_ajax_nonce = "' . esc_js( wp_create_nonce( 'bt_bb_nonce' ) ) . '";'; // fix nonce issue on local sites with ai.js (not working with wp_localize_script window.bt_bb_ajax.nonce)
+	
+	$script .= 'window.bt_bb_icons = JSON.parse(\'' . bt_bb_json_encode( $icon_arr ) . '\');';
+	
+	$script .= 'window.bt_bb_version = "' . esc_js( BT_BB_VERSION ) . '";';
+	
+	wp_add_inline_script( 'bt_bb_fe', $script, 'after' );
 }
 
 function bt_bb_fe_footer() {
@@ -705,13 +707,11 @@ function bt_bb_fe_footer() {
 				echo '</div>';
 				echo '<div id="bt_bb_fe_dialog_bottom"></div>';
 			echo '</div>';
-			// echo '<div id="bt_bb_fe_dialog_close" title="Close dialog"><i class="fa fa-close"></i></div>';
-			
 		echo '</div>';
 	echo '</div>';
 	
 	if ( BT_BB_Root::$has_footer && ! isset( $_GET[ 'bt_bb_edit_footer' ] ) ) {
-		echo '<a href="' . add_query_arg( 'bt_bb_edit_footer', '', get_post_permalink( BT_BB_Root::$footer_page_id ) ) . '" target="_blank" class="bt_bb_fe_preview_toggler bt_bb_fe_preview_toggler_footer">' . esc_html__( 'Edit Footer', 'bold-builder' ) . '</a>';
+		echo '<a href="' . esc_url( add_query_arg( 'bt_bb_edit_footer', '', get_post_permalink( BT_BB_Root::$footer_page_id ) ) ) . '" target="_blank" class="bt_bb_fe_preview_toggler bt_bb_fe_preview_toggler_footer">' . esc_html__( 'Edit Footer', 'bold-builder' ) . '</a>';
 	}
 	
 	echo '<div class="bt_bb_dd_tip"></div>';
@@ -727,7 +727,14 @@ function bt_bb_fe_footer() {
 function bt_bb_fe_save() {
 	check_ajax_referer( 'bt_bb_fe_nonce', 'nonce' );
 	$post_id = intval( $_POST['post_id'] );
-	$post_content = wp_kses_post( $_POST['post_content'] );
+	
+	if ( ! current_user_can( 'unfiltered_html' ) ) {
+		$post_content = wp_kses_post( $_POST['post_content'] );
+		$post_content = str_ireplace( array( '"``', '``"' ), array( '``', '``' ), $post_content );
+	} else {
+		$post_content = $_POST['post_content'];
+	}
+	
 	$wpml_lang = sanitize_text_field( $_POST['wpml_lang'] );
 	
 	if ( current_user_can( 'edit_post', $post_id ) ) {
@@ -761,16 +768,30 @@ add_action( 'wp_ajax_bt_bb_fe_save', 'bt_bb_fe_save' );
 /**
  * Get HTML
  */
+ 
 function bt_bb_fe_get_html() {
 	check_ajax_referer( 'bt_bb_fe_nonce', 'nonce' );
 	$post_id = intval( $_POST['post_id'] );
 	$content = stripslashes( wp_kses_post( $_POST['content'] ) );
+	$content = str_ireplace( array( '"``', '``"' ), array( '``', '``' ), $content );
 	if ( current_user_can( 'edit_post', $post_id ) ) {
 		remove_filter( 'the_content', 'wpautop' );
 		$html = apply_filters( 'the_content', $content );
 		$html = str_ireplace( array( '``', '`{`', '`}`' ), array( '&quot;', '&#91;', '&#93;' ), $html );
 		$html = str_ireplace( array( '*`*`*', '*`*{*`*', '*`*}*`*' ), array( '``', '`{`', '`}`' ), $html );
-		echo $html;
+        add_filter( 'wp_kses_allowed_html', function( $tags, $context ) {
+            if ( $context === 'post' ) {
+                foreach ( $tags as $tag => $attributes ) {
+					$tags[ $tag ]['data-base'] = true;
+                    $tags[ $tag ]['data-bt-bb-fe-atts'] = true;
+					$tags[ $tag ]['data-fe-id'] = true;
+					$tags[ $tag ]['data-bb-version'] = true;
+					$tags[ $tag ]['data-bt-override-class'] = true;
+                }
+            }
+            return $tags;
+        }, 10, 2 );
+		echo wp_kses_post( $html );
 	}
 	wp_die();
 }
@@ -786,12 +807,12 @@ function bt_bb_fe_get_template_html() {
 	$layout = sanitize_text_field( $_POST['layout'] );
 	$layout = preg_replace( '/[^a-zA-Z0-9_\-\+]/', '', $layout );
 	$type = isset( $_POST['type'] ) ? sanitize_text_field( $_POST['type'] ) : '';
-	$content = @file_get_contents( get_stylesheet_directory() . '/bold-page-builder/templates/' . $layout . '.txt' );
+	$content = @file_get_contents( get_stylesheet_directory() . '/bold-page-builder/templates/' . str_replace( '+', '_', $layout ) . '.txt' );
 	if ( ! $content ) {
-		$content = @file_get_contents( get_template_directory() . '/bold-page-builder/templates/' . $layout . '.txt' );
+		$content = @file_get_contents( get_template_directory() . '/bold-page-builder/templates/' . str_replace( '+', '_', $layout ) . '.txt' );
 	}
 	if ( ! $content ) {
-		$content = file_get_contents( plugin_dir_path( __FILE__ ) . '/templates/' . $layout . '.txt' );
+		$content = file_get_contents( plugin_dir_path( __FILE__ ) . '/templates/' . str_replace( '+', '_', $layout ) . '.txt' );
 	}
 	$content = trim( $content );
 	if ( current_user_can( 'edit_post', $post_id ) ) {
@@ -801,7 +822,18 @@ function bt_bb_fe_get_template_html() {
 			$content = str_ireplace( array( '``', '`{`', '`}`' ), array( '&quot;', '&#91;', '&#93;' ), $content );
 			$content = str_ireplace( array( '*`*`*', '*`*{*`*', '*`*}*`*' ), array( '``', '`{`', '`}`' ), $content );
 		}
-		
+        add_filter( 'wp_kses_allowed_html', function( $tags, $context ) {
+            if ( $context === 'post' ) {
+                foreach ( $tags as $tag => $attributes ) {
+					$tags[ $tag ]['data-base'] = true;
+                    $tags[ $tag ]['data-bt-bb-fe-atts'] = true;
+					$tags[ $tag ]['data-fe-id'] = true;
+					$tags[ $tag ]['data-bb-version'] = true;
+					$tags[ $tag ]['data-bt-override-class'] = true;
+                }
+            }
+            return $tags;
+        }, 10, 2 );
 		if ( $type == 'section' ) {
 			$fe_wrap_open = '<div class="bt_bb_fe_wrap">';
 			$fe_wrap_open .= '<span class="bt_bb_fe_count"><span class="bt_bb_fe_count_inner"></span>
@@ -815,9 +847,9 @@ function bt_bb_fe_get_template_html() {
 			</ul>
 			</span>';
 			$fe_wrap_close = '</div>';
-			echo $fe_wrap_open . $content . $fe_wrap_close;
+			echo wp_kses_post( $fe_wrap_open . $content . $fe_wrap_close );
 		} else {
-			echo $content;
+			echo wp_kses_post( $content );
 		}
 	}
 	wp_die();

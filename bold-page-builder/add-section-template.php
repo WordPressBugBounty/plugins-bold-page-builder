@@ -67,7 +67,7 @@ add_filter( 'the_content', function( $existing_content ) {
 add_action( 'wp_footer', function() {
 	echo '<script>';
 		echo 'window.bt_bb_fe_sections_search = ["';
-		echo implode( '","', BT_BB_FE::$sections_arr_search );
+		echo esc_html( implode( '","', BT_BB_FE::$sections_arr_search ) );
 		echo '"]';
 	echo '</script>';
 });

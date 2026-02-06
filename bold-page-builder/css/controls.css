@@ -492,7 +492,7 @@ ul.menu {
 /* Radio group */
 /* #bt_bb_dialog { */
 	.bt_bb_dialog_content {
-		overscroll-behavior: contain;
+		/*overscroll-behavior: contain;*/
 		.bt_bb_dialog_item[data-type="radio"] {
 			display: flex;
 			flex-wrap: wrap;

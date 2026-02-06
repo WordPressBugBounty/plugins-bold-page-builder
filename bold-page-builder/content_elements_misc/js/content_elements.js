@@ -1147,18 +1147,36 @@
 		if (atob(custom_style).startsWith('[')) custom_style = '';
 
 		var img_src = '<img src="https://maps.googleapis.com/maps/api/staticmap?center=' + centerLatLng.toString() + '&zoom=' + zoom + markerStr + '&size=640x' + height + '&scale=2&style=' + atob(custom_style) + '&key=' + api_key + '">';
-		container.find('.bt_bb_google_maps_map.bt_bb_map_map').append(img_src).on('click', function () { $(this).parent().find('.bt_bb_map_location_show').removeClass('bt_bb_map_location_show').nextOrFirst().addClass('bt_bb_map_location_show') });
+		container.find('.bt_bb_google_maps_map.bt_bb_map_map').append(img_src).on('click', function () {
 
-		locations.eq(0).addClass('bt_bb_map_location_show');
+			var parent = $(this).parent();
+			var locations = parent.find('.bt_bb_map_location');
+			var active = locations.filter('.bt_bb_map_location_show');
 
-		jQuery('#' + map_id).data('init-finished', true);
+			// OFF state → turn on first
+			if (active.length === 0) {
+				locations.first().addClass('bt_bb_map_location_show');
+				return;
+			}
+
+			// Last active → turn everything OFF
+			if (active.is(locations.last())) {
+				locations.removeClass('bt_bb_map_location_show');
+				return;
+			}
+
+			// Normal rotation → next
+			active
+				.removeClass('bt_bb_map_location_show')
+				.next('.bt_bb_map_location')
+				.addClass('bt_bb_map_location_show');
+			});
+
+			locations.eq(0).addClass('bt_bb_map_location_show');
+
+			jQuery('#' + map_id).data('init-finished', true);
 
 	}
-
-	$.fn.nextOrFirst = function (selector) {
-		var next = this.next(selector);
-		return (next.length) ? next : this.prevAll(selector).last();
-	};
 
 	window.bt_bb_gmap_init = function (map_id, zoom, custom_style) {
 

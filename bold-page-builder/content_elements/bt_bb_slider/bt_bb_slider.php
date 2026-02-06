@@ -16,7 +16,8 @@ class bt_bb_slider extends BT_BB_Element {
 			'additional_settings'	=> '',
 			'auto_play' 			=> '',
 			'pause_on_hover'     	=> '',
-			'use_lightbox' 			=> ''
+			'use_lightbox' 			=> '',
+			'gap' 					=> ''
 		) ), $atts, $this->shortcode ) );
 		
 		$slider_class = array( 'slick-slider' );
@@ -41,7 +42,7 @@ class bt_bb_slider extends BT_BB_Element {
 
 		if ( $height != '' ) {
 			$class[] = $this->prefix . 'height' . '_' . $height;
-		}	
+		}
 		
 		$data_slick = ' ' . 'data-slick=\'{ "lazyLoad": "progressive", "cssEase": "ease-out", "speed": "300"';
 		
@@ -106,7 +107,6 @@ class bt_bb_slider extends BT_BB_Element {
 		
 		if ( $sts > 1 ) {
 			$data_slick .= ',"slidesToShow": ' . $sts;
-			$class[] = $this->prefix . 'multiple_slides';
 			$data_slick .= ', "responsive": [';
 				$data_slick .= '{ "breakpoint": 481, "settings": { "slidesToShow": ' . $slides_to_show_arr[6] . ', "slidesToScroll": ' . $slides_to_show_arr[6] . ' } }';	
 				$data_slick .= ',{ "breakpoint": 769, "settings": { "slidesToShow": ' . $slides_to_show_arr[5] . ', "slidesToScroll": ' . $slides_to_show_arr[5] . ' } }';	
@@ -124,6 +124,10 @@ class bt_bb_slider extends BT_BB_Element {
 
 		if ( $use_lightbox == 'use_lightbox' ) {
 			$class[] = $this->prefix . 'use_lightbox';
+		}
+
+		if ( $gap != '' ) {
+			$class[] = $this->prefix . 'gap' . '_' . $gap;
 		}
 		
 		do_action( $this->shortcode . '_before_extra_responsive_param' );
@@ -182,16 +186,14 @@ class bt_bb_slider extends BT_BB_Element {
 			} else {
 				$output .= '<div class="bt_bb_slider_item" style="background-image:url(\'' . esc_url_raw( $image_thumb_src ) . '\')" data-src-full="' . esc_url_raw( $image_full_src ) . '"></div>';
 			}
-			
 		}
 
 		$output = '<div' . $id_attr . ' class="' . esc_attr( implode( ' ', $class ) ) . '"' . $style_attr . '><div class="' . esc_attr( implode( ' ', $slider_class ) ) . '" ' . $data_slick . '>' . $output . '</div></div>';
-		
+
 		$output = apply_filters( 'bt_bb_general_output', $output, $atts );
 		$output = apply_filters( $this->shortcode . '_output', $output, $atts );
 		
 		return $output;
-
 	}
 
 	function map_shortcode() {
@@ -200,7 +202,7 @@ class bt_bb_slider extends BT_BB_Element {
 				array( 'param_name' => 'images', 'type' => 'attach_images', 'heading' => esc_html__( 'Images', 'bold-builder' ) ),
 				array( 'param_name' => 'height', 'type' => 'dropdown', 'heading' => esc_html__( 'Height', 'bold-builder' ),
 					'value' => array(
-						esc_html__( 'Auto', 'bold-builder' ) => 'auto',
+						esc_html__( 'Auto', 'bold-builder' ) 		=> 'auto',
 						esc_html__( 'Keep height', 'bold-builder' ) => 'keep-height',
 						esc_html__( 'Half screen', 'bold-builder' ) => 'half_screen',
 						esc_html__( 'Full screen', 'bold-builder' ) => 'full_screen'
@@ -213,6 +215,14 @@ class bt_bb_slider extends BT_BB_Element {
 					'value' => array(
 						esc_html__( 'Default', 'bold-builder' ) => 'slide',
 						esc_html__( 'Fade', 'bold-builder' ) 	=> 'fade'
+					)
+				),
+				array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-builder' ),
+					'value' => array(
+						esc_html__( 'No gap', 'bold-builder' ) 			=> 'no_gap',
+						esc_html__( 'Small', 'bold-builder' ) 			=> 'small',
+						esc_html__( 'Normal', 'bold-builder' ) 			=> 'normal',
+						esc_html__( 'Large', 'bold-builder' ) 			=> 'large'
 					)
 				),
 				array( 'param_name' => 'show_arrows', 'default' => 'show', 'type' => 'dropdown', 'heading' => esc_html__( 'Navigation arrows', 'bold-builder' ),
@@ -244,7 +254,6 @@ class bt_bb_slider extends BT_BB_Element {
 						esc_html__( '12', 'bold-builder' ) 		=> '12'
 					) 
 				),
-				
 				array( 'param_name' => 'additional_settings', 'type' => 'textfield', 'heading' => esc_html__( 'Additional settings', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. "slidesToScroll": 3, "infinite": false, "centerMode": true', 'bold-builder' ), 'description' => __( 'E.g. "slidesToScroll": 3, "infinite": false, "centerMode": true, "centerPadding": "60px" (<a href="https://kenwheeler.github.io/slick/" target="_blank">view here for more</a>)', 'bold-builder' ) ),
 
 				array( 'param_name' => 'auto_play', 'type' => 'textfield', 'heading' => esc_html__( 'Autoplay interval (ms)', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 2000', 'bold-builder' ) ), 

@@ -62,7 +62,7 @@ class bt_bb_tabs extends BT_BB_Element {
 
 		$content = do_shortcode( $content );
 
-		$content = preg_replace( '/data-bb-version=".*?" /m', '', $content );
+		$content = preg_replace( '/data-bb-version="[0-9.]*?" /m', '', $content );
 
 		$content = explode( '%$%', $content );
 

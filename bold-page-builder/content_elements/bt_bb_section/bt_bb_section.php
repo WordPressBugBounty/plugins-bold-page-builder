@@ -89,7 +89,7 @@ class bt_bb_section extends BT_BB_Element {
 			if ( is_numeric( $background_image ) ) {
 				$background_image = wp_get_attachment_image_src( $background_image, 'full' );
 				if ( $background_image ) {
-					$background_image_url = $background_image[0];
+					$background_image_url = $background_image[0]; 
 				}
 			} else {
 				$background_image_url = $background_image;
@@ -312,6 +312,8 @@ class bt_bb_section extends BT_BB_Element {
 						esc_html__( 'Boxed (1400px)', 'bold-builder' ) => 'boxed_1400',
 						esc_html__( 'Boxed (1500px)', 'bold-builder' ) => 'boxed_1500',
 						esc_html__( 'Boxed (1600px)', 'bold-builder' ) => 'boxed_1600',
+						esc_html__( 'Boxed (1700px)', 'bold-builder' ) => 'boxed_1700',
+						esc_html__( 'Boxed (1800px)', 'bold-builder' ) => 'boxed_1800',
 						esc_html__( 'Wide', 'bold-builder' ) => 'wide'
 					)
 				),

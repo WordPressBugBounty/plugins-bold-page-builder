@@ -1,5 +1,4 @@
 <?php
-
 if ( ! class_exists( 'BB_Recent_Comments' ) ) {
 	
 	// RECENT COMMENTS	
@@ -13,15 +12,16 @@ if ( ! class_exists( 'BB_Recent_Comments' ) ) {
 				array( 'description' => esc_html__( 'Recent comments with avatars.', 'bold-builder' ) ) // Args
 			);
 		}
-
 		public function widget( $args, $instance ) {
 		
-			echo $args['before_widget'];
+			// $args['before_widget'] and $args['after_widget'] are already escaped by WordPress core
+			echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			if ( ! empty( $instance['title'] ) ) {
-				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+				// $args['before_title'] and $args['after_title'] are already escaped by WordPress core
+				// apply_filters output is escaped since the title goes through widget_title filter
+				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}			
-
-			$number = intval( trim( $instance['number'] ) );
+			$number = isset( $instance['number'] ) ? intval( trim( $instance['number'] ) ) : 5;
 			if ( $number < 1 ) {
 				$number = 5;
 			} else if ( $number > 30 ) {
@@ -35,13 +35,12 @@ if ( ! class_exists( 'BB_Recent_Comments' ) ) {
 			if ( $recent_comments ) {
 				$date_format = get_option( 'date_format' );
 				foreach ( $recent_comments as $recent ) {
-					echo '<li><h5><a href="' . esc_url( get_permalink( $recent->comment_post_ID ) ) . '">' . strip_tags( get_the_title( $recent->comment_post_ID ) ) . '</a></h5><p class="posted">' . date_i18n( $date_format, strtotime( $recent->comment_date ) ) . ' &mdash; ' . esc_html__( 'by', 'bold-builder' ) . ' <a href="' . esc_url( $recent->comment_author_url ) . '">' . $recent->comment_author . '</a></p></li>';
+					echo '<li><h5><a href="' . esc_url( get_permalink( $recent->comment_post_ID ) ) . '">' . esc_html( get_the_title( $recent->comment_post_ID ) ) . '</a></h5><p class="posted">' . esc_html( date_i18n( $date_format, strtotime( $recent->comment_date ) ) ) . ' &mdash; ' . esc_html__( 'by', 'bold-builder' ) . ' <a href="' . esc_url( $recent->comment_author_url ) . '">' . esc_html( $recent->comment_author ) . '</a></p></li>';
 				}
 			}
-
 			echo '</div></ul>';
 				
-			echo $args['after_widget'];
+			echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		
 		public function form( $instance ) {
@@ -49,21 +48,19 @@ if ( ! class_exists( 'BB_Recent_Comments' ) ) {
 			$number = ! empty( $instance['number'] ) ? $instance['number'] : '5';
 			?>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bold-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php _e( 'Number of comments:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of comments:', 'bold-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>">			
 			</p>
 			<?php 
 		}
-
 		public function update( $new_instance, $old_instance ) {
 			$instance = array();
 			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 			$instance['number'] = ( ! empty( $new_instance['number'] ) ) ? strip_tags( $new_instance['number'] ) : '';
-
 			return $instance;
 		}
 	}

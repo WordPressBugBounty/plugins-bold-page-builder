@@ -81,11 +81,11 @@ class bt_bb_leaflet_map_location extends BT_BB_Element {
 	}
 
 	function map_shortcode() {
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Leaflet Maps Location', 'boldthemes_framework_textdomain' ), 'description' => esc_html__( 'OpenSteet Map Location', 'boldthemes_framework_textdomain' ), 'container' => 'vertical', 'as_child' => array( 'only' => 'bt_bb_leaflet_map' ), 'accept' => array( 'bt_bb_headline' => true, 'bt_bb_text' => true, 'bt_bb_button' => true, 'bt_bb_icon' => true, 'bt_bb_service_icon' => true, 'bt_bb_service' => true, 'bt_bb_image' => true, 'bt_bb_separator' => true ), 'toggle' => true, 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Leaflet Maps Location', 'bold-builder' ), 'description' => esc_html__( 'OpenSteet Map Location', 'bold-builder' ), 'container' => 'vertical', 'as_child' => array( 'only' => 'bt_bb_leaflet_map' ), 'accept' => array( 'bt_bb_headline' => true, 'bt_bb_text' => true, 'bt_bb_button' => true, 'bt_bb_icon' => true, 'bt_bb_service_icon' => true, 'bt_bb_service' => true, 'bt_bb_image' => true, 'bt_bb_separator' => true ), 'toggle' => true, 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'latitude', 'type' => 'textfield', 'heading' => esc_html__( 'Latitude', 'boldthemes_framework_textdomain' ), 'placeholder' => esc_html__( 'E.g. 40.000000', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'longitude', 'type' => 'textfield', 'heading' => esc_html__( 'Longitude', 'boldthemes_framework_textdomain' ), 'placeholder' => esc_html__( 'E.g. 40.000000', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'icon', 'type' => 'attach_image', 'heading' => esc_html__( 'Icon', 'boldthemes_framework_textdomain' ), 'preview' => true )
+				array( 'param_name' => 'latitude', 'type' => 'textfield', 'heading' => esc_html__( 'Latitude', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 40.000000', 'bold-builder' ), 'preview' => true ),
+				array( 'param_name' => 'longitude', 'type' => 'textfield', 'heading' => esc_html__( 'Longitude', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 40.000000', 'bold-builder' ), 'preview' => true ),
+				array( 'param_name' => 'icon', 'type' => 'attach_image', 'heading' => esc_html__( 'Icon', 'bold-builder' ), 'preview' => true )
 			)
 		) );
 	}

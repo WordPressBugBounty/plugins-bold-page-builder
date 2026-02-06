@@ -85,13 +85,23 @@
 			padding: 0 0.25rem;
 		}			
 	}
+	&.bt_bb_slider {
+		.slick-list .bt_bb_slider_item.slick-slide {
+			padding: 0 0.25rem;
+		}
+	}
 }	
 .bt_bb_gap_normal {
 	.slick-list {
 		margin: 0 -0.5rem;
 		.slick-slide .content {
 			padding: 0 0.5rem;
-		}			
+		}
+	}
+	&.bt_bb_slider {
+		.slick-list .bt_bb_slider_item.slick-slide {
+			padding: 0 0.5rem;
+		}
 	}
 }
 .bt_bb_gap_large {
@@ -99,12 +109,16 @@
 		margin: 0 -1rem;
 		.slick-slide .content {
 			padding: 0 1rem;
-		}			
+		}
+	}
+	&.bt_bb_slider {
+		.slick-list .bt_bb_slider_item.slick-slide {
+			padding: 0 1rem;
+		}
 	}
 }
 
-/* Buttons */	
-
+/* Buttons */
 button.slick-arrow {
 	padding: 0;
 	letter-spacing: initial;

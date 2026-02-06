@@ -101,7 +101,7 @@ class bt_bb_countdown extends BT_BB_Element {
 		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Countdown', 'bold-builder' ), 'description' => esc_html__( 'Animated countdown', 'bold-builder' ),  
 			'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'datetime', 'type' => 'textfield', 'heading' => esc_html__( 'Target date and time', 'bold-builder' ), 'placeholder' => esc_html__( 'YY-mm-dd HH:mm:ss', 'bold-builder' ), 'description' => esc_html__( 'YY-mm-dd HH:mm:ss, e.g. 2025-02-22 22:45:00' ), 'preview' => true ),
+				array( 'param_name' => 'datetime', 'type' => 'textfield', 'heading' => esc_html__( 'Target date and time', 'bold-builder' ), 'placeholder' => esc_html__( 'YY-mm-dd HH:mm:ss', 'bold-builder' ), 'description' => esc_html__( 'YY-mm-dd HH:mm:ss, e.g. 2025-02-22 22:45:00', 'bold-builder' ), 'preview' => true ),
 				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
 						esc_html__( 'Normal', 'bold-builder' ) => 'normal',
