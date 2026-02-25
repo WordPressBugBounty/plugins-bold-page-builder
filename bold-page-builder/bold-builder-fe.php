@@ -788,6 +788,7 @@ function bt_bb_fe_get_html() {
 					$tags[ $tag ]['data-bb-version'] = true;
 					$tags[ $tag ]['data-bt-override-class'] = true;
 					$tags[ $tag ]['data-content'] = true;
+					$tags[ $tag ]['data-*'] = true;
                 }
             }
             return $tags;
@@ -832,6 +833,7 @@ function bt_bb_fe_get_template_html() {
 					$tags[ $tag ]['data-bb-version'] = true;
 					$tags[ $tag ]['data-bt-override-class'] = true;
 					$tags[ $tag ]['data-content'] = true;
+					$tags[ $tag ]['data-*'] = true;
                 }
             }
             return $tags;
