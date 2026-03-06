@@ -22,7 +22,7 @@ class bt_bb_shortcode extends BT_BB_Element {
 			);
 		}
 		
-		$shortcode_content = str_ireplace( array( '`{`', '`}`', '``' ), array( '[', ']', '"' ), $shortcode_content );
+		$shortcode_content = wp_kses_post( str_ireplace( array( '`{`', '`}`', '``' ), array( '[', ']', '"' ), $shortcode_content ) );
 		
 		if ( $shortcode_content == '' ) {
 			$shortcode_content = '<div>' . esc_html__( 'Please insert shortcode.', 'bold-builder' ) . '</div>';
