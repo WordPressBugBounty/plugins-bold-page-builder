@@ -154,7 +154,7 @@ class bt_bb_button extends BT_BB_Element {
 		$font_attr = '';
 
 		if ( $font != '' && $font != 'inherit' ) {
-			$font_attr = ' style="' . 'font-family:\'' . urldecode( $font ) . '\'"';
+			$font_attr = ' style="' . esc_attr( 'font-family:\'' . urldecode( $font ) . '\'' ) . '"';
 		}
 		
 		$text_output = '';

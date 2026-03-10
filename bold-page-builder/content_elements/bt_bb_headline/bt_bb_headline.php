@@ -29,7 +29,12 @@ class bt_bb_headline extends BT_BB_Element {
 			'subheadline'   				=> ''
 		) ), $atts, $this->shortcode ) );
 
-		$superheadline = html_entity_decode( $superheadline, ENT_QUOTES, 'UTF-8' );
+		$allowed_html_tags = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p' );
+	if ( ! in_array( $html_tag, $allowed_html_tags, true ) ) {
+		$html_tag = 'h2';
+	}
+
+	$superheadline = html_entity_decode( $superheadline, ENT_QUOTES, 'UTF-8' );
 		$subheadline = html_entity_decode( $subheadline, ENT_QUOTES, 'UTF-8' );
 		$headline = html_entity_decode( $headline, ENT_QUOTES, 'UTF-8' );
 		
@@ -68,7 +73,7 @@ class bt_bb_headline extends BT_BB_Element {
 			$html_tag_style_arr[] = 'font-size:' . $font_size  ;
 		}
 		if ( count( $html_tag_style_arr ) > 0 ) {
-			$html_tag_style = ' style="' . implode( '; ', $html_tag_style_arr ) . '"';
+			$html_tag_style = ' style="' . esc_attr( implode( '; ', $html_tag_style_arr ) ) . '"';
 		}
 		
 		if ( $font_weight != '' ) {

@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 6.9.1
-Stable tag: 5.6.8
+Stable tag: 5.6.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,10 @@ No. Actually this is premium version, only difference is that it's free. :)
  
 It is not possible to test Bold Builder with all themes - it should work fine with most but we recommend Twenty Sixteen and Twenty Seventeen themes. Also, in case you want to use our premium themes, you can find them here: [BoldThemes Portfolio](https://themeforest.net/user/boldthemes/portfolio?ref=bold-page-builder "BoldThemes Portfolio"). Please note that BoldThemes premium themes launched before June 1, 2017 will not have all the options described in this article.
 
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the Bold Page Builder plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/ae9893db-5fd0-4046-9906-46baaaf68839). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 == Screenshots ==
 
 1. Bold Page Builder - Interface
@@ -135,6 +139,9 @@ It is not possible to test Bold Builder with all themes - it should work fine wi
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.6.9 =
+* Improved security.
 
 = 5.6.8 =
 * Improved security.
