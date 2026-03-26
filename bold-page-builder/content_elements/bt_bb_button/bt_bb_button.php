@@ -160,7 +160,7 @@ class bt_bb_button extends BT_BB_Element {
 		$text_output = '';
 
 		if ( $text != '' ) {
-			$text_output = '<span class="bt_bb_button_text" ' . $font_attr . '>' . $text . '</span>';
+			$text_output = '<span class="bt_bb_button_text" ' . $font_attr . '>' . wp_kses_post( $text ) . '</span>';
 		}
 
 		$link = bt_bb_get_url( $url );

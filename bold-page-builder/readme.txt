@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 6.9.4
-Stable tag: 5.7.0
+Stable tag: 5.7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,9 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.7.1 =
+* Improved security.
 
 = 5.7.0 =
 * Improved security.
