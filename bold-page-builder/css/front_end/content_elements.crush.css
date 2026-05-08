@@ -5268,7 +5268,7 @@ ul.bt_bb_tabs_header li {
 }
 
 .bt_bb_accordion .bt_bb_accordion_item_content:after {
-    conent: ' ';
+    content: ' ';
     display: table;
     width: 100%;
     clear: both;
@@ -5277,6 +5277,7 @@ ul.bt_bb_tabs_header li {
     border-style: solid;
     border-width: 0 1px 1px;
     overflow: hidden;
+    border-color: var(--accordion-primary-color,black);
     }
 .bt_bb_accordion .bt_bb_accordion_item .bt_bb_accordion_item_title {
     padding: .7em 1em;
@@ -5334,9 +5335,6 @@ ul.bt_bb_tabs_header li {
 .bt_bb_style_simple.bt_bb_accordion .bt_bb_accordion_item:last-child {
     border-width: 0;
     border-radius: 0;
-    }
-.bt_bb_accordion .bt_bb_accordion_item {
-    border-color: var(--accordion-primary-color,black);
     }
 .bt_bb_accordion.bt_bb_style_outline .bt_bb_accordion_item_title {
     border-color: var(--accordion-primary-color,black);
@@ -8082,7 +8080,7 @@ button.slick-arrow:focus {
     transition: all 1s ease 0s;
     }
 .bt_bb_counter_holder .bt_bb_counter span.onedigit:after {
-    conent: ' ';
+    content: ' ';
     display: table;
     width: 100%;
     clear: both;

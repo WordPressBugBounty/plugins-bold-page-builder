@@ -184,7 +184,7 @@ class bt_bb_image extends BT_BB_Element {
 		
 		if ( ! empty( $link ) ) {
 			if ( $title != '' ) {
-				$output = '<a href="' . esc_url( $link ) . '"  target="' . esc_attr( $target ) . '" title="' . $title . '">' . $output . '</a>';
+				$output = '<a href="' . esc_url( $link ) . '"  target="' . esc_attr( $target ) . '" title="' . esc_attr( $title ) . '">' . $output . '</a>';
 			} else {
 				$output = '<a href="' . esc_url( $link ) . '"  target="' . esc_attr( $target ) . '">' . $output . '</a>';
 			}
@@ -193,7 +193,7 @@ class bt_bb_image extends BT_BB_Element {
 		}
 		
 		if ( $show_caption == 'yes' ) { 
-			$output = '<figure>' . $output . '<figcaption>' . $caption . '</figcaption></figure>';
+			$output = '<figure>' . $output . '<figcaption>' . esc_html( $caption ) . '</figcaption></figure>';
 		}
 
 		do_action( $this->shortcode . '_before_extra_responsive_param' );

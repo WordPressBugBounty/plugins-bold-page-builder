@@ -18,8 +18,14 @@ class bt_bb_service extends BT_BB_Element {
 			'align'        => ''
 		) ), $atts, $this->shortcode ) );
 		
+		$title = html_entity_decode( $title, ENT_QUOTES, 'UTF-8' );
+		$text  = html_entity_decode( $text,  ENT_QUOTES, 'UTF-8' );
+
 		$title = str_ireplace( array( '``' ), array( '"' ), $title );
-		$text = str_ireplace( array( '``' ), array( '"' ), $text );
+		$text  = str_ireplace( array( '``' ), array( '"' ), $text );
+
+		$title = wp_kses_post( $title );
+		$text  = wp_kses_post( $text );
 
 		$class = array( $this->shortcode );
 		$data_override_class = array();

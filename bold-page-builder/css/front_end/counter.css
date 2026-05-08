@@ -13,7 +13,7 @@
 			height: query( parent, height );
 			transition:all 1s ease 0s;
 			&:after {
-				conent: ' ';
+				content: ' ';
 				display: table;
 				width: 100%;
 				clear: both;

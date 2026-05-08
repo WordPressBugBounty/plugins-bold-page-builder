@@ -98,7 +98,7 @@ class bt_bb_section extends BT_BB_Element {
 				if ( $lazy_load == 'yes' ) {
 					$blank_image_src = BT_BB_Root::$path . 'img/blank.gif';
 					$background_image_holder_style = ' background-image: url(\'' . $blank_image_src . '\');';
-					$background_image_data_attr .= ' data-background_image_src="' . $background_image_url . '"';
+					$background_image_data_attr .= ' data-background_image_src="' . esc_url( $background_image_url ) . '"';
 					$background_image_holder_class[] = 'btLazyLoadBackground';
 				} else {
 					$background_image_holder_style = ' background-image:url(\'' . $background_image_url . '\');';

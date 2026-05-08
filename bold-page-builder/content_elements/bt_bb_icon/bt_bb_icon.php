@@ -138,7 +138,7 @@ class bt_bb_icon extends BT_BB_Element {
 		} else {
 			$target_attr = 'target="_self"';
 			if ( $target != '' ) {
-				$target_attr = ' ' . 'target="' . ( $target ) . '"';
+				$target_attr = ' ' . 'target="' . esc_attr( $target ) . '"';
 			}
 			$ico_tag = 'a href="' . esc_attr( $link ) . '"' . ' ' . $target_attr . ' ' . $url_title_attr . ' ';
 			$ico_tag_end = 'a';

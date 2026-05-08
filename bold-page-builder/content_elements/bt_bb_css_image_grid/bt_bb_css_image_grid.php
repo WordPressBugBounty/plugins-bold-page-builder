@@ -107,7 +107,7 @@ class bt_bb_css_image_grid extends BT_BB_Element {
 				$output .= '<div class="' . $this->shortcode . '_item ' . $tile_format . '" data-src-full="' . esc_url_raw( $img_src_full ) . '" title="' . esc_attr( $data_title ) . '"><div class="' . $this->shortcode . '_item_inner"><div class="' . $this->shortcode . '_item_inner_image"><img src="' . esc_url_raw( $img_src ) . '" data-src-full="' . esc_url_raw( $img_src_full ) . '" title="' . esc_attr( $data_title ) . '" alt="' . esc_attr( $data_title ) . '"/></div><div class="' . $this->shortcode . '_item_inner_content"></div></div></div>';
 				$n++;
 			} else {
-				$output .= '<div class="' . $this->shortcode . '_item" data-hw=".75" data-src-full="' . $id . '" data-title="" title="' . esc_attr( $data_title ) . '"><div class="' . $this->shortcode . '_item_inner" data-hw=".75" ><div class="' . $this->shortcode . '_item_inner_image"><img src="' . $id . '" data-src-full="' . $id . '" title="' . esc_attr( $data_title ) . '" alt="' . esc_attr( $data_title ) . '"/></div><div class="' . $this->shortcode . '_item_inner_content"></div></div></div>';
+				$output .= '<div class="' . $this->shortcode . '_item" data-hw=".75" data-src-full="' . esc_url( $id ) . '" data-title="" title="' . esc_attr( $data_title ) . '"><div class="' . $this->shortcode . '_item_inner" data-hw=".75" ><div class="' . $this->shortcode . '_item_inner_image"><img src="' . esc_url( $id ) . '" data-src-full="' . esc_url( $id ) . '" title="' . esc_attr( $data_title ) . '" alt="' . esc_attr( $data_title ) . '"/></div><div class="' . $this->shortcode . '_item_inner_content"></div></div></div>';
 			}
 		}
 
