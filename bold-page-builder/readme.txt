@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 6.9.4
-Stable tag: 5.7.3
+Stable tag: 5.8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,7 +106,7 @@ Use WordPress Add New Plugin feature and search Bold Page Builder
 Download the archive [here](https://downloads.wordpress.org/plugin/bold-page-builder.zip) and:
 
 1. Unzip the archive on your computer
-2. Upload bold-builder directory to the /wp-content/plugins/ directory
+2. Upload bold-page-builder directory to the /wp-content/plugins/ directory
 3. Activate the plugin through the Plugins menu in WordPress
 
 == Frequently Asked Questions ==
@@ -139,6 +139,12 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.8.0 =
+* Hardened all plugin PHP files against direct file access.
+* Reduced scroll jitter on parallax background sections in Chrome.
+* Improved security.
+* Renamed text domain from `bold-builder` to `bold-page-builder` to match the WordPress.org plugin slug. **Existing translations using the old text domain will need to be re-imported under the new domain.**
 
 = 5.7.3 =
 * Improved security.

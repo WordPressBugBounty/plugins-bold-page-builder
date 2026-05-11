@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_countdown extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -50,10 +52,10 @@ class bt_bb_countdown extends BT_BB_Element {
 			$init_seconds = 0;
 		}
 		
-		$d_text = esc_html__( 'Days', 'bold-builder' );
-		$h_text = esc_html__( 'Hours', 'bold-builder' );
-		$m_text = esc_html__( 'Minutes', 'bold-builder' );
-		$s_text = esc_html__( 'Seconds', 'bold-builder' );
+		$d_text = esc_html__( 'Days', 'bold-page-builder' );
+		$h_text = esc_html__( 'Hours', 'bold-page-builder' );
+		$m_text = esc_html__( 'Minutes', 'bold-page-builder' );
+		$s_text = esc_html__( 'Seconds', 'bold-page-builder' );
 		
 		if ( $hide_indication == 'yes' ) {
 			$d_text = '';
@@ -98,19 +100,19 @@ class bt_bb_countdown extends BT_BB_Element {
 
 	function map_shortcode() {
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Countdown', 'bold-builder' ), 'description' => esc_html__( 'Animated countdown', 'bold-builder' ),  
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Countdown', 'bold-page-builder' ), 'description' => esc_html__( 'Animated countdown', 'bold-page-builder' ),  
 			'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'datetime', 'type' => 'textfield', 'heading' => esc_html__( 'Target date and time', 'bold-builder' ), 'placeholder' => esc_html__( 'YY-mm-dd HH:mm:ss', 'bold-builder' ), 'description' => esc_html__( 'YY-mm-dd HH:mm:ss, e.g. 2025-02-22 22:45:00', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
+				array( 'param_name' => 'datetime', 'type' => 'textfield', 'heading' => esc_html__( 'Target date and time', 'bold-page-builder' ), 'placeholder' => esc_html__( 'YY-mm-dd HH:mm:ss', 'bold-page-builder' ), 'description' => esc_html__( 'YY-mm-dd HH:mm:ss, e.g. 2025-02-22 22:45:00', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-page-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Normal', 'bold-builder' ) => 'normal',
-						esc_html__( 'Large', 'bold-builder' ) => 'large'
+						esc_html__( 'Normal', 'bold-page-builder' ) => 'normal',
+						esc_html__( 'Large', 'bold-page-builder' ) => 'large'
 				) ),
-				array( 'param_name' => 'hide_indication', 'type' => 'dropdown', 'heading' => esc_html__( 'Hide indication', 'bold-builder' ), 'description' => esc_html__( 'Hide indication of days, hours, minutes and seconds', 'bold-builder' ),
+				array( 'param_name' => 'hide_indication', 'type' => 'dropdown', 'heading' => esc_html__( 'Hide indication', 'bold-page-builder' ), 'description' => esc_html__( 'Hide indication of days, hours, minutes and seconds', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'No', 'bold-builder' ) => 'no',
-						esc_html__( 'Yes', 'bold-builder' ) => 'yes'
+						esc_html__( 'No', 'bold-page-builder' ) => 'no',
+						esc_html__( 'Yes', 'bold-page-builder' ) => 'yes'
 				) )
 			) 
 		) );

@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 if ( ! class_exists( 'BB_Time_Widget' ) ) {
 
 	// TIME
@@ -9,8 +11,8 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 		function __construct() {
 			parent::__construct(
 				'bt_bb_time_widget', // Base ID
-				esc_html__( 'BB Time', 'bold-builder' ), // Name
-				array( 'description' => esc_html__( 'Time widget.', 'bold-builder' ) ) // Args
+				esc_html__( 'BB Time', 'bold-page-builder' ), // Name
+				array( 'description' => esc_html__( 'Time widget.', 'bold-page-builder' ) ) // Args
 			);
 		}
 
@@ -45,13 +47,13 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 
 			?>		
 			<div class="bt_bb_iconpicker_widget_container">
-				<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_html_e( 'Icon:', 'bold-builder' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_html_e( 'Icon:', 'bold-page-builder' ); ?></label>
 				<input type="hidden" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" value="<?php echo esc_attr( $icon ); ?>">
 				<input type="hidden" name="<?php echo esc_attr( $this->get_field_name( 'bt_bb_iconpicker' ) ); ?>">
 				<div class="bt_bb_iconpicker_widget_placeholder" data-icon="<?php echo esc_attr( $icon ); ?>"></div>
 			</div>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'time_zone' ) ); ?>"><?php esc_html_e( 'Time zone:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'time_zone' ) ); ?>"><?php esc_html_e( 'Time zone:', 'bold-page-builder' ); ?></label> 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'time_zone' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'time_zone' ) ); ?>">
 					<?php
 					
@@ -70,17 +72,17 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 				</select>
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'place_name' ) ); ?>"><?php esc_html_e( 'Place name:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'place_name' ) ); ?>"><?php esc_html_e( 'Place name:', 'bold-page-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'place_name' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'place_name' ) ); ?>" type="text" value="<?php echo esc_attr( $place_name ); ?>">
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'time_notation' ) ); ?>"><?php esc_html_e( 'Time notation:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'time_notation' ) ); ?>"><?php esc_html_e( 'Time notation:', 'bold-page-builder' ); ?></label> 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'time_notation' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'time_notation' ) ); ?>">
 					<?php
 					
 					require_once( 'helper.php' );
 					
-					$tn = array( esc_html__( '24 hours', 'bold-builder' ) => '24', esc_html__( '12 hours', 'bold-builder' ) => '12' );
+					$tn = array( esc_html__( '24 hours', 'bold-page-builder' ) => '24', esc_html__( '12 hours', 'bold-page-builder' ) => '12' );
 
 					foreach ( $tn as $k => $v ) {
 						if ( $v == $time_notation ) {

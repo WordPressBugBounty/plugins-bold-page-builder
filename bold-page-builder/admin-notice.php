@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 //add_action( 'admin_notices', 'bt_bb_plugin_notice' );
 function bt_bb_plugin_notice() {
 
@@ -9,7 +11,7 @@ function bt_bb_plugin_notice() {
 	
 	if ( ! get_user_meta( $user_id, 'bt_bb_plugin_notice_ignore' ) ) {
 		
-		echo '<div class="notice notice-warning is-dismissible bt_bb_plugin_notice"><p>'. esc_html__( 'Because of deprecation of Instagram API, BB Instagram widget requires Instagram username instead of access token since Bold Builder version 2.5.0.', 'bold-builder' ) . '<br><br>'. esc_html__( 'If you are using BB Instagram widget, please insert Instagram username in appropriate widget input field.', 'bold-builder' ) .'</p></div>';
+		echo '<div class="notice notice-warning is-dismissible bt_bb_plugin_notice"><p>'. esc_html__( 'Because of deprecation of Instagram API, BB Instagram widget requires Instagram username instead of access token since Bold Builder version 2.5.0.', 'bold-page-builder' ) . '<br><br>'. esc_html__( 'If you are using BB Instagram widget, please insert Instagram username in appropriate widget input field.', 'bold-page-builder' ) .'</p></div>';
 		
 	}
 	

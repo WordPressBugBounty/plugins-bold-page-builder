@@ -400,7 +400,7 @@
 						var ypos = offset - bounds.top * speed / 2;
 						ypos = (ypos > -0.5 && ypos < 0.5) ? 0 : ypos;
 
-						$(this)[0].style.backgroundPositionY = ypos + 'px';
+						$(this)[0].style.backgroundPositionY = Math.round(ypos) + 'px';
 					}
 
 					// temp if, to support old sections

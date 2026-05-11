@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_masonry_image_grid extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -103,7 +105,7 @@ class bt_bb_masonry_image_grid extends BT_BB_Element {
 				$output .= '<div class="bt_bb_grid_item ' . $tile_format . '" data-hw="' . esc_attr( $data_hw ) . '" data-src="' . esc_url_raw( $img_src ) . '" data-src-full="' . esc_url_raw( $img_src_full ) . '" data-title="' . esc_attr( $data_title ) . '"><div class="bt_bb_grid_item_inner" data-hw="' . esc_attr( $data_hw ) . '" ><div class="bt_bb_grid_item_inner_image"></div><div class="bt_bb_grid_item_inner_content"></div></div></div>';
 				$n++;
 			} else {
-				$output .= '<div class="bt_bb_grid_item" data-hw=".75" data-src="' . $id . '" data-src-full="' . $id . '" data-title=""><div class="bt_bb_grid_item_inner" data-hw=".75" ><div class="bt_bb_grid_item_inner_image"></div><div class="bt_bb_grid_item_inner_content"></div></div></div>';
+				$output .= '<div class="bt_bb_grid_item" data-hw=".75" data-src="' . esc_url( $id ) . '" data-src-full="' . esc_url( $id ) . '" data-title=""><div class="bt_bb_grid_item_inner" data-hw=".75" ><div class="bt_bb_grid_item_inner_image"></div><div class="bt_bb_grid_item_inner_content"></div></div></div>';
 			}
 		}
 
@@ -118,45 +120,45 @@ class bt_bb_masonry_image_grid extends BT_BB_Element {
 
 	function map_shortcode() {
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Masonry Image Grid (deprecated)', 'bold-builder' ), 'description' => esc_html__( 'Use Image Grid element', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Masonry Image Grid (deprecated)', 'bold-page-builder' ), 'description' => esc_html__( 'Use Image Grid element', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'images', 'type' => 'attach_images', 'heading' => esc_html__( 'Images', 'bold-builder' ) ),
-				array( 'param_name' => 'columns', 'type' => 'dropdown', 'heading' => esc_html__( 'Columns', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'images', 'type' => 'attach_images', 'heading' => esc_html__( 'Images', 'bold-page-builder' ) ),
+				array( 'param_name' => 'columns', 'type' => 'dropdown', 'heading' => esc_html__( 'Columns', 'bold-page-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( '1', 'bold-builder' ) => '1',
-						esc_html__( '2', 'bold-builder' ) => '2',
-						esc_html__( '3', 'bold-builder' ) => '3',
-						esc_html__( '4', 'bold-builder' ) => '4',
-						esc_html__( '5', 'bold-builder' ) => '5',
-						esc_html__( '6', 'bold-builder' ) => '6'
+						esc_html__( '1', 'bold-page-builder' ) => '1',
+						esc_html__( '2', 'bold-page-builder' ) => '2',
+						esc_html__( '3', 'bold-page-builder' ) => '3',
+						esc_html__( '4', 'bold-page-builder' ) => '4',
+						esc_html__( '5', 'bold-page-builder' ) => '5',
+						esc_html__( '6', 'bold-page-builder' ) => '6'
 					)
 				),
-				array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-builder' ),
+				array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'No gap', 'bold-builder' ) => 'no_gap',
-						esc_html__( 'Extra small', 'bold-builder' ) => 'extrasmall',
-						esc_html__( 'Small', 'bold-builder' ) => 'small',
-						esc_html__( 'Normal', 'bold-builder' ) => 'normal',
-						esc_html__( 'Large', 'bold-builder' ) => 'large'
+						esc_html__( 'No gap', 'bold-page-builder' ) => 'no_gap',
+						esc_html__( 'Extra small', 'bold-page-builder' ) => 'extrasmall',
+						esc_html__( 'Small', 'bold-page-builder' ) => 'small',
+						esc_html__( 'Normal', 'bold-page-builder' ) => 'normal',
+						esc_html__( 'Large', 'bold-page-builder' ) => 'large'
 					)
 				),
-				array( 'param_name' => 'img_base_size', 'type' => 'dropdown', 'default' => 'large', 'heading' => esc_html__( 'Base image size', 'bold-builder' ),
+				array( 'param_name' => 'img_base_size', 'type' => 'dropdown', 'default' => 'large', 'heading' => esc_html__( 'Base image size', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Large', 'bold-builder' ) => 'large',
-						esc_html__( 'Medium', 'bold-builder' ) => 'medium',
-						esc_html__( 'Thumbnail', 'bold-builder' ) => 'thumbnail'
+						esc_html__( 'Large', 'bold-page-builder' ) => 'large',
+						esc_html__( 'Medium', 'bold-page-builder' ) => 'medium',
+						esc_html__( 'Thumbnail', 'bold-page-builder' ) => 'thumbnail'
 					)
 				),
-				array( 'param_name' => 'lightbox_img_base_size', 'type' => 'dropdown', 'default' => 'full', 'heading' => esc_html__( 'Popup image size', 'bold-builder' ),
+				array( 'param_name' => 'lightbox_img_base_size', 'type' => 'dropdown', 'default' => 'full', 'heading' => esc_html__( 'Popup image size', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Full', 'bold-builder' ) => 'full',
-						esc_html__( 'Large', 'bold-builder' ) => 'large',
-						esc_html__( 'Medium', 'bold-builder' ) => 'medium',
-						esc_html__( 'Thumbnail', 'bold-builder' ) => 'thumbnail'
+						esc_html__( 'Full', 'bold-page-builder' ) => 'full',
+						esc_html__( 'Large', 'bold-page-builder' ) => 'large',
+						esc_html__( 'Medium', 'bold-page-builder' ) => 'medium',
+						esc_html__( 'Thumbnail', 'bold-page-builder' ) => 'thumbnail'
 					)
 				),
-				array( 'param_name' => 'format', 'type' => 'textfield', 'preview' => true, 'heading' => esc_html__( 'Tiles format', 'bold-builder' ), 'description' => esc_html__( 'e.g. 21, 11, 11', 'bold-builder' ) ),
-				array( 'param_name' => 'no_lightbox', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'no_lightbox', esc_html__( 'No', 'bold-builder' ) => 'hide_share' ), 'heading' => esc_html__( 'Disable lightbox', 'bold-builder' ) )
+				array( 'param_name' => 'format', 'type' => 'textfield', 'preview' => true, 'heading' => esc_html__( 'Tiles format', 'bold-page-builder' ), 'description' => esc_html__( 'e.g. 21, 11, 11', 'bold-page-builder' ) ),
+				array( 'param_name' => 'no_lightbox', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'no_lightbox', esc_html__( 'No', 'bold-page-builder' ) => 'hide_share' ), 'heading' => esc_html__( 'Disable lightbox', 'bold-page-builder' ) )
 			)
 		) );
 	} 

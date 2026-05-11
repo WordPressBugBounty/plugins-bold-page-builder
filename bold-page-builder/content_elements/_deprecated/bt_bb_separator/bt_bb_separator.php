@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_separator extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -73,79 +75,79 @@ class bt_bb_separator extends BT_BB_Element {
 	}
 
 	function map_shortcode() {
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Separator', 'bold-builder' ), 'description' => esc_html__( 'Separator line', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Separator', 'bold-page-builder' ), 'description' => esc_html__( 'Separator line', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array( 
-				array( 'param_name' => 'top_spacing', 'type' => 'dropdown', 'heading' => esc_html__( 'Top spacing', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
+				array( 'param_name' => 'top_spacing', 'type' => 'dropdown', 'heading' => esc_html__( 'Top spacing', 'bold-page-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'No spacing', 'bold-builder' ) => 'none',
-						esc_html__( 'Extra small', 'bold-builder' ) => 'extra_small',
-						esc_html__( 'Small', 'bold-builder' ) => 'small',		
-						esc_html__( 'Normal', 'bold-builder' ) => 'normal',
-						esc_html__( 'Medium', 'bold-builder' ) => 'medium',
-						esc_html__( 'Large', 'bold-builder' ) => 'large',
-						esc_html__( 'Extra large', 'bold-builder' ) => 'extra_large',
-						esc_html__( '5px', 'bold-builder' ) => '5',
-						esc_html__( '10px', 'bold-builder' ) => '10',
-						esc_html__( '15px', 'bold-builder' ) => '15',
-						esc_html__( '20px', 'bold-builder' ) => '20',
-						esc_html__( '25px', 'bold-builder' ) => '25',
-						esc_html__( '30px', 'bold-builder' ) => '30',
-						esc_html__( '35px', 'bold-builder' ) => '35',
-						esc_html__( '40px', 'bold-builder' ) => '40',
-						esc_html__( '45px', 'bold-builder' ) => '45',
-						esc_html__( '50px', 'bold-builder' ) => '50',
-						esc_html__( '55px', 'bold-builder' ) => '55',
-						esc_html__( '60px', 'bold-builder' ) => '60',
-						esc_html__( '65px', 'bold-builder' ) => '65',
-						esc_html__( '70px', 'bold-builder' ) => '70',
-						esc_html__( '75px', 'bold-builder' ) => '75',
-						esc_html__( '80px', 'bold-builder' ) => '80',
-						esc_html__( '85px', 'bold-builder' ) => '85',
-						esc_html__( '90px', 'bold-builder' ) => '90',
-						esc_html__( '95px', 'bold-builder' ) => '95',
-						esc_html__( '100px', 'bold-builder' ) => '100'
+						esc_html__( 'No spacing', 'bold-page-builder' ) => 'none',
+						esc_html__( 'Extra small', 'bold-page-builder' ) => 'extra_small',
+						esc_html__( 'Small', 'bold-page-builder' ) => 'small',		
+						esc_html__( 'Normal', 'bold-page-builder' ) => 'normal',
+						esc_html__( 'Medium', 'bold-page-builder' ) => 'medium',
+						esc_html__( 'Large', 'bold-page-builder' ) => 'large',
+						esc_html__( 'Extra large', 'bold-page-builder' ) => 'extra_large',
+						esc_html__( '5px', 'bold-page-builder' ) => '5',
+						esc_html__( '10px', 'bold-page-builder' ) => '10',
+						esc_html__( '15px', 'bold-page-builder' ) => '15',
+						esc_html__( '20px', 'bold-page-builder' ) => '20',
+						esc_html__( '25px', 'bold-page-builder' ) => '25',
+						esc_html__( '30px', 'bold-page-builder' ) => '30',
+						esc_html__( '35px', 'bold-page-builder' ) => '35',
+						esc_html__( '40px', 'bold-page-builder' ) => '40',
+						esc_html__( '45px', 'bold-page-builder' ) => '45',
+						esc_html__( '50px', 'bold-page-builder' ) => '50',
+						esc_html__( '55px', 'bold-page-builder' ) => '55',
+						esc_html__( '60px', 'bold-page-builder' ) => '60',
+						esc_html__( '65px', 'bold-page-builder' ) => '65',
+						esc_html__( '70px', 'bold-page-builder' ) => '70',
+						esc_html__( '75px', 'bold-page-builder' ) => '75',
+						esc_html__( '80px', 'bold-page-builder' ) => '80',
+						esc_html__( '85px', 'bold-page-builder' ) => '85',
+						esc_html__( '90px', 'bold-page-builder' ) => '90',
+						esc_html__( '95px', 'bold-page-builder' ) => '95',
+						esc_html__( '100px', 'bold-page-builder' ) => '100'
 					)
 				),
-				array( 'param_name' => 'bottom_spacing', 'type' => 'dropdown', 'heading' => esc_html__( 'Bottom spacing', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
+				array( 'param_name' => 'bottom_spacing', 'type' => 'dropdown', 'heading' => esc_html__( 'Bottom spacing', 'bold-page-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'No spacing', 'bold-builder' ) => 'none',
-						esc_html__( 'Extra small', 'bold-builder' ) => 'extra_small',
-						esc_html__( 'Small', 'bold-builder' ) => 'small',		
-						esc_html__( 'Normal', 'bold-builder' ) => 'normal',
-						esc_html__( 'Medium', 'bold-builder' ) => 'medium',
-						esc_html__( 'Large', 'bold-builder' ) => 'large',
-						esc_html__( 'Extra large', 'bold-builder' ) => 'extra_large',
-						esc_html__( '5px', 'bold-builder' ) => '5',
-						esc_html__( '10px', 'bold-builder' ) => '10',
-						esc_html__( '15px', 'bold-builder' ) => '15',
-						esc_html__( '20px', 'bold-builder' ) => '20',
-						esc_html__( '25px', 'bold-builder' ) => '25',
-						esc_html__( '30px', 'bold-builder' ) => '30',
-						esc_html__( '35px', 'bold-builder' ) => '35',
-						esc_html__( '40px', 'bold-builder' ) => '40',
-						esc_html__( '45px', 'bold-builder' ) => '45',
-						esc_html__( '50px', 'bold-builder' ) => '50',
-						esc_html__( '55px', 'bold-builder' ) => '55',
-						esc_html__( '60px', 'bold-builder' ) => '60',
-						esc_html__( '65px', 'bold-builder' ) => '65',
-						esc_html__( '70px', 'bold-builder' ) => '70',
-						esc_html__( '75px', 'bold-builder' ) => '75',
-						esc_html__( '80px', 'bold-builder' ) => '80',
-						esc_html__( '85px', 'bold-builder' ) => '85',
-						esc_html__( '90px', 'bold-builder' ) => '90',
-						esc_html__( '95px', 'bold-builder' ) => '95',
-						esc_html__( '100px', 'bold-builder' ) => '100'
+						esc_html__( 'No spacing', 'bold-page-builder' ) => 'none',
+						esc_html__( 'Extra small', 'bold-page-builder' ) => 'extra_small',
+						esc_html__( 'Small', 'bold-page-builder' ) => 'small',		
+						esc_html__( 'Normal', 'bold-page-builder' ) => 'normal',
+						esc_html__( 'Medium', 'bold-page-builder' ) => 'medium',
+						esc_html__( 'Large', 'bold-page-builder' ) => 'large',
+						esc_html__( 'Extra large', 'bold-page-builder' ) => 'extra_large',
+						esc_html__( '5px', 'bold-page-builder' ) => '5',
+						esc_html__( '10px', 'bold-page-builder' ) => '10',
+						esc_html__( '15px', 'bold-page-builder' ) => '15',
+						esc_html__( '20px', 'bold-page-builder' ) => '20',
+						esc_html__( '25px', 'bold-page-builder' ) => '25',
+						esc_html__( '30px', 'bold-page-builder' ) => '30',
+						esc_html__( '35px', 'bold-page-builder' ) => '35',
+						esc_html__( '40px', 'bold-page-builder' ) => '40',
+						esc_html__( '45px', 'bold-page-builder' ) => '45',
+						esc_html__( '50px', 'bold-page-builder' ) => '50',
+						esc_html__( '55px', 'bold-page-builder' ) => '55',
+						esc_html__( '60px', 'bold-page-builder' ) => '60',
+						esc_html__( '65px', 'bold-page-builder' ) => '65',
+						esc_html__( '70px', 'bold-page-builder' ) => '70',
+						esc_html__( '75px', 'bold-page-builder' ) => '75',
+						esc_html__( '80px', 'bold-page-builder' ) => '80',
+						esc_html__( '85px', 'bold-page-builder' ) => '85',
+						esc_html__( '90px', 'bold-page-builder' ) => '90',
+						esc_html__( '95px', 'bold-page-builder' ) => '95',
+						esc_html__( '100px', 'bold-page-builder' ) => '100'
 					)
 				),				
-				array( 'param_name' => 'border_style', 'type' => 'dropdown', 'heading' => esc_html__( 'Border style', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'border_style', 'type' => 'dropdown', 'heading' => esc_html__( 'Border style', 'bold-page-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( 'None', 'bold-builder' ) => 'none',
-						esc_html__( 'Solid', 'bold-builder' ) => 'solid',
-						esc_html__( 'Dotted', 'bold-builder' ) => 'dotted',
-						esc_html__( 'Dashed', 'bold-builder' ) => 'dashed'
+						esc_html__( 'None', 'bold-page-builder' ) => 'none',
+						esc_html__( 'Solid', 'bold-page-builder' ) => 'solid',
+						esc_html__( 'Dotted', 'bold-page-builder' ) => 'dotted',
+						esc_html__( 'Dashed', 'bold-page-builder' ) => 'dashed'
 					)
 				),
-				array( 'param_name' => 'border_width', 'type' => 'textfield', 'heading' => esc_html__( 'Border width', 'bold-builder' ), 'description' => esc_html__( 'E.g. 5px or 1em', 'bold-builder' ) )
+				array( 'param_name' => 'border_width', 'type' => 'textfield', 'heading' => esc_html__( 'Border width', 'bold-page-builder' ), 'description' => esc_html__( 'E.g. 5px or 1em', 'bold-page-builder' ) )
 			)
 		) );
 	}

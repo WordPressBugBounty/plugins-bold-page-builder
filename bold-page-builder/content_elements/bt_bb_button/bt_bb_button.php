@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_button extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -165,7 +167,10 @@ class bt_bb_button extends BT_BB_Element {
 
 		$link = bt_bb_get_url( $url );
 
-		// IMPORTANT: esc_attr must be used instead of esc_url
+		// IMPORTANT: esc_attr (not esc_url) is intentional here.
+		// Authors are allowed to put javascript: / mailto: / tel: / non-standard schemes
+		// in the button URL. esc_url would strip them. Do not "fix" this to esc_url —
+		// it has been flagged by automated security audits before; it is by design.
 		$output = '<a href="' . esc_attr( $link ) . '" target="' . esc_attr( $target ) . '" class="' . esc_attr( $this->prefix ) . 'link" title="' . esc_attr( $text ) . '">';
 			if ( $icon == '' || $icon == 'no_icon' ) {
 				$output .= $text_output;
@@ -184,94 +189,94 @@ class bt_bb_button extends BT_BB_Element {
 		
 		require( dirname(__FILE__) . '/../../content_elements_misc/fonts1.php' );
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Button', 'bold-builder' ), 'description' => esc_html__( 'Button with custom link', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Button', 'bold-page-builder' ), 'description' => esc_html__( 'Button with custom link', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'text', 'type' => 'textfield', 'heading' => esc_html__( 'Text', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Button Text', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'icon', 'type' => 'iconpicker', 'heading' => esc_html__( 'Icon', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'icon_position', 'type' => 'dropdown', 'heading' => esc_html__( 'Icon position', 'bold-builder' ),
+				array( 'param_name' => 'text', 'type' => 'textfield', 'heading' => esc_html__( 'Text', 'bold-page-builder' ), 'placeholder' => esc_html__( 'Add Button Text', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'icon', 'type' => 'iconpicker', 'heading' => esc_html__( 'Icon', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'icon_position', 'type' => 'dropdown', 'heading' => esc_html__( 'Icon position', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Left', 'bold-builder' ) 	=> 'left',
-						esc_html__( 'Right', 'bold-builder' ) 	=> 'right'
+						esc_html__( 'Left', 'bold-page-builder' ) 	=> 'left',
+						esc_html__( 'Right', 'bold-page-builder' ) 	=> 'right'
 					)
 				),
-				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Alignment', 'bold-builder' ), 'description' => esc_html__( 'Please note that it is not possible to show multiple buttons inline if any of them are using Center option.', 'bold-builder' ), 'responsive_override' => true,
+				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Alignment', 'bold-page-builder' ), 'description' => esc_html__( 'Please note that it is not possible to show multiple buttons inline if any of them are using Center option.', 'bold-page-builder' ), 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Inherit', 'bold-builder' ) => 'inherit',
-						esc_html__( 'Left', 'bold-builder' ) 	=> 'left',
-						esc_html__( 'Center', 'bold-builder' ) 	=> 'center',
-						esc_html__( 'Right', 'bold-builder' ) 	=> 'right'
+						esc_html__( 'Inherit', 'bold-page-builder' ) => 'inherit',
+						esc_html__( 'Left', 'bold-page-builder' ) 	=> 'left',
+						esc_html__( 'Center', 'bold-page-builder' ) 	=> 'center',
+						esc_html__( 'Right', 'bold-page-builder' ) 	=> 'right'
 					)
 				),
-				array( 'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us) or post slug (e.g. about-us) or search for existing content.', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ),
+				array( 'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-page-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us) or post slug (e.g. about-us) or search for existing content.', 'bold-page-builder' ), 'group' => esc_html__( 'URL', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-page-builder' ), 'group' => esc_html__( 'URL', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Self (open in same tab)', 'bold-builder' ) 		=> '_self',
-						esc_html__( 'Blank (open in new tab)', 'bold-builder' ) 		=> '_blank',
-						esc_html__( 'Lightbox (open in new layer)', 'bold-builder' ) 	=> '_lightbox',
+						esc_html__( 'Self (open in same tab)', 'bold-page-builder' ) 		=> '_self',
+						esc_html__( 'Blank (open in new tab)', 'bold-page-builder' ) 		=> '_blank',
+						esc_html__( 'Lightbox (open in new layer)', 'bold-page-builder' ) 	=> '_lightbox',
 					)
 				),
-				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ), 'responsive_override' => true,
+				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-page-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' ), 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Small', 'bold-builder' ) 		=> 'small',
-						esc_html__( 'Medium', 'bold-builder' ) 		=> 'medium',
-						esc_html__( 'Normal', 'bold-builder' ) 		=> 'normal',
-						esc_html__( 'Large', 'bold-builder' ) 		=> 'large'
+						esc_html__( 'Small', 'bold-page-builder' ) 		=> 'small',
+						esc_html__( 'Medium', 'bold-page-builder' ) 		=> 'medium',
+						esc_html__( 'Normal', 'bold-page-builder' ) 		=> 'normal',
+						esc_html__( 'Large', 'bold-page-builder' ) 		=> 'large'
 					)
 				),
-				array( 'param_name' => 'style', 'type' => 'dropdown', 'heading' => esc_html__( 'Style', 'bold-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ),
+				array( 'param_name' => 'style', 'type' => 'dropdown', 'heading' => esc_html__( 'Style', 'bold-page-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Outline', 'bold-builder' ) 	=> 'outline',
-						esc_html__( 'Filled', 'bold-builder' ) 		=> 'filled',
-						esc_html__( 'Clean', 'bold-builder' ) 		=> 'clean'
+						esc_html__( 'Outline', 'bold-page-builder' ) 	=> 'outline',
+						esc_html__( 'Filled', 'bold-page-builder' ) 		=> 'filled',
+						esc_html__( 'Clean', 'bold-page-builder' ) 		=> 'clean'
 					)
 				),
-				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ),
+				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Inherit', 'bold-builder' ) 		=> 'inherit',
-						esc_html__( 'Square', 'bold-builder' ) 			=> 'square',
-						esc_html__( 'Soft Rounded', 'bold-builder' ) 	=> 'rounded',
-						esc_html__( 'Hard Rounded', 'bold-builder' ) 	=> 'round'
+						esc_html__( 'Inherit', 'bold-page-builder' ) 		=> 'inherit',
+						esc_html__( 'Square', 'bold-page-builder' ) 			=> 'square',
+						esc_html__( 'Soft Rounded', 'bold-page-builder' ) 	=> 'rounded',
+						esc_html__( 'Hard Rounded', 'bold-page-builder' ) 	=> 'round'
 					)
 				),
-				array( 'param_name' => 'width', 'type' => 'dropdown', 'heading' => esc_html__( 'Width', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ), 'responsive_override' => true,
+				array( 'param_name' => 'width', 'type' => 'dropdown', 'heading' => esc_html__( 'Width', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ), 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Inline', 'bold-builder' ) 			=> 'inline',
-						esc_html__( 'Full', 'bold-builder' ) 			=> 'full'
+						esc_html__( 'Inline', 'bold-page-builder' ) 			=> 'inline',
+						esc_html__( 'Full', 'bold-page-builder' ) 			=> 'full'
 					)
 				),
-				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ) ),
+				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' ) ),
 				
-				array( 'param_name' => 'font', 'type' => 'dropdown', 'heading' => esc_html__( 'Font', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ), 'preview' => true,
-					'value' => array( esc_html__( 'Inherit', 'bold-builder' ) => 'inherit' ) + BT_BB_Root::$font_arr
+				array( 'param_name' => 'font', 'type' => 'dropdown', 'heading' => esc_html__( 'Font', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ), 'preview' => true,
+					'value' => array( esc_html__( 'Inherit', 'bold-page-builder' ) => 'inherit' ) + BT_BB_Root::$font_arr
 				),
-				array( 'param_name' => 'font_subset', 'type' => 'textfield', 'heading' => esc_html__( 'Google font subset', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ), 'value' => 'latin,latin-ext', 'description' => esc_html__( 'E.g. latin,latin-ext,cyrillic,cyrillic-ext', 'bold-builder' ) ),
-				array( 'param_name' => 'font_load_extension', 'type' => 'textfield', 'heading' => esc_html__( 'Google variable font style specification', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ), 'value' => '', 'description' => __( 'Define Google variable font style specification. For more details, <a href="https://fonts.google.com/knowledge/glossary/variable_fonts" target="_blank">read here</a>. Leave empty to load default font settings.', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. :ital,wght@0,200;1,700', 'bold-builder' ) ),
-				array( 'param_name' => 'font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Font weight', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ),
+				array( 'param_name' => 'font_subset', 'type' => 'textfield', 'heading' => esc_html__( 'Google font subset', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ), 'value' => 'latin,latin-ext', 'description' => esc_html__( 'E.g. latin,latin-ext,cyrillic,cyrillic-ext', 'bold-page-builder' ) ),
+				array( 'param_name' => 'font_load_extension', 'type' => 'textfield', 'heading' => esc_html__( 'Google variable font style specification', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ), 'value' => '', 'description' => __( 'Define Google variable font style specification. For more details, <a href="https://fonts.google.com/knowledge/glossary/variable_fonts" target="_blank">read here</a>. Leave empty to load default font settings.', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. :ital,wght@0,200;1,700', 'bold-page-builder' ) ),
+				array( 'param_name' => 'font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Font weight', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) 	=> '',
-						esc_html__( 'Normal', 'bold-builder' ) 		=> 'normal',
-						esc_html__( 'Bold', 'bold-builder' ) 		=> 'bold',
-						esc_html__( 'Bolder', 'bold-builder' ) 		=> 'bolder',
-						esc_html__( 'Lighter', 'bold-builder' ) 	=> 'lighter',
-						esc_html__( 'Light', 'bold-builder' ) 		=> 'light',
-						esc_html__( '100', 'bold-builder' ) 		=> '100',
-						esc_html__( '200', 'bold-builder' ) 		=> '200',
-						esc_html__( '300', 'bold-builder' ) 		=> '300',
-						esc_html__( '400', 'bold-builder' ) 		=> '400',
-						esc_html__( '500', 'bold-builder' ) 		=> '500',
-						esc_html__( '600', 'bold-builder' ) 		=> '600',
-						esc_html__( '700', 'bold-builder' ) 		=> '700',
-						esc_html__( '800', 'bold-builder' ) 		=> '800',
-						esc_html__( '900', 'bold-builder' ) 		=> '900'
+						esc_html__( 'Default', 'bold-page-builder' ) 	=> '',
+						esc_html__( 'Normal', 'bold-page-builder' ) 		=> 'normal',
+						esc_html__( 'Bold', 'bold-page-builder' ) 		=> 'bold',
+						esc_html__( 'Bolder', 'bold-page-builder' ) 		=> 'bolder',
+						esc_html__( 'Lighter', 'bold-page-builder' ) 	=> 'lighter',
+						esc_html__( 'Light', 'bold-page-builder' ) 		=> 'light',
+						esc_html__( '100', 'bold-page-builder' ) 		=> '100',
+						esc_html__( '200', 'bold-page-builder' ) 		=> '200',
+						esc_html__( '300', 'bold-page-builder' ) 		=> '300',
+						esc_html__( '400', 'bold-page-builder' ) 		=> '400',
+						esc_html__( '500', 'bold-page-builder' ) 		=> '500',
+						esc_html__( '600', 'bold-page-builder' ) 		=> '600',
+						esc_html__( '700', 'bold-page-builder' ) 		=> '700',
+						esc_html__( '800', 'bold-page-builder' ) 		=> '800',
+						esc_html__( '900', 'bold-page-builder' ) 		=> '900'
 					)
 				),
-				array( 'param_name' => 'text_transform', 'type' => 'dropdown', 'heading' => esc_html__( 'Text transform', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ),
+				array( 'param_name' => 'text_transform', 'type' => 'dropdown', 'heading' => esc_html__( 'Text transform', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Inherit', 'bold-builder' ) 	=> 'inherit',
-						esc_html__( 'None', 'bold-builder' ) 		=> 'none',
-						esc_html__( 'UPPERCASE', 'bold-builder' ) 	=> 'uppercase',
-						esc_html__( 'Lowercase', 'bold-builder' ) 	=> 'lowercase',
-						esc_html__( 'Capitalize', 'bold-builder' ) 	=> 'capitalize'
+						esc_html__( 'Inherit', 'bold-page-builder' ) 	=> 'inherit',
+						esc_html__( 'None', 'bold-page-builder' ) 		=> 'none',
+						esc_html__( 'UPPERCASE', 'bold-page-builder' ) 	=> 'uppercase',
+						esc_html__( 'Lowercase', 'bold-page-builder' ) 	=> 'lowercase',
+						esc_html__( 'Capitalize', 'bold-page-builder' ) 	=> 'capitalize'
 					)
 				),
 				

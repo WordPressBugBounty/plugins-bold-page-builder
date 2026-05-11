@@ -1,4 +1,6 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'BB_Recent_Posts' ) ) {
 	
 	// RECENT POSTS	
@@ -8,8 +10,8 @@ if ( ! class_exists( 'BB_Recent_Posts' ) ) {
 		function __construct() {
 			parent::__construct(
 				'bt_bb_recent_posts', // Base ID
-				esc_html__( 'BB Recent Posts', 'bold-builder' ), // Name
-				array( 'description' => esc_html__( 'Recent posts with thumbnails.', 'bold-builder' ) ) // Args
+				esc_html__( 'BB Recent Posts', 'bold-page-builder' ), // Name
+				array( 'description' => esc_html__( 'Recent posts with thumbnails.', 'bold-page-builder' ) ) // Args
 			);
 		}
 		public function widget( $args, $instance ) {
@@ -63,21 +65,21 @@ if ( ! class_exists( 'BB_Recent_Posts' ) ) {
 		}
 		
 		public function form( $instance ) {
-			$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Recent Posts', 'bold-builder' );
+			$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Recent Posts', 'bold-page-builder' );
 			$number = ! empty( $instance['number'] ) ? $instance['number'] : '5';
 			$show_date = ! empty( $instance['show_date'] ) ? $instance['show_date'] : '';
 			?>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bold-page-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts:', 'bold-page-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>">			
 			</p>
 			<p>
 				<input class="checkbox" type="checkbox" <?php checked( $show_date, 'on' ); ?> id="<?php echo esc_attr( $this->get_field_id('show_date') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_date') ); ?>" /> 
-				<label for="<?php echo esc_attr( $this->get_field_id('show_date') ); ?>"><?php esc_html_e( 'Show date', 'bold-builder' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id('show_date') ); ?>"><?php esc_html_e( 'Show date', 'bold-page-builder' ); ?></label>
 			</p>
 			<?php 
 		}

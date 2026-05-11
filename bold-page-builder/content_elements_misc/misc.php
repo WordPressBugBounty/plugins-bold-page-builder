@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class BT_BB_State {
 	static $fonts_added = array();
 	static $font_subsets_added = array();
@@ -64,7 +66,7 @@ if ( ! function_exists( 'bt_bb_get_permalink_by_slug' ) ) {
 
 if ( ! function_exists( 'bt_bb_get_color_scheme_param_array' ) ) {
 	function bt_bb_get_color_scheme_param_array() {
-		$color_scheme_arr = array( esc_html__( 'Inherit', 'bold-builder' ) => '' );
+		$color_scheme_arr = array( esc_html__( 'Inherit', 'bold-page-builder' ) => '' );
 
 		$color_scheme_arr_temp = bt_bb_get_color_scheme_array();
 

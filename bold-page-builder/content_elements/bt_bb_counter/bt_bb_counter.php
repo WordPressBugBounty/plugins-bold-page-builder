@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_counter extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -103,17 +105,17 @@ class bt_bb_counter extends BT_BB_Element {
 
 	function map_shortcode() {
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Counter', 'bold-builder' ), 'description' => esc_html__( 'Animated counter', 'bold-builder' ),  
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Counter', 'bold-page-builder' ), 'description' => esc_html__( 'Animated counter', 'bold-page-builder' ),  
 			'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'number', 'type' => 'textfield', 'heading' => esc_html__( 'Number', 'bold-builder' ), 'placeholder' => esc_html__( 'Add number', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
+				array( 'param_name' => 'number', 'type' => 'textfield', 'heading' => esc_html__( 'Number', 'bold-page-builder' ), 'placeholder' => esc_html__( 'Add number', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-page-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Extra small', 'bold-builder' ) => 'xsmall',
-						esc_html__( 'Small', 'bold-builder' ) => 'small',
-						esc_html__( 'Normal', 'bold-builder' ) => 'normal',
-						esc_html__( 'Large', 'bold-builder' ) => 'large',
-						esc_html__( 'Extra large', 'bold-builder' ) => 'xlarge'		
+						esc_html__( 'Extra small', 'bold-page-builder' ) => 'xsmall',
+						esc_html__( 'Small', 'bold-page-builder' ) => 'small',
+						esc_html__( 'Normal', 'bold-page-builder' ) => 'normal',
+						esc_html__( 'Large', 'bold-page-builder' ) => 'large',
+						esc_html__( 'Extra large', 'bold-page-builder' ) => 'xlarge'		
 				) )
 			)
 		) );

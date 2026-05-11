@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 if ( !function_exists('bt_bb_fa5_regular_icons') ) {
 	function bt_bb_fa5_regular_icons() {
 		$arr = array(

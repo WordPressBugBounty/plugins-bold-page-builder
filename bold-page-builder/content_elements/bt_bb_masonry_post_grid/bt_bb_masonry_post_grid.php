@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_masonry_post_grid extends BT_BB_Element {
 
 	function __construct() {
@@ -54,7 +56,7 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 
 							if ( $show['author'] ) {
 								$meta_output .= '<span class="bt_bb_grid_item_item_author">';
-									$meta_output .= esc_html__( 'by', 'bold-builder' ) . ' ' . $item['author'];
+									$meta_output .= esc_html__( 'by', 'bold-page-builder' ) . ' ' . $item['author'];
 								$meta_output .= '</span>';
 							}
 
@@ -70,14 +72,14 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 		
 					}
 
-					$output .= '<h5 class="bt_bb_grid_item_post_title"><a href="' . esc_url_raw( $item['permalink'] ) . '" title="' . esc_attr( $item['title'] ) . '">' . $item['title'] . '</a></h5>';
+					$output .= '<h5 class="bt_bb_grid_item_post_title"><a href="' . esc_url_raw( $item['permalink'] ) . '" title="' . esc_attr( $item['title'] ) . '">' . wp_kses_post( $item['title'] ) . '</a></h5>';
 
 					if ( $show['excerpt'] ) {
-						$output .= '<div class="bt_bb_grid_item_post_excerpt">' . $item['excerpt'] . '</div>';
+						$output .= '<div class="bt_bb_grid_item_post_excerpt">' . wp_kses_post( $item['excerpt'] ) . '</div>';
 					}
 
 					if ( $show['share'] ) {
-						$output .= '<div class="bt_bb_grid_item_post_share">' . $item['share'] . '</div>';
+						$output .= '<div class="bt_bb_grid_item_post_share">' . wp_kses_post( $item['share'] ) . '</div>';
 					}
 
 				$output .= '</div></div>';
@@ -258,7 +260,7 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 			if ( ! is_wp_error( $cats ) ) {
 				if ( count( $cats ) > 0 ) {
 					$output .= '<div class="bt_bb_post_grid_filter">';
-						$output .= '<span class="bt_bb_post_grid_filter_item active" data-category="' . $category . '">' . esc_html__( 'All', 'bold-builder' ) . '</span>';
+						$output .= '<span class="bt_bb_post_grid_filter_item active" data-category="' . $category . '">' . esc_html__( 'All', 'bold-page-builder' ) . '</span>';
 							foreach ( $cats as $cat ) {
 								$output .= '<span class="bt_bb_post_grid_filter_item" data-category="' . esc_attr( $cat->slug ) . '">' . $cat->name . '</span>';
 							}
@@ -302,59 +304,59 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 		$array = array();
 		
 		if ( post_type_exists( 'portfolio' ) ) {
-			$array = array( array( 'param_name' => 'post_type', 'type' => 'dropdown', 'heading' => esc_html__( 'Post Type', 'bold-builder' ), 'description' => esc_html__( 'Masonry post grid (deprecated, use css post grid element)', 'bold-builder' ), 'preview' => true,
+			$array = array( array( 'param_name' => 'post_type', 'type' => 'dropdown', 'heading' => esc_html__( 'Post Type', 'bold-page-builder' ), 'description' => esc_html__( 'Masonry post grid (deprecated, use css post grid element)', 'bold-page-builder' ), 'preview' => true,
 				'value' => array(
-					esc_html__( 'Post', 'bold-builder' ) => 'post',
-					esc_html__( 'Portfolio', 'bold-builder' ) => 'portfolio',
+					esc_html__( 'Post', 'bold-page-builder' ) => 'post',
+					esc_html__( 'Portfolio', 'bold-page-builder' ) => 'portfolio',
 				)
 			) );
 		}
 		
 		$array = array_merge( $array, array(
-			array( 'param_name' => 'number', 'type' => 'textfield', 'heading' => esc_html__( 'Number of items', 'bold-builder' ), 'description' => esc_html__( 'Enter number of items or leave empty to show all (up to 1000)', 'bold-builder' ), 'preview' => true ),
-			array( 'param_name' => 'auto_loading', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'auto_loading' ), 'heading' => esc_html__( 'Load more items on scroll', 'bold-builder' ), 'preview' => true
+			array( 'param_name' => 'number', 'type' => 'textfield', 'heading' => esc_html__( 'Number of items', 'bold-page-builder' ), 'description' => esc_html__( 'Enter number of items or leave empty to show all (up to 1000)', 'bold-page-builder' ), 'preview' => true ),
+			array( 'param_name' => 'auto_loading', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'auto_loading' ), 'heading' => esc_html__( 'Load more items on scroll', 'bold-page-builder' ), 'preview' => true
 			),
-			array( 'param_name' => 'columns', 'type' => 'dropdown', 'heading' => esc_html__( 'Columns', 'bold-builder' ), 'preview' => true,
+			array( 'param_name' => 'columns', 'type' => 'dropdown', 'heading' => esc_html__( 'Columns', 'bold-page-builder' ), 'preview' => true,
 				'value' => array(
-					esc_html__( '1', 'bold-builder' ) => '1',
-					esc_html__( '2', 'bold-builder' ) => '2',
-					esc_html__( '3', 'bold-builder' ) => '3',
-					esc_html__( '4', 'bold-builder' ) => '4',
-					esc_html__( '5', 'bold-builder' ) => '5',
-					esc_html__( '6', 'bold-builder' ) => '6'
+					esc_html__( '1', 'bold-page-builder' ) => '1',
+					esc_html__( '2', 'bold-page-builder' ) => '2',
+					esc_html__( '3', 'bold-page-builder' ) => '3',
+					esc_html__( '4', 'bold-page-builder' ) => '4',
+					esc_html__( '5', 'bold-page-builder' ) => '5',
+					esc_html__( '6', 'bold-page-builder' ) => '6'
 				)
 			),
-			array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-builder' ),
+			array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-page-builder' ),
 				'value' => array(
-					esc_html__( 'No gap', 'bold-builder' ) => 'no_gap',
-					esc_html__( 'Small', 'bold-builder' ) => 'small',
-					esc_html__( 'Normal', 'bold-builder' ) => 'normal',
-					esc_html__( 'Large', 'bold-builder' ) => 'large'
+					esc_html__( 'No gap', 'bold-page-builder' ) => 'no_gap',
+					esc_html__( 'Small', 'bold-page-builder' ) => 'small',
+					esc_html__( 'Normal', 'bold-page-builder' ) => 'normal',
+					esc_html__( 'Large', 'bold-page-builder' ) => 'large'
 				)
 			),
-			array( 'param_name' => 'category', 'type' => 'textfield', 'heading' => esc_html__( 'Category', 'bold-builder' ), 'description' => esc_html__( 'Enter category slug or leave empty to show all', 'bold-builder' ), 'preview' => true ),
-			array( 'param_name' => 'category_filter', 'type' => 'dropdown', 'heading' => esc_html__( 'Category filter', 'bold-builder' ),
+			array( 'param_name' => 'category', 'type' => 'textfield', 'heading' => esc_html__( 'Category', 'bold-page-builder' ), 'description' => esc_html__( 'Enter category slug or leave empty to show all', 'bold-page-builder' ), 'preview' => true ),
+			array( 'param_name' => 'category_filter', 'type' => 'dropdown', 'heading' => esc_html__( 'Category filter', 'bold-page-builder' ),
 				'value' => array(
-					esc_html__( 'No', 'bold-builder' ) => 'no',
-					esc_html__( 'Yes', 'bold-builder' ) => 'yes'
+					esc_html__( 'No', 'bold-page-builder' ) => 'no',
+					esc_html__( 'Yes', 'bold-page-builder' ) => 'yes'
 				)
 			),
-			array( 'param_name' => 'show_category', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_category' ), 'heading' => esc_html__( 'Show category', 'bold-builder' ), 'preview' => true
+			array( 'param_name' => 'show_category', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_category' ), 'heading' => esc_html__( 'Show category', 'bold-page-builder' ), 'preview' => true
 			),
-			array( 'param_name' => 'show_date', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_date' ), 'heading' => esc_html__( 'Show date', 'bold-builder' ), 'preview' => true
+			array( 'param_name' => 'show_date', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_date' ), 'heading' => esc_html__( 'Show date', 'bold-page-builder' ), 'preview' => true
 			),
-			array( 'param_name' => 'show_author', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_author' ), 'heading' => esc_html__( 'Show author', 'bold-builder' ), 'preview' => true
+			array( 'param_name' => 'show_author', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_author' ), 'heading' => esc_html__( 'Show author', 'bold-page-builder' ), 'preview' => true
 			),
-			array( 'param_name' => 'show_comments', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_comments' ), 'heading' => esc_html__( 'Show number of comments', 'bold-builder' ), 'preview' => true
+			array( 'param_name' => 'show_comments', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_comments' ), 'heading' => esc_html__( 'Show number of comments', 'bold-page-builder' ), 'preview' => true
 			),
-			array( 'param_name' => 'show_excerpt', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_excerpt' ), 'heading' => esc_html__( 'Show excerpt', 'bold-builder' ), 'preview' => true
+			array( 'param_name' => 'show_excerpt', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_excerpt' ), 'heading' => esc_html__( 'Show excerpt', 'bold-page-builder' ), 'preview' => true
 			),
-			array( 'param_name' => 'show_share', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_share' ), 'heading' => esc_html__( 'Show share icons', 'bold-builder' ), 'preview' => true 
+			array( 'param_name' => 'show_share', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_share' ), 'heading' => esc_html__( 'Show share icons', 'bold-page-builder' ), 'preview' => true 
 			),
-			array( 'param_name' => 'ignore_nonce', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'ignore_nonce' ), 'heading' => esc_html__( 'Skip nonce verification', 'bold-builder' ), 'description' => esc_html__( 'If using long-term caching, either skip nonce verification (less secure) or reduce cache TTL to prevent failures.', 'bold-builder' ), 'preview' => true )
+			array( 'param_name' => 'ignore_nonce', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'ignore_nonce' ), 'heading' => esc_html__( 'Skip nonce verification', 'bold-page-builder' ), 'description' => esc_html__( 'If using long-term caching, either skip nonce verification (less secure) or reduce cache TTL to prevent failures.', 'bold-page-builder' ), 'preview' => true )
 		) );
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Masonry Post Grid (deprecated)', 'bold-builder' ), 'description' => esc_html__( 'Use Post Grid element', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Masonry Post Grid (deprecated)', 'bold-page-builder' ), 'description' => esc_html__( 'Use Post Grid element', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => $array
 		) );
 	} 

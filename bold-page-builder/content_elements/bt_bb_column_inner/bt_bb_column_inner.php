@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_column_inner extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -107,7 +109,6 @@ class bt_bb_column_inner extends BT_BB_Element {
 				'value'  => $order
 			)
 		);
-
 		
 		if ( $background_color != '' ) {
 			if ( strpos( $background_color, '#' ) !== false ) {
@@ -154,10 +155,10 @@ class bt_bb_column_inner extends BT_BB_Element {
 				if ( $lazy_load == 'yes' ) {
 					$blank_image_src = BT_BB_Root::$path . 'img/blank.gif';
 					$el_style .= 'background-image:url(\'' . $blank_image_src . '\');';
-					$background_data_attr .= ' data-background_image_src=\'' . $background_image_url . '\'';
+					$background_data_attr .= ' data-background_image_src=\'' . esc_url( $background_image_url ) . '\'';
 					$class[] = 'btLazyLoadBackground';
 				} else {
-					$el_style .= 'background-image:url(\'' . $background_image_url . '\');';				
+					$el_style .= 'background-image:url(\'' . esc_url( $background_image_url ) . '\');';
 				}
 			}
 				
@@ -177,10 +178,10 @@ class bt_bb_column_inner extends BT_BB_Element {
 				if ( $lazy_load == 'yes' ) {
 					$blank_image_src = BT_BB_Root::$path . 'img/blank.gif';
 					$el_inner_style .= 'background-image:url(\'' . $blank_image_src . '\');';
-					$inner_background_data_attr .= ' data-background_image_src="' . $inner_background_image_url . '"';
+					$inner_background_data_attr .= ' data-background_image_src="' . esc_url( $inner_background_image_url ) . '"';
 					$inner_class[] = 'btLazyLoadBackground';
 				} else {
-					$el_inner_style .= 'background-image:url(\'' . $inner_background_image_url . '\');';				
+					$el_inner_style .= 'background-image:url(\'' . esc_url( $inner_background_image_url ) . '\');';
 				}				
 			}
 			$inner_class[] = 'bt_bb_column_content_background_image';
@@ -289,76 +290,76 @@ class bt_bb_column_inner extends BT_BB_Element {
 		require_once( dirname(__FILE__) . '/../../content_elements_misc/misc.php' );
 		$color_scheme_arr = bt_bb_get_color_scheme_param_array();
 		
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Inner Column', 'bold-builder' ), 'description' => esc_html__( 'Inner Column element', 'bold-builder' ), 'width_param' => 'width', 'container' => 'vertical', 
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Inner Column', 'bold-page-builder' ), 'description' => esc_html__( 'Inner Column element', 'bold-page-builder' ), 'width_param' => 'width', 'container' => 'vertical', 
 			'accept' => array( 'bt_bb_section' => false, 'bt_bb_row' => false, 'bt_bb_row_inner' => false, 'bt_bb_column' => false, 'bt_bb_column_inner' => false, 'bt_bb_tab_item' => false, 'bt_bb_accordion_item' => false, 'bt_bb_cost_calculator_item' => false, 'bt_cc_group' => false, 'bt_cc_multiply' => false, 'bt_cc_item' => false, 'bt_bb_content_slider_item' => false, 'bt_bb_google_maps_location' => false, '_content' => false ),
 			'accept_all' => true, 'toggle' => true, 'show_settings_on_create' => false, 'icon' => 'bt_bb_icon_bt_bb_row_inner', 'responsive_override' => true,
 			'params' => array(
-				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Align', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
+				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Align', 'bold-page-builder' ), 'preview' => true, 'responsive_override' => true,
 				'value' => array(
-					esc_html__( 'Left', 'bold-builder' ) => 'left',
-					esc_html__( 'Center', 'bold-builder' ) => 'center',
-					esc_html__( 'Right', 'bold-builder' ) => 'right',
+					esc_html__( 'Left', 'bold-page-builder' ) => 'left',
+					esc_html__( 'Center', 'bold-page-builder' ) => 'center',
+					esc_html__( 'Right', 'bold-page-builder' ) => 'right',
 				) ),
-				array( 'param_name' => 'vertical_align', 'type' => 'dropdown', 'heading' => esc_html__( 'Vertical align', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'vertical_align', 'type' => 'dropdown', 'heading' => esc_html__( 'Vertical align', 'bold-page-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( 'Top', 'bold-builder' )     => 'top',
-						esc_html__( 'Middle', 'bold-builder' )  => 'middle',
-						esc_html__( 'Bottom', 'bold-builder' )  => 'bottom'					
+						esc_html__( 'Top', 'bold-page-builder' )     => 'top',
+						esc_html__( 'Middle', 'bold-page-builder' )  => 'middle',
+						esc_html__( 'Bottom', 'bold-page-builder' )  => 'bottom'					
 				) ),
-				array( 'param_name' => 'padding', 'type' => 'dropdown', 'heading' => esc_html__( 'Inner padding', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
+				array( 'param_name' => 'padding', 'type' => 'dropdown', 'heading' => esc_html__( 'Inner padding', 'bold-page-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
-					esc_html__( 'No padding', 'bold-builder' ) 	=> 'none',
-					esc_html__( 'Normal', 'bold-builder' ) => 'normal',
-					esc_html__( 'Double', 'bold-builder' ) => 'double',
-					esc_html__( 'Text Indent', 'bold-builder' ) => 'text_indent',
-					esc_html__( '5px', 'bold-builder' ) => '5',
-					esc_html__( '10px', 'bold-builder' ) => '10',
-					esc_html__( '15px', 'bold-builder' ) => '15',
-					esc_html__( '20px', 'bold-builder' ) => '20',
-					esc_html__( '25px', 'bold-builder' ) => '25',
-					esc_html__( '30px', 'bold-builder' ) => '30',
-					esc_html__( '35px', 'bold-builder' ) => '35',
-					esc_html__( '40px', 'bold-builder' ) => '40',
-					esc_html__( '45px', 'bold-builder' ) => '45',
-					esc_html__( '50px', 'bold-builder' ) => '50',
-					esc_html__( '55px', 'bold-builder' ) => '55',
-					esc_html__( '60px', 'bold-builder' ) => '60',
-					esc_html__( '65px', 'bold-builder' ) => '65',
-					esc_html__( '70px', 'bold-builder' ) => '70',
-					esc_html__( '75px', 'bold-builder' ) => '75',
-					esc_html__( '80px', 'bold-builder' ) => '80',
-					esc_html__( '85px', 'bold-builder' ) => '85',
-					esc_html__( '90px', 'bold-builder' ) => '90',
-					esc_html__( '95px', 'bold-builder' ) => '95',
-					esc_html__( '100px', 'bold-builder' ) => '100'					
+					esc_html__( 'No padding', 'bold-page-builder' ) 	=> 'none',
+					esc_html__( 'Normal', 'bold-page-builder' ) => 'normal',
+					esc_html__( 'Double', 'bold-page-builder' ) => 'double',
+					esc_html__( 'Text Indent', 'bold-page-builder' ) => 'text_indent',
+					esc_html__( '5px', 'bold-page-builder' ) => '5',
+					esc_html__( '10px', 'bold-page-builder' ) => '10',
+					esc_html__( '15px', 'bold-page-builder' ) => '15',
+					esc_html__( '20px', 'bold-page-builder' ) => '20',
+					esc_html__( '25px', 'bold-page-builder' ) => '25',
+					esc_html__( '30px', 'bold-page-builder' ) => '30',
+					esc_html__( '35px', 'bold-page-builder' ) => '35',
+					esc_html__( '40px', 'bold-page-builder' ) => '40',
+					esc_html__( '45px', 'bold-page-builder' ) => '45',
+					esc_html__( '50px', 'bold-page-builder' ) => '50',
+					esc_html__( '55px', 'bold-page-builder' ) => '55',
+					esc_html__( '60px', 'bold-page-builder' ) => '60',
+					esc_html__( '65px', 'bold-page-builder' ) => '65',
+					esc_html__( '70px', 'bold-page-builder' ) => '70',
+					esc_html__( '75px', 'bold-page-builder' ) => '75',
+					esc_html__( '80px', 'bold-page-builder' ) => '80',
+					esc_html__( '85px', 'bold-page-builder' ) => '85',
+					esc_html__( '90px', 'bold-page-builder' ) => '90',
+					esc_html__( '95px', 'bold-page-builder' ) => '95',
+					esc_html__( '100px', 'bold-page-builder' ) => '100'					
 				) ),
-				array( 'param_name' => 'order', 'type' => 'dropdown', 'heading' => esc_html__( 'Order', 'bold-builder' ), 'default' => '0', 'responsive_override' => true, 'description' => esc_html__( 'Columns are placed in the visual order according to selected order, lowest values first.', 'bold-builder' ),
+				array( 'param_name' => 'order', 'type' => 'dropdown', 'heading' => esc_html__( 'Order', 'bold-page-builder' ), 'default' => '0', 'responsive_override' => true, 'description' => esc_html__( 'Columns are placed in the visual order according to selected order, lowest values first.', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( ' -5', 'bold-builder' ) => '-5',
-						esc_html__( ' -4', 'bold-builder' ) => '-4',
-						esc_html__( ' -3', 'bold-builder' ) => '-3',
-						esc_html__( ' -2', 'bold-builder' ) => '-2',
-						esc_html__( ' -1', 'bold-builder' ) => '-1',
-						esc_html__( ' 0 (default)', 'bold-builder' ) => '0',
-						esc_html__( ' 1', 'bold-builder' ) => '1',
-						esc_html__( ' 2', 'bold-builder' ) => '2',
-						esc_html__( ' 3', 'bold-builder' ) => '3',
-						esc_html__( ' 4', 'bold-builder' ) => '4',
-						esc_html__( ' 5', 'bold-builder' ) => '5'
+						esc_html__( ' -5', 'bold-page-builder' ) => '-5',
+						esc_html__( ' -4', 'bold-page-builder' ) => '-4',
+						esc_html__( ' -3', 'bold-page-builder' ) => '-3',
+						esc_html__( ' -2', 'bold-page-builder' ) => '-2',
+						esc_html__( ' -1', 'bold-page-builder' ) => '-1',
+						esc_html__( ' 0 (default)', 'bold-page-builder' ) => '0',
+						esc_html__( ' 1', 'bold-page-builder' ) => '1',
+						esc_html__( ' 2', 'bold-page-builder' ) => '2',
+						esc_html__( ' 3', 'bold-page-builder' ) => '3',
+						esc_html__( ' 4', 'bold-page-builder' ) => '4',
+						esc_html__( ' 5', 'bold-page-builder' ) => '5'
 					)
 				),
-				array( 'param_name' => 'background_image', 'type' => 'attach_image',  'preview' => true, 'heading' => esc_html__( 'Background image', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ) ),
-				array( 'param_name' => 'inner_background_image', 'type' => 'attach_image',  'preview' => true, 'heading' => esc_html__( 'Inner background image', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ) ),
-				array( 'param_name' => 'lazy_load', 'type' => 'dropdown', 'default' => 'yes', 'heading' => esc_html__( 'Lazy load background image', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ),
+				array( 'param_name' => 'background_image', 'type' => 'attach_image',  'preview' => true, 'heading' => esc_html__( 'Background image', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ) ),
+				array( 'param_name' => 'inner_background_image', 'type' => 'attach_image',  'preview' => true, 'heading' => esc_html__( 'Inner background image', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ) ),
+				array( 'param_name' => 'lazy_load', 'type' => 'dropdown', 'default' => 'yes', 'heading' => esc_html__( 'Lazy load background image', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'No', 'bold-builder' ) => 'no',
-						esc_html__( 'Yes', 'bold-builder' ) => 'yes'
+						esc_html__( 'No', 'bold-page-builder' ) => 'no',
+						esc_html__( 'Yes', 'bold-page-builder' ) => 'yes'
 					) ),
-				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' )  ),
-				array( 'param_name' => 'inner_color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Inner color scheme', 'bold-builder' ), 'value' => $color_scheme_arr, 'group' => esc_html__( 'Design', 'bold-builder' )  ),
-				array( 'param_name' => 'background_color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Background color', 'bold-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ) ),
-				array( 'param_name' => 'inner_background_color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Inner background color', 'bold-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ) ),
-				array( 'param_name' => 'opacity', 'type' => 'textfield', 'heading' => esc_html__( 'Opacity (deprecated)', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ) )
+				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' )  ),
+				array( 'param_name' => 'inner_color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Inner color scheme', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'group' => esc_html__( 'Design', 'bold-page-builder' )  ),
+				array( 'param_name' => 'background_color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Background color', 'bold-page-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' ) ),
+				array( 'param_name' => 'inner_background_color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Inner background color', 'bold-page-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' ) ),
+				array( 'param_name' => 'opacity', 'type' => 'textfield', 'heading' => esc_html__( 'Opacity (deprecated)', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ) )
 			)
 		) );
 		

@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 if ( ! class_exists( 'BB_Text_Image' ) ) {
 
 	// TEXT IMAGE
@@ -9,8 +11,8 @@ if ( ! class_exists( 'BB_Text_Image' ) ) {
 		function __construct() {
 			parent::__construct(
 				'bt_bb_text_image', // Base ID
-				esc_html__( 'BB Text Image', 'bold-builder' ), // Name
-				array( 'description' => esc_html__( 'Text with image.', 'bold-builder' ) ) // Args
+				esc_html__( 'BB Text Image', 'bold-page-builder' ), // Name
+				array( 'description' => esc_html__( 'Text with image.', 'bold-page-builder' ) ) // Args
 			);
 			
 			add_action( 'admin_head', [ $this, 'bb_admin_head' ] );
@@ -182,11 +184,11 @@ if ( ! class_exists( 'BB_Text_Image' ) ) {
 			?>
 			<div class="bt_bb_text_image_form">
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bold-page-builder' ); ?></label> 
 					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 				</p>
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'ids' ) ); ?>"><?php esc_html_e( 'Image IDs:', 'bold-builder' ); ?></label>
+					<label for="<?php echo esc_attr( $this->get_field_id( 'ids' ) ); ?>"><?php esc_html_e( 'Image IDs:', 'bold-page-builder' ); ?></label>
 					<input class="widefat bt_bb_text_image_ids" id="<?php echo esc_attr( $this->get_field_id( 'ids' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'ids' ) ); ?>" type="hidden" value="<?php echo esc_attr( $ids ); ?>">
 					<div class="bt_bb_dialog_image_container">
 						<?php
@@ -199,11 +201,11 @@ if ( ! class_exists( 'BB_Text_Image' ) ) {
 						?>
 					</div>
 					<div class="bt_bb_dialog_inline_buttons bt_bb_left">
-						<input type="button" class="bt_bb_dialog_select_images_button button button-small" value="<?php esc_attr_e( 'Select', 'bold-builder' ); ?>">
+						<input type="button" class="bt_bb_dialog_select_images_button button button-small" value="<?php esc_attr_e( 'Select', 'bold-page-builder' ); ?>">
 					</div>
 				</p>			
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Text:', 'bold-builder' ); ?></label> 
+					<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Text:', 'bold-page-builder' ); ?></label> 
 					<textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'text' ) ); ?>"><?php echo esc_textarea( $text ); ?></textarea>
 				</p>
 			</div>

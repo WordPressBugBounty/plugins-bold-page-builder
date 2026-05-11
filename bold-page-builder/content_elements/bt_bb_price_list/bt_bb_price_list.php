@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_price_list extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -40,24 +42,24 @@ class bt_bb_price_list extends BT_BB_Element {
 			$style_attr = ' ' . 'style="' . esc_attr( $el_style ) . '"';
 		}
 				
-		$output = '<div class="' . esc_attr( $this->shortcode ) . '_title">' . $title . '</div>';
-		$output .= '<div class="' . esc_attr( $this->shortcode ) . '_subtitle">' . $subtitle . '</div>';
-		$output .= '<div class="' . esc_attr( $this->shortcode ) . '_price"><span class="' . esc_attr( $this->shortcode ) . '_currency">' . $currency . '</span><span class="' . esc_attr( $this->shortcode ) . '_amount">' . $price . '</span></div>';
+		$output = '<div class="' . esc_attr( $this->shortcode ) . '_title">' . wp_kses_post( $title ) . '</div>';
+		$output .= '<div class="' . esc_attr( $this->shortcode ) . '_subtitle">' . wp_kses_post( $subtitle ) . '</div>';
+		$output .= '<div class="' . esc_attr( $this->shortcode ) . '_price"><span class="' . esc_attr( $this->shortcode ) . '_currency">' . esc_html( $currency ) . '</span><span class="' . esc_attr( $this->shortcode ) . '_amount">' . esc_html( $price ) . '</span></div>';
 
 		if ( $items != '' ) {
-                    
+
 			if ( base64_encode(base64_decode($items, true)) === $items){
 				$items = base64_decode( $items );
 			}
-                        
+
 			$items_arr = preg_split( '/$\R?^/m', $items );
 
 			$output .= '<ul>';
 				foreach ( $items_arr as $item ) {
-					$output .= '<li>' . $item . '</li>';
+					$output .= '<li>' . esc_html( $item ) . '</li>';
 				}
 			$output .= '</ul>';
-		
+
 		}
 		
 		if ( $currency_position != '' ) {
@@ -93,20 +95,20 @@ class bt_bb_price_list extends BT_BB_Element {
 		require_once( dirname(__FILE__) . '/../../content_elements_misc/misc.php' );
 		$color_scheme_arr = bt_bb_get_color_scheme_param_array();			
 		
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Price List', 'bold-builder' ), 'description' => esc_html__( 'List of items with total price', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Price List', 'bold-page-builder' ), 'description' => esc_html__( 'List of items with total price', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'title', 'type' => 'textfield', 'heading' => esc_html__( 'Title', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Price List title', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'subtitle', 'type' => 'textfield', 'heading' => esc_html__( 'Subtitle', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Price List subtitle', 'bold-builder' ) ),
-				array( 'param_name' => 'currency', 'type' => 'textfield', 'heading' => esc_html__( 'Currency', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. $', 'bold-builder' ) ),
-				array( 'param_name' => 'currency_position', 'type' => 'dropdown', 'heading' => esc_html__( 'Currency position', 'bold-builder' ),
+				array( 'param_name' => 'title', 'type' => 'textfield', 'heading' => esc_html__( 'Title', 'bold-page-builder' ), 'placeholder' => esc_html__( 'Add Price List title', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'subtitle', 'type' => 'textfield', 'heading' => esc_html__( 'Subtitle', 'bold-page-builder' ), 'placeholder' => esc_html__( 'Add Price List subtitle', 'bold-page-builder' ) ),
+				array( 'param_name' => 'currency', 'type' => 'textfield', 'heading' => esc_html__( 'Currency', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. $', 'bold-page-builder' ) ),
+				array( 'param_name' => 'currency_position', 'type' => 'dropdown', 'heading' => esc_html__( 'Currency position', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Left', 'bold-builder' ) 	=> 'left',
-						esc_html__( 'Right', 'bold-builder' ) 	=> 'right'
+						esc_html__( 'Left', 'bold-page-builder' ) 	=> 'left',
+						esc_html__( 'Right', 'bold-page-builder' ) 	=> 'right'
 					)
 				),
-				array( 'param_name' => 'price', 'type' => 'textfield', 'heading' => esc_html__( 'Price', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 299.99', 'bold-builder' ) ),				
-				array( 'param_name' => 'items', 'type' => 'textarea_object', 'heading' => esc_html__( 'Items', 'bold-builder' ), 'description' => esc_html__( 'Add Price List items separated by new line', 'bold-builder' ) ),
-				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),			
+				array( 'param_name' => 'price', 'type' => 'textfield', 'heading' => esc_html__( 'Price', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 299.99', 'bold-page-builder' ) ),				
+				array( 'param_name' => 'items', 'type' => 'textarea_object', 'heading' => esc_html__( 'Items', 'bold-page-builder' ), 'description' => esc_html__( 'Add Price List items separated by new line', 'bold-page-builder' ) ),
+				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),			
 			)
 		) );
 	}

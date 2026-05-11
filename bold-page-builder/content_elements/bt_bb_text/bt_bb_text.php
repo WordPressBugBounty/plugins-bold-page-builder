@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_text extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -58,7 +60,7 @@ class bt_bb_text extends BT_BB_Element {
 	}
 
 	function map_shortcode() {
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Text', 'bold-builder' ), 'description' => esc_html__( 'Text element (with AI help)', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode, 'container' => 'vertical', 'accept' => array( '_content' => true ), 'toggle' => true, 'show_settings_on_create' => false,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Text', 'bold-page-builder' ), 'description' => esc_html__( 'Text element (with AI help)', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode, 'container' => 'vertical', 'accept' => array( '_content' => true ), 'toggle' => true, 'show_settings_on_create' => false,
 			'params' => array(
 				array( 'param_name' => 'ai_prompt_helper', 'type' => 'hidden' )
 			)

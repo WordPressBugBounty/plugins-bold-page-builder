@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_latest_posts extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -69,7 +71,7 @@ class bt_bb_latest_posts extends BT_BB_Element {
 		$output = '';
 		
 		if ( count( $posts ) == 0 ) {
-			$output = esc_html__( 'No posts found.', 'bold-builder' );
+			$output = esc_html__( 'No posts found.', 'bold-page-builder' );
 		}
 
 		foreach( $posts as $post_item ) {
@@ -97,7 +99,7 @@ class bt_bb_latest_posts extends BT_BB_Element {
 				
 					if ( $show_category == 'show_category' ) {
 						$output .= '<div class="' . esc_attr( $this->shortcode ) . '_item_category">';
-							$output .= $post_item['category_list'];
+							$output .= wp_kses_post( $post_item['category_list'] );
 						$output .= '</div>';
 					}
 
@@ -113,13 +115,13 @@ class bt_bb_latest_posts extends BT_BB_Element {
 
 							if ( $show_author == 'show_author' ) {
 								$meta_output .= '<span class="' . esc_attr( $this->shortcode ) . '_item_author">';
-									$meta_output .= esc_html__( 'by', 'bold-builder' ) . ' ' . $post_item['author'];
+									$meta_output .= esc_html__( 'by', 'bold-page-builder' ) . ' ' . esc_html( $post_item['author'] );
 								$meta_output .= '</span>';
 							}
 
 							if ( $show_comments == 'show_comments' && $post_item['comments'] != '' ) {
 								$meta_output .= '<span class="' . esc_attr( $this->shortcode ) . '_item_comments">';
-									$meta_output .= $post_item['comments'];
+									$meta_output .= wp_kses_post( $post_item['comments'] );
 								$meta_output .= '</span>';
 							}
 				
@@ -135,7 +137,7 @@ class bt_bb_latest_posts extends BT_BB_Element {
 					
 					if ( $show_excerpt == 'show_excerpt' ) {
 						$output .= '<div class="' . esc_attr( $this->shortcode ) . '_item_excerpt">';
-							$output .= $post_item['excerpt'];
+							$output .= wp_kses_post( $post_item['excerpt'] );
 						$output .= '</div>';
 					}
 				$output .= '</div>';
@@ -154,54 +156,54 @@ class bt_bb_latest_posts extends BT_BB_Element {
 
 	function map_shortcode() {
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Latest Posts', 'bold-builder' ), 'description' => esc_html__( 'List of latest posts', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Latest Posts', 'bold-page-builder' ), 'description' => esc_html__( 'List of latest posts', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'rows', 'type' => 'textfield', 'value' => '1', 'heading' => esc_html__( 'Rows', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 2', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'columns', 'type' => 'dropdown', 'value' => '3', 'heading' => esc_html__( 'Columns', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'rows', 'type' => 'textfield', 'value' => '1', 'heading' => esc_html__( 'Rows', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 2', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'columns', 'type' => 'dropdown', 'value' => '3', 'heading' => esc_html__( 'Columns', 'bold-page-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( '1', 'bold-builder' ) => '1',
-						esc_html__( '2', 'bold-builder' ) => '2',
-						esc_html__( '3', 'bold-builder' ) => '3',
-						esc_html__( '4', 'bold-builder' ) => '4',
-						esc_html__( '6', 'bold-builder' ) => '6'
+						esc_html__( '1', 'bold-page-builder' ) => '1',
+						esc_html__( '2', 'bold-page-builder' ) => '2',
+						esc_html__( '3', 'bold-page-builder' ) => '3',
+						esc_html__( '4', 'bold-page-builder' ) => '4',
+						esc_html__( '6', 'bold-page-builder' ) => '6'
 					)
 				),
-				array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-page-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( 'No gap', 'bold-builder' ) 	=> 'no_gap',
-						esc_html__( 'Normal', 'bold-builder' ) 	=> 'normal',
-						esc_html__( 'Small', 'bold-builder' ) 	=> 'small',
-						esc_html__( 'Large', 'bold-builder' ) 	=> 'large'
+						esc_html__( 'No gap', 'bold-page-builder' ) 	=> 'no_gap',
+						esc_html__( 'Normal', 'bold-page-builder' ) 	=> 'normal',
+						esc_html__( 'Small', 'bold-page-builder' ) 	=> 'small',
+						esc_html__( 'Large', 'bold-page-builder' ) 	=> 'large'
 					)
 				),
-				array( 'param_name' => 'category', 'type' => 'textfield', 'heading' => esc_html__( 'Category', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. music', 'bold-builder' ), 'description' => esc_html__( 'Add category slug or leave empty to show all', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-builder' ),
+				array( 'param_name' => 'category', 'type' => 'textfield', 'heading' => esc_html__( 'Category', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. music', 'bold-page-builder' ), 'description' => esc_html__( 'Add category slug or leave empty to show all', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Self (open in same tab)', 'bold-builder' ) 	=> '_self',
-						esc_html__( 'Blank (open in new tab)', 'bold-builder' ) 	=> '_blank',
+						esc_html__( 'Self (open in same tab)', 'bold-page-builder' ) 	=> '_self',
+						esc_html__( 'Blank (open in new tab)', 'bold-page-builder' ) 	=> '_blank',
 					)
 				),
-				array( 'param_name' => 'image_shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Image shape', 'bold-builder' ),
+				array( 'param_name' => 'image_shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Image shape', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Square', 'bold-builder' ) 			=> 'square',
-						esc_html__( 'Soft Rounded', 'bold-builder' ) 	=> 'rounded',
-						esc_html__( 'Hard Rounded', 'bold-builder' ) 	=> 'round'
+						esc_html__( 'Square', 'bold-page-builder' ) 			=> 'square',
+						esc_html__( 'Soft Rounded', 'bold-page-builder' ) 	=> 'rounded',
+						esc_html__( 'Hard Rounded', 'bold-page-builder' ) 	=> 'round'
 					)
 				),
-				array( 'param_name' => 'show_category', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_category' ), 'heading' => esc_html__( 'Show category', 'bold-builder' ), 'preview' => true
+				array( 'param_name' => 'show_category', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_category' ), 'heading' => esc_html__( 'Show category', 'bold-page-builder' ), 'preview' => true
 				),
-				array( 'param_name' => 'show_date', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_date' ), 'heading' => esc_html__( 'Show date', 'bold-builder' ), 'preview' => true
+				array( 'param_name' => 'show_date', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_date' ), 'heading' => esc_html__( 'Show date', 'bold-page-builder' ), 'preview' => true
 				),
-				array( 'param_name' => 'show_author', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_author' ), 'heading' => esc_html__( 'Show author', 'bold-builder' ), 'preview' => true
+				array( 'param_name' => 'show_author', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_author' ), 'heading' => esc_html__( 'Show author', 'bold-page-builder' ), 'preview' => true
 				),
-				array( 'param_name' => 'show_comments', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_comments' ), 'heading' => esc_html__( 'Show number of comments', 'bold-builder' ), 'preview' => true
+				array( 'param_name' => 'show_comments', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_comments' ), 'heading' => esc_html__( 'Show number of comments', 'bold-page-builder' ), 'preview' => true
 				),
-				array( 'param_name' => 'show_excerpt', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_excerpt' ), 'heading' => esc_html__( 'Show excerpt', 'bold-builder' ), 'preview' => true
+				array( 'param_name' => 'show_excerpt', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_excerpt' ), 'heading' => esc_html__( 'Show excerpt', 'bold-page-builder' ), 'preview' => true
 				),
-				array( 'param_name' => 'lazy_load', 'type' => 'dropdown', 'default' => 'yes', 'heading' => esc_html__( 'Lazy load images', 'bold-builder' ),
+				array( 'param_name' => 'lazy_load', 'type' => 'dropdown', 'default' => 'yes', 'heading' => esc_html__( 'Lazy load images', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'No', 'bold-builder' ) 		=> 'no',
-						esc_html__( 'Yes', 'bold-builder' ) 	=> 'yes'
+						esc_html__( 'No', 'bold-page-builder' ) 		=> 'no',
+						esc_html__( 'Yes', 'bold-page-builder' ) 	=> 'yes'
 					)
 				)
 			)

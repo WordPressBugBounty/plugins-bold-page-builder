@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_css_post_grid extends BT_BB_Element {
 
 	function __construct() {
@@ -34,6 +36,10 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 		$show_subheadline	= json_decode( urldecode( $show_subheadline ), true );
 
 		$title_html_tag		= $title_html_tag != '' ? $title_html_tag : 'h5';
+		$allowed_html_tags	= array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p' );
+		if ( ! in_array( $title_html_tag, $allowed_html_tags, true ) ) {
+			$title_html_tag = 'h5';
+		}
 		
 		$format_arr = explode( ',', $format );
 
@@ -87,7 +93,7 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 
 							if ( $show_superheadline['author'] && $item['author'] != '' ) {
 								$meta_output .= '<span class="bt_bb_grid_item_item_author">';
-									$meta_output .= esc_html__( 'by', 'bold-builder' ) . ' ' . $item['author'];
+									$meta_output .= esc_html__( 'by', 'bold-page-builder' ) . ' ' . $item['author'];
 								$meta_output .= '</span>';
 							}
 
@@ -127,7 +133,7 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 
 							if ( $show_subheadline['author'] && $item['author'] != '' ) {
 								$meta_output .= '<span class="bt_bb_grid_item_item_author">';
-									$meta_output .= esc_html__( 'by', 'bold-builder' ) . ' ' . $item['author'];
+									$meta_output .= esc_html__( 'by', 'bold-page-builder' ) . ' ' . $item['author'];
 								$meta_output .= '</span>';
 							}
 
@@ -243,7 +249,6 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 		$class = array( $this->shortcode, 'bt_bb_grid_container' );
 		$data_override_class = array();
 
-
 		if ( $el_class != '' ) {
 			$class[] = $el_class;
 		}	
@@ -354,7 +359,7 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 			if ( ! is_wp_error( $cats ) ) {
 				if ( count( $cats ) > 0 ) {
 					$output .= '<div class="bt_bb_post_grid_filter bt_bb_css_post_grid_filter">';
-						$output .= '<span class="bt_bb_post_grid_filter_item bt_bb_css_post_grid_filter_item active" data-category="' . esc_attr( $category ) . '">' . esc_html__( 'All', 'bold-builder' ) . '</span>';
+						$output .= '<span class="bt_bb_post_grid_filter_item bt_bb_css_post_grid_filter_item active" data-category="' . esc_attr( $category ) . '">' . esc_html__( 'All', 'bold-page-builder' ) . '</span>';
 							foreach ( $cats as $cat ) {
 								$output .= '<span class="bt_bb_post_grid_filter_item bt_bb_css_post_grid_filter_item" data-category="' . esc_attr( $cat->slug ) . '">' . $cat->name . '</span>';
 							}
@@ -384,12 +389,12 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 		
 		$output .= '<div class="bt_bb_css_post_grid_content bt_bb_grid_hide" data-bt-bb-css-post-grid-nonce="' . esc_attr( $bt_bb_css_post_grid_nonce ) . '" data-number="' . esc_attr( $initial_items_number ) . '" data-category="' . esc_attr( $category ) . '" data-show="' . esc_attr( urlencode( json_encode( $show ) ) ) . '" data-show-superheadline="' . esc_attr( urlencode( json_encode( $show_superheadline ) ) ) . '" 
 		data-title-html-tag="' . esc_attr( $title_html_tag ) . '" 
-		data-img-base-size="' . esc_attr( $img_base_size ) . '" data-show-subheadline="' . esc_attr( urlencode( json_encode( $show_subheadline ) ) ) . '" data-show-subheadline="' . esc_attr( urlencode( json_encode( $show_subheadline ) ) ) . '"  data-format="' . esc_attr( $format ) . '" data-post-type="' . esc_attr( $post_type ) . '"  data-ignore-nonce="' . esc_attr( $ignore_nonce ) . '" data-auto-loading="' . esc_attr( $auto_loading ) . '" data-bt-override-class="' . htmlspecialchars( json_encode( $data_override_class, JSON_FORCE_OBJECT ), ENT_QUOTES, 'UTF-8' ) . '" data-no-posts-text="' . esc_html__( 'No posts found.', 'bold-builder' ) . '">
+		data-img-base-size="' . esc_attr( $img_base_size ) . '" data-show-subheadline="' . esc_attr( urlencode( json_encode( $show_subheadline ) ) ) . '" data-show-subheadline="' . esc_attr( urlencode( json_encode( $show_subheadline ) ) ) . '"  data-format="' . esc_attr( $format ) . '" data-post-type="' . esc_attr( $post_type ) . '"  data-ignore-nonce="' . esc_attr( $ignore_nonce ) . '" data-auto-loading="' . esc_attr( $auto_loading ) . '" data-bt-override-class="' . htmlspecialchars( json_encode( $data_override_class, JSON_FORCE_OBJECT ), ENT_QUOTES, 'UTF-8' ) . '" data-no-posts-text="' . esc_html__( 'No posts found.', 'bold-page-builder' ) . '">
 		</div>';
 
 		$output .= '<div class="bt_bb_post_grid_loader"></div>';
 
-		$output = '<div' . $id_attr . ' class="' . esc_attr( implode( ' ', $class ) ) . '"' . $style_attr . ' data-columns="' . esc_attr( $columns ) . '" data-offset="0">' . $output . '<div  class="bt_bb_css_post_grid_button_holder"><button type="button" class="bt_bb_css_post_grid_button">'. esc_html__( 'Load more', 'bold-builder' ). '</button></div></div>';
+		$output = '<div' . $id_attr . ' class="' . esc_attr( implode( ' ', $class ) ) . '"' . $style_attr . ' data-columns="' . esc_attr( $columns ) . '" data-offset="0">' . $output . '<div  class="bt_bb_css_post_grid_button_holder"><button type="button" class="bt_bb_css_post_grid_button">'. esc_html__( 'Load more', 'bold-page-builder' ). '</button></div></div>';
 
 		$output = apply_filters( 'bt_bb_general_output', $output, $atts );
 		$output = apply_filters( $this->shortcode . '_output', $output, $atts );
@@ -415,118 +420,118 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 		$array = array();
 		
 		if ( post_type_exists( 'portfolio' ) ) {
-			$array = array( array( 'param_name' => 'post_type', 'type' => 'dropdown', 'heading' => esc_html__( 'Post Type', 'bold-builder' ), 'preview' => true,
+			$array = array( array( 'param_name' => 'post_type', 'type' => 'dropdown', 'heading' => esc_html__( 'Post Type', 'bold-page-builder' ), 'preview' => true,
 				'value' => array(
-					esc_html__( 'Post', 'bold-builder' ) 		=> 'post',
-					esc_html__( 'Portfolio', 'bold-builder' ) 	=> 'portfolio',
+					esc_html__( 'Post', 'bold-page-builder' ) 		=> 'post',
+					esc_html__( 'Portfolio', 'bold-page-builder' ) 	=> 'portfolio',
 				)
 			) );
 		}
 
 		$array = array_merge( $array, array(
-			array( 'param_name' => 'initial_items_number', 'type' => 'textfield', 'heading' => esc_html__( 'Inital number of items', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 6', 'bold-builder' ), 'description' => esc_html__( 'Enter initial number of items or leave empty to show all (up to 1000)', 'bold-builder' ), 'default' => '6', 'preview' => true ),
-			array( 'param_name' => 'auto_loading', 'type' => 'dropdown', 'heading' => esc_html__( 'Navigation', 'bold-builder' ), 'preview' => true, 
+			array( 'param_name' => 'initial_items_number', 'type' => 'textfield', 'heading' => esc_html__( 'Inital number of items', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 6', 'bold-page-builder' ), 'description' => esc_html__( 'Enter initial number of items or leave empty to show all (up to 1000)', 'bold-page-builder' ), 'default' => '6', 'preview' => true ),
+			array( 'param_name' => 'auto_loading', 'type' => 'dropdown', 'heading' => esc_html__( 'Navigation', 'bold-page-builder' ), 'preview' => true, 
 				'value' => array( 
-					esc_html__( 'No navigation', 'bold-builder' ) => '',
-					esc_html__( 'Auto load more on scroll', 'bold-builder' ) => 'auto_loading',
-					esc_html__( 'Load more on button click', 'bold-builder' ) => 'load_more_loading',
+					esc_html__( 'No navigation', 'bold-page-builder' ) => '',
+					esc_html__( 'Auto load more on scroll', 'bold-page-builder' ) => 'auto_loading',
+					esc_html__( 'Load more on button click', 'bold-page-builder' ) => 'load_more_loading',
 				)
 			),
-			array( 'param_name' => 'columns', 'type' => 'dropdown', 'heading' => esc_html__( 'Columns', 'bold-builder' ), 'default' => '3', 'preview' => true,
+			array( 'param_name' => 'columns', 'type' => 'dropdown', 'heading' => esc_html__( 'Columns', 'bold-page-builder' ), 'default' => '3', 'preview' => true,
 				'value' => array(
-					esc_html__( '1', 'bold-builder' ) 	=> '1',
-					esc_html__( '2', 'bold-builder' ) 	=> '2',
-					esc_html__( '3', 'bold-builder' ) 	=> '3',
-					esc_html__( '4', 'bold-builder' ) 	=> '4',
-					esc_html__( '5', 'bold-builder' ) 	=> '5',
-					esc_html__( '6', 'bold-builder' ) 	=> '6'
+					esc_html__( '1', 'bold-page-builder' ) 	=> '1',
+					esc_html__( '2', 'bold-page-builder' ) 	=> '2',
+					esc_html__( '3', 'bold-page-builder' ) 	=> '3',
+					esc_html__( '4', 'bold-page-builder' ) 	=> '4',
+					esc_html__( '5', 'bold-page-builder' ) 	=> '5',
+					esc_html__( '6', 'bold-page-builder' ) 	=> '6'
 				)
 			),
-			array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-builder' ),
+			array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-page-builder' ),
 				'value' => array(
-					esc_html__( 'No gap', 'bold-builder' )	 	=> 'no_gap',
-					esc_html__( 'Small', 'bold-builder' ) 		=> 'small',
-					esc_html__( 'Normal', 'bold-builder' ) 		=> 'normal',
-					esc_html__( 'Large', 'bold-builder' ) 		=> 'large'
+					esc_html__( 'No gap', 'bold-page-builder' )	 	=> 'no_gap',
+					esc_html__( 'Small', 'bold-page-builder' ) 		=> 'small',
+					esc_html__( 'Normal', 'bold-page-builder' ) 		=> 'normal',
+					esc_html__( 'Large', 'bold-page-builder' ) 		=> 'large'
 				)
 			),
-			array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-builder' ), 
+			array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-page-builder' ), 
 				'value' => array(
-					esc_html__( 'Inherit', 'bold-builder' ) 		=> 'inherit',
-					esc_html__( 'Square', 'bold-builder' ) 			=> 'square',
-					esc_html__( 'Soft Rounded', 'bold-builder' ) 	=> 'rounded',
-					esc_html__( 'Hard Rounded', 'bold-builder' ) 	=> 'round'
+					esc_html__( 'Inherit', 'bold-page-builder' ) 		=> 'inherit',
+					esc_html__( 'Square', 'bold-page-builder' ) 			=> 'square',
+					esc_html__( 'Soft Rounded', 'bold-page-builder' ) 	=> 'rounded',
+					esc_html__( 'Hard Rounded', 'bold-page-builder' ) 	=> 'round'
 				)
 			),
-			array( 'param_name' => 'img_base_size', 'type' => 'dropdown', 'default' => 'large', 'heading' => esc_html__( 'Base image size', 'bold-builder' ),
+			array( 'param_name' => 'img_base_size', 'type' => 'dropdown', 'default' => 'large', 'heading' => esc_html__( 'Base image size', 'bold-page-builder' ),
 				'value' => bt_bb_get_image_sizes()
 			),
-			array( 'param_name' => 'format', 'type' => 'textfield', 'preview' => true, 'heading' => esc_html__( 'Tiles format', 'bold-builder' ), 'placeholder' => esc_html__( '21, 11, 11', 'bold-builder' ), 'description' => esc_html__( 'E.g. 21, 11, 11', 'bold-builder' ) ),
-			array( 'param_name' => 'category', 'type' => 'textfield', 'heading' => esc_html__( 'Category', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. music', 'bold-builder' ), 'description' => esc_html__( 'Enter category slug or leave empty to show all', 'bold-builder' ), 'preview' => true ),
-			array( 'param_name' => 'category_filter', 'type' => 'dropdown', 'heading' => esc_html__( 'Show category filter', 'bold-builder' ),
+			array( 'param_name' => 'format', 'type' => 'textfield', 'preview' => true, 'heading' => esc_html__( 'Tiles format', 'bold-page-builder' ), 'placeholder' => esc_html__( '21, 11, 11', 'bold-page-builder' ), 'description' => esc_html__( 'E.g. 21, 11, 11', 'bold-page-builder' ) ),
+			array( 'param_name' => 'category', 'type' => 'textfield', 'heading' => esc_html__( 'Category', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. music', 'bold-page-builder' ), 'description' => esc_html__( 'Enter category slug or leave empty to show all', 'bold-page-builder' ), 'preview' => true ),
+			array( 'param_name' => 'category_filter', 'type' => 'dropdown', 'heading' => esc_html__( 'Show category filter', 'bold-page-builder' ),
 				'value' => array(
-					esc_html__( 'No', 'bold-builder' ) 			=> 'no',
-					esc_html__( 'Yes', 'bold-builder' ) 		=> 'yes'
+					esc_html__( 'No', 'bold-page-builder' ) 			=> 'no',
+					esc_html__( 'Yes', 'bold-page-builder' ) 		=> 'yes'
 				)
 			),
-			array( 'param_name' => 'title_html_tag', 'type' => 'dropdown', 'heading' => esc_html__( 'Title HTML tag', 'bold-builder' ), 'preview' => true,
+			array( 'param_name' => 'title_html_tag', 'type' => 'dropdown', 'heading' => esc_html__( 'Title HTML tag', 'bold-page-builder' ), 'preview' => true,
 				'value' => array(
-					esc_html__( 'h1', 'bold-builder' ) 	=> 'h1',
-					esc_html__( 'h2', 'bold-builder' ) 	=> 'h2',
-					esc_html__( 'h3', 'bold-builder' ) 	=> 'h3',
-					esc_html__( 'h4', 'bold-builder' ) 	=> 'h4',
-					esc_html__( 'h5', 'bold-builder' ) 	=> 'h5',
-					esc_html__( 'h6', 'bold-builder' ) 	=> 'h6'
+					esc_html__( 'h1', 'bold-page-builder' ) 	=> 'h1',
+					esc_html__( 'h2', 'bold-page-builder' ) 	=> 'h2',
+					esc_html__( 'h3', 'bold-page-builder' ) 	=> 'h3',
+					esc_html__( 'h4', 'bold-page-builder' ) 	=> 'h4',
+					esc_html__( 'h5', 'bold-page-builder' ) 	=> 'h5',
+					esc_html__( 'h6', 'bold-page-builder' ) 	=> 'h6'
 			) ),
-			array( 'param_name' => 'show_in_superheadline', 'type' => 'checkbox_group', 'heading' => esc_html__( 'Show in superheadline', 'bold-builder' ),  'preview' => true,
+			array( 'param_name' => 'show_in_superheadline', 'type' => 'checkbox_group', 'heading' => esc_html__( 'Show in superheadline', 'bold-page-builder' ),  'preview' => true,
 				'value' => array(
-					esc_html__( 'Category', 'bold-builder' ) 	=> 'category',
-					esc_html__( 'Date', 'bold-builder' ) 		=> 'date',
-					esc_html__( 'Author', 'bold-builder' ) 		=> 'author',
-					esc_html__( 'Comments', 'bold-builder' ) 	=> 'comments'
+					esc_html__( 'Category', 'bold-page-builder' ) 	=> 'category',
+					esc_html__( 'Date', 'bold-page-builder' ) 		=> 'date',
+					esc_html__( 'Author', 'bold-page-builder' ) 		=> 'author',
+					esc_html__( 'Comments', 'bold-page-builder' ) 	=> 'comments'
 				)
 			),
-			array( 'param_name' => 'show_in_subheadline', 'type' => 'checkbox_group', 'heading' => esc_html__( 'Show in subheadline', 'bold-builder' ),  'preview' => true,
+			array( 'param_name' => 'show_in_subheadline', 'type' => 'checkbox_group', 'heading' => esc_html__( 'Show in subheadline', 'bold-page-builder' ),  'preview' => true,
 				'value' => array(
-					esc_html__( 'Category', 'bold-builder' ) 	=> 'category',
-					esc_html__( 'Date', 'bold-builder' ) 		=> 'date',
-					esc_html__( 'Author', 'bold-builder' ) 		=> 'author',
-					esc_html__( 'Comments', 'bold-builder' ) 	=> 'comments'
+					esc_html__( 'Category', 'bold-page-builder' ) 	=> 'category',
+					esc_html__( 'Date', 'bold-page-builder' ) 		=> 'date',
+					esc_html__( 'Author', 'bold-page-builder' ) 		=> 'author',
+					esc_html__( 'Comments', 'bold-page-builder' ) 	=> 'comments'
 				)
 			),
-			array( 'param_name' => 'show_excerpt', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_excerpt' ), 'heading' => esc_html__( 'Show excerpt', 'bold-builder' ), 'preview' => true
+			array( 'param_name' => 'show_excerpt', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_excerpt' ), 'heading' => esc_html__( 'Show excerpt', 'bold-page-builder' ), 'preview' => true
 			),
-			array( 'param_name' => 'show_share', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'show_share' ), 'heading' => esc_html__( 'Show share icons', 'bold-builder' ), 'preview' => true 
+			array( 'param_name' => 'show_share', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'show_share' ), 'heading' => esc_html__( 'Show share icons', 'bold-page-builder' ), 'preview' => true 
 			),
-			array( 'param_name' => 'title_lines', 'type' => 'dropdown', 'heading' => esc_html__( 'Title lines', 'bold-builder' ),  'preview' => true, 
+			array( 'param_name' => 'title_lines', 'type' => 'dropdown', 'heading' => esc_html__( 'Title lines', 'bold-page-builder' ),  'preview' => true, 
 				'value' => array(
-					esc_html__( 'All', 'bold-builder' )		=> '',
-					esc_html__( '4', 'bold-builder' )		=> '4',
-					esc_html__( '3', 'bold-builder' )		=> '3',
-					esc_html__( '2', 'bold-builder' )		=> '2',
-					esc_html__( '1', 'bold-builder' )		=> '1'
+					esc_html__( 'All', 'bold-page-builder' )		=> '',
+					esc_html__( '4', 'bold-page-builder' )		=> '4',
+					esc_html__( '3', 'bold-page-builder' )		=> '3',
+					esc_html__( '2', 'bold-page-builder' )		=> '2',
+					esc_html__( '1', 'bold-page-builder' )		=> '1'
 				)
 			),
-			array( 'param_name' => 'excerpt_lines', 'type' => 'dropdown', 'heading' => esc_html__( 'Excerpt lines', 'bold-builder' ),  'preview' => true, 
+			array( 'param_name' => 'excerpt_lines', 'type' => 'dropdown', 'heading' => esc_html__( 'Excerpt lines', 'bold-page-builder' ),  'preview' => true, 
 				'value' => array(
-					esc_html__( 'All', 'bold-builder' )		=> '',
-					esc_html__( '4', 'bold-builder' )		=> '4',
-					esc_html__( '3', 'bold-builder' )		=> '3',
-					esc_html__( '2', 'bold-builder' )		=> '2',
-					esc_html__( '1', 'bold-builder' )		=> '1'
+					esc_html__( 'All', 'bold-page-builder' )		=> '',
+					esc_html__( '4', 'bold-page-builder' )		=> '4',
+					esc_html__( '3', 'bold-page-builder' )		=> '3',
+					esc_html__( '2', 'bold-page-builder' )		=> '2',
+					esc_html__( '1', 'bold-page-builder' )		=> '1'
 				)
 			),
-			array( 'param_name' => 'hover_style', 'type' => 'dropdown', 'heading' => esc_html__( 'Hover style', 'bold-builder' ), 
+			array( 'param_name' => 'hover_style', 'type' => 'dropdown', 'heading' => esc_html__( 'Hover style', 'bold-page-builder' ), 
 				'value' => array(
-					esc_html__( 'None', 'bold-builder' )						=> '',
-					esc_html__( 'Zoom image', 'bold-builder' )					=> 'zoom',
-					esc_html__( 'Zoom image & arrow icon', 'bold-builder' )		=> 'arrow'
+					esc_html__( 'None', 'bold-page-builder' )						=> '',
+					esc_html__( 'Zoom image', 'bold-page-builder' )					=> 'zoom',
+					esc_html__( 'Zoom image & arrow icon', 'bold-page-builder' )		=> 'arrow'
 				)
 			),
-			array( 'param_name' => 'ignore_nonce', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'ignore_nonce' ), 'heading' => esc_html__( 'Skip nonce verification', 'bold-builder' ), 'description' => esc_html__( 'If using long-term caching, either skip nonce verification (less secure) or reduce cache TTL to prevent failures.', 'bold-builder' ), 'preview' => true )
+			array( 'param_name' => 'ignore_nonce', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'ignore_nonce' ), 'heading' => esc_html__( 'Skip nonce verification', 'bold-page-builder' ), 'description' => esc_html__( 'If using long-term caching, either skip nonce verification (less secure) or reduce cache TTL to prevent failures.', 'bold-page-builder' ), 'preview' => true )
 		) );
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Post Grid', 'bold-builder' ), 'description' => esc_html__( 'Post grid with images', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Post Grid', 'bold-page-builder' ), 'description' => esc_html__( 'Post grid with images', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => $array
 		) );
 	}

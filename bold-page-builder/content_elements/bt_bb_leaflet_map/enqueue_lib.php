@@ -1,4 +1,6 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  /* leaflet_map bb framework */
 
 bt_bb_include_scripts_leaflet();

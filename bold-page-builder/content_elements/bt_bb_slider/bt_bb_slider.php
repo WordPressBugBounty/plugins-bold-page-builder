@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_slider extends BT_BB_Element {
 	
 	public $auto_play = '';
@@ -62,7 +64,7 @@ class bt_bb_slider extends BT_BB_Element {
 		}
 
 		if ( $show_arrows != 'hide' ) {
-			$data_slick  .= ', "prevArrow": "&lt;button type=\"button\" class=\"slick-prev\" aria-label=\"' . esc_html__( 'Previous', 'bold-builder' ) . '\" tabindex=\"0\" role=\"button\"&gt;&lt;/button&gt;", "nextArrow": "&lt;button type=\"button\" class=\"slick-next\" aria-label=\"' . esc_html__( 'Next', 'bold-builder' ) . '\" tabindex=\"0\" role=\"button\"&gt;&lt;/button&gt;"';
+			$data_slick  .= ', "prevArrow": "&lt;button type=\"button\" class=\"slick-prev\" aria-label=\"' . esc_html__( 'Previous', 'bold-page-builder' ) . '\" tabindex=\"0\" role=\"button\"&gt;&lt;/button&gt;", "nextArrow": "&lt;button type=\"button\" class=\"slick-next\" aria-label=\"' . esc_html__( 'Next', 'bold-page-builder' ) . '\" tabindex=\"0\" role=\"button\"&gt;&lt;/button&gt;"';
 		} else {
 			$data_slick  .= ', "prevArrow": "", "nextArrow": ""';
 		}
@@ -197,74 +199,74 @@ class bt_bb_slider extends BT_BB_Element {
 	}
 
 	function map_shortcode() {
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Image Slider', 'bold-builder' ), 'description' => esc_html__( 'Slider with images', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Image Slider', 'bold-page-builder' ), 'description' => esc_html__( 'Slider with images', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'images', 'type' => 'attach_images', 'heading' => esc_html__( 'Images', 'bold-builder' ) ),
-				array( 'param_name' => 'height', 'type' => 'dropdown', 'heading' => esc_html__( 'Height', 'bold-builder' ),
+				array( 'param_name' => 'images', 'type' => 'attach_images', 'heading' => esc_html__( 'Images', 'bold-page-builder' ) ),
+				array( 'param_name' => 'height', 'type' => 'dropdown', 'heading' => esc_html__( 'Height', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Auto', 'bold-builder' ) 		=> 'auto',
-						esc_html__( 'Keep height', 'bold-builder' ) => 'keep-height',
-						esc_html__( 'Half screen', 'bold-builder' ) => 'half_screen',
-						esc_html__( 'Full screen', 'bold-builder' ) => 'full_screen'
+						esc_html__( 'Auto', 'bold-page-builder' ) 		=> 'auto',
+						esc_html__( 'Keep height', 'bold-page-builder' ) => 'keep-height',
+						esc_html__( 'Half screen', 'bold-page-builder' ) => 'half_screen',
+						esc_html__( 'Full screen', 'bold-page-builder' ) => 'full_screen'
 					)
 				),
-				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Images size', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Images size', 'bold-page-builder' ), 'preview' => true,
 					'value' => bt_bb_get_image_sizes()
 				),
-				array( 'param_name' => 'animation', 'type' => 'dropdown', 'heading' => esc_html__( 'Animation', 'bold-builder' ), 'description' => esc_html__( 'If fade is selected, number of slides to show will be 1', 'bold-builder' ),
+				array( 'param_name' => 'animation', 'type' => 'dropdown', 'heading' => esc_html__( 'Animation', 'bold-page-builder' ), 'description' => esc_html__( 'If fade is selected, number of slides to show will be 1', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) => 'slide',
-						esc_html__( 'Fade', 'bold-builder' ) 	=> 'fade'
+						esc_html__( 'Default', 'bold-page-builder' ) => 'slide',
+						esc_html__( 'Fade', 'bold-page-builder' ) 	=> 'fade'
 					)
 				),
-				array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-builder' ),
+				array( 'param_name' => 'gap', 'type' => 'dropdown', 'heading' => esc_html__( 'Gap', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'No gap', 'bold-builder' ) 			=> 'no_gap',
-						esc_html__( 'Small', 'bold-builder' ) 			=> 'small',
-						esc_html__( 'Normal', 'bold-builder' ) 			=> 'normal',
-						esc_html__( 'Large', 'bold-builder' ) 			=> 'large'
+						esc_html__( 'No gap', 'bold-page-builder' ) 			=> 'no_gap',
+						esc_html__( 'Small', 'bold-page-builder' ) 			=> 'small',
+						esc_html__( 'Normal', 'bold-page-builder' ) 			=> 'normal',
+						esc_html__( 'Large', 'bold-page-builder' ) 			=> 'large'
 					)
 				),
-				array( 'param_name' => 'show_arrows', 'default' => 'show', 'type' => 'dropdown', 'heading' => esc_html__( 'Navigation arrows', 'bold-builder' ),
+				array( 'param_name' => 'show_arrows', 'default' => 'show', 'type' => 'dropdown', 'heading' => esc_html__( 'Navigation arrows', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Show', 'bold-builder' ) => 'show',
-						esc_html__( 'Hide', 'bold-builder' ) => 'hide'
+						esc_html__( 'Show', 'bold-page-builder' ) => 'show',
+						esc_html__( 'Hide', 'bold-page-builder' ) => 'hide'
 					)
 				),
-				array( 'param_name' => 'show_dots', 'type' => 'dropdown', 'heading' => esc_html__( 'Dots navigation', 'bold-builder' ),
+				array( 'param_name' => 'show_dots', 'type' => 'dropdown', 'heading' => esc_html__( 'Dots navigation', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Bottom', 'bold-builder' ) 	=> 'bottom',
-						esc_html__( 'Below', 'bold-builder' ) 	=> 'below',
-						esc_html__( 'Hide', 'bold-builder' ) 	=> 'hide'
+						esc_html__( 'Bottom', 'bold-page-builder' ) 	=> 'bottom',
+						esc_html__( 'Below', 'bold-page-builder' ) 	=> 'below',
+						esc_html__( 'Hide', 'bold-page-builder' ) 	=> 'hide'
 					)
 				),
-				array( 'param_name' => 'slides_to_show', 'type' => 'dropdown', 'preview' => true, 'heading' => esc_html__( 'Number of slides to show', 'bold-builder' ), 'description' => esc_html__( 'E.g. 1. If fade animation is selected, number will  be 1 anyway', 'bold-builder' ), 'responsive_override' => true,
+				array( 'param_name' => 'slides_to_show', 'type' => 'dropdown', 'preview' => true, 'heading' => esc_html__( 'Number of slides to show', 'bold-page-builder' ), 'description' => esc_html__( 'E.g. 1. If fade animation is selected, number will  be 1 anyway', 'bold-page-builder' ), 'responsive_override' => true,
 					'value' => array(
-						esc_html__( '1', 'bold-builder' ) 		=> '1',
-						esc_html__( '2', 'bold-builder' ) 		=> '2',
-						esc_html__( '3', 'bold-builder' ) 		=> '3',
-						esc_html__( '4', 'bold-builder' ) 		=> '4',
-						esc_html__( '5', 'bold-builder' ) 		=> '5',
-						esc_html__( '6', 'bold-builder' ) 		=> '6',
-						esc_html__( '7', 'bold-builder' ) 		=> '7',
-						esc_html__( '8', 'bold-builder' ) 		=> '8',
-						esc_html__( '9', 'bold-builder' ) 		=> '9',
-						esc_html__( '10', 'bold-builder' ) 		=> '10',
-						esc_html__( '11', 'bold-builder' ) 		=> '11',
-						esc_html__( '12', 'bold-builder' ) 		=> '12'
+						esc_html__( '1', 'bold-page-builder' ) 		=> '1',
+						esc_html__( '2', 'bold-page-builder' ) 		=> '2',
+						esc_html__( '3', 'bold-page-builder' ) 		=> '3',
+						esc_html__( '4', 'bold-page-builder' ) 		=> '4',
+						esc_html__( '5', 'bold-page-builder' ) 		=> '5',
+						esc_html__( '6', 'bold-page-builder' ) 		=> '6',
+						esc_html__( '7', 'bold-page-builder' ) 		=> '7',
+						esc_html__( '8', 'bold-page-builder' ) 		=> '8',
+						esc_html__( '9', 'bold-page-builder' ) 		=> '9',
+						esc_html__( '10', 'bold-page-builder' ) 		=> '10',
+						esc_html__( '11', 'bold-page-builder' ) 		=> '11',
+						esc_html__( '12', 'bold-page-builder' ) 		=> '12'
 					) 
 				),
-				array( 'param_name' => 'additional_settings', 'type' => 'textfield', 'heading' => esc_html__( 'Additional settings', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. "slidesToScroll": 3, "infinite": false, "centerMode": true', 'bold-builder' ), 'description' => __( 'E.g. "slidesToScroll": 3, "infinite": false, "centerMode": true, "centerPadding": "60px" (<a href="https://kenwheeler.github.io/slick/" target="_blank">view here for more</a>)', 'bold-builder' ) ),
+				array( 'param_name' => 'additional_settings', 'type' => 'textfield', 'heading' => esc_html__( 'Additional settings', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. "slidesToScroll": 3, "infinite": false, "centerMode": true', 'bold-page-builder' ), 'description' => __( 'E.g. "slidesToScroll": 3, "infinite": false, "centerMode": true, "centerPadding": "60px" (<a href="https://kenwheeler.github.io/slick/" target="_blank">view here for more</a>)', 'bold-page-builder' ) ),
 
-				array( 'param_name' => 'auto_play', 'type' => 'textfield', 'heading' => esc_html__( 'Autoplay interval (ms)', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 2000', 'bold-builder' ) ), 
+				array( 'param_name' => 'auto_play', 'type' => 'textfield', 'heading' => esc_html__( 'Autoplay interval (ms)', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 2000', 'bold-page-builder' ) ), 
 					
-				array( 'param_name' => 'pause_on_hover', 'default' => 'yes', 'type' => 'dropdown', 'heading' => esc_html__( 'Pause slideshow on hover', 'bold-builder' ),
+				array( 'param_name' => 'pause_on_hover', 'default' => 'yes', 'type' => 'dropdown', 'heading' => esc_html__( 'Pause slideshow on hover', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Yes', 'bold-builder' ) 	=> 'yes',
-						esc_html__( 'No', 'bold-builder' ) 		=> 'no'
+						esc_html__( 'Yes', 'bold-page-builder' ) 	=> 'yes',
+						esc_html__( 'No', 'bold-page-builder' ) 		=> 'no'
 					)
 				),
-				array( 'param_name' => 'use_lightbox', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'use_lightbox', esc_html__( 'No', 'bold-builder' ) => 'dont_use_lightbox' ), 'heading' => esc_html__( 'Use lightbox (opens image in full size on click)', 'bold-builder' ) )
+				array( 'param_name' => 'use_lightbox', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'use_lightbox', esc_html__( 'No', 'bold-page-builder' ) => 'dont_use_lightbox' ), 'heading' => esc_html__( 'Use lightbox (opens image in full size on click)', 'bold-page-builder' ) )
 			)
 		) );
 	}

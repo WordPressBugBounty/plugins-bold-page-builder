@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_headline extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -189,7 +191,10 @@ class bt_bb_headline extends BT_BB_Element {
 			if ( $url != '' ) {
 				$url_title = strip_tags( str_replace( array("\n", "\r"), ' ', $headline ) );
 				$link = bt_bb_get_url( $url );
-				// IMPORTANT: esc_attr must be used instead of esc_url(_raw)
+				// IMPORTANT: esc_attr (not esc_url) is intentional here.
+				// Authors are allowed to put javascript: / mailto: / tel: / non-standard schemes
+				// in the headline URL. esc_url would strip them. Do not "fix" this to esc_url —
+				// it has been flagged by automated security audits before; it is by design.
 				$headline = '<a href="' . esc_attr( $link ) . '" target="' . esc_attr( $target ) . '" title="' . esc_attr( $url_title )  . '">' . $headline . '</a>';
 			}		
 			$headline = '<span class="' . esc_attr( $this->shortcode ) . '_content"><span>' . $headline . '</span></span>';			
@@ -218,169 +223,169 @@ class bt_bb_headline extends BT_BB_Element {
 		require_once( dirname(__FILE__) . '/../../content_elements_misc/misc.php' );
 		$color_scheme_arr = bt_bb_get_color_scheme_param_array();
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Headline', 'bold-builder' ), 'description' => esc_html__( 'Headline with custom fonts (and AI help)', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode, 'highlight' => true,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Headline', 'bold-page-builder' ), 'description' => esc_html__( 'Headline with custom fonts (and AI help)', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode, 'highlight' => true,
 			'params' => array(
 				array(
 					'param_name' => 'ai_prompt',
 					'type' => 'ai_prompt',
 					'target' =>
 						array(
-							'superheadline' => array( 'alias' => 'supertitle', 'title' => esc_html__( 'Superheadline', 'bold-builder' ) ),
-							'headline' => array( 'alias' => 'title', 'title' => esc_html__( 'Headline', 'bold-builder' ) ),
-							'subheadline' => array( 'alias' => 'subtitle', 'title' => esc_html__( 'Subheadline', 'bold-builder' ) ),
+							'superheadline' => array( 'alias' => 'supertitle', 'title' => esc_html__( 'Superheadline', 'bold-page-builder' ) ),
+							'headline' => array( 'alias' => 'title', 'title' => esc_html__( 'Headline', 'bold-page-builder' ) ),
+							'subheadline' => array( 'alias' => 'subtitle', 'title' => esc_html__( 'Subheadline', 'bold-page-builder' ) ),
 						),
 					'system_prompt' => 'You are a copywriter and your goal is to help users generate website content. Based on the user prompt generate supertitle, title and subtitle for the website page.',
 				),
-				array( 'param_name' => 'superheadline', 'type' => 'textfield', 'heading' => esc_html__( 'Superheadline', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Superheadline text', 'bold-builder' ) ),
-				array( 'param_name' => 'headline', 'type' => 'textarea', 'heading' => esc_html__( 'Headline', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Headline text', 'bold-builder' ), 'preview' => true, 'preview_strong' => true ),
-				array( 'param_name' => 'subheadline', 'type' => 'textarea', 'heading' => esc_html__( 'Subheadline', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Subheadline text', 'bold-builder' ) ),
-				array( 'param_name' => 'html_tag', 'type' => 'dropdown', 'heading' => esc_html__( 'Headline HTML tag', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'superheadline', 'type' => 'textfield', 'heading' => esc_html__( 'Superheadline', 'bold-page-builder' ), 'placeholder' => esc_html__( 'Add Superheadline text', 'bold-page-builder' ) ),
+				array( 'param_name' => 'headline', 'type' => 'textarea', 'heading' => esc_html__( 'Headline', 'bold-page-builder' ), 'placeholder' => esc_html__( 'Add Headline text', 'bold-page-builder' ), 'preview' => true, 'preview_strong' => true ),
+				array( 'param_name' => 'subheadline', 'type' => 'textarea', 'heading' => esc_html__( 'Subheadline', 'bold-page-builder' ), 'placeholder' => esc_html__( 'Add Subheadline text', 'bold-page-builder' ) ),
+				array( 'param_name' => 'html_tag', 'type' => 'dropdown', 'heading' => esc_html__( 'Headline HTML tag', 'bold-page-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( 'h1', 'bold-builder' ) 			=> 'h1',
-						esc_html__( 'h2', 'bold-builder' ) 			=> 'h2',
-						esc_html__( 'h3', 'bold-builder' ) 			=> 'h3',
-						esc_html__( 'h4', 'bold-builder' ) 			=> 'h4',
-						esc_html__( 'h5', 'bold-builder' ) 			=> 'h5',
-						esc_html__( 'h6', 'bold-builder' ) 			=> 'h6',
-						esc_html__( 'span', 'bold-builder' ) 		=> 'span',
-						esc_html__( 'p', 'bold-builder' ) 			=> 'p'
+						esc_html__( 'h1', 'bold-page-builder' ) 			=> 'h1',
+						esc_html__( 'h2', 'bold-page-builder' ) 			=> 'h2',
+						esc_html__( 'h3', 'bold-page-builder' ) 			=> 'h3',
+						esc_html__( 'h4', 'bold-page-builder' ) 			=> 'h4',
+						esc_html__( 'h5', 'bold-page-builder' ) 			=> 'h5',
+						esc_html__( 'h6', 'bold-page-builder' ) 			=> 'h6',
+						esc_html__( 'span', 'bold-page-builder' ) 		=> 'span',
+						esc_html__( 'p', 'bold-page-builder' ) 			=> 'p'
 				) ),
-				array( 'param_name' => 'supertitle_position', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'outside' ), 'default' => 'outside', 'heading' => esc_html__( 'Put Superheadline outside HTML tag', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'description' => esc_html__( 'Predefined Headline sizes, independent of HTML tag', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
+				array( 'param_name' => 'supertitle_position', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'outside' ), 'default' => 'outside', 'heading' => esc_html__( 'Put Superheadline outside HTML tag', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-page-builder' ), 'description' => esc_html__( 'Predefined Headline sizes, independent of HTML tag', 'bold-page-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Inherit', 'bold-builder' ) 	=> 'inherit',
-						esc_html__( 'Extra Small', 'bold-builder' ) => 'extrasmall',
-						esc_html__( 'Small', 'bold-builder' ) 		=> 'small',
-						esc_html__( 'Medium', 'bold-builder' ) 		=> 'medium',
-						esc_html__( 'Normal', 'bold-builder' ) 		=> 'normal',
-						esc_html__( 'Large', 'bold-builder' ) 		=> 'large',
-						esc_html__( 'Extra large', 'bold-builder' ) => 'extralarge',
-						esc_html__( 'Huge', 'bold-builder' ) 		=> 'huge'
+						esc_html__( 'Inherit', 'bold-page-builder' ) 	=> 'inherit',
+						esc_html__( 'Extra Small', 'bold-page-builder' ) => 'extrasmall',
+						esc_html__( 'Small', 'bold-page-builder' ) 		=> 'small',
+						esc_html__( 'Medium', 'bold-page-builder' ) 		=> 'medium',
+						esc_html__( 'Normal', 'bold-page-builder' ) 		=> 'normal',
+						esc_html__( 'Large', 'bold-page-builder' ) 		=> 'large',
+						esc_html__( 'Extra large', 'bold-page-builder' ) => 'extralarge',
+						esc_html__( 'Huge', 'bold-page-builder' ) 		=> 'huge'
 					)
 				),				
-				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Alignment', 'bold-builder' ), 'responsive_override' => true,
+				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Alignment', 'bold-page-builder' ), 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Inherit', 'bold-builder' ) 	=> 'inherit',
-						esc_html__( 'Left', 'bold-builder' ) 		=> 'left',
-						esc_html__( 'Center', 'bold-builder' ) 		=> 'center',
-						esc_html__( 'Right', 'bold-builder' )		=> 'right'
+						esc_html__( 'Inherit', 'bold-page-builder' ) 	=> 'inherit',
+						esc_html__( 'Left', 'bold-page-builder' ) 		=> 'left',
+						esc_html__( 'Center', 'bold-page-builder' ) 		=> 'center',
+						esc_html__( 'Right', 'bold-page-builder' )		=> 'right'
 					)
 				),
-				array( 'param_name' => 'dash', 'type' => 'dropdown', 'heading' => esc_html__( 'Dash', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ),
+				array( 'param_name' => 'dash', 'type' => 'dropdown', 'heading' => esc_html__( 'Dash', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'None', 'bold-builder' ) 			=> 'none',
-						esc_html__( 'Top', 'bold-builder' ) 			=> 'top',
-						esc_html__( 'Bottom', 'bold-builder' ) 			=> 'bottom',
-						esc_html__( 'Top and bottom', 'bold-builder' ) 	=> 'top_bottom'
+						esc_html__( 'None', 'bold-page-builder' ) 			=> 'none',
+						esc_html__( 'Top', 'bold-page-builder' ) 			=> 'top',
+						esc_html__( 'Bottom', 'bold-page-builder' ) 			=> 'bottom',
+						esc_html__( 'Top and bottom', 'bold-page-builder' ) 	=> 'top_bottom'
 					)
 				),
-				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),
-				array( 'param_name' => 'color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Color', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ), 'preview' => true ),
+				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),
+				array( 'param_name' => 'color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Color', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ), 'preview' => true ),
 				
-				array( 'param_name' => 'font', 'type' => 'dropdown', 'heading' => esc_html__( 'Font', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ), 'preview' => true,
-					'value' => array( esc_html__( 'Inherit', 'bold-builder' ) => 'inherit' ) + BT_BB_Root::$font_arr
+				array( 'param_name' => 'font', 'type' => 'dropdown', 'heading' => esc_html__( 'Font', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ), 'preview' => true,
+					'value' => array( esc_html__( 'Inherit', 'bold-page-builder' ) => 'inherit' ) + BT_BB_Root::$font_arr
 				),
-				array( 'param_name' => 'font_subset', 'type' => 'textfield', 'heading' => esc_html__( 'Google font subset', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ), 'value' => 'latin,latin-ext', 'placeholder' => esc_html__( 'E.g. latin,latin-ext,cyrillic,cyrillic-ext', 'bold-builder' ), 'description' => esc_html__( 'E.g. latin,latin-ext,cyrillic,cyrillic-ext', 'bold-builder' ) ),
+				array( 'param_name' => 'font_subset', 'type' => 'textfield', 'heading' => esc_html__( 'Google font subset', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ), 'value' => 'latin,latin-ext', 'placeholder' => esc_html__( 'E.g. latin,latin-ext,cyrillic,cyrillic-ext', 'bold-page-builder' ), 'description' => esc_html__( 'E.g. latin,latin-ext,cyrillic,cyrillic-ext', 'bold-page-builder' ) ),
 				
-				array( 'param_name' => 'font_load_extension', 'type' => 'textfield', 'heading' => esc_html__( 'Google variable font style specification', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ), 'value' => '', 'description' => __( 'Define Google variable font style specification. For more details, <a href="https://fonts.google.com/knowledge/glossary/variable_fonts" target="_blank">read here</a>. Leave empty to load default font settings.', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. :ital,wght@0,200;1,700', 'bold-builder' ) ),
-				array( 'param_name' => 'font_size', 'type' => 'textfield', 'heading' => esc_html__( 'Custom font size', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 20px or 1.5rem', 'bold-builder' ) ),
-				array( 'param_name' => 'font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Headline font weight', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ),
+				array( 'param_name' => 'font_load_extension', 'type' => 'textfield', 'heading' => esc_html__( 'Google variable font style specification', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ), 'value' => '', 'description' => __( 'Define Google variable font style specification. For more details, <a href="https://fonts.google.com/knowledge/glossary/variable_fonts" target="_blank">read here</a>. Leave empty to load default font settings.', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. :ital,wght@0,200;1,700', 'bold-page-builder' ) ),
+				array( 'param_name' => 'font_size', 'type' => 'textfield', 'heading' => esc_html__( 'Custom font size', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 20px or 1.5rem', 'bold-page-builder' ) ),
+				array( 'param_name' => 'font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Headline font weight', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) 	=> '',
-						esc_html__( 'Normal', 'bold-builder' ) 		=> 'normal',
-						esc_html__( 'Bold', 'bold-builder' ) 		=> 'bold',
-						esc_html__( 'Bolder', 'bold-builder' ) 		=> 'bolder',
-						esc_html__( 'Lighter', 'bold-builder' ) 	=> 'lighter',
-						esc_html__( 'Light', 'bold-builder' ) 		=> 'light',
-						esc_html__( '100', 'bold-builder' ) 		=> '100',
-						esc_html__( '200', 'bold-builder' ) 		=> '200',
-						esc_html__( '300', 'bold-builder' ) 		=> '300',
-						esc_html__( '400', 'bold-builder' ) 		=> '400',
-						esc_html__( '500', 'bold-builder' ) 		=> '500',
-						esc_html__( '600', 'bold-builder' ) 		=> '600',
-						esc_html__( '700', 'bold-builder' ) 		=> '700',
-						esc_html__( '800', 'bold-builder' ) 		=> '800',
-						esc_html__( '900', 'bold-builder' ) 		=> '900'
+						esc_html__( 'Default', 'bold-page-builder' ) 	=> '',
+						esc_html__( 'Normal', 'bold-page-builder' ) 		=> 'normal',
+						esc_html__( 'Bold', 'bold-page-builder' ) 		=> 'bold',
+						esc_html__( 'Bolder', 'bold-page-builder' ) 		=> 'bolder',
+						esc_html__( 'Lighter', 'bold-page-builder' ) 	=> 'lighter',
+						esc_html__( 'Light', 'bold-page-builder' ) 		=> 'light',
+						esc_html__( '100', 'bold-page-builder' ) 		=> '100',
+						esc_html__( '200', 'bold-page-builder' ) 		=> '200',
+						esc_html__( '300', 'bold-page-builder' ) 		=> '300',
+						esc_html__( '400', 'bold-page-builder' ) 		=> '400',
+						esc_html__( '500', 'bold-page-builder' ) 		=> '500',
+						esc_html__( '600', 'bold-page-builder' ) 		=> '600',
+						esc_html__( '700', 'bold-page-builder' ) 		=> '700',
+						esc_html__( '800', 'bold-page-builder' ) 		=> '800',
+						esc_html__( '900', 'bold-page-builder' ) 		=> '900'
 					)
 				),
-				array( 'param_name' => 'text_transform', 'type' => 'dropdown', 'heading' => esc_html__( 'Headline text transform', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ),
+				array( 'param_name' => 'text_transform', 'type' => 'dropdown', 'heading' => esc_html__( 'Headline text transform', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) 	=> '',
-						esc_html__( 'None', 'bold-builder' ) 		=> 'none',
-						esc_html__( 'Initial', 'bold-builder' ) 	=> 'initial',
-						esc_html__( 'Inherit', 'bold-builder' ) 	=> 'inherit',
-						esc_html__( 'UPPERCASE', 'bold-builder' ) 	=> 'uppercase',
-						esc_html__( 'Capitalize', 'bold-builder' ) 	=> 'capitalize',
-						esc_html__( 'lowercase', 'bold-builder' ) 	=> 'lowercase'
+						esc_html__( 'Default', 'bold-page-builder' ) 	=> '',
+						esc_html__( 'None', 'bold-page-builder' ) 		=> 'none',
+						esc_html__( 'Initial', 'bold-page-builder' ) 	=> 'initial',
+						esc_html__( 'Inherit', 'bold-page-builder' ) 	=> 'inherit',
+						esc_html__( 'UPPERCASE', 'bold-page-builder' ) 	=> 'uppercase',
+						esc_html__( 'Capitalize', 'bold-page-builder' ) 	=> 'capitalize',
+						esc_html__( 'lowercase', 'bold-page-builder' ) 	=> 'lowercase'
 					)
 				),
-				array( 'param_name' => 'superheadline_font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Superheadline font weight', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ),
+				array( 'param_name' => 'superheadline_font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Superheadline font weight', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) 	=> '',
-						esc_html__( 'Normal', 'bold-builder' ) 		=> 'normal',
-						esc_html__( 'Bold', 'bold-builder' ) 		=> 'bold',
-						esc_html__( 'Bolder', 'bold-builder' ) 		=> 'bolder',
-						esc_html__( 'Lighter', 'bold-builder' ) 	=> 'lighter',
-						esc_html__( 'Light', 'bold-builder' ) 		=> 'light',
-						esc_html__( 'Thin', 'bold-builder' ) 		=> 'thin',
-						esc_html__( '100', 'bold-builder' ) 		=> '100',
-						esc_html__( '200', 'bold-builder' ) 		=> '200',
-						esc_html__( '300', 'bold-builder' ) 		=> '300',
-						esc_html__( '400', 'bold-builder' ) 		=> '400',
-						esc_html__( '500', 'bold-builder' ) 		=> '500',
-						esc_html__( '600', 'bold-builder' ) 		=> '600',
-						esc_html__( '700', 'bold-builder' ) 		=> '700',
-						esc_html__( '800', 'bold-builder' ) 		=> '800',
-						esc_html__( '900', 'bold-builder' ) 		=> '900'
+						esc_html__( 'Default', 'bold-page-builder' ) 	=> '',
+						esc_html__( 'Normal', 'bold-page-builder' ) 		=> 'normal',
+						esc_html__( 'Bold', 'bold-page-builder' ) 		=> 'bold',
+						esc_html__( 'Bolder', 'bold-page-builder' ) 		=> 'bolder',
+						esc_html__( 'Lighter', 'bold-page-builder' ) 	=> 'lighter',
+						esc_html__( 'Light', 'bold-page-builder' ) 		=> 'light',
+						esc_html__( 'Thin', 'bold-page-builder' ) 		=> 'thin',
+						esc_html__( '100', 'bold-page-builder' ) 		=> '100',
+						esc_html__( '200', 'bold-page-builder' ) 		=> '200',
+						esc_html__( '300', 'bold-page-builder' ) 		=> '300',
+						esc_html__( '400', 'bold-page-builder' ) 		=> '400',
+						esc_html__( '500', 'bold-page-builder' ) 		=> '500',
+						esc_html__( '600', 'bold-page-builder' ) 		=> '600',
+						esc_html__( '700', 'bold-page-builder' ) 		=> '700',
+						esc_html__( '800', 'bold-page-builder' ) 		=> '800',
+						esc_html__( '900', 'bold-page-builder' ) 		=> '900'
 					)
 				),
-				array( 'param_name' => 'superheadline_text_transform', 'type' => 'dropdown', 'heading' => esc_html__( 'Superheadline text transform', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ),
+				array( 'param_name' => 'superheadline_text_transform', 'type' => 'dropdown', 'heading' => esc_html__( 'Superheadline text transform', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) 	=> '',
-						esc_html__( 'None', 'bold-builder' ) 		=> 'none',
-						esc_html__( 'Initial', 'bold-builder' ) 	=> 'initial',
-						esc_html__( 'Inherit', 'bold-builder' ) 	=> 'inherit',
-						esc_html__( 'UPPERCASE', 'bold-builder' ) 	=> 'uppercase',
-						esc_html__( 'Capitalize', 'bold-builder' ) 	=> 'capitalize',
-						esc_html__( 'lowercase', 'bold-builder' ) 	=> 'lowercase'
+						esc_html__( 'Default', 'bold-page-builder' ) 	=> '',
+						esc_html__( 'None', 'bold-page-builder' ) 		=> 'none',
+						esc_html__( 'Initial', 'bold-page-builder' ) 	=> 'initial',
+						esc_html__( 'Inherit', 'bold-page-builder' ) 	=> 'inherit',
+						esc_html__( 'UPPERCASE', 'bold-page-builder' ) 	=> 'uppercase',
+						esc_html__( 'Capitalize', 'bold-page-builder' ) 	=> 'capitalize',
+						esc_html__( 'lowercase', 'bold-page-builder' ) 	=> 'lowercase'
 					)
 				),
-				array( 'param_name' => 'subheadline_font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Subheadline font weight', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ),
+				array( 'param_name' => 'subheadline_font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Subheadline font weight', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) 	=> '',
-						esc_html__( 'Normal', 'bold-builder' ) 		=> 'normal',
-						esc_html__( 'Bold', 'bold-builder' ) 		=> 'bold',
-						esc_html__( 'Bolder', 'bold-builder' ) 		=> 'bolder',
-						esc_html__( 'Lighter', 'bold-builder' ) 	=> 'lighter',
-						esc_html__( 'Light', 'bold-builder' ) 		=> 'light',
-						esc_html__( 'Thin', 'bold-builder' ) 		=> 'thin',
-						esc_html__( '100', 'bold-builder' ) 		=> '100',
-						esc_html__( '200', 'bold-builder' ) 		=> '200',
-						esc_html__( '300', 'bold-builder' ) 		=> '300',
-						esc_html__( '400', 'bold-builder' ) 		=> '400',
-						esc_html__( '500', 'bold-builder' ) 		=> '500',
-						esc_html__( '600', 'bold-builder' ) 		=> '600',
-						esc_html__( '700', 'bold-builder' ) 		=> '700',
-						esc_html__( '800', 'bold-builder' ) 		=> '800',
-						esc_html__( '900', 'bold-builder' ) 		=> '900'
+						esc_html__( 'Default', 'bold-page-builder' ) 	=> '',
+						esc_html__( 'Normal', 'bold-page-builder' ) 		=> 'normal',
+						esc_html__( 'Bold', 'bold-page-builder' ) 		=> 'bold',
+						esc_html__( 'Bolder', 'bold-page-builder' ) 		=> 'bolder',
+						esc_html__( 'Lighter', 'bold-page-builder' ) 	=> 'lighter',
+						esc_html__( 'Light', 'bold-page-builder' ) 		=> 'light',
+						esc_html__( 'Thin', 'bold-page-builder' ) 		=> 'thin',
+						esc_html__( '100', 'bold-page-builder' ) 		=> '100',
+						esc_html__( '200', 'bold-page-builder' ) 		=> '200',
+						esc_html__( '300', 'bold-page-builder' ) 		=> '300',
+						esc_html__( '400', 'bold-page-builder' ) 		=> '400',
+						esc_html__( '500', 'bold-page-builder' ) 		=> '500',
+						esc_html__( '600', 'bold-page-builder' ) 		=> '600',
+						esc_html__( '700', 'bold-page-builder' ) 		=> '700',
+						esc_html__( '800', 'bold-page-builder' ) 		=> '800',
+						esc_html__( '900', 'bold-page-builder' ) 		=> '900'
 					)
 				),
-				array( 'param_name' => 'subheadline_text_transform', 'type' => 'dropdown', 'heading' => esc_html__( 'Subheadline text transform', 'bold-builder' ), 'group' => esc_html__( 'Font', 'bold-builder' ),
+				array( 'param_name' => 'subheadline_text_transform', 'type' => 'dropdown', 'heading' => esc_html__( 'Subheadline text transform', 'bold-page-builder' ), 'group' => esc_html__( 'Font', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) 	=> '',
-						esc_html__( 'None', 'bold-builder' ) 		=> 'none',
-						esc_html__( 'Initial', 'bold-builder' ) 	=> 'initial',
-						esc_html__( 'Inherit', 'bold-builder' ) 	=> 'inherit',
-						esc_html__( 'UPPERCASE', 'bold-builder' ) 	=> 'uppercase',
-						esc_html__( 'Capitalize', 'bold-builder' ) 	=> 'capitalize',
-						esc_html__( 'lowercase', 'bold-builder' ) 	=> 'lowercase'
+						esc_html__( 'Default', 'bold-page-builder' ) 	=> '',
+						esc_html__( 'None', 'bold-page-builder' ) 		=> 'none',
+						esc_html__( 'Initial', 'bold-page-builder' ) 	=> 'initial',
+						esc_html__( 'Inherit', 'bold-page-builder' ) 	=> 'inherit',
+						esc_html__( 'UPPERCASE', 'bold-page-builder' ) 	=> 'uppercase',
+						esc_html__( 'Capitalize', 'bold-page-builder' ) 	=> 'capitalize',
+						esc_html__( 'lowercase', 'bold-page-builder' ) 	=> 'lowercase'
 					)
 				),
-				array( 'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us) or post slug (e.g. about-us) or search for existing content.', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ) ),
-				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ),
+				array( 'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-page-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us) or post slug (e.g. about-us) or search for existing content.', 'bold-page-builder' ), 'group' => esc_html__( 'URL', 'bold-page-builder' ) ),
+				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-page-builder' ), 'group' => esc_html__( 'URL', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Self (open in same tab)', 'bold-builder' ) => '_self',
-						esc_html__( 'Blank (open in new tab)', 'bold-builder' ) => '_blank'
+						esc_html__( 'Self (open in same tab)', 'bold-page-builder' ) => '_self',
+						esc_html__( 'Blank (open in new tab)', 'bold-page-builder' ) => '_blank'
 					)
 				)
 			)

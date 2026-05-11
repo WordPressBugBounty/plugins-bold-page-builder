@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 // WIDGETS
 
 if ( ! function_exists( 'register_bb_widgets' ) ) {

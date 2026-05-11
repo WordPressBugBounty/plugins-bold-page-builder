@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_image extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -179,7 +181,7 @@ class bt_bb_image extends BT_BB_Element {
 				}
 			}
 		} else if ( ! $ignore_fe_editor ) {
-			$output .= '<img src="' . BT_BB_Root::$path . 'img/placeholder.png" alt="' . esc_html__( 'Placeholder image', 'bold-builder' ) . '" title="' . esc_html__( 'Placeholder image', 'bold-builder' ) . '">';
+			$output .= '<img src="' . BT_BB_Root::$path . 'img/placeholder.png" alt="' . esc_html__( 'Placeholder image', 'bold-page-builder' ) . '" title="' . esc_html__( 'Placeholder image', 'bold-page-builder' ) . '">';
 		}
 		
 		if ( ! empty( $link ) ) {
@@ -237,78 +239,78 @@ class bt_bb_image extends BT_BB_Element {
 	}
 
 	function map_shortcode() {
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Image', 'bold-builder' ), 'description' => esc_html__( 'Single image', 'bold-builder' ), 'container' => 'vertical', 'accept' => array( 'bt_bb_button' => true, 'bt_bb_icon' => true, 'bt_bb_text' => true, 'bt_bb_headline' => true, 'bt_bb_separator' => true ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Image', 'bold-page-builder' ), 'description' => esc_html__( 'Single image', 'bold-page-builder' ), 'container' => 'vertical', 'accept' => array( 'bt_bb_button' => true, 'bt_bb_icon' => true, 'bt_bb_text' => true, 'bt_bb_headline' => true, 'bt_bb_separator' => true ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'image', 'type' => 'attach_image', 'heading' => esc_html__( 'Image', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'image', 'type' => 'attach_image', 'heading' => esc_html__( 'Image', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-page-builder' ), 'preview' => true,
 					'value' => bt_bb_get_image_sizes()
 				),
-				array( 'param_name' => 'image_height', 'type' => 'textfield', 'heading' => esc_html__( 'Image height', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 90px', 'bold-builder' ) ), 
-				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-builder' ),
+				array( 'param_name' => 'image_height', 'type' => 'textfield', 'heading' => esc_html__( 'Image height', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 90px', 'bold-page-builder' ) ), 
+				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Square', 'bold-builder' ) 			=> 'square',
-						esc_html__( 'Soft Rounded', 'bold-builder' ) 	=> 'soft-rounded',
-						esc_html__( 'Hard Rounded', 'bold-builder' ) 	=> 'hard-rounded'
+						esc_html__( 'Square', 'bold-page-builder' ) 			=> 'square',
+						esc_html__( 'Soft Rounded', 'bold-page-builder' ) 	=> 'soft-rounded',
+						esc_html__( 'Hard Rounded', 'bold-page-builder' ) 	=> 'hard-rounded'
 					)
 				),
-				array( 'param_name' => 'lazy_load', 'type' => 'dropdown', 'default' => 'yes', 'heading' => esc_html__( 'Lazy load image', 'bold-builder' ),
+				array( 'param_name' => 'lazy_load', 'type' => 'dropdown', 'default' => 'yes', 'heading' => esc_html__( 'Lazy load image', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'No', 'bold-builder' ) 		=> 'no',
-						esc_html__( 'Yes', 'bold-builder' ) 	=> 'yes'
-					)
-				),
-				array( 
-					'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Alignment', 'bold-builder' ), 'responsive_override' => true,
-					'value' => array(
-						esc_html__( 'Inherit', 'bold-builder' ) 		=> 'inherit',
-						esc_html__( 'Left', 'bold-builder' ) 			=> 'left',
-						esc_html__( 'Center', 'bold-builder' ) 			=> 'center',
-						esc_html__( 'Right', 'bold-builder' ) 			=> 'right'
+						esc_html__( 'No', 'bold-page-builder' ) 		=> 'no',
+						esc_html__( 'Yes', 'bold-page-builder' ) 	=> 'yes'
 					)
 				),
 				array( 
-					'param_name' => 'caption', 'type' => 'textfield', 'heading' => esc_html__( 'Caption/Alt/Title override', 'bold-builder' ), 'description' => esc_html__( 'Use this field to override the alt, title, and caption values from the media library.', 'bold-builder' ) 
+					'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Alignment', 'bold-page-builder' ), 'responsive_override' => true,
+					'value' => array(
+						esc_html__( 'Inherit', 'bold-page-builder' ) 		=> 'inherit',
+						esc_html__( 'Left', 'bold-page-builder' ) 			=> 'left',
+						esc_html__( 'Center', 'bold-page-builder' ) 			=> 'center',
+						esc_html__( 'Right', 'bold-page-builder' ) 			=> 'right'
+					)
 				),
 				array( 
-					'param_name' => 'show_caption', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'yes' ), 'default' => '', 'heading' => esc_html__( 'Show HTML caption tag', 'bold-builder' ) 
+					'param_name' => 'caption', 'type' => 'textfield', 'heading' => esc_html__( 'Caption/Alt/Title override', 'bold-page-builder' ), 'description' => esc_html__( 'Use this field to override the alt, title, and caption values from the media library.', 'bold-page-builder' ) 
 				),
 				array( 
-					'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us), post slug (e.g. about-us).', 'bold-builder' ), 
-					'group' => esc_html__( 'URL', 'bold-builder' ) 
+					'param_name' => 'show_caption', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'yes' ), 'default' => '', 'heading' => esc_html__( 'Show HTML caption tag', 'bold-page-builder' ) 
 				),
-				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-builder' ), 'description' => esc_html__( 'To open current image in full size select Lightbox and leave URL field empty.', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ),
+				array( 
+					'param_name' => 'url', 'type' => 'link', 'heading' => esc_html__( 'URL', 'bold-page-builder' ), 'description' => esc_html__( 'Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us), post slug (e.g. about-us).', 'bold-page-builder' ), 
+					'group' => esc_html__( 'URL', 'bold-page-builder' ) 
+				),
+				array( 'param_name' => 'target', 'type' => 'dropdown', 'heading' => esc_html__( 'Target', 'bold-page-builder' ), 'description' => esc_html__( 'To open current image in full size select Lightbox and leave URL field empty.', 'bold-page-builder' ), 'group' => esc_html__( 'URL', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Self (open in same tab)', 'bold-builder' ) 		=> '_self',
-						esc_html__( 'Blank (open in new tab)', 'bold-builder' ) 		=> '_blank',
-						esc_html__( 'Lightbox (open in new layer)', 'bold-builder' ) 	=> '_lightbox'
+						esc_html__( 'Self (open in same tab)', 'bold-page-builder' ) 		=> '_self',
+						esc_html__( 'Blank (open in new tab)', 'bold-page-builder' ) 		=> '_blank',
+						esc_html__( 'Lightbox (open in new layer)', 'bold-page-builder' ) 	=> '_lightbox'
 					)
 				),
-				array( 'param_name' => 'hover_style', 'type' => 'dropdown', 'heading' => esc_html__( 'Hover style', 'bold-builder' ), 'group' => esc_html__( 'URL', 'bold-builder' ),
+				array( 'param_name' => 'hover_style', 'type' => 'dropdown', 'heading' => esc_html__( 'Hover style', 'bold-page-builder' ), 'group' => esc_html__( 'URL', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Simple', 'bold-builder' ) 					=> 'simple',
-						esc_html__( 'Flip', 'bold-builder' ) 					=> 'flip',
-						esc_html__( 'Zoom in', 'bold-builder' ) 				=> 'zoom-in',
-						esc_html__( 'To grayscale', 'bold-builder' ) 			=> 'to-grayscale',
-						esc_html__( 'From grayscale', 'bold-builder' ) 			=> 'from-grayscale',
-						esc_html__( 'Zoom in to grayscale', 'bold-builder' ) 	=> 'zoom-in-to-grayscale',
-						esc_html__( 'Zoom in from grayscale', 'bold-builder' ) 	=> 'zoom-in-from-grayscale',
-						esc_html__( 'Scroll', 'bold-builder' ) 					=> 'scroll'
+						esc_html__( 'Simple', 'bold-page-builder' ) 					=> 'simple',
+						esc_html__( 'Flip', 'bold-page-builder' ) 					=> 'flip',
+						esc_html__( 'Zoom in', 'bold-page-builder' ) 				=> 'zoom-in',
+						esc_html__( 'To grayscale', 'bold-page-builder' ) 			=> 'to-grayscale',
+						esc_html__( 'From grayscale', 'bold-page-builder' ) 			=> 'from-grayscale',
+						esc_html__( 'Zoom in to grayscale', 'bold-page-builder' ) 	=> 'zoom-in-to-grayscale',
+						esc_html__( 'Zoom in from grayscale', 'bold-page-builder' ) 	=> 'zoom-in-from-grayscale',
+						esc_html__( 'Scroll', 'bold-page-builder' ) 					=> 'scroll'
 					)
 				),
-				array( 'param_name' => 'content_display', 'type' => 'dropdown', 'heading' => esc_html__( 'Show content', 'bold-builder' ), 'description' => esc_html__( 'Add selected elements and show them over the image', 'bold-builder' ), 'group' => esc_html__( 'Content', 'bold-builder' ), 'responsive_override' => true,
+				array( 'param_name' => 'content_display', 'type' => 'dropdown', 'heading' => esc_html__( 'Show content', 'bold-page-builder' ), 'description' => esc_html__( 'Add selected elements and show them over the image', 'bold-page-builder' ), 'group' => esc_html__( 'Content', 'bold-page-builder' ), 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Always', 'bold-builder' ) 			=> 'always',
-						esc_html__( 'Show on hover', 'bold-builder' ) 	=> 'show-on-hover',
-						esc_html__( 'Hide on hover', 'bold-builder' ) 	=> 'hide-on-hover'
+						esc_html__( 'Always', 'bold-page-builder' ) 			=> 'always',
+						esc_html__( 'Show on hover', 'bold-page-builder' ) 	=> 'show-on-hover',
+						esc_html__( 'Hide on hover', 'bold-page-builder' ) 	=> 'hide-on-hover'
 					)
 				),
-				array( 'param_name' => 'content_background_color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Content background color', 'bold-builder' ), 'group' => esc_html__( 'Content', 'bold-builder' ) ),
-				array( 'param_name' => 'content_background_opacity', 'type' => 'textfield', 'heading' => esc_html__( 'Content background opacity (deprecated)', 'bold-builder' ), 'group' => esc_html__( 'Content', 'bold-builder' ) ),
-				array( 'param_name' => 'content_align', 'type' => 'dropdown', 'heading' => esc_html__( 'Content alignment', 'bold-builder' ), 'group' => esc_html__( 'Content', 'bold-builder' ),
+				array( 'param_name' => 'content_background_color', 'type' => 'colorpicker', 'heading' => esc_html__( 'Content background color', 'bold-page-builder' ), 'group' => esc_html__( 'Content', 'bold-page-builder' ) ),
+				array( 'param_name' => 'content_background_opacity', 'type' => 'textfield', 'heading' => esc_html__( 'Content background opacity (deprecated)', 'bold-page-builder' ), 'group' => esc_html__( 'Content', 'bold-page-builder' ) ),
+				array( 'param_name' => 'content_align', 'type' => 'dropdown', 'heading' => esc_html__( 'Content alignment', 'bold-page-builder' ), 'group' => esc_html__( 'Content', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Middle', 'bold-builder' ) 		=> 'middle',
-						esc_html__( 'Top', 'bold-builder' ) 		=> 'top',						
-						esc_html__( 'Bottom', 'bold-builder' ) 		=> 'bottom'
+						esc_html__( 'Middle', 'bold-page-builder' ) 		=> 'middle',
+						esc_html__( 'Top', 'bold-page-builder' ) 		=> 'top',						
+						esc_html__( 'Bottom', 'bold-page-builder' ) 		=> 'bottom'
 					)
 				)
 			)

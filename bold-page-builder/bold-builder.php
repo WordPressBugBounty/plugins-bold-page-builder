@@ -3,18 +3,18 @@
 /**
  * Plugin Name: Bold Builder
  * Description: WordPress page builder.
- * Version: 5.7.3
+ * Version: 5.8.0
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: bold-builder
+ * Text Domain: bold-page-builder
  */
  
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.7.2' );
+define( 'BT_BB_VERSION', '5.8.0' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -83,7 +83,7 @@ function bt_bb_parse_content( $content ) {
 						if ( BT_BB_FEATURE_ADD_ELEMENTS ) {
 							$content .= '<div class="bt_bb_fe_wrap">';
 							$content .= '<div class="bt_bb_fe_add_template">';
-							$content .= '<h6>' . esc_html__( 'Add Section/Row/Column(s)', 'bold-builder' ) . '</h6>';
+							$content .= '<h6>' . esc_html__( 'Add Section/Row/Column(s)', 'bold-page-builder' ) . '</h6>';
 							$content .= '<div class="bt_bb_fe_add_template_list">';
 								$content .= '<div data-layout-id="11" title="1/1"></div>';
 								$content .= '<div data-layout-id="12+12" title="1/2+1/2"></div>';
@@ -103,16 +103,16 @@ function bt_bb_parse_content( $content ) {
 				}
 			}
 			$content .= '</div>';
-			$content .= '<span id="bt_bb_fe_preview_toggler" class="bt_bb_fe_preview_toggler" title="' . esc_html__( 'Edit/Preview', 'bold-builder' ) . '"></span>';
+			$content .= '<span id="bt_bb_fe_preview_toggler" class="bt_bb_fe_preview_toggler" title="' . esc_html__( 'Edit/Preview', 'bold-page-builder' ) . '"></span>';
 			if ( ! class_exists( 'BoldThemes_BB_Settings' ) || ! BoldThemes_BB_Settings::$custom_content_elements ) { // only with native BB elements
 				if ( current_user_can( 'edit_pages' ) && ( strpos( $_content, 'bt_bb_fe_wrap' ) || $_content == '' ) ) {
 					if ( ! ( isset( $_GET['bt_bb_fe_preview'] ) && $_GET['bt_bb_fe_preview'] == 'true' ) ) {
 						if ( BT_BB_FEATURE_ADD_ELEMENTS ) {
-							$content .= '<span id="bt_bb_fe_add_elements" title="' . esc_html__( 'Add Elements', 'bold-builder' ) . '"></span>';
+							$content .= '<span id="bt_bb_fe_add_elements" title="' . esc_html__( 'Add Elements', 'bold-page-builder' ) . '"></span>';
 						}
-						$content .= '<span id="bt_bb_fe_undo" title="' . esc_attr__( 'Undo', 'bold-builder' ) . '" disabled></span>';
-						$content .= '<span id="bt_bb_fe_redo" title="' . esc_attr__( 'Redo', 'bold-builder' ) . '" disabled></span>';
-						$content .= '<span id="bt_bb_fe_save" title="' . esc_attr__( 'Save changes', 'bold-builder' ) . '"></span>';
+						$content .= '<span id="bt_bb_fe_undo" title="' . esc_attr__( 'Undo', 'bold-page-builder' ) . '" disabled></span>';
+						$content .= '<span id="bt_bb_fe_redo" title="' . esc_attr__( 'Redo', 'bold-page-builder' ) . '" disabled></span>';
+						$content .= '<span id="bt_bb_fe_save" title="' . esc_attr__( 'Save changes', 'bold-page-builder' ) . '"></span>';
 					}
 				}
 			}
@@ -204,23 +204,23 @@ function bt_bb_parse_content_admin( $content ) {
 			//if ( ! $bt_footer ) {
 				if ( ! class_exists( 'BoldThemes_BB_Settings' ) || ! BoldThemes_BB_Settings::$custom_content_elements ) { // only with native BB elements
 					if ( isset( $_GET['bt_bb_fe_preview'] ) && $_GET['bt_bb_fe_preview'] == 'true' ) {
-						$fe_wrap_open = '<div class="bt_bb_fe_wrap"><span class="bt_bb_fe_count" data-edit_url="' . get_edit_post_link( get_the_ID(), '' ) . '" title="' . esc_html__( 'Find Section', 'bold-builder' ) . '"><span class="bt_bb_fe_count_inner">' . $count . '</span></span>';
+						$fe_wrap_open = '<div class="bt_bb_fe_wrap"><span class="bt_bb_fe_count" data-edit_url="' . get_edit_post_link( get_the_ID(), '' ) . '" title="' . esc_html__( 'Find Section', 'bold-page-builder' ) . '"><span class="bt_bb_fe_count_inner">' . $count . '</span></span>';
 					} else {
 						$fe_wrap_open = '<div class="bt_bb_fe_wrap">';
 						$fe_wrap_open .= '<span class="bt_bb_fe_count"><span class="bt_bb_fe_count_inner">' . $count . '</span>
 						<ul class="bt_bb_element_menu">
-							<li><span class="bt_bb_element_menu_edit">' . esc_html__( 'Edit', 'bold-builder' ) . '</span></li>
-							<li data-edit_url="' . get_edit_post_link( get_the_ID(), '' ) . '"><span class="bt_bb_element_menu_edit_be">' . esc_html__( 'Edit in back-end editor', 'bold-builder' ) . '</span><ul><li><span class="bt_bb_element_menu_edit_be_new_tab">' . esc_html__( '(new tab)', 'bold-builder' ) . '</span></li></ul></li>
-							<li><span class="bt_bb_element_menu_cut">' . esc_html__( 'Cut', 'bold-builder' ) . '</span></li>
-							<li><span class="bt_bb_element_menu_copy">' . esc_html__( 'Copy', 'bold-builder' ) . '</span></li>
-							<li><span class="bt_bb_element_menu_paste">' . esc_html__( 'Paste', 'bold-builder' ) . '</span><ul><li><span class="bt_bb_element_menu_paste_above">' . esc_html__( '(above)', 'bold-builder' ) . '</span></li></ul></li>
-							<li class="bt_bb_element_menu_delete_parent"><span class="bt_bb_element_menu_delete">' . esc_html__( 'Delete', 'bold-builder' ) . '</span></li>
+							<li><span class="bt_bb_element_menu_edit">' . esc_html__( 'Edit', 'bold-page-builder' ) . '</span></li>
+							<li data-edit_url="' . get_edit_post_link( get_the_ID(), '' ) . '"><span class="bt_bb_element_menu_edit_be">' . esc_html__( 'Edit in back-end editor', 'bold-page-builder' ) . '</span><ul><li><span class="bt_bb_element_menu_edit_be_new_tab">' . esc_html__( '(new tab)', 'bold-page-builder' ) . '</span></li></ul></li>
+							<li><span class="bt_bb_element_menu_cut">' . esc_html__( 'Cut', 'bold-page-builder' ) . '</span></li>
+							<li><span class="bt_bb_element_menu_copy">' . esc_html__( 'Copy', 'bold-page-builder' ) . '</span></li>
+							<li><span class="bt_bb_element_menu_paste">' . esc_html__( 'Paste', 'bold-page-builder' ) . '</span><ul><li><span class="bt_bb_element_menu_paste_above">' . esc_html__( '(above)', 'bold-page-builder' ) . '</span></li></ul></li>
+							<li class="bt_bb_element_menu_delete_parent"><span class="bt_bb_element_menu_delete">' . esc_html__( 'Delete', 'bold-page-builder' ) . '</span></li>
 						</ul>
 						</span>';
 					}
 					$fe_wrap_close = '</div>';
 				} else {
-					$fe_wrap_open = '<div class="bt_bb_fe_wrap"><span class="bt_bb_fe_count bt_bb_element_menu_edit_be_new_tab" title="' . esc_html__( 'Edit', 'bold-builder' ) . '"><span class="bt_bb_fe_count_inner" data-edit_url="' . get_edit_post_link( get_the_ID(), '' ) . '">' . $count . '</span></span>';
+					$fe_wrap_open = '<div class="bt_bb_fe_wrap"><span class="bt_bb_fe_count bt_bb_element_menu_edit_be_new_tab" title="' . esc_html__( 'Edit', 'bold-page-builder' ) . '"><span class="bt_bb_fe_count_inner" data-edit_url="' . get_edit_post_link( get_the_ID(), '' ) . '">' . $count . '</span></span>';
 					$fe_wrap_close = '</div>';
 				}
 			//}
@@ -439,10 +439,10 @@ function bt_bb_enqueue_fe_always() {
 			array( 'iris', 'wp-i18n' )
 		);
 		$colorpicker_l10n = array(
-			'clear' => esc_html__( 'Clear', 'bold-builder' ),
-			'defaultString' => esc_html__( 'Default', 'bold-builder' ),
-			'pick' => esc_html__( 'Select Color', 'bold-builder' ),
-			'current' => esc_html__( 'Current Color', 'bold-builder' ),
+			'clear' => esc_html__( 'Clear', 'bold-page-builder' ),
+			'defaultString' => esc_html__( 'Default', 'bold-page-builder' ),
+			'pick' => esc_html__( 'Select Color', 'bold-page-builder' ),
+			'current' => esc_html__( 'Current Color', 'bold-page-builder' ),
 		);
 		wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n );
 		wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( 'wp-color-picker-alpha.min.js', __FILE__ ), array( 'wp-color-picker' ), BT_BB_VERSION );
@@ -610,7 +610,7 @@ add_action( 'admin_init', 'bt_bb_admin_init' );
 
 function bt_bb_load_plugin_textdomain() {
 
-	$domain = 'bold-builder';
+	$domain = 'bold-page-builder';
 	$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
 	load_plugin_textdomain( $domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
@@ -790,7 +790,7 @@ add_action( 'wp_ajax_bt_bb_get_html', 'bt_bb_get_html' );
  */
 
 function bt_bb_menu() {
-	add_options_page( esc_html__( 'Bold Builder Settings', 'bold-builder' ), esc_html__( 'Bold Builder', 'bold-builder' ), 'manage_options', 'bt_bb_settings', 'bt_bb_settings' );
+	add_options_page( esc_html__( 'Bold Builder Settings', 'bold-page-builder' ), esc_html__( 'Bold Builder', 'bold-page-builder' ), 'manage_options', 'bt_bb_settings', 'bt_bb_settings' );
 }
 add_action( 'admin_menu', 'bt_bb_menu' );
 
@@ -811,17 +811,17 @@ function bt_bb_settings() {
 
 	?>
 		<div class="wrap">
-			<h2><?php esc_html_e( 'Bold Builder Settings', 'bold-builder' ); ?></h2>
+			<h2><?php esc_html_e( 'Bold Builder Settings', 'bold-page-builder' ); ?></h2>
 			<p class="description bt_bb_wrap_documentation dashicons-editor-help dashicons-before">
 				<?php
 				printf(
 					wp_kses(
 						/* translators: 1: Documentation URL, 2: Tooltip title text */
-						__( 'For additional help check out <a href="%1$s" title="%2$s" target="_blank">Online Documentation</a>.', 'bold-builder' ),
+						__( 'For additional help check out <a href="%1$s" title="%2$s" target="_blank">Online Documentation</a>.', 'bold-page-builder' ),
 						array( 'a' => array( 'href' => array(), 'title' => array(), 'target' => array() ) )
 					),
 					'https://documentation.bold-themes.com/bold-builder',
-					esc_attr__( 'Bold Builder documentation', 'bold-builder' )
+					esc_attr__( 'Bold Builder documentation', 'bold-page-builder' )
 				);
 				?>
 			</p>
@@ -830,15 +830,15 @@ function bt_bb_settings() {
 				<table class="form-table">
 					<tbody>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Show shortcode tag instead of mapped name', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Show shortcode tags instead of mapped names', 'bold-builder' ); ?></span></legend>
-						<p><label><input name="bt_bb_settings[tag_as_name]" type="radio" value="0" <?php echo $tag_as_name != '1' ? 'checked="checked"' : ''; ?>> <?php esc_html_e( 'No', 'bold-builder' ); ?></label><br>
-						<label><input name="bt_bb_settings[tag_as_name]" type="radio" value="1" <?php echo $tag_as_name == '1' ? 'checked="checked"' : ''; ?>> <?php esc_html_e( 'Yes', 'bold-builder' ); ?></label></p>
+						<th scope="row"><?php esc_html_e( 'Show shortcode tag instead of mapped name', 'bold-page-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Show shortcode tags instead of mapped names', 'bold-page-builder' ); ?></span></legend>
+						<p><label><input name="bt_bb_settings[tag_as_name]" type="radio" value="0" <?php echo $tag_as_name != '1' ? 'checked="checked"' : ''; ?>> <?php esc_html_e( 'No', 'bold-page-builder' ); ?></label><br>
+						<label><input name="bt_bb_settings[tag_as_name]" type="radio" value="1" <?php echo $tag_as_name == '1' ? 'checked="checked"' : ''; ?>> <?php esc_html_e( 'Yes', 'bold-page-builder' ); ?></label></p>
 						</fieldset></td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Post types', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Post Types', 'bold-builder' ); ?></span></legend>
+						<th scope="row"><?php esc_html_e( 'Post types', 'bold-page-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Post Types', 'bold-page-builder' ); ?></span></legend>
 						<p>
 						<?php 
 						$n = 0;
@@ -856,8 +856,8 @@ function bt_bb_settings() {
 						</fieldset></td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Color schemes', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Color Schemes', 'bold-builder' ); ?></span></legend>
+						<th scope="row"><?php esc_html_e( 'Color schemes', 'bold-page-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Color Schemes', 'bold-page-builder' ); ?></span></legend>
 						<p>
 						<textarea name="bt_bb_settings[color_schemes]" rows="10" cols="50" placeholder="Black/White;#000;#fff"><?php echo esc_textarea( $color_schemes ); ?></textarea>
 						</p>
@@ -865,7 +865,7 @@ function bt_bb_settings() {
 						</fieldset></td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Tips', 'bold-builder' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Tips', 'bold-page-builder' ); ?></th>
 						<td>
 						<p><?php
 						$checked = '';
@@ -873,12 +873,12 @@ function bt_bb_settings() {
 							$checked = ' ' . 'checked="checked"';
 						}
 						echo '<input type="hidden" name="bt_bb_settings[tips]" value="0">';
-						echo '<label><input name="bt_bb_settings[tips]" type="checkbox" value="1"' . esc_html( $checked ) . '> ' . esc_html__( 'Show Tips', 'bold-builder' ) . '</label>';
+						echo '<label><input name="bt_bb_settings[tips]" type="checkbox" value="1"' . esc_html( $checked ) . '> ' . esc_html__( 'Show Tips', 'bold-page-builder' ) . '</label>';
 						?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Slug in URL', 'bold-builder' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Slug in URL', 'bold-page-builder' ); ?></th>
 						<td>
 						<p><?php
 						$checked = '';
@@ -886,21 +886,21 @@ function bt_bb_settings() {
 							$checked = ' ' . 'checked="checked"';
 						}
 						echo '<input type="hidden" name="bt_bb_settings[slug_url]" value="0">';
-						echo '<label><input name="bt_bb_settings[slug_url]" type="checkbox" value="1"' . esc_html( $checked ) . '> ' . esc_html__( 'Use post slug in URL input (when selecting existing content search result)', 'bold-builder' ) . '</label>';
+						echo '<label><input name="bt_bb_settings[slug_url]" type="checkbox" value="1"' . esc_html( $checked ) . '> ' . esc_html__( 'Use post slug in URL input (when selecting existing content search result)', 'bold-page-builder' ) . '</label>';
 						?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'OpenAI API key', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'OpenAI API key', 'bold-builder' ); ?></span></legend>
+						<th scope="row"><?php esc_html_e( 'OpenAI API key', 'bold-page-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'OpenAI API key', 'bold-page-builder' ); ?></span></legend>
 						<p>
 						<input type="text" name="bt_bb_settings[openai_api_key]" value="<?php echo esc_attr( $openai_api_key ); ?>">
 						</p>
 						</fieldset></td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'OpenAI Model', 'bold-builder' ); ?></th>
-						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'OpenAI Model', 'bold-builder' ); ?></span></legend>
+						<th scope="row"><?php esc_html_e( 'OpenAI Model', 'bold-page-builder' ); ?></th>
+						<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'OpenAI Model', 'bold-page-builder' ); ?></span></legend>
 						<p>
 						<input type="text" name="bt_bb_settings[openai_model]" value="<?php echo esc_attr( $openai_model ); ?>" placeholder="gpt-4">
 						</p>
@@ -909,7 +909,7 @@ function bt_bb_settings() {
 					</tbody>
 				</table>
 
-				<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e( 'Save', 'bold-builder' ); ?>"></p>
+				<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e( 'Save', 'bold-page-builder' ); ?>"></p>
 			</form>
 		</div>
 	<?php
@@ -1045,105 +1045,105 @@ add_action( 'admin_footer', 'bt_bb_js_settings' );
 function bt_bb_translate() {
 	echo '<script>';
 	echo 'window.bt_bb_text = [];';
-	echo 'window.bt_bb_text.toggle = "' . esc_html__( 'Toggle', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.add = "' . esc_html__( 'Add', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.edit = "' . esc_html__( 'Edit', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.edit_content = "' . esc_html__( 'Edit Content', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.content = "' . esc_html__( 'Content', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.select_parent = "' . esc_html__( 'Select parent', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.clone = "' . esc_html__( 'Clone', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.delete = "' . esc_html__( 'Delete', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.delete_section_confirm = "' . esc_html__( 'Do you really want to delete this Section?', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.layout_error = "' . esc_html__( 'Layout error!', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.number_columns = "' . esc_html__( 'Number of columns not equal for all breakpoints!', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.add_element = "' . esc_html__( 'Add Element', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.add_elements_dd = "' . esc_html__( 'Add elements (drag & drop)', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.select_layout = "' . esc_html__( 'Select Layout', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.edit_layout = "' . esc_html__( 'Edit Layout', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.select = "' . esc_html__( 'Select', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.select_images = "' . esc_html__( 'Select Images', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.submit = "' . esc_html__( 'Submit', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.search = "' . esc_html__( 'Search', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.search_content = "' . esc_html__( 'Search for existing content', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.copy = "' . esc_html__( 'Copy', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.copy_plus = "' . esc_html__( 'Copy+', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.paste = "' . esc_html__( 'Paste', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.export = "' . esc_html__( 'Export', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.import = "' . esc_html__( 'Import', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.not_allowed = "' . esc_html__( 'Not allowed!', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.manage_cb = "' . esc_html__( 'Manage Clipboard', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.filter = "' . esc_html__( 'Filter...', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.sc_mapper = "' . esc_html__( 'Shortcode Mapper', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.insert_mapping = "' . esc_html__( 'Insert Mapping', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.save = "' . esc_html__( 'Save', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.switch_editor = "' . esc_html__( 'Switch Editor', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.custom_css = "' . esc_html__( 'Custom CSS', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.switch_editor_confirm = "' . esc_html__( 'Are you sure you want to switch editor?', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.general = "' . esc_html__( 'General', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.preview = "' . esc_html__( 'Preview', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.no_results = "' . esc_html__( 'No results found.', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.edit_be = "' . esc_html__( 'Edit in BE editor', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.parent = "' . esc_html__( 'parent', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.or_enter_image_url = "' . esc_html__( 'Or enter image URL...', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.save_content_first = "' . esc_html__( 'Content not saved!', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text.toggle = "' . esc_html__( 'Toggle', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.add = "' . esc_html__( 'Add', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.edit = "' . esc_html__( 'Edit', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.edit_content = "' . esc_html__( 'Edit Content', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.content = "' . esc_html__( 'Content', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.select_parent = "' . esc_html__( 'Select parent', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.clone = "' . esc_html__( 'Clone', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.delete = "' . esc_html__( 'Delete', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.delete_section_confirm = "' . esc_html__( 'Do you really want to delete this Section?', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.layout_error = "' . esc_html__( 'Layout error!', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.number_columns = "' . esc_html__( 'Number of columns not equal for all breakpoints!', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.add_element = "' . esc_html__( 'Add Element', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.add_elements_dd = "' . esc_html__( 'Add elements (drag & drop)', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.select_layout = "' . esc_html__( 'Select Layout', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.edit_layout = "' . esc_html__( 'Edit Layout', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.select = "' . esc_html__( 'Select', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.select_images = "' . esc_html__( 'Select Images', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.submit = "' . esc_html__( 'Submit', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.search = "' . esc_html__( 'Search', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.search_content = "' . esc_html__( 'Search for existing content', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.copy = "' . esc_html__( 'Copy', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.copy_plus = "' . esc_html__( 'Copy+', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.paste = "' . esc_html__( 'Paste', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.export = "' . esc_html__( 'Export', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.import = "' . esc_html__( 'Import', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.not_allowed = "' . esc_html__( 'Not allowed!', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.manage_cb = "' . esc_html__( 'Manage Clipboard', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.filter = "' . esc_html__( 'Filter...', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.sc_mapper = "' . esc_html__( 'Shortcode Mapper', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.insert_mapping = "' . esc_html__( 'Insert Mapping', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.save = "' . esc_html__( 'Save', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.switch_editor = "' . esc_html__( 'Switch Editor', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.custom_css = "' . esc_html__( 'Custom CSS', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.switch_editor_confirm = "' . esc_html__( 'Are you sure you want to switch editor?', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.general = "' . esc_html__( 'General', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.preview = "' . esc_html__( 'Preview', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.no_results = "' . esc_html__( 'No results found.', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.edit_be = "' . esc_html__( 'Edit in BE editor', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.parent = "' . esc_html__( 'parent', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.or_enter_image_url = "' . esc_html__( 'Or enter image URL...', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.save_content_first = "' . esc_html__( 'Content not saved!', 'bold-page-builder' ) . '";';
 	
-	echo 'window.bt_bb_text.prev_tip = "' . esc_html__( 'Previous Tip', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.next_tip = "' . esc_html__( 'Next Tip', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text.prev_tip = "' . esc_html__( 'Previous Tip', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.next_tip = "' . esc_html__( 'Next Tip', 'bold-page-builder' ) . '";';
 	
 	echo 'window.bt_bb_text._tips = [];';
 	
 	//if ( ! class_exists( 'BoldThemes_BB_Settings' ) || ! BoldThemes_BB_Settings::$custom_content_elements ) { // only with native BB elements
-	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: Hold CTRL key while moving (dragging) element to quickly clone it to another location.', 'bold-builder' ) . '" );';
-	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: You can edit Bold Builder settings in Settings > Bold Builder.', 'bold-builder' ) . '" );';
-	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: Did you know that you can move columns between rows?', 'bold-builder' ) . '" );';
-	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: You can use CTRL key with Copy/Copy+ to cut the element.', 'bold-builder' ) . '" );';
-	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: Use Copy+ to copy multiple elements to clipboard.', 'bold-builder' ) . '" );';
-	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: Hold CTRL key and click Paste on content element toolbar to paste before the element.', 'bold-builder' ) . '" );';
+	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: Hold CTRL key while moving (dragging) element to quickly clone it to another location.', 'bold-page-builder' ) . '" );';
+	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: You can edit Bold Builder settings in Settings > Bold Builder.', 'bold-page-builder' ) . '" );';
+	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: Did you know that you can move columns between rows?', 'bold-page-builder' ) . '" );';
+	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: You can use CTRL key with Copy/Copy+ to cut the element.', 'bold-page-builder' ) . '" );';
+	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: Use Copy+ to copy multiple elements to clipboard.', 'bold-page-builder' ) . '" );';
+	echo 'window.bt_bb_text._tips.push( "' . esc_html__( 'Bold Builder tip: Hold CTRL key and click Paste on content element toolbar to paste before the element.', 'bold-page-builder' ) . '" );';
 	
 	// AI
 	
-	echo 'window.bt_bb_text.ai = "' . esc_html__( 'AI', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.ai_content_generator = "' . esc_html__( 'AI Content Generator', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.generate = "' . esc_html__( 'Generate', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.translate = "' . esc_html__( 'Translate', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.rephrase = "' . esc_html__( 'Rephrase', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.correct = "' . esc_html__( 'Correct', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.go = "' . esc_html__( 'Go', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.keywords = "' . esc_html__( 'Keywords', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.system_prompt = "' . esc_html__( 'System prompt', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.temperature = "' . esc_html__( 'Randomness (temperature)', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.desired_length = "' . esc_html__( 'Desired length (in words)', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.language = "' . esc_html__( 'Language', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.english = "' . esc_html__( 'English', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.tone = "' . esc_html__( 'Tone', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text.ai = "' . esc_html__( 'AI', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.ai_content_generator = "' . esc_html__( 'AI Content Generator', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.generate = "' . esc_html__( 'Generate', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.translate = "' . esc_html__( 'Translate', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.rephrase = "' . esc_html__( 'Rephrase', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.correct = "' . esc_html__( 'Correct', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.go = "' . esc_html__( 'Go', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.keywords = "' . esc_html__( 'Keywords', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.system_prompt = "' . esc_html__( 'System prompt', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.temperature = "' . esc_html__( 'Randomness (temperature)', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.desired_length = "' . esc_html__( 'Desired length (in words)', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.language = "' . esc_html__( 'Language', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.english = "' . esc_html__( 'English', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.tone = "' . esc_html__( 'Tone', 'bold-page-builder' ) . '";';
 	echo 'window.bt_bb_text._tone = {};';
-	echo 'window.bt_bb_text._tone.default = "' . esc_html__( 'Default / Same', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text._tone.bold = "' . esc_html__( 'Bold', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text._tone.conversational = "' . esc_html__( 'Conversational', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text._tone.passionate = "' . esc_html__( 'Passionate', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text._tone.professional = "' . esc_html__( 'Professional', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text._tone.witty = "' . esc_html__( 'Witty', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.help = "' . esc_html__( 'Help', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.leave_empty = "' . esc_html__( '(leave empty to use length of current content)', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text._tone.default = "' . esc_html__( 'Default / Same', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text._tone.bold = "' . esc_html__( 'Bold', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text._tone.conversational = "' . esc_html__( 'Conversational', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text._tone.passionate = "' . esc_html__( 'Passionate', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text._tone.professional = "' . esc_html__( 'Professional', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text._tone.witty = "' . esc_html__( 'Witty', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.help = "' . esc_html__( 'Help', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.leave_empty = "' . esc_html__( '(leave empty to use length of current content)', 'bold-page-builder' ) . '";';
 	echo 'window.bt_bb_text.ai_error = "' . sprintf(
 		/* translators: 1: Opening <a> tag for settings link, 2: Closing </a> tag */
-		esc_html__( 'Error. Please check OpenAI settings %1$shere%2$s.', 'bold-builder' ),
+		esc_html__( 'Error. Please check OpenAI settings %1$shere%2$s.', 'bold-page-builder' ),
 		'<a href=\"' . esc_url_raw( get_admin_url( null, 'options-general.php?page=bt_bb_settings' ) ) . '\" target=\"_blank\">',
 		'</a>'
 	) . '";';
-	echo 'window.bt_bb_text.no_content = "' . esc_html__( 'No content!', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text.no_content = "' . esc_html__( 'No content!', 'bold-page-builder' ) . '";';
 	
 	echo 'window.bt_bb_text.dd = {};';
-	echo 'window.bt_bb_text.dd.move = "' . esc_html__( 'Move', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.dd.copy = "' . esc_html__( 'Copy', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.dd.before = "' . esc_html__( 'before', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.dd.after = "' . esc_html__( 'after', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.dd.to = "' . esc_html__( 'to', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text.dd.move = "' . esc_html__( 'Move', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.dd.copy = "' . esc_html__( 'Copy', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.dd.before = "' . esc_html__( 'before', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.dd.after = "' . esc_html__( 'after', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.dd.to = "' . esc_html__( 'to', 'bold-page-builder' ) . '";';
 	
-	echo 'window.bt_bb_text.documentation = "' . esc_html__( 'Need help?', 'bold-builder' ) . '";';
-	echo 'window.bt_bb_text.read_documentation = "' . esc_html__( 'Read Documentation', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text.documentation = "' . esc_html__( 'Need help?', 'bold-page-builder' ) . '";';
+	echo 'window.bt_bb_text.read_documentation = "' . esc_html__( 'Read Documentation', 'bold-page-builder' ) . '";';
 	
-	echo 'window.bt_bb_text.responsive_override = "' . esc_html__( 'Responsive Override', 'bold-builder' ) . '";';
+	echo 'window.bt_bb_text.responsive_override = "' . esc_html__( 'Responsive Override', 'bold-page-builder' ) . '";';
 	
 	echo '</script>';
 }
@@ -1496,7 +1496,7 @@ function bt_bb_add_meta_box() {
 	foreach( $screens as $screen ) {
 		add_meta_box(
 			'bt_bb_sectionid',
-			esc_html__( 'Bold Builder', 'bold-builder' ),
+			esc_html__( 'Bold Builder', 'bold-page-builder' ),
 			'bt_bb_meta_box_callback',
 			$screen,
 			'normal',
@@ -1627,21 +1627,21 @@ function bt_bb_meta_box_callback( $post ) {
 			echo '<div class="bt_bb_front_end_preview_resize bt_bb_front_end_preview_sm" data-preview-size="sm"></div>';
 			echo '<div class="bt_bb_front_end_preview_resize bt_bb_front_end_preview_xs" data-preview-size="xs"></div>';
 			echo '<div class="bt_bb_front_end_preview_close bt_bb_dialog_close"></div>';
-			echo '<span>' . esc_html__( 'Preview', 'bold-builder' ) . '</span>';
+			echo '<span>' . esc_html__( 'Preview', 'bold-page-builder' ) . '</span>';
 		echo '</div>';
 		echo '<iframe name="bt_bb_front_end_preview_iframe"></iframe>';
 	echo '</div></div>';
 	
 	echo '<div id="bt_bb_main_toolbar">';
-	echo '<i class="bt_bb_undo" title="' . esc_html__( 'Undo', 'bold-builder' ) . '"></i>';
-	echo '<i class="bt_bb_redo" title="' . esc_html__( 'Redo', 'bold-builder' ) . '"></i>';
+	echo '<i class="bt_bb_undo" title="' . esc_html__( 'Undo', 'bold-page-builder' ) . '"></i>';
+	echo '<i class="bt_bb_redo" title="' . esc_html__( 'Redo', 'bold-page-builder' ) . '"></i>';
 		echo '<span class="bt_bb_separator">|</span>';
-	echo '<i class="bt_bb_paste_root" title="' . esc_html__( 'Paste', 'bold-builder' ) . '"></i>';
+	echo '<i class="bt_bb_paste_root" title="' . esc_html__( 'Paste', 'bold-page-builder' ) . '"></i>';
 	echo '<span class="bt_bb_cb_items"></span>';
-	echo '<i class="bt_bb_manage_clipboard" title="' . esc_html__( 'Clipboard Manager', 'bold-builder' ) . '"></i>';
+	echo '<i class="bt_bb_manage_clipboard" title="' . esc_html__( 'Clipboard Manager', 'bold-page-builder' ) . '"></i>';
 		echo '<span class="bt_bb_separator">|</span>';
-	echo '<i class="bt_bb_preview" title="' . esc_html__( 'Preview', 'bold-builder' ) . '"></i>';
-	echo '<i class="bt_bb_save" title="' . esc_html__( 'Save', 'bold-builder' ) . '"></i>';
+	echo '<i class="bt_bb_preview" title="' . esc_html__( 'Preview', 'bold-page-builder' ) . '"></i>';
+	echo '<i class="bt_bb_save" title="' . esc_html__( 'Save', 'bold-page-builder' ) . '"></i>';
 	echo '</div>';
 
 	add_action( 'admin_footer', array( new BT_BB_Data_Proxy( $json_content ), 'js' ) );
@@ -1717,7 +1717,7 @@ function bt_bb_edit_dialog() {
 			echo '<div class="bt_bb_dialog_tinymce_editor_container">';
 				wp_editor( '' , 'bt_bb_tinymce', array( 'textarea_rows' => 12 ) );
 			echo '</div>';
-			echo '<input type="button" class="bt_bb_dialog_button bt_bb_edit button button-small" value="' . esc_html__( 'Submit', 'bold-builder' ) . '">';
+			echo '<input type="button" class="bt_bb_dialog_button bt_bb_edit button button-small" value="' . esc_html__( 'Submit', 'bold-page-builder' ) . '">';
 		echo '</div>';
 	echo '</div>';
 }
@@ -1880,45 +1880,45 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 		$params = array();
 		
 		if ( ! in_array( $this->shortcode, $bt_bb_skip_responsive_arr ) ) {
-			$params[] = array( 'param_name' => 'responsive', 'type' => 'checkbox_group', 'heading' => esc_html__( 'Hide element on screens', 'bold-builder' ), 'group' => esc_html__( 'Responsive', 'bold-builder' ), 'preview' => true,
+			$params[] = array( 'param_name' => 'responsive', 'type' => 'checkbox_group', 'heading' => esc_html__( 'Hide element on screens', 'bold-page-builder' ), 'group' => esc_html__( 'Responsive', 'bold-page-builder' ), 'preview' => true,
 				'value' => array(
-					esc_html__( '≤480px', 'bold-builder' ) => 'hidden_xs',
-					esc_html__( '481-768px', 'bold-builder' ) => 'hidden_ms',
-					esc_html__( '769-992px', 'bold-builder' ) => 'hidden_sm',
-					esc_html__( '993-1200px', 'bold-builder' ) => 'hidden_md',
-					esc_html__( '1201-1400px', 'bold-builder' ) => 'hidden_lg',
-					esc_html__( '>1400px', 'bold-builder' ) => 'hidden_xl',
+					esc_html__( '≤480px', 'bold-page-builder' ) => 'hidden_xs',
+					esc_html__( '481-768px', 'bold-page-builder' ) => 'hidden_ms',
+					esc_html__( '769-992px', 'bold-page-builder' ) => 'hidden_sm',
+					esc_html__( '993-1200px', 'bold-page-builder' ) => 'hidden_md',
+					esc_html__( '1201-1400px', 'bold-page-builder' ) => 'hidden_lg',
+					esc_html__( '>1400px', 'bold-page-builder' ) => 'hidden_xl',
 				)
 			);
 		}
 		
-		$params[] = array( 'param_name' => 'publish_datetime', 'type' => 'datetime-local', 'heading' => esc_html__( 'Publish date', 'bold-builder' ), 'description' => esc_html__( 'Fill both the date and time', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 990 );
-		$params[] = array( 'param_name' => 'expiry_datetime', 'type' => 'datetime-local', 'heading' => esc_html__( 'Expiry date', 'bold-builder' ), 'description' => esc_html__( 'Fill both the date and time', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 995 );
-		$params[] = array( 'param_name' => 'el_id', 'preview' => true, 'type' => 'textfield', 'heading' => esc_html__( 'Element ID', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. myid', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1000 );
-		$params[] = array( 'param_name' => 'el_class', 'type' => 'textfield', 'heading' => esc_html__( 'Extra class name(s)', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. myclass', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1005 );
-		$params[] = array( 'param_name' => 'el_style', 'type' => 'textfield', 'heading' => esc_html__( 'Inline CSS style', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. opacity: 0.5;', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'weight' => 1010 );
+		$params[] = array( 'param_name' => 'publish_datetime', 'type' => 'datetime-local', 'heading' => esc_html__( 'Publish date', 'bold-page-builder' ), 'description' => esc_html__( 'Fill both the date and time', 'bold-page-builder' ), 'group' => esc_html__( 'Custom', 'bold-page-builder' ), 'weight' => 990 );
+		$params[] = array( 'param_name' => 'expiry_datetime', 'type' => 'datetime-local', 'heading' => esc_html__( 'Expiry date', 'bold-page-builder' ), 'description' => esc_html__( 'Fill both the date and time', 'bold-page-builder' ), 'group' => esc_html__( 'Custom', 'bold-page-builder' ), 'weight' => 995 );
+		$params[] = array( 'param_name' => 'el_id', 'preview' => true, 'type' => 'textfield', 'heading' => esc_html__( 'Element ID', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. myid', 'bold-page-builder' ), 'group' => esc_html__( 'Custom', 'bold-page-builder' ), 'weight' => 1000 );
+		$params[] = array( 'param_name' => 'el_class', 'type' => 'textfield', 'heading' => esc_html__( 'Extra class name(s)', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. myclass', 'bold-page-builder' ), 'group' => esc_html__( 'Custom', 'bold-page-builder' ), 'weight' => 1005 );
+		$params[] = array( 'param_name' => 'el_style', 'type' => 'textfield', 'heading' => esc_html__( 'Inline CSS style', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. opacity: 0.5;', 'bold-page-builder' ), 'group' => esc_html__( 'Custom', 'bold-page-builder' ), 'weight' => 1010 );
 		
 		$params[] = array( 'param_name' => 'bb_version', 'type' => 'hidden', 'value' => BT_BB_VERSION );
 		
 		$bt_bb_skip_animation_arr = [ 'bt_bb_slider', 'bt_bb_content_slider', 'bt_bb_content_slider_item', 'bt_bb_accordion_item', 'bt_bb_tab_item', 'bt_bb_google_maps_location', 'bt_bb_leaflet_map_location' ];
 		
 		if ( ! in_array( $this->shortcode, $bt_bb_skip_animation_arr ) ) {
-			$params[] = array( 'param_name' => 'animation', 'type' => 'dropdown', 'heading' => esc_html__( 'Animation', 'bold-builder' ), 'group' => esc_html__( 'Custom', 'bold-builder' ), 'responsive_override' => true, 'preview' => true, 'weight' => 997,
+			$params[] = array( 'param_name' => 'animation', 'type' => 'dropdown', 'heading' => esc_html__( 'Animation', 'bold-page-builder' ), 'group' => esc_html__( 'Custom', 'bold-page-builder' ), 'responsive_override' => true, 'preview' => true, 'weight' => 997,
 				'value' => array(
-					esc_html__( 'No Animation', 'bold-builder' ) => 'no_animation',
-					esc_html__( 'Fade In', 'bold-builder' ) => 'fade_in',
-					esc_html__( 'Move Up', 'bold-builder' ) => 'move_up',
-					esc_html__( 'Move Left', 'bold-builder' ) => 'move_left',
-					esc_html__( 'Move Right', 'bold-builder' ) => 'move_right',
-					esc_html__( 'Move Down', 'bold-builder' ) => 'move_down',
-					esc_html__( 'Zoom In', 'bold-builder' ) => 'zoom_in',
-					esc_html__( 'Zoom Out', 'bold-builder' ) => 'zoom_out',
-					esc_html__( 'Fade In / Move Up', 'bold-builder' ) => 'fade_in move_up',
-					esc_html__( 'Fade In / Move Left', 'bold-builder' ) => 'fade_in move_left',
-					esc_html__( 'Fade In / Move Right', 'bold-builder' ) => 'fade_in move_right',
-					esc_html__( 'Fade In / Move Down', 'bold-builder' ) => 'fade_in move_down',
-					esc_html__( 'Fade In / Zoom In', 'bold-builder' ) => 'fade_in zoom_in',
-					esc_html__( 'Fade In / Zoom Out', 'bold-builder' ) => 'fade_in zoom_out'
+					esc_html__( 'No Animation', 'bold-page-builder' ) => 'no_animation',
+					esc_html__( 'Fade In', 'bold-page-builder' ) => 'fade_in',
+					esc_html__( 'Move Up', 'bold-page-builder' ) => 'move_up',
+					esc_html__( 'Move Left', 'bold-page-builder' ) => 'move_left',
+					esc_html__( 'Move Right', 'bold-page-builder' ) => 'move_right',
+					esc_html__( 'Move Down', 'bold-page-builder' ) => 'move_down',
+					esc_html__( 'Zoom In', 'bold-page-builder' ) => 'zoom_in',
+					esc_html__( 'Zoom Out', 'bold-page-builder' ) => 'zoom_out',
+					esc_html__( 'Fade In / Move Up', 'bold-page-builder' ) => 'fade_in move_up',
+					esc_html__( 'Fade In / Move Left', 'bold-page-builder' ) => 'fade_in move_left',
+					esc_html__( 'Fade In / Move Right', 'bold-page-builder' ) => 'fade_in move_right',
+					esc_html__( 'Fade In / Move Down', 'bold-page-builder' ) => 'fade_in move_down',
+					esc_html__( 'Fade In / Zoom In', 'bold-page-builder' ) => 'fade_in zoom_in',
+					esc_html__( 'Fade In / Zoom Out', 'bold-page-builder' ) => 'fade_in zoom_out'
 				)
 			);
 		}
@@ -2194,10 +2194,10 @@ add_action( 'content_save_pre', 'bt_bb_save_pre' );
 function bt_bb_save_pre( $content ) {
 	if ( ! current_user_can( 'unfiltered_html' ) ) {
 		if ( str_contains( $content, '[bt_bb_price_list' ) || str_contains( $content, '`{`bt_bb_price_list' ) ) {
-			wp_die( esc_html__( 'Sorry, you are not allowed to save Price List element.', 'bold-builder' ) );
+			wp_die( esc_html__( 'Sorry, you are not allowed to save Price List element.', 'bold-page-builder' ) );
 		}
 		if ( str_contains( $content, '[bt_bb_raw_content' ) || str_contains( $content, '`{`bt_bb_raw_content' ) ) {
-			wp_die( esc_html__( 'Sorry, you are not allowed to save Raw Content element.', 'bold-builder' ) );
+			wp_die( esc_html__( 'Sorry, you are not allowed to save Raw Content element.', 'bold-page-builder' ) );
 		}
 	}
 	return $content;

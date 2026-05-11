@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 function bt_bb_tips() {
 	
 	$screen = get_current_screen();

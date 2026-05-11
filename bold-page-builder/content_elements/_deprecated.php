@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 BT_BB_Root::$deprecated['bt_bb_separator'] = array(
 	'korsel',
 	'kosa',

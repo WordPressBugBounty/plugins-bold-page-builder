@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_contact_form_7 extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -42,12 +44,12 @@ class bt_bb_contact_form_7 extends BT_BB_Element {
 		$output = '<div' . $id_attr . ' class="' . esc_attr( implode( ' ', $class ) ) . '"' . $style_attr . '>';
 			if ( shortcode_exists( 'contact-form-7' ) ) {
 				if ( $contact_form_id == 0 ) {
-					$output .= '<p>' . esc_html__( 'Please select contact form.', 'bold-builder' ) . '</p>';
+					$output .= '<p>' . esc_html__( 'Please select contact form.', 'bold-page-builder' ) . '</p>';
 				} else {
-					$output .= do_shortcode( '[contact-form-7 id="' . $contact_form_id . '"]' );
+					$output .= do_shortcode( '[contact-form-7 id="' . absint( $contact_form_id ) . '"]' );
 				}
 			} else {
-				$output .= '<p>' . esc_html__( 'Please install and activate Contact Form 7 plugin.', 'bold-builder' ) . '</p>';
+				$output .= '<p>' . esc_html__( 'Please install and activate Contact Form 7 plugin.', 'bold-page-builder' ) . '</p>';
 			}
 		$output .= '</div>';
 
@@ -68,12 +70,12 @@ class bt_bb_contact_form_7 extends BT_BB_Element {
 				$forms_data[ $key->post_title ] = $key->ID;
 			}
 		} else {
-			$forms_data[ esc_html__( 'No contact form found', 'bold-builder' ) ] = 0;
+			$forms_data[ esc_html__( 'No contact form found', 'bold-page-builder' ) ] = 0;
 		}
 
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Contact Form 7', 'bold-builder' ), 'description' => esc_html__( 'Choose CF7 form', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Contact Form 7', 'bold-page-builder' ), 'description' => esc_html__( 'Choose CF7 form', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'contact_form_id', 'type' => 'dropdown', 'heading' => esc_html__( 'Contact Form 7', 'bold-builder' ), 'description' => esc_html__( 'Add new contact form on your Dashboard > Contact (Contact Form 7 plugin is required)', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'contact_form_id', 'type' => 'dropdown', 'heading' => esc_html__( 'Contact Form 7', 'bold-page-builder' ), 'description' => esc_html__( 'Add new contact form on your Dashboard > Contact (Contact Form 7 plugin is required)', 'bold-page-builder' ), 'preview' => true,
 					'value' => $forms_data )
 			) )
 		);

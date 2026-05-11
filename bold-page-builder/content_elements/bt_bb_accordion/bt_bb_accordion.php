@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_accordion extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -83,24 +85,24 @@ class bt_bb_accordion extends BT_BB_Element {
 		require_once( dirname(__FILE__) . '/../../content_elements_misc/misc.php' );
 		$color_scheme_arr = bt_bb_get_color_scheme_param_array();			
 		
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Accordion', 'bold-builder' ), 'description' => esc_html__( 'Accordion container', 'bold-builder' ), 'container' => 'vertical', 'toggle' => true, 'accept' => array( 'bt_bb_accordion_item' => true ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Accordion', 'bold-page-builder' ), 'description' => esc_html__( 'Accordion container', 'bold-page-builder' ), 'container' => 'vertical', 'toggle' => true, 'accept' => array( 'bt_bb_accordion_item' => true ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),
-				array( 'param_name' => 'style', 'type' => 'dropdown', 'heading' => esc_html__( 'Style', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),
+				array( 'param_name' => 'style', 'type' => 'dropdown', 'heading' => esc_html__( 'Style', 'bold-page-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( 'Outline', 'bold-builder' ) 	=> 'outline',
-						esc_html__( 'Filled', 'bold-builder' ) 		=> 'filled',
-						esc_html__( 'Simple', 'bold-builder' ) 		=> 'simple'
+						esc_html__( 'Outline', 'bold-page-builder' ) 	=> 'outline',
+						esc_html__( 'Filled', 'bold-page-builder' ) 		=> 'filled',
+						esc_html__( 'Simple', 'bold-page-builder' ) 		=> 'simple'
 					)
 				),
-				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-builder' ),
+				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Square', 'bold-builder' ) 			=> 'square',
-						esc_html__( 'Soft Rounded', 'bold-builder' ) 	=> 'rounded',
-						esc_html__( 'Hard Rounded', 'bold-builder' ) 	=> 'round'
+						esc_html__( 'Square', 'bold-page-builder' ) 			=> 'square',
+						esc_html__( 'Soft Rounded', 'bold-page-builder' ) 	=> 'rounded',
+						esc_html__( 'Hard Rounded', 'bold-page-builder' ) 	=> 'round'
 					)
 				),
-				array( 'param_name' => 'closed', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-builder' ) => 'closed' ), 'heading' => esc_html__( 'All items closed initially', 'bold-builder' ), 'preview' => true )
+				array( 'param_name' => 'closed', 'type' => 'checkbox', 'value' => array( esc_html__( 'Yes', 'bold-page-builder' ) => 'closed' ), 'heading' => esc_html__( 'All items closed initially', 'bold-page-builder' ), 'preview' => true )
 			)
 		) );
 	}

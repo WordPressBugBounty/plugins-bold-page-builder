@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 if ( ! class_exists( 'BB_Icon_Widget' ) ) {
 
 	// ICON
@@ -9,8 +11,8 @@ if ( ! class_exists( 'BB_Icon_Widget' ) ) {
 		function __construct() {
 			parent::__construct(
 				'bt_bb_icon_widget', // Base ID
-				esc_html__( 'BB Icon', 'bold-builder' ), // Name
-				array( 'description' => esc_html__( 'Icon with text and link.', 'bold-builder' ) ) // Args
+				esc_html__( 'BB Icon', 'bold-page-builder' ), // Name
+				array( 'description' => esc_html__( 'Icon with text and link.', 'bold-page-builder' ) ) // Args
 			);
 		}
 
@@ -80,37 +82,37 @@ if ( ! class_exists( 'BB_Icon_Widget' ) ) {
 
 			?>		
 			<div class="bt_bb_iconpicker_widget_container">
-				<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_html_e( 'Icon:', 'bold-builder' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_html_e( 'Icon:', 'bold-page-builder' ); ?></label>
 				<input type="hidden" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" value="<?php echo esc_attr( $icon ); ?>">
 				<input type="hidden" name="<?php echo esc_attr( $this->get_field_name( 'bt_bb_iconpicker' ) ); ?>">
 				<div class="bt_bb_iconpicker_widget_placeholder" data-icon="<?php echo esc_attr( $icon ); ?>"></div>
 			</div>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bold-page-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'url_title' ) ); ?>"><?php esc_html_e( 'URL title:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'url_title' ) ); ?>"><?php esc_html_e( 'URL title:', 'bold-page-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'url_title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'url_title' ) ); ?>" type="text" value="<?php echo esc_attr( $url_title ); ?>">
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Text:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Text:', 'bold-page-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'text' ) ); ?>" type="text" value="<?php echo esc_attr( $text ); ?>">
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>"><?php esc_html_e( 'URL or slug:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>"><?php esc_html_e( 'URL or slug:', 'bold-page-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'url' ) ); ?>" type="text" value="<?php echo esc_attr( $url ); ?>">
 			</p>
 			<?php
 				if ( class_exists( 'BoldThemes_Customize_Default' ) ) { ?>
 					<p>
 						<input class="checkbox" type="checkbox" <?php checked( $show_button, 'on' ); ?> id="<?php echo esc_attr( $this->get_field_id('show_button') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_button') ); ?>" /> 
-						<label for="<?php echo esc_attr( $this->get_field_id('show_button') ); ?>"><?php esc_html_e( 'Show highlighted', 'bold-builder' ); ?></label>
+						<label for="<?php echo esc_attr( $this->get_field_id('show_button') ); ?>"><?php esc_html_e( 'Show highlighted', 'bold-page-builder' ); ?></label>
 					</p>
 				<?php }
 			?>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'target' ) ); ?>"><?php esc_html_e( 'Target:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'target' ) ); ?>"><?php esc_html_e( 'Target:', 'bold-page-builder' ); ?></label> 
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'target' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'target' ) ); ?>">
 					<option value=""></option>;
 					<?php
@@ -126,7 +128,7 @@ if ( ! class_exists( 'BB_Icon_Widget' ) ) {
 				</select>
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'extra_class' ) ); ?>"><?php esc_html_e( 'CSS extra class:', 'bold-builder' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'extra_class' ) ); ?>"><?php esc_html_e( 'CSS extra class:', 'bold-page-builder' ); ?></label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'extra_class' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'extra_class' ) ); ?>" type="text" value="<?php echo esc_attr( $extra_class ); ?>">
 			</p>			
 			<?php 

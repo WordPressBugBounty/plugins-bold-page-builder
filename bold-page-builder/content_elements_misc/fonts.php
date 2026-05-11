@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 require( 'google_fonts.php' );
 
 foreach ( $fonts as $item ) {
@@ -8,7 +10,7 @@ foreach ( $fonts as $item ) {
 
 if ( property_exists( 'BoldThemesFramework', 'custom_fonts' ) ) {
 	foreach ( BoldThemesFramework::$custom_fonts as $font ) {
-		$font_arr[ $font['font'] . ' ' . esc_html__( '(custom font)', 'bold-builder' ) ] = $font['font'];
+		$font_arr[ $font['font'] . ' ' . esc_html__( '(custom font)', 'bold-page-builder' ) ] = $font['font'];
 	}
 }
 

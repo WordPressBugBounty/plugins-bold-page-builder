@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_google_maps_location extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -38,7 +40,7 @@ class bt_bb_google_maps_location extends BT_BB_Element {
 				$icon = wp_get_attachment_image_src( $icon, 'full' );
 				$icon = $icon[0];				
 			} else {
-				$icon = esc_url_raw( $icon );
+				$icon = esc_url( $icon );
 			}
 		}
 
@@ -67,11 +69,11 @@ class bt_bb_google_maps_location extends BT_BB_Element {
 	}
 
 	function map_shortcode() {
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Google Maps Location', 'bold-builder' ), 'description' => esc_html__( 'Google Map Location', 'bold-builder' ), 'container' => 'vertical', 'accept' => array( 'bt_bb_headline' => true, 'bt_bb_text' => true, 'bt_bb_button' => true, 'bt_bb_icon' => true, 'bt_bb_service' => true, 'bt_bb_service' => true, 'bt_bb_image' => true, 'bt_bb_separator' => true ), 'toggle' => true, 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Google Maps Location', 'bold-page-builder' ), 'description' => esc_html__( 'Google Map Location', 'bold-page-builder' ), 'container' => 'vertical', 'accept' => array( 'bt_bb_headline' => true, 'bt_bb_text' => true, 'bt_bb_button' => true, 'bt_bb_icon' => true, 'bt_bb_service' => true, 'bt_bb_service' => true, 'bt_bb_image' => true, 'bt_bb_separator' => true ), 'toggle' => true, 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'latitude', 'type' => 'textfield', 'heading' => esc_html__( 'Latitude', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 40.000000', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'longitude', 'type' => 'textfield', 'heading' => esc_html__( 'Longitude', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 40.000000', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'icon', 'type' => 'attach_image', 'heading' => esc_html__( 'Icon', 'bold-builder' ), 'preview' => true )
+				array( 'param_name' => 'latitude', 'type' => 'textfield', 'heading' => esc_html__( 'Latitude', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 40.000000', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'longitude', 'type' => 'textfield', 'heading' => esc_html__( 'Longitude', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 40.000000', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'icon', 'type' => 'attach_image', 'heading' => esc_html__( 'Icon', 'bold-page-builder' ), 'preview' => true )
 			)
 		) );
 	}

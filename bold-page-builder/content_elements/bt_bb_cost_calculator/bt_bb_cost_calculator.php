@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_cost_calculator extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -53,7 +55,7 @@ class bt_bb_cost_calculator extends BT_BB_Element {
 
 		$content = do_shortcode( $content );
 		
-		$content .= '<div class="' . esc_attr( $this->shortcode ) . '_total"><div class="' . esc_attr( $this->shortcode ) . '_total_text">' . esc_html__( 'Total', 'bold-builder' ) . '</div><div class="' . esc_attr( $this->shortcode ) . '_total_amount">0.00</div></div>';
+		$content .= '<div class="' . esc_attr( $this->shortcode ) . '_total"><div class="' . esc_attr( $this->shortcode ) . '_total_text">' . esc_html__( 'Total', 'bold-page-builder' ) . '</div><div class="' . esc_attr( $this->shortcode ) . '_total_amount">0.00</div></div>';
 
 		$output = '<div' . $id_attr . ' class="' . esc_attr( implode( ' ', $class ) ) . '"' . $style_attr . '>' . $content . '</div>';
 		
@@ -69,10 +71,10 @@ class bt_bb_cost_calculator extends BT_BB_Element {
 		require_once( dirname(__FILE__) . '/../../content_elements_misc/misc.php' );
 		$color_scheme_arr = bt_bb_get_color_scheme_param_array();
 		
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Simple Cost Calculator (deprecated)', 'bold-builder' ), 'description' => esc_html__( 'Simple cost calculator container', 'bold-builder' ), 'container' => 'vertical', 'accept' => array( 'bt_bb_cost_calculator_item' => true ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode . '_simple', 'show_settings_on_create' => false,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Simple Cost Calculator (deprecated)', 'bold-page-builder' ), 'description' => esc_html__( 'Simple cost calculator container', 'bold-page-builder' ), 'container' => 'vertical', 'accept' => array( 'bt_bb_cost_calculator_item' => true ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode . '_simple', 'show_settings_on_create' => false,
 			'params' => array(
-				array( 'param_name' => 'currency', 'type' => 'textfield', 'heading' => esc_html__( 'Currency', 'bold-builder' ), 'placeholder' => esc_html__( '$', 'bold-builder' ) ),
-				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),
+				array( 'param_name' => 'currency', 'type' => 'textfield', 'heading' => esc_html__( 'Currency', 'bold-page-builder' ), 'placeholder' => esc_html__( '$', 'bold-page-builder' ) ),
+				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true ),
 			)
 		) );
 	}

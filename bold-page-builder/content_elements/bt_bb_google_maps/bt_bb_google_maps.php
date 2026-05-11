@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_google_maps extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -145,31 +147,31 @@ class bt_bb_google_maps extends BT_BB_Element {
 		}
 		
 		if ( BT_BB_FE::$editor_active ) {
-			$api_key_param = array( 'param_name' => 'api_key', 'type' => 'textfield', 'heading' => esc_html__( 'API key', 'bold-builder' ), 'description' => __( 'Google Maps require an API key for site domains.<br><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Get your API key here</a>. Save and reload page to make sure API is initialized.', 'bold-builder' ) );
-			$center_map_desc = esc_html__( 'You can edit location(s) on back end.', 'bold-builder' );
+			$api_key_param = array( 'param_name' => 'api_key', 'type' => 'textfield', 'heading' => esc_html__( 'API key', 'bold-page-builder' ), 'description' => __( 'Google Maps require an API key for site domains.<br><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Get your API key here</a>. Save and reload page to make sure API is initialized.', 'bold-page-builder' ) );
+			$center_map_desc = esc_html__( 'You can edit location(s) on back end.', 'bold-page-builder' );
 		} else {
-			$api_key_param = array( 'param_name' => 'api_key', 'type' => 'textfield', 'heading' => esc_html__( 'API key', 'bold-builder' ), 'description' => __( 'Google Maps require an API key for site domains. <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Get your API key here</a>.', 'bold-builder' ) );
+			$api_key_param = array( 'param_name' => 'api_key', 'type' => 'textfield', 'heading' => esc_html__( 'API key', 'bold-page-builder' ), 'description' => __( 'Google Maps require an API key for site domains. <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Get your API key here</a>.', 'bold-page-builder' ) );
 			$center_map_desc = '';
 		}
 		
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Google Maps', 'bold-builder' ), 'description' => esc_html__( 'Google Maps map with custom content', 'bold-builder' ), 'container' => 'vertical', 'accept' => array( 'bt_bb_google_maps_location' => true ), 'toggle' => true, 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Google Maps', 'bold-page-builder' ), 'description' => esc_html__( 'Google Maps map with custom content', 'bold-page-builder' ), 'container' => 'vertical', 'accept' => array( 'bt_bb_google_maps_location' => true ), 'toggle' => true, 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
 				$api_key_param,
-				array( 'param_name' => 'zoom', 'type' => 'textfield', 'heading' => esc_html__( 'Zoom', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 14', 'bold-builder' ) ),
-				array( 'param_name' => 'height', 'type' => 'textfield', 'heading' => esc_html__( 'Height', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 250px', 'bold-builder' ), 'description' => esc_html__( 'Used for static map or for interactive map without content; static image map width is 1280px ', 'bold-builder' ) ),
-				array( 'param_name' => 'map_id', 'type' => 'textfield', 'heading' => esc_html__( 'Map ID (Google API)', 'bold-builder' ), 'description' => __( 'The Google Maps Platform offers <a href="https://developers.google.com/maps/documentation/cloud-customization" target="_blank">cloud-based maps styling</a> in the Google Cloud Console. Copy Map ID there and copy here.', 'bold-builder' ) ),
-				array( 'param_name' => 'custom_style', 'type' => 'textarea_object', 'heading' => esc_html__( 'Custom map style array (interactive map) or querystring (static image map)', 'bold-builder' ), 'description' => __( 'Find more custom styles on <a href="https://snazzymaps.com/" target="_blank">Snazzy Maps</a> or <a href="https://mapstyle.withgoogle.com/" target="_blank">Map Style (for static maps)</a>. ', 'bold-builder' ) ),
-				array( 'param_name' => 'map_type', 'type' => 'dropdown', 'default' => 'interactive', 'heading' => esc_html__( 'Map type', 'bold-builder' ),
+				array( 'param_name' => 'zoom', 'type' => 'textfield', 'heading' => esc_html__( 'Zoom', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 14', 'bold-page-builder' ) ),
+				array( 'param_name' => 'height', 'type' => 'textfield', 'heading' => esc_html__( 'Height', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 250px', 'bold-page-builder' ), 'description' => esc_html__( 'Used for static map or for interactive map without content; static image map width is 1280px ', 'bold-page-builder' ) ),
+				array( 'param_name' => 'map_id', 'type' => 'textfield', 'heading' => esc_html__( 'Map ID (Google API)', 'bold-page-builder' ), 'description' => __( 'The Google Maps Platform offers <a href="https://developers.google.com/maps/documentation/cloud-customization" target="_blank">cloud-based maps styling</a> in the Google Cloud Console. Copy Map ID there and copy here.', 'bold-page-builder' ) ),
+				array( 'param_name' => 'custom_style', 'type' => 'textarea_object', 'heading' => esc_html__( 'Custom map style array (interactive map) or querystring (static image map)', 'bold-page-builder' ), 'description' => __( 'Find more custom styles on <a href="https://snazzymaps.com/" target="_blank">Snazzy Maps</a> or <a href="https://mapstyle.withgoogle.com/" target="_blank">Map Style (for static maps)</a>. ', 'bold-page-builder' ) ),
+				array( 'param_name' => 'map_type', 'type' => 'dropdown', 'default' => 'interactive', 'heading' => esc_html__( 'Map type', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Interactive (JavaScript API)', 'bold-builder' ) 		=> 'interactive',
-						esc_html__( 'Static image (Maps Static API)', 'bold-builder' ) 		=> 'static'
+						esc_html__( 'Interactive (JavaScript API)', 'bold-page-builder' ) 		=> 'interactive',
+						esc_html__( 'Static image (Maps Static API)', 'bold-page-builder' ) 		=> 'static'
 					)
 				),
-				array( 'param_name' => 'center_map', 'type' => 'dropdown', 'heading' => esc_html__( 'Center map', 'bold-builder' ), 'description' => $center_map_desc,
+				array( 'param_name' => 'center_map', 'type' => 'dropdown', 'heading' => esc_html__( 'Center map', 'bold-page-builder' ), 'description' => $center_map_desc,
 					'value' => array(
-						esc_html__( 'No (use first location as center)', 'bold-builder' ) 	=> 'no',
-						esc_html__( 'Yes', 'bold-builder' ) 								=> 'yes',
-						esc_html__( 'Yes (without overlay initially)', 'bold-builder' ) 	=> 'yes_no_overlay'
+						esc_html__( 'No (use first location as center)', 'bold-page-builder' ) 	=> 'no',
+						esc_html__( 'Yes', 'bold-page-builder' ) 								=> 'yes',
+						esc_html__( 'Yes (without overlay initially)', 'bold-page-builder' ) 	=> 'yes_no_overlay'
 					)
 				),
 			)

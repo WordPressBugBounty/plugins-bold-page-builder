@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_custom_menu extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -43,7 +45,7 @@ class bt_bb_custom_menu extends BT_BB_Element {
 		);
 		
 		if ( ! $output ) {
-			$output = esc_html__( 'No menus found.', 'bold-builder' );
+			$output = esc_html__( 'No menus found.', 'bold-page-builder' );
 		}
 
 		do_action( $this->shortcode . '_before_extra_responsive_param' );
@@ -76,33 +78,33 @@ class bt_bb_custom_menu extends BT_BB_Element {
 		foreach( $menus as $menu ) {
 			$nav_menu_arr[ $menu->name ] = $menu->slug;
 		}
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Custom Menu', 'bold-builder' ), 'description' => esc_html__( 'Custom WordPress menu', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Custom Menu', 'bold-page-builder' ), 'description' => esc_html__( 'Custom WordPress menu', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'menu', 'type' => 'dropdown', 'heading' => esc_html__( 'Menu name', 'bold-builder' ), 'preview' => true, 'value' => $nav_menu_arr ),
-				array( 'param_name' => 'font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Font weight', 'bold-builder' ),
+				array( 'param_name' => 'menu', 'type' => 'dropdown', 'heading' => esc_html__( 'Menu name', 'bold-page-builder' ), 'preview' => true, 'value' => $nav_menu_arr ),
+				array( 'param_name' => 'font_weight', 'type' => 'dropdown', 'heading' => esc_html__( 'Font weight', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Default', 'bold-builder' ) 	=> '',
-						esc_html__( 'Normal', 'bold-builder' ) 		=> 'normal',
-						esc_html__( 'Bold', 'bold-builder' ) 		=> 'bold',
-						esc_html__( 'Bolder', 'bold-builder' ) 		=> 'bolder',
-						esc_html__( 'Lighter', 'bold-builder' ) 	=> 'lighter',
-						esc_html__( 'Light', 'bold-builder' ) 		=> 'light',
-						esc_html__( 'Thin', 'bold-builder' ) 		=> 'thin',
-						esc_html__( '100', 'bold-builder' ) 		=> '100',
-						esc_html__( '200', 'bold-builder' ) 		=> '200',
-						esc_html__( '300', 'bold-builder' ) 		=> '300',
-						esc_html__( '400', 'bold-builder' ) 		=> '400',
-						esc_html__( '500', 'bold-builder' ) 		=> '500',
-						esc_html__( '600', 'bold-builder' ) 		=> '600',
-						esc_html__( '700', 'bold-builder' ) 		=> '700',
-						esc_html__( '800', 'bold-builder' ) 		=> '800',
-						esc_html__( '900', 'bold-builder' ) 		=> '900'
+						esc_html__( 'Default', 'bold-page-builder' ) 	=> '',
+						esc_html__( 'Normal', 'bold-page-builder' ) 		=> 'normal',
+						esc_html__( 'Bold', 'bold-page-builder' ) 		=> 'bold',
+						esc_html__( 'Bolder', 'bold-page-builder' ) 		=> 'bolder',
+						esc_html__( 'Lighter', 'bold-page-builder' ) 	=> 'lighter',
+						esc_html__( 'Light', 'bold-page-builder' ) 		=> 'light',
+						esc_html__( 'Thin', 'bold-page-builder' ) 		=> 'thin',
+						esc_html__( '100', 'bold-page-builder' ) 		=> '100',
+						esc_html__( '200', 'bold-page-builder' ) 		=> '200',
+						esc_html__( '300', 'bold-page-builder' ) 		=> '300',
+						esc_html__( '400', 'bold-page-builder' ) 		=> '400',
+						esc_html__( '500', 'bold-page-builder' ) 		=> '500',
+						esc_html__( '600', 'bold-page-builder' ) 		=> '600',
+						esc_html__( '700', 'bold-page-builder' ) 		=> '700',
+						esc_html__( '800', 'bold-page-builder' ) 		=> '800',
+						esc_html__( '900', 'bold-page-builder' ) 		=> '900'
 					)
 				),
-				array( 'param_name' => 'direction', 'type' => 'dropdown', 'default' => 'vertical', 'heading' => esc_html__( 'Direction', 'bold-builder' ), 'preview' => true,
+				array( 'param_name' => 'direction', 'type' => 'dropdown', 'default' => 'vertical', 'heading' => esc_html__( 'Direction', 'bold-page-builder' ), 'preview' => true,
 					'value' => array(
-						esc_html__( 'Vertical', 'bold-builder' )     	=> 'vertical',
-						esc_html__( 'Horizontal', 'bold-builder' )  	=> 'horizontal'					
+						esc_html__( 'Vertical', 'bold-page-builder' )     	=> 'vertical',
+						esc_html__( 'Horizontal', 'bold-page-builder' )  	=> 'horizontal'					
 					)
 				)
 			)

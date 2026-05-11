@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class bt_bb_progress_bar extends BT_BB_Element {
 
 	function handle_shortcode( $atts, $content ) {
@@ -101,40 +103,40 @@ class bt_bb_progress_bar extends BT_BB_Element {
 		require_once( dirname(__FILE__) . '/../../content_elements_misc/misc.php' );
 		$color_scheme_arr = bt_bb_get_color_scheme_param_array();			
 		
-		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Progress Bar', 'bold-builder' ), 'description' => esc_html__( 'Animated progress bar', 'bold-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
+		bt_bb_map( $this->shortcode, array( 'name' => esc_html__( 'Progress Bar', 'bold-page-builder' ), 'description' => esc_html__( 'Animated progress bar', 'bold-page-builder' ), 'icon' => $this->prefix_backend . 'icon' . '_' . $this->shortcode,
 			'params' => array(
-				array( 'param_name' => 'percentage', 'type' => 'textfield', 'heading' => esc_html__( 'Percentage', 'bold-builder' ), 'placeholder' => esc_html__( 'E.g. 75', 'bold-builder' ), 'preview' => true ),
-				array( 'param_name' => 'text', 'type' => 'textfield', 'heading' => esc_html__( 'Text', 'bold-builder' ), 'placeholder' => esc_html__( 'Add Progress Bar text', 'bold-builder' ), 'preview' => true ),
+				array( 'param_name' => 'percentage', 'type' => 'textfield', 'heading' => esc_html__( 'Percentage', 'bold-page-builder' ), 'placeholder' => esc_html__( 'E.g. 75', 'bold-page-builder' ), 'preview' => true ),
+				array( 'param_name' => 'text', 'type' => 'textfield', 'heading' => esc_html__( 'Text', 'bold-page-builder' ), 'placeholder' => esc_html__( 'Add Progress Bar text', 'bold-page-builder' ), 'preview' => true ),
 				
-				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Text align', 'bold-builder' ), 'preview' => true, 'responsive_override' => true,
+				array( 'param_name' => 'align', 'type' => 'dropdown', 'heading' => esc_html__( 'Text align', 'bold-page-builder' ), 'preview' => true, 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Inherit', 'bold-builder' ) => 'inherit',
-						esc_html__( 'Left', 'bold-builder' ) 	=> 'left',
-						esc_html__( 'Center', 'bold-builder' ) 	=> 'center',
-						esc_html__( 'Right', 'bold-builder' ) 	=> 'right'
+						esc_html__( 'Inherit', 'bold-page-builder' ) => 'inherit',
+						esc_html__( 'Left', 'bold-page-builder' ) 	=> 'left',
+						esc_html__( 'Center', 'bold-page-builder' ) 	=> 'center',
+						esc_html__( 'Right', 'bold-page-builder' ) 	=> 'right'
 					)
 				),
 				
-				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ), 'responsive_override' => true,
+				array( 'param_name' => 'size', 'type' => 'dropdown', 'heading' => esc_html__( 'Size', 'bold-page-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' ), 'responsive_override' => true,
 					'value' => array(
-						esc_html__( 'Small', 'bold-builder' ) 	=> 'small',
-						esc_html__( 'Normal', 'bold-builder' ) 	=> 'normal'
+						esc_html__( 'Small', 'bold-page-builder' ) 	=> 'small',
+						esc_html__( 'Normal', 'bold-page-builder' ) 	=> 'normal'
 					)
 				),
-				array( 'param_name' => 'style', 'type' => 'dropdown', 'heading' => esc_html__( 'Style', 'bold-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ),
+				array( 'param_name' => 'style', 'type' => 'dropdown', 'heading' => esc_html__( 'Style', 'bold-page-builder' ), 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Filled', 'bold-builder' ) 	=> 'filled',
-						esc_html__( 'Line', 'bold-builder' ) 	=> 'line',
-						esc_html__( 'Outline', 'bold-builder' ) => 'outline'
+						esc_html__( 'Filled', 'bold-page-builder' ) 	=> 'filled',
+						esc_html__( 'Line', 'bold-page-builder' ) 	=> 'line',
+						esc_html__( 'Outline', 'bold-page-builder' ) => 'outline'
 					)
 				),
-				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-builder' ), 'group' => esc_html__( 'Design', 'bold-builder' ),
+				array( 'param_name' => 'shape', 'type' => 'dropdown', 'heading' => esc_html__( 'Shape', 'bold-page-builder' ), 'group' => esc_html__( 'Design', 'bold-page-builder' ),
 					'value' => array(
-						esc_html__( 'Square', 'bold-builder' ) 		=> 'square',
-						esc_html__( 'Rounded', 'bold-builder' ) 	=> 'rounded',
+						esc_html__( 'Square', 'bold-page-builder' ) 		=> 'square',
+						esc_html__( 'Rounded', 'bold-page-builder' ) 	=> 'rounded',
 					)
 				),
-				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-builder' ) )				
+				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' ) )				
 			)
 		) );
 	}

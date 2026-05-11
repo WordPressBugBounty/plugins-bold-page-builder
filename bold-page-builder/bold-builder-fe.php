@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class BT_BB_FE {
 	public static $elements = array();
 	public static $templates = array();
@@ -461,154 +463,154 @@ function bt_bb_fe_init() {
 		
 		BT_BB_FE::$templates = apply_filters( 'bt_bb_fe_templates', array(
 			'accordion' => array( // id; id.txt is name of the file in /templates
-				'base' => esc_html__( 'bt_bb_accordion', 'bold-builder' ), // base is used to detect if template is allowed at requested position
-				'name' => esc_html__( 'Accordion', 'bold-builder' ),
-				'description' => esc_html__( 'Accordion container with few items', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_accordion', 'bold-page-builder' ), // base is used to detect if template is allowed at requested position
+				'name' => esc_html__( 'Accordion', 'bold-page-builder' ),
+				'description' => esc_html__( 'Accordion container with few items', 'bold-page-builder' ),
 			),
 			'button' => array(
-				'base' => esc_html__( 'bt_bb_button', 'bold-builder' ),
-				'name' => esc_html__( 'Button', 'bold-builder' ),
-				'description' => esc_html__( 'Button with custom link', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_button', 'bold-page-builder' ),
+				'name' => esc_html__( 'Button', 'bold-page-builder' ),
+				'description' => esc_html__( 'Button with custom link', 'bold-page-builder' ),
 			),
 			'contact_form_7' => array(
-				'base' => esc_html__( 'bt_bb_contact_form_7', 'bold-builder' ),
-				'name' => esc_html__( 'Contact Form 7', 'bold-builder' ),
-				'description' => esc_html__( 'Choose CF7 form', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_contact_form_7', 'bold-page-builder' ),
+				'name' => esc_html__( 'Contact Form 7', 'bold-page-builder' ),
+				'description' => esc_html__( 'Choose CF7 form', 'bold-page-builder' ),
 			),
 			'countdown' => array(
-				'base' => esc_html__( 'bt_bb_countdown', 'bold-builder' ),
-				'name' => esc_html__( 'Countdown', 'bold-builder' ),
-				'description' => esc_html__( 'Animated countdown', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_countdown', 'bold-page-builder' ),
+				'name' => esc_html__( 'Countdown', 'bold-page-builder' ),
+				'description' => esc_html__( 'Animated countdown', 'bold-page-builder' ),
 			),
 			'counter' => array(
-				'base' => esc_html__( 'bt_bb_counter', 'bold-builder' ),
-				'name' => esc_html__( 'Counter', 'bold-builder' ),
-				'description' => esc_html__( 'Animated counter', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_counter', 'bold-page-builder' ),
+				'name' => esc_html__( 'Counter', 'bold-page-builder' ),
+				'description' => esc_html__( 'Animated counter', 'bold-page-builder' ),
 			),
 			'custom_menu' => array(
-				'base' => esc_html__( 'bt_bb_custom_menu', 'bold-builder' ),
-				'name' => esc_html__( 'Custom Menu', 'bold-builder' ),
-				'description' => esc_html__( 'Custom WordPress menu', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_custom_menu', 'bold-page-builder' ),
+				'name' => esc_html__( 'Custom Menu', 'bold-page-builder' ),
+				'description' => esc_html__( 'Custom WordPress menu', 'bold-page-builder' ),
 			),
 			'google_maps' => array(
-				'base' => esc_html__( 'bt_bb_google_maps', 'bold-builder' ),
-				'name' => esc_html__( 'Google Maps', 'bold-builder' ),
-				'description' => esc_html__( 'Google Maps map with custom content', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_google_maps', 'bold-page-builder' ),
+				'name' => esc_html__( 'Google Maps', 'bold-page-builder' ),
+				'description' => esc_html__( 'Google Maps map with custom content', 'bold-page-builder' ),
 			),
 			'headline' => array(
-				'base' => esc_html__( 'bt_bb_headline', 'bold-builder' ),
-				'name' => esc_html__( 'Headline', 'bold-builder' ),
-				'description' => esc_html__( 'Headline with custom fonts (and AI help)', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_headline', 'bold-page-builder' ),
+				'name' => esc_html__( 'Headline', 'bold-page-builder' ),
+				'description' => esc_html__( 'Headline with custom fonts (and AI help)', 'bold-page-builder' ),
 			),
 			'icon' => array(
-				'base' => esc_html__( 'bt_bb_icon', 'bold-builder' ),
-				'name' => esc_html__( 'Icon', 'bold-builder' ),
-				'description' => esc_html__( 'Single icon with link', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_icon', 'bold-page-builder' ),
+				'name' => esc_html__( 'Icon', 'bold-page-builder' ),
+				'description' => esc_html__( 'Single icon with link', 'bold-page-builder' ),
 			),
 			'image' => array(
-				'base' => esc_html__( 'bt_bb_image', 'bold-builder' ),
-				'name' => esc_html__( 'Image', 'bold-builder' ),
-				'description' => esc_html__( 'Single image', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_image', 'bold-page-builder' ),
+				'name' => esc_html__( 'Image', 'bold-page-builder' ),
+				'description' => esc_html__( 'Single image', 'bold-page-builder' ),
 			),
 			'image_grid' => array(
-				'base' => esc_html__( 'bt_bb_css_image_grid', 'bold-builder' ),
-				'name' => esc_html__( 'Image Grid', 'bold-builder' ),
-				'description' => esc_html__( 'Grid with images', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_css_image_grid', 'bold-page-builder' ),
+				'name' => esc_html__( 'Image Grid', 'bold-page-builder' ),
+				'description' => esc_html__( 'Grid with images', 'bold-page-builder' ),
 			),
 			'slider' => array(
-				'base' => esc_html__( 'bt_bb_slider', 'bold-builder' ),
-				'name' => esc_html__( 'Image Slider', 'bold-builder' ),
-				'description' => esc_html__( 'Slider with images', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_slider', 'bold-page-builder' ),
+				'name' => esc_html__( 'Image Slider', 'bold-page-builder' ),
+				'description' => esc_html__( 'Slider with images', 'bold-page-builder' ),
 			),
 			'inner_row_11' => array(
-				'base' => esc_html__( 'bt_bb_row_inner', 'bold-builder' ),
-				'name' => esc_html__( 'Inner Row (1/1)', 'bold-builder' ),
-				'description' => esc_html__( 'Inner Row with 1 column', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_row_inner', 'bold-page-builder' ),
+				'name' => esc_html__( 'Inner Row (1/1)', 'bold-page-builder' ),
+				'description' => esc_html__( 'Inner Row with 1 column', 'bold-page-builder' ),
 			),
 			'inner_row_12+12' => array(
-				'base' => esc_html__( 'bt_bb_row_inner', 'bold-builder' ),
-				'name' => esc_html__( 'Inner Row (1/2+1/2)', 'bold-builder' ),
-				'description' => esc_html__( 'Inner Row with 2 columns', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_row_inner', 'bold-page-builder' ),
+				'name' => esc_html__( 'Inner Row (1/2+1/2)', 'bold-page-builder' ),
+				'description' => esc_html__( 'Inner Row with 2 columns', 'bold-page-builder' ),
 			),
 			'inner_row_13+13+13' => array(
-				'base' => esc_html__( 'bt_bb_row_inner', 'bold-builder' ),
-				'name' => esc_html__( 'Inner Row (1/3+1/3+1/3)', 'bold-builder' ),
-				'description' => esc_html__( 'Inner Row with 3 columns', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_row_inner', 'bold-page-builder' ),
+				'name' => esc_html__( 'Inner Row (1/3+1/3+1/3)', 'bold-page-builder' ),
+				'description' => esc_html__( 'Inner Row with 3 columns', 'bold-page-builder' ),
 			),
 			'inner_row_23+13' => array(
-				'base' => esc_html__( 'bt_bb_row_inner', 'bold-builder' ),
-				'name' => esc_html__( 'Inner Row (2/3+1/3)', 'bold-builder' ),
-				'description' => esc_html__( 'Inner Row with 2 columns', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_row_inner', 'bold-page-builder' ),
+				'name' => esc_html__( 'Inner Row (2/3+1/3)', 'bold-page-builder' ),
+				'description' => esc_html__( 'Inner Row with 2 columns', 'bold-page-builder' ),
 			),
 			'inner_row_13+23' => array(
-				'base' => esc_html__( 'bt_bb_row_inner', 'bold-builder' ),
-				'name' => esc_html__( 'Inner Row (1/3+2/3)', 'bold-builder' ),
-				'description' => esc_html__( 'Inner Row with 2 columns', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_row_inner', 'bold-page-builder' ),
+				'name' => esc_html__( 'Inner Row (1/3+2/3)', 'bold-page-builder' ),
+				'description' => esc_html__( 'Inner Row with 2 columns', 'bold-page-builder' ),
 			),
 			'latest_posts' => array(
-				'base' => esc_html__( 'bt_bb_latest_posts', 'bold-builder' ),
-				'name' => esc_html__( 'Latest Posts', 'bold-builder' ),
-				'description' => esc_html__( 'List of latest posts', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_latest_posts', 'bold-page-builder' ),
+				'name' => esc_html__( 'Latest Posts', 'bold-page-builder' ),
+				'description' => esc_html__( 'List of latest posts', 'bold-page-builder' ),
 			),
 			'leaflet_map' => array(
-				'base' => esc_html__( 'bt_bb_leaflet_map', 'bold-builder' ),
-				'name' => esc_html__( 'OpenStreetMap', 'bold-builder' ),
-				'description' => esc_html__( 'OpenStreetMap with custom content', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_leaflet_map', 'bold-page-builder' ),
+				'name' => esc_html__( 'OpenStreetMap', 'bold-page-builder' ),
+				'description' => esc_html__( 'OpenStreetMap with custom content', 'bold-page-builder' ),
 			),
 			'post_grid' => array(
-				'base' => esc_html__( 'bt_bb_css_post_grid', 'bold-builder' ),
-				'name' => esc_html__( 'Post Grid', 'bold-builder' ),
-				'description' => esc_html__( 'Post grid with images', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_css_post_grid', 'bold-page-builder' ),
+				'name' => esc_html__( 'Post Grid', 'bold-page-builder' ),
+				'description' => esc_html__( 'Post grid with images', 'bold-page-builder' ),
 			),
 			'price_list' => array(
-				'base' => esc_html__( 'bt_bb_price_list', 'bold-builder' ),
-				'name' => esc_html__( 'Price List', 'bold-builder' ),
-				'description' => esc_html__( 'List of items with total price', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_price_list', 'bold-page-builder' ),
+				'name' => esc_html__( 'Price List', 'bold-page-builder' ),
+				'description' => esc_html__( 'List of items with total price', 'bold-page-builder' ),
 			),
 			'progress_bar' => array(
-				'base' => esc_html__( 'bt_bb_progress_bar', 'bold-builder' ),
-				'name' => esc_html__( 'Progress Bar', 'bold-builder' ),
-				'description' => esc_html__( 'Animated progress bar', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_progress_bar', 'bold-page-builder' ),
+				'name' => esc_html__( 'Progress Bar', 'bold-page-builder' ),
+				'description' => esc_html__( 'Animated progress bar', 'bold-page-builder' ),
 			),
 			'raw_content' => array(
-				'base' => esc_html__( 'bt_bb_raw_content', 'bold-builder' ),
-				'name' => esc_html__( 'Raw Content', 'bold-builder' ),
-				'description' => esc_html__( 'Raw HTML/JS content', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_raw_content', 'bold-page-builder' ),
+				'name' => esc_html__( 'Raw Content', 'bold-page-builder' ),
+				'description' => esc_html__( 'Raw HTML/JS content', 'bold-page-builder' ),
 			),
 			'separator' => array(
-				'base' => esc_html__( 'bt_bb_separator', 'bold-builder' ),
-				'name' => esc_html__( 'Separator', 'bold-builder' ),
-				'description' => esc_html__( 'Separator line', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_separator', 'bold-page-builder' ),
+				'name' => esc_html__( 'Separator', 'bold-page-builder' ),
+				'description' => esc_html__( 'Separator line', 'bold-page-builder' ),
 			),
 			'service' => array(
-				'base' => esc_html__( 'bt_bb_service', 'bold-builder' ),
-				'name' => esc_html__( 'Service', 'bold-builder' ),
-				'description' => esc_html__( 'Icon with text (and AI help)', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_service', 'bold-page-builder' ),
+				'name' => esc_html__( 'Service', 'bold-page-builder' ),
+				'description' => esc_html__( 'Icon with text (and AI help)', 'bold-page-builder' ),
 			),
 			'shortcode' => array(
-				'base' => esc_html__( 'bt_bb_shortcode', 'bold-builder' ),
-				'name' => esc_html__( 'Shortcode', 'bold-builder' ),
-				'description' => esc_html__( 'Custom shortcode', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_shortcode', 'bold-page-builder' ),
+				'name' => esc_html__( 'Shortcode', 'bold-page-builder' ),
+				'description' => esc_html__( 'Custom shortcode', 'bold-page-builder' ),
 			),
 			'content_slider' => array(
-				'base' => esc_html__( 'bt_bb_content_slider', 'bold-builder' ),
-				'name' => esc_html__( 'Slider', 'bold-builder' ),
-				'description' => esc_html__( 'Slider with custom content', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_content_slider', 'bold-page-builder' ),
+				'name' => esc_html__( 'Slider', 'bold-page-builder' ),
+				'description' => esc_html__( 'Slider with custom content', 'bold-page-builder' ),
 			),
 			'tabs' => array(
-				'base' => esc_html__( 'bt_bb_tabs', 'bold-builder' ),
-				'name' => esc_html__( 'Tabs', 'bold-builder' ),
-				'description' => esc_html__( 'Tabs container with few items', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_tabs', 'bold-page-builder' ),
+				'name' => esc_html__( 'Tabs', 'bold-page-builder' ),
+				'description' => esc_html__( 'Tabs container with few items', 'bold-page-builder' ),
 			),
 			'text' => array(
-				'base' => esc_html__( 'bt_bb_text', 'bold-builder' ),
-				'name' => esc_html__( 'Text', 'bold-builder' ),
-				'description' => esc_html__( 'Text element (with AI help)', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_text', 'bold-page-builder' ),
+				'name' => esc_html__( 'Text', 'bold-page-builder' ),
+				'description' => esc_html__( 'Text element (with AI help)', 'bold-page-builder' ),
 			),
 			'video' => array(
-				'base' => esc_html__( 'bt_bb_video', 'bold-builder' ),
-				'name' => esc_html__( 'Video', 'bold-builder' ),
-				'description' => esc_html__( 'Video player', 'bold-builder' ),
+				'base' => esc_html__( 'bt_bb_video', 'bold-page-builder' ),
+				'name' => esc_html__( 'Video', 'bold-page-builder' ),
+				'description' => esc_html__( 'Video player', 'bold-page-builder' ),
 			),
 		) );
 		
@@ -692,8 +694,8 @@ function bt_bb_fe_footer() {
 			echo '<div id="bt_bb_fe_dialog_main">';
 				echo '<div class="bt_bb_dialog_header">';
 					echo '<div class="bt_bb_dialog_header_text"></div>';
-					echo '<div id="bt_bb_fe_dialog_close" role="button" class="bt_bb_dialog_close" title="' . esc_html__( 'Close dialog', 'bold-builder' ) . '"></div>';
-					echo '<div id="bt_bb_fe_dialog_switch" role="button" title="' . esc_html__( 'Switch side', 'bold-builder' ) . '"><i class="fa fa-exchange"></i></div>';
+					echo '<div id="bt_bb_fe_dialog_close" role="button" class="bt_bb_dialog_close" title="' . esc_html__( 'Close dialog', 'bold-page-builder' ) . '"></div>';
+					echo '<div id="bt_bb_fe_dialog_switch" role="button" title="' . esc_html__( 'Switch side', 'bold-page-builder' ) . '"><i class="fa fa-exchange"></i></div>';
 				echo '</div>';
 				echo '<div class="bt_bb_dialog_header_tools"></div>';
 				echo '<div id="bt_bb_fe_dialog_content"></div>';
@@ -711,7 +713,7 @@ function bt_bb_fe_footer() {
 	echo '</div>';
 	
 	if ( BT_BB_Root::$has_footer && ! isset( $_GET[ 'bt_bb_edit_footer' ] ) ) {
-		echo '<a href="' . esc_url( add_query_arg( 'bt_bb_edit_footer', '', get_post_permalink( BT_BB_Root::$footer_page_id ) ) ) . '" target="_blank" class="bt_bb_fe_preview_toggler bt_bb_fe_preview_toggler_footer">' . esc_html__( 'Edit Footer', 'bold-builder' ) . '</a>';
+		echo '<a href="' . esc_url( add_query_arg( 'bt_bb_edit_footer', '', get_post_permalink( BT_BB_Root::$footer_page_id ) ) ) . '" target="_blank" class="bt_bb_fe_preview_toggler bt_bb_fe_preview_toggler_footer">' . esc_html__( 'Edit Footer', 'bold-page-builder' ) . '</a>';
 	}
 	
 	echo '<div class="bt_bb_dd_tip"></div>';
@@ -842,12 +844,12 @@ function bt_bb_fe_get_template_html() {
 			$fe_wrap_open = '<div class="bt_bb_fe_wrap">';
 			$fe_wrap_open .= '<span class="bt_bb_fe_count"><span class="bt_bb_fe_count_inner"></span>
 			<ul class="bt_bb_element_menu">
-				<li><span class="bt_bb_element_menu_edit">' . esc_html__( 'Edit', 'bold-builder' ) . '</span></li>
-				<li data-edit_url="' . esc_attr( $edit_url ) . '"><span class="bt_bb_element_menu_edit_be">' . esc_html__( 'Edit in back-end editor', 'bold-builder' ) . '</span><ul><li><span class="bt_bb_element_menu_edit_be_new_tab">' . esc_html__( '(new tab)', 'bold-builder' ) . '</span></li></ul></li>
-				<li><span class="bt_bb_element_menu_cut">' . esc_html__( 'Cut', 'bold-builder' ) . '</span></li>
-				<li><span class="bt_bb_element_menu_copy">' . esc_html__( 'Copy', 'bold-builder' ) . '</span></li>
-				<li><span class="bt_bb_element_menu_paste">' . esc_html__( 'Paste', 'bold-builder' ) . '</span><ul><li><span class="bt_bb_element_menu_paste_above">' . esc_html__( '(above)', 'bold-builder' ) . '</span></li></ul></li>
-				<li class="bt_bb_element_menu_delete_parent"><span class="bt_bb_element_menu_delete">' . esc_html__( 'Delete', 'bold-builder' ) . '</span></li>
+				<li><span class="bt_bb_element_menu_edit">' . esc_html__( 'Edit', 'bold-page-builder' ) . '</span></li>
+				<li data-edit_url="' . esc_attr( $edit_url ) . '"><span class="bt_bb_element_menu_edit_be">' . esc_html__( 'Edit in back-end editor', 'bold-page-builder' ) . '</span><ul><li><span class="bt_bb_element_menu_edit_be_new_tab">' . esc_html__( '(new tab)', 'bold-page-builder' ) . '</span></li></ul></li>
+				<li><span class="bt_bb_element_menu_cut">' . esc_html__( 'Cut', 'bold-page-builder' ) . '</span></li>
+				<li><span class="bt_bb_element_menu_copy">' . esc_html__( 'Copy', 'bold-page-builder' ) . '</span></li>
+				<li><span class="bt_bb_element_menu_paste">' . esc_html__( 'Paste', 'bold-page-builder' ) . '</span><ul><li><span class="bt_bb_element_menu_paste_above">' . esc_html__( '(above)', 'bold-page-builder' ) . '</span></li></ul></li>
+				<li class="bt_bb_element_menu_delete_parent"><span class="bt_bb_element_menu_delete">' . esc_html__( 'Delete', 'bold-page-builder' ) . '</span></li>
 			</ul>
 			</span>';
 			$fe_wrap_close = '</div>';
