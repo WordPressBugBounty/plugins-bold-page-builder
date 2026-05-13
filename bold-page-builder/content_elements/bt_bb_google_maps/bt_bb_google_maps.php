@@ -51,7 +51,7 @@ class bt_bb_google_maps extends BT_BB_Element {
 				'gmaps_api',
 				'https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&loading=async&callback=window.bt_bb_init_all_maps&libraries=marker',
 				array(),
-				false,
+				BT_BB_VERSION,
 				array(
 					'strategy'  => 'async',
 					'in_footer' => true,
@@ -62,7 +62,7 @@ class bt_bb_google_maps extends BT_BB_Element {
 				'gmaps_api',
 				'https://maps.googleapis.com/maps/api/js?v=&sensor=false&loading=async&callback=window.bt_bb_init_all_maps&libraries=marker',
 				array(),
-				false,
+				BT_BB_VERSION,
 				array(
 					'strategy'  => 'async',
 					'in_footer' => true,
@@ -138,7 +138,7 @@ class bt_bb_google_maps extends BT_BB_Element {
 				'gmaps_api',
 				'https://maps.googleapis.com/maps/api/js?v=&sensor=false&loading=async&callback=window.bt_bb_init_all_maps',
 				array(),
-				false,
+				BT_BB_VERSION,
 				array(
 					'strategy'  => 'async',
 					'in_footer' => true,

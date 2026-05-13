@@ -54,8 +54,7 @@ if ( ! function_exists( 'bt_bb_get_permalink_by_slug' ) ) {
 			substr( $link, 0, 7 ) != 'mailto:' && 
 			substr( $link, 0, 4 ) != 'tel:' 
 		) {
-			global $wpdb;
-			$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type= %s", $link, $post_type ) );
+			$page = get_page_by_path( $link, OBJECT, $post_type ); // object-cached; replaces a direct $wpdb query (PCP DirectDatabaseQuery / NoCaching)
 			if ( $page ) {
 				return get_permalink( $page );
 			}
@@ -235,7 +234,7 @@ if ( ! function_exists( 'bt_bb_enqueue_google_fonts' ) ) {
 
 			$font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css2' );
 			
-			wp_enqueue_style( 'bt_bb_google_fonts', $font_url, array(), null );
+			wp_enqueue_style( 'bt_bb_google_fonts', $font_url, array(), BT_BB_VERSION );
 
 		}
 	}

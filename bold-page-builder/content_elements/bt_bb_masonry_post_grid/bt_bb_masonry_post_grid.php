@@ -10,9 +10,19 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 		add_action( 'wp_ajax_nopriv_bt_bb_get_grid', array( __CLASS__, 'bt_bb_get_grid_callback' ) );
 	}
 
-	static function bt_bb_get_grid_callback() {	
-		if ( $_POST['ignore-nonce'] != 'ignore_nonce' ) check_ajax_referer( 'bt-bb-masonry-post-grid-nonce', 'bt-bb-masonry-post-grid-nonce' );
-		bt_bb_masonry_post_grid::dump_grid( intval( $_POST['number'] ), intval( $_POST['offset'] ), sanitize_text_field( urldecode( $_POST['category'] ) ), $_POST['show'], $_POST['post-type'], $_POST['ignore-nonce'] );
+	static function bt_bb_get_grid_callback() {
+		// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- Public read-only endpoint (wp_ajax_nopriv): only echoes already-escaped published-post markup. The nonce is verified for the editor/logged-in path; the 'ignore_nonce' escape disables it in contexts where a fresh per-request nonce can't be embedded in the markup. All values below are sanitized before use.
+		$ignore_nonce = isset( $_POST['ignore-nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ignore-nonce'] ) ) : '';
+		if ( 'ignore_nonce' !== $ignore_nonce ) {
+			check_ajax_referer( 'bt-bb-masonry-post-grid-nonce', 'bt-bb-masonry-post-grid-nonce' );
+		}
+		$number    = isset( $_POST['number'] ) ? intval( $_POST['number'] ) : 0;
+		$offset    = isset( $_POST['offset'] ) ? intval( $_POST['offset'] ) : 0;
+		$category  = isset( $_POST['category'] ) ? sanitize_text_field( urldecode( sanitize_text_field( wp_unslash( $_POST['category'] ) ) ) ) : ''; // sanitize the raw value, urldecode, then re-sanitize the decoded value
+		$show      = isset( $_POST['show'] ) ? sanitize_text_field( wp_unslash( $_POST['show'] ) ) : '';
+		$post_type = isset( $_POST['post-type'] ) ? sanitize_text_field( wp_unslash( $_POST['post-type'] ) ) : '';
+		// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
+		bt_bb_masonry_post_grid::dump_grid( $number, $offset, $category, $show, $post_type );
 		die();
 	}
 	

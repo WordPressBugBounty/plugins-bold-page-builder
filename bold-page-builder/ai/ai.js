@@ -5,6 +5,16 @@
 	var response_arr = [];
 	var current_index = 0;
 	var len_arr = [];
+
+	// Robust class check on the event's deepest target. Works for both HTML and SVG elements
+	// (SVGElement.className is an SVGAnimatedString, not a string — calling .includes() on it
+	// throws "TypeError: ...className.includes is not a function" on every click that bubbles
+	// up from an SVG icon, which is what we were seeing on sites with SVG-icon cookie banners
+	// / social widgets / etc.). classList.contains() is the correct cross-element API.
+	function bt_bb_ai_path_target_has_class( e, cls ) {
+		var t = e.composedPath()[0];
+		return t && t.classList && t.classList.contains( cls );
+	}
 	
 	function update_buttons() {
 		let prev_button;
@@ -257,7 +267,7 @@
 		//// FE
 		
 		document.addEventListener( 'click', function( e ) {
-			if ( typeof( bt_bb_fe_dialog_content ) !== 'undefined' && e.composedPath()[0].className.includes( 'bt_bb_ai_regenerate_button' ) ) {
+			if ( typeof( bt_bb_fe_dialog_content ) !== 'undefined' && bt_bb_ai_path_target_has_class( e, 'bt_bb_ai_regenerate_button' ) ) {
 				var mode = $( e.composedPath()[0] ).closest( '.bt_bb_dialog_item' ).find( '.bt_bb_ai_mode' ).val();
 				if ( mode == 'generate' ) {
 					ai_request( e.composedPath()[0] );
@@ -268,7 +278,7 @@
 		});
 		
 		document.addEventListener( 'click', function( e ) {
-			if ( typeof( bt_bb_fe_dialog_content ) !== 'undefined' && e.composedPath()[0].className.includes( 'bt_bb_ai_prev_button' ) ) {
+			if ( typeof( bt_bb_fe_dialog_content ) !== 'undefined' && bt_bb_ai_path_target_has_class( e, 'bt_bb_ai_prev_button' ) ) {
 				if ( current_index > 0 ) {
 					current_index--;
 					update_target( e.composedPath()[0] );
@@ -278,7 +288,7 @@
 		});
 		
 		document.addEventListener( 'click', function( e ) {
-			if ( typeof( bt_bb_fe_dialog_content ) !== 'undefined' && e.composedPath()[0].className.includes( 'bt_bb_ai_next_button' ) ) {
+			if ( typeof( bt_bb_fe_dialog_content ) !== 'undefined' && bt_bb_ai_path_target_has_class( e, 'bt_bb_ai_next_button' ) ) {
 				if ( current_index < response_arr.length - 1 ) {
 					current_index++;
 					update_target( e.composedPath()[0] );
@@ -290,7 +300,7 @@
 		// Switch
 		
 		document.addEventListener( 'click', function( e ) {
-			if ( typeof( bt_bb_fe_dialog_content ) !== 'undefined' && e.composedPath()[0].className.includes( 'bt_bb_ai_switch' ) ) {
+			if ( typeof( bt_bb_fe_dialog_content ) !== 'undefined' && bt_bb_ai_path_target_has_class( e, 'bt_bb_ai_switch' ) ) {
 				if ( $( e.composedPath()[0] ).hasClass( 'bt_bb_ai_open' ) ) {
 					$( e.composedPath()[0] ).removeClass( 'bt_bb_ai_open' );
 					$( e.composedPath()[0] ).next().removeClass( 'bt_bb_ai_open' );

@@ -42,23 +42,26 @@ if ( ! class_exists( 'BB_Weather_Widget' ) ) {
 
 			if ( $weather_data === false ) {
 				
-				$session = false;
+				$api_path = false;
 
 				if ( $this->type == 'now' ) {
-					$session = curl_init( 'https://api.openweathermap.org/data/2.5/weather?lat=' . $this->latitude . '&lon=' . $this->longitude . '&units=' . $this->temp_unit . '&appid=' . $this->api_key );
+					$api_path = 'weather';
 				} else if ( $this->type == 'forecast12' || $this->type == 'forecast24' ) {
-					$session = curl_init( 'https://api.openweathermap.org/data/2.5/forecast?lat=' . $this->latitude . '&lon=' . $this->longitude . '&units=' . $this->temp_unit . '&appid=' . $this->api_key );
+					$api_path = 'forecast';
 				}
-				
-				if ( ! $session ) {
+
+				if ( ! $api_path ) {
 					return;
 				}
-				
-				curl_setopt( $session, CURLOPT_RETURNTRANSFER, true );
-				
-				$json = curl_exec( $session );
-				
-				$result = json_decode( $json, true );
+
+				$response = wp_remote_get( add_query_arg( array(
+					'lat'   => $this->latitude,
+					'lon'   => $this->longitude,
+					'units' => $this->temp_unit,
+					'appid' => $this->api_key,
+				), 'https://api.openweathermap.org/data/2.5/' . $api_path ), array( 'timeout' => 15 ) );
+
+				$result = is_wp_error( $response ) ? null : json_decode( wp_remote_retrieve_body( $response ), true );
 
 				if ( is_array( $result ) && ( isset( $result['weather'] ) || isset( $result['list'] ) || isset( $result['main'] ) ) ) {
 
@@ -289,12 +292,12 @@ if ( ! class_exists( 'BB_Weather_Widget' ) ) {
 
 		public function update( $new_instance, $old_instance ) {
 			$instance = array();
-			$instance['latitude'] = ( ! empty( $new_instance['latitude'] ) ) ? strip_tags( $new_instance['latitude'] ) : '';
-			$instance['longitude'] = ( ! empty( $new_instance['longitude'] ) ) ? strip_tags( $new_instance['longitude'] ) : '';
-			$instance['temp_unit'] = ( ! empty( $new_instance['temp_unit'] ) ) ? strip_tags( $new_instance['temp_unit'] ) : '';
-			$instance['type'] = ( ! empty( $new_instance['type'] ) ) ? strip_tags( $new_instance['type'] ) : '';
-			$instance['cache'] = ( ! empty( $new_instance['cache'] ) ) ? strip_tags( $new_instance['cache'] ) : '';
-			$instance['api_key'] = ( ! empty( $new_instance['api_key'] ) ) ? strip_tags( $new_instance['api_key'] ) : '';
+			$instance['latitude'] = ( ! empty( $new_instance['latitude'] ) ) ? wp_strip_all_tags( $new_instance['latitude'] ) : '';
+			$instance['longitude'] = ( ! empty( $new_instance['longitude'] ) ) ? wp_strip_all_tags( $new_instance['longitude'] ) : '';
+			$instance['temp_unit'] = ( ! empty( $new_instance['temp_unit'] ) ) ? wp_strip_all_tags( $new_instance['temp_unit'] ) : '';
+			$instance['type'] = ( ! empty( $new_instance['type'] ) ) ? wp_strip_all_tags( $new_instance['type'] ) : '';
+			$instance['cache'] = ( ! empty( $new_instance['cache'] ) ) ? wp_strip_all_tags( $new_instance['cache'] ) : '';
+			$instance['api_key'] = ( ! empty( $new_instance['api_key'] ) ) ? wp_strip_all_tags( $new_instance['api_key'] ) : '';
 			
 			return $instance;
 		}

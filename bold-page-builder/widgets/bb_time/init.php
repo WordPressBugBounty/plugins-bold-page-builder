@@ -99,10 +99,10 @@ if ( ! class_exists( 'BB_Time_Widget' ) ) {
 
 		public function update( $new_instance, $old_instance ) {
 			$instance = array();
-			$instance['icon'] = ( ! empty( $new_instance['icon'] ) ) ? strip_tags( $new_instance['icon'] ) : '';
-			$instance['time_zone'] = ( ! empty( $new_instance['time_zone'] ) ) ? strip_tags( $new_instance['time_zone'] ) : '';
-			$instance['place_name'] = ( ! empty( $new_instance['place_name'] ) ) ? strip_tags( $new_instance['place_name'] ) : '';
-			$instance['time_notation'] = ( ! empty( $new_instance['time_notation'] ) ) ? strip_tags( $new_instance['time_notation'] ) : '';
+			$instance['icon'] = ( ! empty( $new_instance['icon'] ) ) ? wp_strip_all_tags( $new_instance['icon'] ) : '';
+			$instance['time_zone'] = ( ! empty( $new_instance['time_zone'] ) ) ? wp_strip_all_tags( $new_instance['time_zone'] ) : '';
+			$instance['place_name'] = ( ! empty( $new_instance['place_name'] ) ) ? wp_strip_all_tags( $new_instance['place_name'] ) : '';
+			$instance['time_notation'] = ( ! empty( $new_instance['time_notation'] ) ) ? wp_strip_all_tags( $new_instance['time_notation'] ) : '';
 
 			return $instance;
 		}

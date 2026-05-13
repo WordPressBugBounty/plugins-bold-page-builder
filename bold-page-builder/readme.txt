@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 6.9.4
-Stable tag: 5.8.0
+Stable tag: 5.8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,14 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.8.1 =
+* Fixed JavaScript errors triggered by clicks on SVG elements from third-party plugins (cookie banners, social widgets, etc.).
+* Fixed unresponsive Front-end editor clicks on macOS / Safari — the edit drawer now opens reliably on the first click.
+* `Publish until` / `Hide until` scheduling now uses the site timezone with minute precision; leaving the field blank correctly means "no limit".
+* Hardened AJAX input handling, output escaping, and external HTTP calls.
+* Replaced legacy database lookups and cURL calls with WordPress core APIs (`wp_remote_*`, `get_page_by_path`) for better compatibility and caching.
+* Improved security.
 
 = 5.8.0 =
 * Hardened all plugin PHP files against direct file access.

@@ -14,6 +14,7 @@ class BT_BB_FE {
 add_action( 'admin_bar_init', 'bt_bb_fe_init', 9 );
 
 function bt_bb_fe_init() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request-context check (is this a non-BB core "preview"?); no state change, no form processing.
 	if ( ! bt_bb_active_for_post_type_fe() || ( isset( $_GET['preview'] ) && ! isset( $_GET['bt_bb_fe_preview'] ) ) ) {
 		return;
 	}
@@ -712,6 +713,7 @@ function bt_bb_fe_footer() {
 		echo '</div>';
 	echo '</div>';
 	
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check (is this the "edit footer" view?); no state change.
 	if ( BT_BB_Root::$has_footer && ! isset( $_GET[ 'bt_bb_edit_footer' ] ) ) {
 		echo '<a href="' . esc_url( add_query_arg( 'bt_bb_edit_footer', '', get_post_permalink( BT_BB_Root::$footer_page_id ) ) ) . '" target="_blank" class="bt_bb_fe_preview_toggler bt_bb_fe_preview_toggler_footer">' . esc_html__( 'Edit Footer', 'bold-page-builder' ) . '</a>';
 	}
@@ -728,35 +730,36 @@ function bt_bb_fe_footer() {
 
 function bt_bb_fe_save() {
 	check_ajax_referer( 'bt_bb_fe_nonce', 'nonce' );
-	$post_id = intval( $_POST['post_id'] );
-	
+	$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+
 	if ( ! current_user_can( 'unfiltered_html' ) ) {
-		$post_content = wp_kses_post( $_POST['post_content'] );
+		$post_content = isset( $_POST['post_content'] ) ? wp_kses_post( wp_unslash( $_POST['post_content'] ) ) : '';
 		$post_content = str_ireplace( array( '"``', '``"' ), array( '``', '``' ), $post_content );
 	} else {
-		$post_content = $_POST['post_content'];
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- current_user_can('unfiltered_html'): full HTML is intentionally allowed for this user.
+		$post_content = isset( $_POST['post_content'] ) ? wp_unslash( $_POST['post_content'] ) : '';
 	}
-	
-	$wpml_lang = sanitize_text_field( $_POST['wpml_lang'] );
-	
+
+	$wpml_lang = isset( $_POST['wpml_lang'] ) ? sanitize_text_field( wp_unslash( $_POST['wpml_lang'] ) ) : '';
+
 	if ( current_user_can( 'edit_post', $post_id ) ) {
 		// Check if WPML is active
 		if ( function_exists( 'wpml_get_current_language' ) ) {
-			
+
 			// Get the post ID in the current language
 			$translated_post_id = apply_filters( 'wpml_object_id', $post_id, 'post', true, $wpml_lang );
-			
+
 			// Update the post in the correct language
 			$post = array(
 				'ID'           => $translated_post_id,
-				'post_content' => $post_content,
+				'post_content' => wp_slash( $post_content ),
 			);
 			wp_update_post( $post );
 		} else {
 			// WPML not active, proceed with normal update
 			$post = array(
 				'ID'           => $post_id,
-				'post_content' => $post_content,
+				'post_content' => wp_slash( $post_content ),
 			);
 			wp_update_post( $post );
 		}
@@ -773,8 +776,8 @@ add_action( 'wp_ajax_bt_bb_fe_save', 'bt_bb_fe_save' );
  
 function bt_bb_fe_get_html() {
 	check_ajax_referer( 'bt_bb_fe_nonce', 'nonce' );
-	$post_id = intval( $_POST['post_id'] );
-	$content = stripslashes( wp_kses_post( $_POST['content'] ) );
+	$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+	$content = isset( $_POST['content'] ) ? wp_kses_post( wp_unslash( $_POST['content'] ) ) : '';
 	$content = str_ireplace( array( '"``', '``"' ), array( '``', '``' ), $content );
 	if ( current_user_can( 'edit_post', $post_id ) ) {
 		remove_filter( 'the_content', 'wpautop' );
@@ -806,11 +809,11 @@ add_action( 'wp_ajax_bt_bb_fe_get_html', 'bt_bb_fe_get_html' );
  */
 function bt_bb_fe_get_template_html() {
 	check_ajax_referer( 'bt_bb_fe_nonce', 'nonce' );
-	$post_id = intval( $_POST['post_id'] );
-	$edit_url = isset( $_POST['edit_url'] ) ? esc_url( $_POST['edit_url'] ) : '';
-	$layout = sanitize_text_field( $_POST['layout'] );
+	$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+	$edit_url = isset( $_POST['edit_url'] ) ? esc_url_raw( wp_unslash( $_POST['edit_url'] ) ) : '';
+	$layout = isset( $_POST['layout'] ) ? sanitize_text_field( wp_unslash( $_POST['layout'] ) ) : '';
 	$layout = preg_replace( '/[^a-zA-Z0-9_\-\+]/', '', $layout );
-	$type = isset( $_POST['type'] ) ? sanitize_text_field( $_POST['type'] ) : '';
+	$type = isset( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : '';
 	$content = @file_get_contents( get_stylesheet_directory() . '/bold-page-builder/templates/' . str_replace( '+', '_', $layout ) . '.txt' );
 	if ( ! $content ) {
 		$content = @file_get_contents( get_template_directory() . '/bold-page-builder/templates/' . str_replace( '+', '_', $layout ) . '.txt' );

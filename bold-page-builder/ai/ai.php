@@ -14,22 +14,22 @@ BT_BB_AI::$_content_system_prompt = 'You are a copywriter and your goal is to he
 
 function bt_bb_ai() {
 	check_ajax_referer( 'bt_bb_nonce', 'nonce' );
-	
-	$keywords = wp_kses_post( $_POST['keywords'] );
-	$tone = wp_kses_post( $_POST['tone'] );
-	$mode = wp_kses_post( $_POST['mode'] );
-	$language = wp_kses_post( $_POST['language'] );
-	$target = json_decode( stripslashes( wp_kses_post( $_POST['target'] ) ), true );
-	$modify = boolval( $_POST['modify'] === 'true' );
-	$content = wp_kses_post( $_POST['content'] );
+
+	$keywords = isset( $_POST['keywords'] ) ? wp_kses_post( wp_unslash( $_POST['keywords'] ) ) : '';
+	$tone     = isset( $_POST['tone'] ) ? wp_kses_post( wp_unslash( $_POST['tone'] ) ) : '';
+	$mode     = isset( $_POST['mode'] ) ? wp_kses_post( wp_unslash( $_POST['mode'] ) ) : '';
+	$language = isset( $_POST['language'] ) ? wp_kses_post( wp_unslash( $_POST['language'] ) ) : '';
+	$target   = isset( $_POST['target'] ) ? json_decode( wp_kses_post( wp_unslash( $_POST['target'] ) ), true ) : '';
+	$modify   = isset( $_POST['modify'] ) && $_POST['modify'] === 'true';
+	$content  = isset( $_POST['content'] ) ? wp_kses_post( wp_unslash( $_POST['content'] ) ) : '';
 
 	if ( $target == '_content' ) {
 		$system_prompt_base = BT_BB_AI::$_content_system_prompt;
 	} else {
-		$system_prompt_base = wp_kses_post( $_POST['system_prompt'] );
+		$system_prompt_base = isset( $_POST['system_prompt'] ) ? wp_kses_post( wp_unslash( $_POST['system_prompt'] ) ) : '';
 	}
 
-	$length = json_decode( stripslashes( wp_kses_post( $_POST['length'] ) ), true );
+	$length = isset( $_POST['length'] ) ? json_decode( wp_kses_post( wp_unslash( $_POST['length'] ) ), true ) : array();
 	
 	$options = get_option( 'bt_bb_settings' );
 	if ( is_array( $options ) ) {
@@ -95,7 +95,7 @@ function bt_bb_ai() {
 	if ( $modify ) {
 		
 		$_content = false;
-		$content_obj = json_decode( stripslashes( $content ) );
+		$content_obj = json_decode( $content ); // $content already unslashed above
 		if ( property_exists( $content_obj, '_content' ) ) {
 			$content = '"""' . $content_obj->_content . '"""';
 			$_content = true;
@@ -161,19 +161,16 @@ function bt_bb_ai() {
 		);
 	}
 
-	$ch = curl_init( $url );
-	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-	curl_setopt( $ch, CURLOPT_POST, true );
-	curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $data ) );
-	curl_setopt( $ch, CURLOPT_HTTPHEADER, array(
-		'Content-Type: application/json',
-		'Authorization: Bearer ' . $api_key
-	));
+	$response = wp_remote_post( $url, array(
+		'timeout' => 30,
+		'headers' => array(
+			'Content-Type'  => 'application/json',
+			'Authorization' => 'Bearer ' . $api_key,
+		),
+		'body'    => wp_json_encode( $data ),
+	) );
 
-	$response = curl_exec( $ch );
-	curl_close( $ch );
-
-	$result = json_decode( $response, true );
+	$result = is_wp_error( $response ) ? null : json_decode( wp_remote_retrieve_body( $response ), true );
 
 	if ( $result ) {
 		if ( is_array( $result ) ) {

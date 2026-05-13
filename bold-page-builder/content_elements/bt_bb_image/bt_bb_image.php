@@ -36,7 +36,7 @@ class bt_bb_image extends BT_BB_Element {
 		}
 		
 		if ( $hover_style == 'scroll' ) {
-			$el_id = 'bt_bb_random_id_' . rand();
+			$el_id = 'bt_bb_random_id_' . wp_rand();
 		}
 
 		if ( $image_height != '' ) {

@@ -136,14 +136,14 @@ if ( ! class_exists( 'BB_Icon_Widget' ) ) {
 
 		public function update( $new_instance, $old_instance ) {
 			$instance = array();
-			$instance['icon'] = ( ! empty( $new_instance['icon'] ) ) ? strip_tags( $new_instance['icon'] ) : '';
-			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-			$instance['url_title'] = ( ! empty( $new_instance['url_title'] ) ) ? strip_tags( $new_instance['url_title'] ) : '';
-			$instance['text'] = ( ! empty( $new_instance['text'] ) ) ? strip_tags( $new_instance['text'] ) : '';
-			$instance['url'] = ( ! empty( $new_instance['url'] ) ) ? strip_tags( $new_instance['url'] ) : '';
-			$instance['show_button'] = ( ! empty( $new_instance['show_button'] ) ) ? strip_tags( $new_instance['show_button'] ) : '';
-			$instance['target'] = ( ! empty( $new_instance['target'] ) ) ? strip_tags( $new_instance['target'] ) : '';
-			$instance['extra_class'] = ( ! empty( $new_instance['extra_class'] ) ) ? strip_tags( $new_instance['extra_class'] ) : '';
+			$instance['icon'] = ( ! empty( $new_instance['icon'] ) ) ? wp_strip_all_tags( $new_instance['icon'] ) : '';
+			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
+			$instance['url_title'] = ( ! empty( $new_instance['url_title'] ) ) ? wp_strip_all_tags( $new_instance['url_title'] ) : '';
+			$instance['text'] = ( ! empty( $new_instance['text'] ) ) ? wp_strip_all_tags( $new_instance['text'] ) : '';
+			$instance['url'] = ( ! empty( $new_instance['url'] ) ) ? wp_strip_all_tags( $new_instance['url'] ) : '';
+			$instance['show_button'] = ( ! empty( $new_instance['show_button'] ) ) ? wp_strip_all_tags( $new_instance['show_button'] ) : '';
+			$instance['target'] = ( ! empty( $new_instance['target'] ) ) ? wp_strip_all_tags( $new_instance['target'] ) : '';
+			$instance['extra_class'] = ( ! empty( $new_instance['extra_class'] ) ) ? wp_strip_all_tags( $new_instance['extra_class'] ) : '';
 
 			return $instance;
 		}

@@ -103,7 +103,7 @@ class bt_bb_leaflet_map extends BT_BB_Element {
 			$output_script .= '};';
 		$output_script .= '}, false);';
 		
-		wp_register_script( 'boldthemes-script-bt-bb-leaflet-maps-js-init', '' );
+		wp_register_script( 'boldthemes-script-bt-bb-leaflet-maps-js-init', '', array(), BT_BB_VERSION );
 		wp_enqueue_script( 'boldthemes-script-bt-bb-leaflet-maps-js-init' );
 		wp_add_inline_script( 'boldthemes-script-bt-bb-leaflet-maps-js-init', $output_script );
 		

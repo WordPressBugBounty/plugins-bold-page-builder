@@ -189,7 +189,7 @@ class bt_bb_headline extends BT_BB_Element {
 		
 		if ( $headline != '' ) {
 			if ( $url != '' ) {
-				$url_title = strip_tags( str_replace( array("\n", "\r"), ' ', $headline ) );
+				$url_title = wp_strip_all_tags( str_replace( array("\n", "\r"), ' ', $headline ) );
 				$link = bt_bb_get_url( $url );
 				// IMPORTANT: esc_attr (not esc_url) is intentional here.
 				// Authors are allowed to put javascript: / mailto: / tel: / non-standard schemes

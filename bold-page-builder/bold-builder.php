@@ -1,9 +1,9 @@
 <?php
  
 /**
- * Plugin Name: Bold Builder
+ * Plugin Name: Bold Page Builder
  * Description: WordPress page builder.
- * Version: 5.8.0
+ * Version: 5.8.1
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * License: GPL v2 or later
@@ -23,7 +23,7 @@ define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
  * Enqueue scripts and styles
  */
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . 'css-crush/CssCrush.php' ) && strpos( $_SERVER['SERVER_NAME'], '-dev' ) ) {
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'css-crush/CssCrush.php' ) && isset( $_SERVER['SERVER_NAME'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ), '-dev' ) ) {
 	require_once( 'css-crush/CssCrush.php' );
 }
 
@@ -79,6 +79,7 @@ function bt_bb_parse_content( $content ) {
 			$content = '<div class="bt_bb_wrapper"' . $data_templates_time . '>' . $content;
 			if ( current_user_can( 'edit_pages' ) && ( strpos( $_content, 'bt_bb_fe_wrap' ) || $_content == '' ) ) {
 				if ( ! class_exists( 'BoldThemes_BB_Settings' ) || ! BoldThemes_BB_Settings::$custom_content_elements ) { // only with native BB elements
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only preview-mode flag; no state change.
 					if ( ! ( isset( $_GET['bt_bb_fe_preview'] ) && $_GET['bt_bb_fe_preview'] == 'true' ) ) {
 						if ( BT_BB_FEATURE_ADD_ELEMENTS ) {
 							$content .= '<div class="bt_bb_fe_wrap">';
@@ -106,6 +107,7 @@ function bt_bb_parse_content( $content ) {
 			$content .= '<span id="bt_bb_fe_preview_toggler" class="bt_bb_fe_preview_toggler" title="' . esc_html__( 'Edit/Preview', 'bold-page-builder' ) . '"></span>';
 			if ( ! class_exists( 'BoldThemes_BB_Settings' ) || ! BoldThemes_BB_Settings::$custom_content_elements ) { // only with native BB elements
 				if ( current_user_can( 'edit_pages' ) && ( strpos( $_content, 'bt_bb_fe_wrap' ) || $_content == '' ) ) {
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only preview-mode flag; no state change.
 					if ( ! ( isset( $_GET['bt_bb_fe_preview'] ) && $_GET['bt_bb_fe_preview'] == 'true' ) ) {
 						if ( BT_BB_FEATURE_ADD_ELEMENTS ) {
 							$content .= '<span id="bt_bb_fe_add_elements" title="' . esc_html__( 'Add Elements', 'bold-page-builder' ) . '"></span>';
@@ -126,9 +128,10 @@ function bt_bb_body_class( $classes ) {
 	$extra_classes = array();
 	$extra_classes[] = 'bt_bb_plugin_active';
 	$extra_classes[] = 'bt_bb_fe_preview_toggle';
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check (is this the "edit footer" view?); no state change.
 	if ( isset( $_GET[ 'bt_bb_edit_footer' ] ) ) {
 		$extra_classes[] = 'bt_bb_edit_footer';
-	}	
+	}
 	return array_merge( $classes, $extra_classes );
 }
 
@@ -203,6 +206,7 @@ function bt_bb_parse_content_admin( $content ) {
 			$count++;
 			//if ( ! $bt_footer ) {
 				if ( ! class_exists( 'BoldThemes_BB_Settings' ) || ! BoldThemes_BB_Settings::$custom_content_elements ) { // only with native BB elements
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only preview-mode flag; no state change.
 					if ( isset( $_GET['bt_bb_fe_preview'] ) && $_GET['bt_bb_fe_preview'] == 'true' ) {
 						$fe_wrap_open = '<div class="bt_bb_fe_wrap"><span class="bt_bb_fe_count" data-edit_url="' . get_edit_post_link( get_the_ID(), '' ) . '" title="' . esc_html__( 'Find Section', 'bold-page-builder' ) . '"><span class="bt_bb_fe_count_inner">' . $count . '</span></span>';
 					} else {
@@ -526,11 +530,13 @@ function bt_bb_wp_head() {
 	</script>
 	<?php
 	
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check of core's "preview" query arg; no state change.
 	if ( isset( $_GET['preview'] ) && $_GET['preview'] == 'true' ) {
 		echo '<script>window.bt_bb_preview = true</script>';
 	} else {
 		echo '<script>window.bt_bb_preview = false</script>';
 	}
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only preview-mode flag; no state change.
 	if ( ( isset( $_GET['bt_bb_fe_preview'] ) && $_GET['bt_bb_fe_preview'] == 'true' ) ) {
 		echo '<script>window.bt_bb_fe_preview = true</script>';
 	} else {
@@ -603,20 +609,34 @@ function bt_bb_deactivate() {
 }
 register_deactivation_hook( __FILE__, 'bt_bb_deactivate' );
 
+function bt_bb_sanitize_settings( $input ) {
+	if ( ! is_array( $input ) ) {
+		return array();
+	}
+	$clean = array();
+	foreach ( $input as $key => $value ) {
+		$key = sanitize_key( $key );
+		if ( 'color_schemes' === $key ) {
+			$clean[ $key ] = sanitize_textarea_field( $value );
+		} elseif ( is_array( $value ) ) {
+			$clean[ $key ] = array_map( 'sanitize_text_field', $value );
+		} else {
+			$clean[ $key ] = sanitize_text_field( $value );
+		}
+	}
+	return $clean;
+}
+
 function bt_bb_admin_init() {
-    register_setting( 'bt_bb_settings', 'bt_bb_settings' );
+    register_setting( 'bt_bb_settings', 'bt_bb_settings', array(
+        'type'              => 'array',
+        'sanitize_callback' => 'bt_bb_sanitize_settings',
+    ) );
 }
 add_action( 'admin_init', 'bt_bb_admin_init' );
 
-function bt_bb_load_plugin_textdomain() {
-
-	$domain = 'bold-page-builder';
-	$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-
-	load_plugin_textdomain( $domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-
-}
-add_action( 'init', 'bt_bb_load_plugin_textdomain' );
+// Translations for WordPress.org-hosted plugins are auto-loaded by core since WP 4.6 —
+// no load_plugin_textdomain() call needed (PluginCheck: DiscouragedFunctions).
 
 /**
  * Save custom css
@@ -624,15 +644,15 @@ add_action( 'init', 'bt_bb_load_plugin_textdomain' );
 
 function bt_bb_save_custom_css() {
 	check_ajax_referer( 'bt-bb-custom-css-nonce', 'bt-bb-custom-css-nonce' );
-	$post_id = intval( $_POST['post_id'] );
+	$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 	if ( current_user_can( 'edit_post', $post_id ) ) {
-		$css = wp_strip_all_tags( $_POST['css'] );
+		$css = isset( $_POST['css'] ) ? wp_strip_all_tags( wp_unslash( $_POST['css'] ) ) : '';
 		$opt_arr = get_option( 'bt_bb_custom_css' );
 		if ( ! is_array( $opt_arr ) ) {
 			$opt_arr = array();
 		}
 		if ( $css != '' ) {
-			$opt_arr[ $post_id ] = $css;
+			$opt_arr[ $post_id ] = wp_slash( $css ); // stored slashed; readers stripslashes() on output
 		} else {
 			unset( $opt_arr[ $post_id ] );
 		}
@@ -648,7 +668,8 @@ add_action( 'wp_ajax_bt_bb_save_custom_css', 'bt_bb_save_custom_css' );
  */
  
 function bt_bb_get_custom_css() {
-	$post_id = intval( $_POST['post_id'] );
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- read-only: echoes the post's own stored custom CSS back to the editor; gated by current_user_can('edit_post').
+	$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 	if ( current_user_can( 'edit_post', $post_id ) ) {
 		$opt_arr = get_option( 'bt_bb_custom_css' );
 		if ( isset( $opt_arr[ $post_id ] ) ) {
@@ -665,8 +686,10 @@ add_action( 'wp_ajax_bt_bb_get_custom_css', 'bt_bb_get_custom_css' );
  
 function bt_bb_search_links() {
 
-    $search = sanitize_text_field( $_POST['search'] ?? '' );
+    // phpcs:disable WordPress.Security.NonceVerification.Missing -- read-only search over public post types (returns post titles + already-public permalinks); logged-in-only AJAX endpoint, output escaped.
+    $search = sanitize_text_field( wp_unslash( $_POST['search'] ?? '' ) );
     $page   = max( 1, intval( $_POST['page'] ?? 1 ) );
+    // phpcs:enable WordPress.Security.NonceVerification.Missing
 
     $per_page = 50;
     $offset   = ( $page - 1 ) * $per_page;
@@ -686,7 +709,7 @@ function bt_bb_search_links() {
         'post_status'            	=> 'publish',
         'posts_per_page'         	=> $per_page,
         'offset'                 	=> $offset,
-        'suppress_filters'      	=> true,
+        'suppress_filters'      	=> false, // let pre_get_posts etc. run (also: WordPressVIPMinimum prohibits suppress_filters => true)
         'update_post_term_cache' 	=> false,
         'update_post_meta_cache' 	=> false,
         's'                      	=> $search,
@@ -752,7 +775,7 @@ function bt_bb_search_links() {
 
 		$results[] = array(
 			'ID'        => $post->ID,
-			'title'     => trim( esc_html( strip_tags( get_the_title( $post ) ) ) ),
+			'title'     => trim( esc_html( wp_strip_all_tags( get_the_title( $post ) ) ) ),
 			'permalink' => esc_url( $url ),
 			'slug'      => $post->post_name,
 			'info'      => $info,
@@ -770,8 +793,8 @@ add_action( 'wp_ajax_bt_bb_search_links', 'bt_bb_search_links' );
  */
 function bt_bb_get_html() {
 	check_ajax_referer( 'bt_bb_yoast_compatibility', 'nonce' );
-	$post_id = intval( $_POST['post_id'] );
-	$content = stripslashes( wp_kses_post( $_POST['content'] ) );
+	$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+	$content = isset( $_POST['content'] ) ? wp_kses_post( wp_unslash( $_POST['content'] ) ) : '';
 	if ( current_user_can( 'edit_post', $post_id ) ) {
 		remove_filter( 'the_content', 'wpautop' );
 		$html = apply_filters( 'the_content', $content );
@@ -1203,6 +1226,7 @@ function bt_bb_map_js() {
 add_action( 'admin_head', 'bt_bb_map_js' );
 
 function bt_bb_fe_action() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only request-context check (is this a non-BB core "preview"?); no state change.
 	if ( ! bt_bb_active_for_post_type_fe() || ( isset( $_GET['preview'] ) && ! isset( $_GET['bt_bb_fe_preview'] ) ) ) {
 		return;
 	}
@@ -1300,7 +1324,7 @@ class BT_BB_Map_Proxy {
 		if ( shortcode_exists( $this->base ) ) {
 			if ( isset( $this->params['admin_enqueue_css'] ) ) {
 				foreach( $this->params['admin_enqueue_css'] as $item ) {
-					wp_enqueue_style( 'bt_bb_admin_' . uniqid(), $item );
+					wp_enqueue_style( 'bt_bb_admin_' . uniqid(), $item, array(), BT_BB_VERSION );
 				}
 			}
 			echo 'window.bt_bb_map["' . esc_html( $this->base ) . '"] = window.bt_bb_map_primary.' . esc_html( $this->base ) . ' = ' . wp_json_encode( $this->params ) . ';';
@@ -1471,7 +1495,8 @@ function bt_bb_current_screen( $current_screen ) {
 
 add_filter( 'preview_post_link', 'bt_bb_preview_post_link' );
 function bt_bb_preview_post_link( $preview_link ) {
-	if ( isset( $_POST['bt_bb_fe_preview'] ) && $_POST['bt_bb_fe_preview'] == 'true' ) {
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- runs in the preview_post_link filter (post-edit flow, nonce-protected by core); only propagates a preview-mode query arg.
+	if ( isset( $_POST['bt_bb_fe_preview'] ) && $_POST['bt_bb_fe_preview'] === 'true' ) {
 		return $preview_link . '&bt_bb_fe_preview=true';
 	} else {
 		return $preview_link;
@@ -1749,23 +1774,28 @@ function bt_bb_json_decode( $arg ) {
 /* General publish date filter */
 
 function bt_bb_publish_hide_callback( $output, $atts ) {
-	$now = date("Y-m-d H:m", time());
-	if ( !isset( $atts['publish_datetime'] ) || $atts['publish_datetime'] == '' ) {
-		$publish_datetime = date("Y-m-d H:m", time() - 60 * 60 * 24);
-	} else  {
-		$publish_datetime =  str_replace( "T", " ", $atts['publish_datetime']);
-	}
-	if ( !isset( $atts['expiry_datetime'] ) || $atts['expiry_datetime'] == '' ) {
-		$expiry_datetime = date("Y-m-d H:m", time() + 60 * 60 * 24);
+	// Site-timezone-aware "now", to the minute. (The old code used date('Y-m-d H:m'),
+	// which ran in UTC and used 'm' (month) where 'i' (minutes) was intended.)
+	$now = current_time( 'Y-m-d H:i' );
+
+	if ( ! isset( $atts['publish_datetime'] ) || $atts['publish_datetime'] === '' ) {
+		$publish_datetime = '0000-00-00 00:00'; // no start set -> already published
 	} else {
-		$expiry_datetime = str_replace( "T", " ", $atts['expiry_datetime']);
+		// editor's <input type="datetime-local"> value, e.g. "2026-05-11T14:30" -> "2026-05-11 14:30"
+		$publish_datetime = substr( str_replace( 'T', ' ', $atts['publish_datetime'] ), 0, 16 );
 	}
-	
+
+	if ( ! isset( $atts['expiry_datetime'] ) || $atts['expiry_datetime'] === '' ) {
+		$expiry_datetime = '9999-12-31 23:59'; // no end set -> never expires
+	} else {
+		$expiry_datetime = substr( str_replace( 'T', ' ', $atts['expiry_datetime'] ), 0, 16 );
+	}
+
 	if ( $now >= $publish_datetime && $now <= $expiry_datetime ) {
-		return $output;	
-	} else {
-		return "";
+		return $output;
 	}
+
+	return '';
 }
 
 add_filter( 'bt_bb_general_output', 'bt_bb_publish_hide_callback', 10, 2 );
@@ -2187,7 +2217,7 @@ add_filter( 'wp_get_attachment_url', 'bt_bb_honor_ssl_for_attachments' );
 function bt_bb_honor_ssl_for_attachments( $url ) {
 	$http = site_url( FALSE, 'http' );
 	$https = site_url( FALSE, 'https' );
-	return ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' ) ? str_replace( $http, $https, $url ) : $url;
+	return ( isset( $_SERVER['HTTPS'] ) && sanitize_text_field( wp_unslash( $_SERVER['HTTPS'] ) ) === 'on' ) ? str_replace( $http, $https, $url ) : $url;
 }
 
 add_action( 'content_save_pre', 'bt_bb_save_pre' );

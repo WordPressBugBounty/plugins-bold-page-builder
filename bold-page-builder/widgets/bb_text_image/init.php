@@ -214,9 +214,9 @@ if ( ! class_exists( 'BB_Text_Image' ) ) {
 
 		public function update( $new_instance, $old_instance ) {
 			$instance = array();
-			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-			$instance['ids'] = ( ! empty( $new_instance['ids'] ) ) ? strip_tags( $new_instance['ids'] ) : '';
-			$instance['text'] = ( ! empty( $new_instance['text'] ) ) ? strip_tags( $new_instance['text'] ) : '';
+			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
+			$instance['ids'] = ( ! empty( $new_instance['ids'] ) ) ? wp_strip_all_tags( $new_instance['ids'] ) : '';
+			$instance['text'] = ( ! empty( $new_instance['text'] ) ) ? wp_strip_all_tags( $new_instance['text'] ) : '';
 
 			return $instance;
 		}

@@ -124,7 +124,7 @@ class bt_bb_icon extends BT_BB_Element {
 		$link = bt_bb_get_url( $url );
 
 		if ( $text != '' ) {
-			if ( $url_title == '' ) $url_title = strip_tags($text);
+			if ( $url_title == '' ) $url_title = wp_strip_all_tags($text);
 			$text = '<span>' . $text . '</span>';
 		}
 		
