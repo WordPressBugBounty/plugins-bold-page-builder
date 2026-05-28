@@ -120,7 +120,10 @@ class bt_bb_row_inner extends BT_BB_Element {
 						'value' => array(
 							esc_html__( 'Wide', 'bold-page-builder' ) => 'default',
 							esc_html__( 'Boxed 1200px', 'bold-page-builder' ) => 'boxed_1200',
+							esc_html__( 'Boxed 1300px', 'bold-page-builder' ) => 'boxed_1300',
 							esc_html__( 'Boxed 1400px', 'bold-page-builder' ) => 'boxed_1400',
+							esc_html__( 'Boxed 1500px', 'bold-page-builder' ) => 'boxed_1500',
+							esc_html__( 'Boxed 1600px', 'bold-page-builder' ) => 'boxed_1600',
 						)
 					)
 				)

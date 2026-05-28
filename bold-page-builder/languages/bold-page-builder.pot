@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bold Page Builder 5.8.1\n"
+"Project-Id-Version: Bold Page Builder 5.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-13T12:32:34+00:00\n"
+"POT-Creation-Date: 2026-05-28T11:51:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bold-page-builder\n"
@@ -161,14 +161,14 @@ msgid "bt_bb_headline"
 msgstr ""
 
 #: bold-builder-fe.php:503
-#: content_elements/bt_bb_headline/bt_bb_headline.php:226
-#: content_elements/bt_bb_headline/bt_bb_headline.php:234
-#: content_elements/bt_bb_headline/bt_bb_headline.php:240
+#: content_elements/bt_bb_headline/bt_bb_headline.php:227
+#: content_elements/bt_bb_headline/bt_bb_headline.php:235
+#: content_elements/bt_bb_headline/bt_bb_headline.php:241
 msgid "Headline"
 msgstr ""
 
 #: bold-builder-fe.php:504
-#: content_elements/bt_bb_headline/bt_bb_headline.php:226
+#: content_elements/bt_bb_headline/bt_bb_headline.php:227
 msgid "Headline with custom fonts (and AI help)"
 msgstr ""
 
@@ -282,12 +282,12 @@ msgid "bt_bb_latest_posts"
 msgstr ""
 
 #: bold-builder-fe.php:553
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:159
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:160
 msgid "Latest Posts"
 msgstr ""
 
 #: bold-builder-fe.php:554
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:159
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:160
 msgid "List of latest posts"
 msgstr ""
 
@@ -569,14 +569,14 @@ msgstr ""
 #: bold-builder.php:447
 #: content_elements/bt_bb_button/bt_bb_button.php:256
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:86
-#: content_elements/bt_bb_headline/bt_bb_headline.php:294
-#: content_elements/bt_bb_headline/bt_bb_headline.php:313
-#: content_elements/bt_bb_headline/bt_bb_headline.php:324
-#: content_elements/bt_bb_headline/bt_bb_headline.php:344
-#: content_elements/bt_bb_headline/bt_bb_headline.php:355
-#: content_elements/bt_bb_headline/bt_bb_headline.php:375
-#: content_elements/bt_bb_row/bt_bb_row.php:133
-#: content_elements/bt_bb_row/bt_bb_row.php:164
+#: content_elements/bt_bb_headline/bt_bb_headline.php:295
+#: content_elements/bt_bb_headline/bt_bb_headline.php:314
+#: content_elements/bt_bb_headline/bt_bb_headline.php:325
+#: content_elements/bt_bb_headline/bt_bb_headline.php:345
+#: content_elements/bt_bb_headline/bt_bb_headline.php:356
+#: content_elements/bt_bb_headline/bt_bb_headline.php:376
+#: content_elements/bt_bb_row/bt_bb_row.php:158
+#: content_elements/bt_bb_row/bt_bb_row.php:189
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:90
 #: content_elements/bt_bb_slider/bt_bb_slider.php:218
 msgid "Default"
@@ -626,7 +626,7 @@ msgstr ""
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:164
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:487
 #: content_elements/bt_bb_image/bt_bb_image.php:258
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:205
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:206
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:161
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:350
 #: content_elements/bt_bb_section/bt_bb_section.php:386
@@ -650,15 +650,15 @@ msgstr ""
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:518
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:545
 #: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:173
-#: content_elements/bt_bb_headline/bt_bb_headline.php:253
+#: content_elements/bt_bb_headline/bt_bb_headline.php:254
 #: content_elements/bt_bb_image/bt_bb_image.php:259
 #: content_elements/bt_bb_image/bt_bb_image.php:275
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:193
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:195
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:197
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:199
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:201
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:206
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:194
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:196
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:198
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:200
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:202
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:207
 #: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:147
 #: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:151
 #: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:153
@@ -979,9 +979,9 @@ msgstr ""
 #: bold-builder.php:1144
 #: content_elements/bt_bb_button/bt_bb_button.php:258
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:88
-#: content_elements/bt_bb_headline/bt_bb_headline.php:296
-#: content_elements/bt_bb_headline/bt_bb_headline.php:326
-#: content_elements/bt_bb_headline/bt_bb_headline.php:357
+#: content_elements/bt_bb_headline/bt_bb_headline.php:297
+#: content_elements/bt_bb_headline/bt_bb_headline.php:327
+#: content_elements/bt_bb_headline/bt_bb_headline.php:358
 msgid "Bold"
 msgstr ""
 
@@ -1208,11 +1208,11 @@ msgstr ""
 #: content_elements/bt_bb_column/bt_bb_column.php:357
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:358
 #: content_elements/bt_bb_cost_calculator/bt_bb_cost_calculator.php:77
-#: content_elements/bt_bb_headline/bt_bb_headline.php:282
+#: content_elements/bt_bb_headline/bt_bb_headline.php:283
 #: content_elements/bt_bb_icon/bt_bb_icon.php:205
 #: content_elements/bt_bb_price_list/bt_bb_price_list.php:111
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:139
-#: content_elements/bt_bb_row/bt_bb_row.php:187
+#: content_elements/bt_bb_row/bt_bb_row.php:242
 #: content_elements/bt_bb_section/bt_bb_section.php:397
 #: content_elements/bt_bb_separator/bt_bb_separator.php:251
 #: content_elements/bt_bb_service/bt_bb_service.php:209
@@ -1225,11 +1225,11 @@ msgstr ""
 #: content_elements/bt_bb_column/bt_bb_column.php:357
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:358
 #: content_elements/bt_bb_cost_calculator/bt_bb_cost_calculator.php:77
-#: content_elements/bt_bb_headline/bt_bb_headline.php:282
+#: content_elements/bt_bb_headline/bt_bb_headline.php:283
 #: content_elements/bt_bb_icon/bt_bb_icon.php:205
 #: content_elements/bt_bb_price_list/bt_bb_price_list.php:111
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:139
-#: content_elements/bt_bb_row/bt_bb_row.php:187
+#: content_elements/bt_bb_row/bt_bb_row.php:242
 #: content_elements/bt_bb_section/bt_bb_section.php:397
 #: content_elements/bt_bb_separator/bt_bb_separator.php:251
 #: content_elements/bt_bb_service/bt_bb_service.php:209
@@ -1286,7 +1286,7 @@ msgstr ""
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:475
 #: content_elements/bt_bb_icon/bt_bb_icon.php:201
 #: content_elements/bt_bb_image/bt_bb_image.php:251
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:188
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:189
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:135
 #: content_elements/bt_bb_service/bt_bb_service.php:205
 #: content_elements/bt_bb_tabs/bt_bb_tabs.php:109
@@ -1298,7 +1298,7 @@ msgstr ""
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:153
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:476
 #: content_elements/bt_bb_image/bt_bb_image.php:252
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:189
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:190
 #: content_elements/bt_bb_tabs/bt_bb_tabs.php:110
 msgid "Soft Rounded"
 msgstr ""
@@ -1308,7 +1308,7 @@ msgstr ""
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:154
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:477
 #: content_elements/bt_bb_image/bt_bb_image.php:253
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:190
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:191
 #: content_elements/bt_bb_tabs/bt_bb_tabs.php:111
 msgid "Hard Rounded"
 msgstr ""
@@ -1351,7 +1351,7 @@ msgstr ""
 #: content_elements/bt_bb_button/bt_bb_button.php:205
 #: content_elements/bt_bb_column/bt_bb_column.php:295
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:299
-#: content_elements/bt_bb_headline/bt_bb_headline.php:269
+#: content_elements/bt_bb_headline/bt_bb_headline.php:270
 #: content_elements/bt_bb_icon/bt_bb_icon.php:177
 #: content_elements/bt_bb_image/bt_bb_image.php:266
 #: content_elements/bt_bb_price_list/bt_bb_price_list.php:105
@@ -1364,7 +1364,7 @@ msgstr ""
 #: content_elements/bt_bb_button/bt_bb_button.php:207
 #: content_elements/bt_bb_column/bt_bb_column.php:297
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:301
-#: content_elements/bt_bb_headline/bt_bb_headline.php:271
+#: content_elements/bt_bb_headline/bt_bb_headline.php:272
 #: content_elements/bt_bb_icon/bt_bb_icon.php:179
 #: content_elements/bt_bb_image/bt_bb_image.php:268
 #: content_elements/bt_bb_price_list/bt_bb_price_list.php:106
@@ -1374,7 +1374,7 @@ msgid "Right"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:202
-#: content_elements/bt_bb_headline/bt_bb_headline.php:266
+#: content_elements/bt_bb_headline/bt_bb_headline.php:267
 #: content_elements/bt_bb_icon/bt_bb_icon.php:174
 #: content_elements/bt_bb_image/bt_bb_image.php:263
 msgid "Alignment"
@@ -1390,12 +1390,12 @@ msgstr ""
 #: content_elements/bt_bb_button/bt_bb_button.php:275
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:151
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:474
-#: content_elements/bt_bb_headline/bt_bb_headline.php:256
-#: content_elements/bt_bb_headline/bt_bb_headline.php:268
-#: content_elements/bt_bb_headline/bt_bb_headline.php:286
-#: content_elements/bt_bb_headline/bt_bb_headline.php:316
-#: content_elements/bt_bb_headline/bt_bb_headline.php:347
-#: content_elements/bt_bb_headline/bt_bb_headline.php:378
+#: content_elements/bt_bb_headline/bt_bb_headline.php:257
+#: content_elements/bt_bb_headline/bt_bb_headline.php:269
+#: content_elements/bt_bb_headline/bt_bb_headline.php:287
+#: content_elements/bt_bb_headline/bt_bb_headline.php:317
+#: content_elements/bt_bb_headline/bt_bb_headline.php:348
+#: content_elements/bt_bb_headline/bt_bb_headline.php:379
 #: content_elements/bt_bb_icon/bt_bb_icon.php:176
 #: content_elements/bt_bb_image/bt_bb_image.php:265
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:113
@@ -1407,7 +1407,7 @@ msgstr ""
 #: content_elements/bt_bb_button/bt_bb_button.php:206
 #: content_elements/bt_bb_column/bt_bb_column.php:296
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:300
-#: content_elements/bt_bb_headline/bt_bb_headline.php:270
+#: content_elements/bt_bb_headline/bt_bb_headline.php:271
 #: content_elements/bt_bb_icon/bt_bb_icon.php:178
 #: content_elements/bt_bb_image/bt_bb_image.php:267
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:115
@@ -1417,8 +1417,8 @@ msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:210
 #: content_elements/bt_bb_button/bt_bb_button.php:211
-#: content_elements/bt_bb_headline/bt_bb_headline.php:384
 #: content_elements/bt_bb_headline/bt_bb_headline.php:385
+#: content_elements/bt_bb_headline/bt_bb_headline.php:386
 #: content_elements/bt_bb_icon/bt_bb_icon.php:165
 #: content_elements/bt_bb_icon/bt_bb_icon.php:166
 #: content_elements/bt_bb_icon/bt_bb_icon.php:167
@@ -1432,35 +1432,35 @@ msgid "URL"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:210
-#: content_elements/bt_bb_headline/bt_bb_headline.php:384
+#: content_elements/bt_bb_headline/bt_bb_headline.php:385
 #: content_elements/bt_bb_icon/bt_bb_icon.php:165
 #: content_elements/bt_bb_service/bt_bb_service.php:178
 msgid "Enter full or local URL (e.g. https://www.bold-themes.com or /pages/about-us) or post slug (e.g. about-us) or search for existing content."
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:211
-#: content_elements/bt_bb_headline/bt_bb_headline.php:385
+#: content_elements/bt_bb_headline/bt_bb_headline.php:386
 #: content_elements/bt_bb_icon/bt_bb_icon.php:167
 #: content_elements/bt_bb_image/bt_bb_image.php:281
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:180
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:181
 #: content_elements/bt_bb_service/bt_bb_service.php:179
 msgid "Target"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:213
-#: content_elements/bt_bb_headline/bt_bb_headline.php:387
+#: content_elements/bt_bb_headline/bt_bb_headline.php:388
 #: content_elements/bt_bb_icon/bt_bb_icon.php:169
 #: content_elements/bt_bb_image/bt_bb_image.php:283
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:182
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:183
 #: content_elements/bt_bb_service/bt_bb_service.php:181
 msgid "Self (open in same tab)"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:214
-#: content_elements/bt_bb_headline/bt_bb_headline.php:388
+#: content_elements/bt_bb_headline/bt_bb_headline.php:389
 #: content_elements/bt_bb_icon/bt_bb_icon.php:170
 #: content_elements/bt_bb_image/bt_bb_image.php:284
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:183
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:184
 #: content_elements/bt_bb_service/bt_bb_service.php:182
 msgid "Blank (open in new tab)"
 msgstr ""
@@ -1476,7 +1476,7 @@ msgstr ""
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:189
 #: content_elements/bt_bb_countdown/bt_bb_countdown.php:107
 #: content_elements/bt_bb_counter/bt_bb_counter.php:112
-#: content_elements/bt_bb_headline/bt_bb_headline.php:254
+#: content_elements/bt_bb_headline/bt_bb_headline.php:255
 #: content_elements/bt_bb_icon/bt_bb_icon.php:182
 #: content_elements/bt_bb_image/bt_bb_image.php:245
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:120
@@ -1504,9 +1504,9 @@ msgstr ""
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:360
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:361
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:362
-#: content_elements/bt_bb_headline/bt_bb_headline.php:274
-#: content_elements/bt_bb_headline/bt_bb_headline.php:282
+#: content_elements/bt_bb_headline/bt_bb_headline.php:275
 #: content_elements/bt_bb_headline/bt_bb_headline.php:283
+#: content_elements/bt_bb_headline/bt_bb_headline.php:284
 #: content_elements/bt_bb_icon/bt_bb_icon.php:182
 #: content_elements/bt_bb_icon/bt_bb_icon.php:191
 #: content_elements/bt_bb_icon/bt_bb_icon.php:198
@@ -1515,9 +1515,9 @@ msgstr ""
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:126
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:133
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:139
-#: content_elements/bt_bb_row/bt_bb_row.php:187
-#: content_elements/bt_bb_row/bt_bb_row.php:188
-#: content_elements/bt_bb_row/bt_bb_row.php:189
+#: content_elements/bt_bb_row/bt_bb_row.php:242
+#: content_elements/bt_bb_row/bt_bb_row.php:243
+#: content_elements/bt_bb_row/bt_bb_row.php:244
 #: content_elements/bt_bb_section/bt_bb_section.php:397
 #: content_elements/bt_bb_section/bt_bb_section.php:398
 #: content_elements/bt_bb_section/bt_bb_section.php:399
@@ -1545,13 +1545,13 @@ msgstr ""
 #: content_elements/bt_bb_counter/bt_bb_counter.php:115
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:144
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:467
-#: content_elements/bt_bb_headline/bt_bb_headline.php:258
+#: content_elements/bt_bb_headline/bt_bb_headline.php:259
 #: content_elements/bt_bb_icon/bt_bb_icon.php:185
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:175
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:176
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:140
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:342
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:122
-#: content_elements/bt_bb_row/bt_bb_row.php:135
+#: content_elements/bt_bb_row/bt_bb_row.php:160
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:92
 #: content_elements/bt_bb_section/bt_bb_section.php:326
 #: content_elements/bt_bb_section/bt_bb_section.php:357
@@ -1567,10 +1567,10 @@ msgid "Small"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:221
-#: content_elements/bt_bb_headline/bt_bb_headline.php:259
+#: content_elements/bt_bb_headline/bt_bb_headline.php:260
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:148
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:156
-#: content_elements/bt_bb_row/bt_bb_row.php:137
+#: content_elements/bt_bb_row/bt_bb_row.php:162
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:94
 #: content_elements/bt_bb_section/bt_bb_section.php:328
 #: content_elements/bt_bb_section/bt_bb_section.php:359
@@ -1592,16 +1592,16 @@ msgstr ""
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:145
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:468
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:87
-#: content_elements/bt_bb_headline/bt_bb_headline.php:260
-#: content_elements/bt_bb_headline/bt_bb_headline.php:295
-#: content_elements/bt_bb_headline/bt_bb_headline.php:325
-#: content_elements/bt_bb_headline/bt_bb_headline.php:356
+#: content_elements/bt_bb_headline/bt_bb_headline.php:261
+#: content_elements/bt_bb_headline/bt_bb_headline.php:296
+#: content_elements/bt_bb_headline/bt_bb_headline.php:326
+#: content_elements/bt_bb_headline/bt_bb_headline.php:357
 #: content_elements/bt_bb_icon/bt_bb_icon.php:186
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:174
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:175
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:141
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:343
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:123
-#: content_elements/bt_bb_row/bt_bb_row.php:136
+#: content_elements/bt_bb_row/bt_bb_row.php:161
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:93
 #: content_elements/bt_bb_section/bt_bb_section.php:327
 #: content_elements/bt_bb_section/bt_bb_section.php:358
@@ -1623,14 +1623,14 @@ msgstr ""
 #: content_elements/bt_bb_counter/bt_bb_counter.php:117
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:146
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:469
-#: content_elements/bt_bb_headline/bt_bb_headline.php:261
+#: content_elements/bt_bb_headline/bt_bb_headline.php:262
 #: content_elements/bt_bb_icon/bt_bb_icon.php:187
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:176
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:177
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:142
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:147
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:155
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:344
-#: content_elements/bt_bb_row/bt_bb_row.php:138
+#: content_elements/bt_bb_row/bt_bb_row.php:163
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:95
 #: content_elements/bt_bb_section/bt_bb_section.php:329
 #: content_elements/bt_bb_section/bt_bb_section.php:360
@@ -1667,41 +1667,41 @@ msgstr ""
 #: content_elements/bt_bb_button/bt_bb_button.php:253
 #: content_elements/bt_bb_button/bt_bb_button.php:254
 #: content_elements/bt_bb_button/bt_bb_button.php:273
-#: content_elements/bt_bb_headline/bt_bb_headline.php:285
-#: content_elements/bt_bb_headline/bt_bb_headline.php:288
-#: content_elements/bt_bb_headline/bt_bb_headline.php:290
+#: content_elements/bt_bb_headline/bt_bb_headline.php:286
+#: content_elements/bt_bb_headline/bt_bb_headline.php:289
 #: content_elements/bt_bb_headline/bt_bb_headline.php:291
 #: content_elements/bt_bb_headline/bt_bb_headline.php:292
-#: content_elements/bt_bb_headline/bt_bb_headline.php:311
-#: content_elements/bt_bb_headline/bt_bb_headline.php:322
-#: content_elements/bt_bb_headline/bt_bb_headline.php:342
-#: content_elements/bt_bb_headline/bt_bb_headline.php:353
-#: content_elements/bt_bb_headline/bt_bb_headline.php:373
+#: content_elements/bt_bb_headline/bt_bb_headline.php:293
+#: content_elements/bt_bb_headline/bt_bb_headline.php:312
+#: content_elements/bt_bb_headline/bt_bb_headline.php:323
+#: content_elements/bt_bb_headline/bt_bb_headline.php:343
+#: content_elements/bt_bb_headline/bt_bb_headline.php:354
+#: content_elements/bt_bb_headline/bt_bb_headline.php:374
 msgid "Font"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:252
-#: content_elements/bt_bb_headline/bt_bb_headline.php:288
+#: content_elements/bt_bb_headline/bt_bb_headline.php:289
 msgid "Google font subset"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:252
-#: content_elements/bt_bb_headline/bt_bb_headline.php:288
+#: content_elements/bt_bb_headline/bt_bb_headline.php:289
 msgid "E.g. latin,latin-ext,cyrillic,cyrillic-ext"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:253
-#: content_elements/bt_bb_headline/bt_bb_headline.php:290
+#: content_elements/bt_bb_headline/bt_bb_headline.php:291
 msgid "Google variable font style specification"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:253
-#: content_elements/bt_bb_headline/bt_bb_headline.php:290
+#: content_elements/bt_bb_headline/bt_bb_headline.php:291
 msgid "Define Google variable font style specification. For more details, <a href=\"https://fonts.google.com/knowledge/glossary/variable_fonts\" target=\"_blank\">read here</a>. Leave empty to load default font settings."
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:253
-#: content_elements/bt_bb_headline/bt_bb_headline.php:290
+#: content_elements/bt_bb_headline/bt_bb_headline.php:291
 msgid "E.g. :ital,wght@0,200;1,700"
 msgstr ""
 
@@ -1712,97 +1712,97 @@ msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:259
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:89
-#: content_elements/bt_bb_headline/bt_bb_headline.php:297
-#: content_elements/bt_bb_headline/bt_bb_headline.php:327
-#: content_elements/bt_bb_headline/bt_bb_headline.php:358
+#: content_elements/bt_bb_headline/bt_bb_headline.php:298
+#: content_elements/bt_bb_headline/bt_bb_headline.php:328
+#: content_elements/bt_bb_headline/bt_bb_headline.php:359
 msgid "Bolder"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:260
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:90
-#: content_elements/bt_bb_headline/bt_bb_headline.php:298
-#: content_elements/bt_bb_headline/bt_bb_headline.php:328
-#: content_elements/bt_bb_headline/bt_bb_headline.php:359
+#: content_elements/bt_bb_headline/bt_bb_headline.php:299
+#: content_elements/bt_bb_headline/bt_bb_headline.php:329
+#: content_elements/bt_bb_headline/bt_bb_headline.php:360
 msgid "Lighter"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:261
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:91
-#: content_elements/bt_bb_headline/bt_bb_headline.php:299
-#: content_elements/bt_bb_headline/bt_bb_headline.php:329
-#: content_elements/bt_bb_headline/bt_bb_headline.php:360
+#: content_elements/bt_bb_headline/bt_bb_headline.php:300
+#: content_elements/bt_bb_headline/bt_bb_headline.php:330
+#: content_elements/bt_bb_headline/bt_bb_headline.php:361
 msgid "Light"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:262
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:93
-#: content_elements/bt_bb_headline/bt_bb_headline.php:300
-#: content_elements/bt_bb_headline/bt_bb_headline.php:331
-#: content_elements/bt_bb_headline/bt_bb_headline.php:362
+#: content_elements/bt_bb_headline/bt_bb_headline.php:301
+#: content_elements/bt_bb_headline/bt_bb_headline.php:332
+#: content_elements/bt_bb_headline/bt_bb_headline.php:363
 msgid "100"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:263
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:94
-#: content_elements/bt_bb_headline/bt_bb_headline.php:301
-#: content_elements/bt_bb_headline/bt_bb_headline.php:332
-#: content_elements/bt_bb_headline/bt_bb_headline.php:363
+#: content_elements/bt_bb_headline/bt_bb_headline.php:302
+#: content_elements/bt_bb_headline/bt_bb_headline.php:333
+#: content_elements/bt_bb_headline/bt_bb_headline.php:364
 msgid "200"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:264
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:95
-#: content_elements/bt_bb_headline/bt_bb_headline.php:302
-#: content_elements/bt_bb_headline/bt_bb_headline.php:333
-#: content_elements/bt_bb_headline/bt_bb_headline.php:364
+#: content_elements/bt_bb_headline/bt_bb_headline.php:303
+#: content_elements/bt_bb_headline/bt_bb_headline.php:334
+#: content_elements/bt_bb_headline/bt_bb_headline.php:365
 msgid "300"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:265
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:96
-#: content_elements/bt_bb_headline/bt_bb_headline.php:303
-#: content_elements/bt_bb_headline/bt_bb_headline.php:334
-#: content_elements/bt_bb_headline/bt_bb_headline.php:365
+#: content_elements/bt_bb_headline/bt_bb_headline.php:304
+#: content_elements/bt_bb_headline/bt_bb_headline.php:335
+#: content_elements/bt_bb_headline/bt_bb_headline.php:366
 msgid "400"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:266
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:97
-#: content_elements/bt_bb_headline/bt_bb_headline.php:304
-#: content_elements/bt_bb_headline/bt_bb_headline.php:335
-#: content_elements/bt_bb_headline/bt_bb_headline.php:366
+#: content_elements/bt_bb_headline/bt_bb_headline.php:305
+#: content_elements/bt_bb_headline/bt_bb_headline.php:336
+#: content_elements/bt_bb_headline/bt_bb_headline.php:367
 msgid "500"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:267
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:98
-#: content_elements/bt_bb_headline/bt_bb_headline.php:305
-#: content_elements/bt_bb_headline/bt_bb_headline.php:336
-#: content_elements/bt_bb_headline/bt_bb_headline.php:367
+#: content_elements/bt_bb_headline/bt_bb_headline.php:306
+#: content_elements/bt_bb_headline/bt_bb_headline.php:337
+#: content_elements/bt_bb_headline/bt_bb_headline.php:368
 msgid "600"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:268
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:99
-#: content_elements/bt_bb_headline/bt_bb_headline.php:306
-#: content_elements/bt_bb_headline/bt_bb_headline.php:337
-#: content_elements/bt_bb_headline/bt_bb_headline.php:368
+#: content_elements/bt_bb_headline/bt_bb_headline.php:307
+#: content_elements/bt_bb_headline/bt_bb_headline.php:338
+#: content_elements/bt_bb_headline/bt_bb_headline.php:369
 msgid "700"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:269
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:100
-#: content_elements/bt_bb_headline/bt_bb_headline.php:307
-#: content_elements/bt_bb_headline/bt_bb_headline.php:338
-#: content_elements/bt_bb_headline/bt_bb_headline.php:369
+#: content_elements/bt_bb_headline/bt_bb_headline.php:308
+#: content_elements/bt_bb_headline/bt_bb_headline.php:339
+#: content_elements/bt_bb_headline/bt_bb_headline.php:370
 msgid "800"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:270
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:101
-#: content_elements/bt_bb_headline/bt_bb_headline.php:308
-#: content_elements/bt_bb_headline/bt_bb_headline.php:339
-#: content_elements/bt_bb_headline/bt_bb_headline.php:370
+#: content_elements/bt_bb_headline/bt_bb_headline.php:309
+#: content_elements/bt_bb_headline/bt_bb_headline.php:340
+#: content_elements/bt_bb_headline/bt_bb_headline.php:371
 msgid "900"
 msgstr ""
 
@@ -1812,19 +1812,19 @@ msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:276
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:540
-#: content_elements/bt_bb_headline/bt_bb_headline.php:276
-#: content_elements/bt_bb_headline/bt_bb_headline.php:314
-#: content_elements/bt_bb_headline/bt_bb_headline.php:345
-#: content_elements/bt_bb_headline/bt_bb_headline.php:376
+#: content_elements/bt_bb_headline/bt_bb_headline.php:277
+#: content_elements/bt_bb_headline/bt_bb_headline.php:315
+#: content_elements/bt_bb_headline/bt_bb_headline.php:346
+#: content_elements/bt_bb_headline/bt_bb_headline.php:377
 #: content_elements/bt_bb_separator/bt_bb_separator.php:204
 #: content_elements/_deprecated/bt_bb_separator/bt_bb_separator.php:144
 msgid "None"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:277
-#: content_elements/bt_bb_headline/bt_bb_headline.php:317
-#: content_elements/bt_bb_headline/bt_bb_headline.php:348
-#: content_elements/bt_bb_headline/bt_bb_headline.php:379
+#: content_elements/bt_bb_headline/bt_bb_headline.php:318
+#: content_elements/bt_bb_headline/bt_bb_headline.php:349
+#: content_elements/bt_bb_headline/bt_bb_headline.php:380
 msgid "UPPERCASE"
 msgstr ""
 
@@ -1833,9 +1833,9 @@ msgid "Lowercase"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:279
-#: content_elements/bt_bb_headline/bt_bb_headline.php:318
-#: content_elements/bt_bb_headline/bt_bb_headline.php:349
-#: content_elements/bt_bb_headline/bt_bb_headline.php:380
+#: content_elements/bt_bb_headline/bt_bb_headline.php:319
+#: content_elements/bt_bb_headline/bt_bb_headline.php:350
+#: content_elements/bt_bb_headline/bt_bb_headline.php:381
 msgid "Capitalize"
 msgstr ""
 
@@ -1859,7 +1859,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:302
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:305
-#: content_elements/bt_bb_headline/bt_bb_headline.php:277
+#: content_elements/bt_bb_headline/bt_bb_headline.php:278
 #: content_elements/bt_bb_image/bt_bb_image.php:312
 #: content_elements/bt_bb_section/bt_bb_section.php:392
 msgid "Top"
@@ -1875,7 +1875,7 @@ msgstr ""
 #: content_elements/bt_bb_column/bt_bb_column.php:304
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:307
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:254
-#: content_elements/bt_bb_headline/bt_bb_headline.php:278
+#: content_elements/bt_bb_headline/bt_bb_headline.php:279
 #: content_elements/bt_bb_image/bt_bb_image.php:313
 #: content_elements/bt_bb_section/bt_bb_section.php:394
 #: content_elements/bt_bb_slider/bt_bb_slider.php:238
@@ -1904,7 +1904,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:313
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:315
-#: content_elements/bt_bb_row/bt_bb_row.php:140
+#: content_elements/bt_bb_row/bt_bb_row.php:165
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:97
 #: content_elements/bt_bb_section/bt_bb_section.php:331
 #: content_elements/bt_bb_section/bt_bb_section.php:362
@@ -1918,7 +1918,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:314
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:316
-#: content_elements/bt_bb_row/bt_bb_row.php:141
+#: content_elements/bt_bb_row/bt_bb_row.php:166
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:98
 #: content_elements/bt_bb_section/bt_bb_section.php:332
 #: content_elements/bt_bb_section/bt_bb_section.php:363
@@ -1932,7 +1932,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:315
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:317
-#: content_elements/bt_bb_row/bt_bb_row.php:142
+#: content_elements/bt_bb_row/bt_bb_row.php:167
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:99
 #: content_elements/bt_bb_section/bt_bb_section.php:333
 #: content_elements/bt_bb_section/bt_bb_section.php:364
@@ -1946,7 +1946,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:316
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:318
-#: content_elements/bt_bb_row/bt_bb_row.php:143
+#: content_elements/bt_bb_row/bt_bb_row.php:168
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:100
 #: content_elements/bt_bb_section/bt_bb_section.php:334
 #: content_elements/bt_bb_section/bt_bb_section.php:365
@@ -1960,7 +1960,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:317
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:319
-#: content_elements/bt_bb_row/bt_bb_row.php:144
+#: content_elements/bt_bb_row/bt_bb_row.php:169
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:101
 #: content_elements/bt_bb_section/bt_bb_section.php:335
 #: content_elements/bt_bb_section/bt_bb_section.php:366
@@ -1974,7 +1974,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:318
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:320
-#: content_elements/bt_bb_row/bt_bb_row.php:145
+#: content_elements/bt_bb_row/bt_bb_row.php:170
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:102
 #: content_elements/bt_bb_section/bt_bb_section.php:336
 #: content_elements/bt_bb_section/bt_bb_section.php:367
@@ -1988,7 +1988,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:319
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:321
-#: content_elements/bt_bb_row/bt_bb_row.php:146
+#: content_elements/bt_bb_row/bt_bb_row.php:171
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:103
 #: content_elements/bt_bb_section/bt_bb_section.php:337
 #: content_elements/bt_bb_section/bt_bb_section.php:368
@@ -2002,7 +2002,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:320
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:322
-#: content_elements/bt_bb_row/bt_bb_row.php:147
+#: content_elements/bt_bb_row/bt_bb_row.php:172
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:104
 #: content_elements/bt_bb_section/bt_bb_section.php:338
 #: content_elements/bt_bb_section/bt_bb_section.php:369
@@ -2016,7 +2016,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:321
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:323
-#: content_elements/bt_bb_row/bt_bb_row.php:148
+#: content_elements/bt_bb_row/bt_bb_row.php:173
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:105
 #: content_elements/bt_bb_section/bt_bb_section.php:339
 #: content_elements/bt_bb_section/bt_bb_section.php:370
@@ -2030,7 +2030,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:322
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:324
-#: content_elements/bt_bb_row/bt_bb_row.php:149
+#: content_elements/bt_bb_row/bt_bb_row.php:174
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:106
 #: content_elements/bt_bb_section/bt_bb_section.php:340
 #: content_elements/bt_bb_section/bt_bb_section.php:371
@@ -2044,7 +2044,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:323
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:325
-#: content_elements/bt_bb_row/bt_bb_row.php:150
+#: content_elements/bt_bb_row/bt_bb_row.php:175
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:107
 #: content_elements/bt_bb_section/bt_bb_section.php:341
 #: content_elements/bt_bb_section/bt_bb_section.php:372
@@ -2058,7 +2058,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:324
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:326
-#: content_elements/bt_bb_row/bt_bb_row.php:151
+#: content_elements/bt_bb_row/bt_bb_row.php:176
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:108
 #: content_elements/bt_bb_section/bt_bb_section.php:342
 #: content_elements/bt_bb_section/bt_bb_section.php:373
@@ -2072,7 +2072,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:325
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:327
-#: content_elements/bt_bb_row/bt_bb_row.php:152
+#: content_elements/bt_bb_row/bt_bb_row.php:177
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:109
 #: content_elements/bt_bb_section/bt_bb_section.php:343
 #: content_elements/bt_bb_section/bt_bb_section.php:374
@@ -2086,7 +2086,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:326
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:328
-#: content_elements/bt_bb_row/bt_bb_row.php:153
+#: content_elements/bt_bb_row/bt_bb_row.php:178
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:110
 #: content_elements/bt_bb_section/bt_bb_section.php:344
 #: content_elements/bt_bb_section/bt_bb_section.php:375
@@ -2100,7 +2100,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:327
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:329
-#: content_elements/bt_bb_row/bt_bb_row.php:154
+#: content_elements/bt_bb_row/bt_bb_row.php:179
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:111
 #: content_elements/bt_bb_section/bt_bb_section.php:345
 #: content_elements/bt_bb_section/bt_bb_section.php:376
@@ -2114,7 +2114,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:328
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:330
-#: content_elements/bt_bb_row/bt_bb_row.php:155
+#: content_elements/bt_bb_row/bt_bb_row.php:180
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:112
 #: content_elements/bt_bb_section/bt_bb_section.php:346
 #: content_elements/bt_bb_section/bt_bb_section.php:377
@@ -2128,7 +2128,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:329
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:331
-#: content_elements/bt_bb_row/bt_bb_row.php:156
+#: content_elements/bt_bb_row/bt_bb_row.php:181
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:113
 #: content_elements/bt_bb_section/bt_bb_section.php:347
 #: content_elements/bt_bb_section/bt_bb_section.php:378
@@ -2142,7 +2142,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:330
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:332
-#: content_elements/bt_bb_row/bt_bb_row.php:157
+#: content_elements/bt_bb_row/bt_bb_row.php:182
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:114
 #: content_elements/bt_bb_section/bt_bb_section.php:348
 #: content_elements/bt_bb_section/bt_bb_section.php:379
@@ -2156,7 +2156,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:331
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:333
-#: content_elements/bt_bb_row/bt_bb_row.php:158
+#: content_elements/bt_bb_row/bt_bb_row.php:183
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:115
 #: content_elements/bt_bb_section/bt_bb_section.php:349
 #: content_elements/bt_bb_section/bt_bb_section.php:380
@@ -2170,7 +2170,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:332
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:334
-#: content_elements/bt_bb_row/bt_bb_row.php:159
+#: content_elements/bt_bb_row/bt_bb_row.php:184
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:116
 #: content_elements/bt_bb_section/bt_bb_section.php:350
 #: content_elements/bt_bb_section/bt_bb_section.php:381
@@ -2272,7 +2272,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:359
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:360
-#: content_elements/bt_bb_row/bt_bb_row.php:188
+#: content_elements/bt_bb_row/bt_bb_row.php:243
 #: content_elements/bt_bb_section/bt_bb_section.php:398
 msgid "Background color"
 msgstr ""
@@ -2283,7 +2283,7 @@ msgid "Inner background color"
 msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:361
-#: content_elements/bt_bb_row/bt_bb_row.php:189
+#: content_elements/bt_bb_row/bt_bb_row.php:244
 msgid "Background color opacity (deprecated)"
 msgstr ""
 
@@ -2400,7 +2400,7 @@ msgstr ""
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:456
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:526
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:535
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:164
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:165
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:128
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:331
 #: content_elements/bt_bb_slider/bt_bb_slider.php:245
@@ -2412,7 +2412,7 @@ msgstr ""
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:457
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:525
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:534
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:165
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:166
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:129
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:332
 #: content_elements/bt_bb_slider/bt_bb_slider.php:246
@@ -2424,7 +2424,7 @@ msgstr ""
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:458
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:524
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:533
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:166
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:167
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:130
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:333
 #: content_elements/bt_bb_slider/bt_bb_slider.php:247
@@ -2436,7 +2436,7 @@ msgstr ""
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:459
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:523
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:532
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:167
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:168
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:131
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:334
 #: content_elements/bt_bb_slider/bt_bb_slider.php:248
@@ -2455,7 +2455,7 @@ msgstr ""
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:223
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:137
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:461
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:168
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:169
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:133
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:336
 #: content_elements/bt_bb_slider/bt_bb_slider.php:250
@@ -2510,7 +2510,7 @@ msgstr ""
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:233
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:140
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:464
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:171
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:172
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:136
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:339
 #: content_elements/bt_bb_slider/bt_bb_slider.php:222
@@ -2520,7 +2520,7 @@ msgstr ""
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:235
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:142
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:466
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:173
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:174
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:138
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:341
 #: content_elements/bt_bb_slider/bt_bb_slider.php:224
@@ -2722,7 +2722,7 @@ msgstr ""
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:143
 #: content_elements/bt_bb_icon/bt_bb_icon.php:184
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:139
-#: content_elements/bt_bb_row/bt_bb_row.php:134
+#: content_elements/bt_bb_row/bt_bb_row.php:159
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:91
 #: content_elements/bt_bb_section/bt_bb_section.php:325
 #: content_elements/bt_bb_section/bt_bb_section.php:356
@@ -2737,7 +2737,7 @@ msgid "Extra small"
 msgstr ""
 
 #: content_elements/bt_bb_counter/bt_bb_counter.php:118
-#: content_elements/bt_bb_headline/bt_bb_headline.php:262
+#: content_elements/bt_bb_headline/bt_bb_headline.php:263
 #: content_elements/bt_bb_icon/bt_bb_icon.php:188
 #: content_elements/bt_bb_section/bt_bb_section.php:330
 #: content_elements/bt_bb_section/bt_bb_section.php:361
@@ -2759,7 +2759,7 @@ msgstr ""
 
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:130
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:454
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:162
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:163
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:126
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:329
 msgid "Columns"
@@ -2793,7 +2793,7 @@ msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:110
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:150
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:118
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:119
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:69
 #: widgets/bb_recent_comments/init.php:40
 msgid "by"
@@ -2861,13 +2861,13 @@ msgstr ""
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:484
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:502
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:510
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:179
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:180
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:347
 msgid "Category"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:484
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:179
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:180
 msgid "E.g. music"
 msgstr ""
 
@@ -2886,37 +2886,37 @@ msgid "Title HTML tag"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:493
-#: content_elements/bt_bb_headline/bt_bb_headline.php:244
+#: content_elements/bt_bb_headline/bt_bb_headline.php:245
 #: content_elements/bt_bb_service/bt_bb_service.php:160
 msgid "h1"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:494
-#: content_elements/bt_bb_headline/bt_bb_headline.php:245
+#: content_elements/bt_bb_headline/bt_bb_headline.php:246
 #: content_elements/bt_bb_service/bt_bb_service.php:161
 msgid "h2"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:495
-#: content_elements/bt_bb_headline/bt_bb_headline.php:246
+#: content_elements/bt_bb_headline/bt_bb_headline.php:247
 #: content_elements/bt_bb_service/bt_bb_service.php:162
 msgid "h3"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:496
-#: content_elements/bt_bb_headline/bt_bb_headline.php:247
+#: content_elements/bt_bb_headline/bt_bb_headline.php:248
 #: content_elements/bt_bb_service/bt_bb_service.php:163
 msgid "h4"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:497
-#: content_elements/bt_bb_headline/bt_bb_headline.php:248
+#: content_elements/bt_bb_headline/bt_bb_headline.php:249
 #: content_elements/bt_bb_service/bt_bb_service.php:164
 msgid "h5"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:498
-#: content_elements/bt_bb_headline/bt_bb_headline.php:249
+#: content_elements/bt_bb_headline/bt_bb_headline.php:250
 #: content_elements/bt_bb_service/bt_bb_service.php:165
 msgid "h6"
 msgstr ""
@@ -2945,7 +2945,7 @@ msgid "Show in subheadline"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:516
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:201
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:202
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:362
 msgid "Show excerpt"
 msgstr ""
@@ -2995,8 +2995,8 @@ msgid "Menu name"
 msgstr ""
 
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:92
-#: content_elements/bt_bb_headline/bt_bb_headline.php:330
-#: content_elements/bt_bb_headline/bt_bb_headline.php:361
+#: content_elements/bt_bb_headline/bt_bb_headline.php:331
+#: content_elements/bt_bb_headline/bt_bb_headline.php:362
 msgid "Thin"
 msgstr ""
 
@@ -3118,111 +3118,111 @@ msgstr ""
 msgid "Longitude"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:233
-#: content_elements/bt_bb_headline/bt_bb_headline.php:239
+#: content_elements/bt_bb_headline/bt_bb_headline.php:234
+#: content_elements/bt_bb_headline/bt_bb_headline.php:240
 msgid "Superheadline"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:235
-#: content_elements/bt_bb_headline/bt_bb_headline.php:241
+#: content_elements/bt_bb_headline/bt_bb_headline.php:236
+#: content_elements/bt_bb_headline/bt_bb_headline.php:242
 msgid "Subheadline"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:239
+#: content_elements/bt_bb_headline/bt_bb_headline.php:240
 msgid "Add Superheadline text"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:240
+#: content_elements/bt_bb_headline/bt_bb_headline.php:241
 msgid "Add Headline text"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:241
+#: content_elements/bt_bb_headline/bt_bb_headline.php:242
 msgid "Add Subheadline text"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:242
+#: content_elements/bt_bb_headline/bt_bb_headline.php:243
 msgid "Headline HTML tag"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:250
+#: content_elements/bt_bb_headline/bt_bb_headline.php:251
 #: content_elements/bt_bb_service/bt_bb_service.php:166
 msgid "span"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:251
+#: content_elements/bt_bb_headline/bt_bb_headline.php:252
 #: content_elements/bt_bb_service/bt_bb_service.php:167
 msgid "p"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:253
+#: content_elements/bt_bb_headline/bt_bb_headline.php:254
 msgid "Put Superheadline outside HTML tag"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:254
+#: content_elements/bt_bb_headline/bt_bb_headline.php:255
 msgid "Predefined Headline sizes, independent of HTML tag"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:257
+#: content_elements/bt_bb_headline/bt_bb_headline.php:258
 msgid "Extra Small"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:263
+#: content_elements/bt_bb_headline/bt_bb_headline.php:264
 msgid "Huge"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:274
+#: content_elements/bt_bb_headline/bt_bb_headline.php:275
 msgid "Dash"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:279
+#: content_elements/bt_bb_headline/bt_bb_headline.php:280
 msgid "Top and bottom"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:283
+#: content_elements/bt_bb_headline/bt_bb_headline.php:284
 msgid "Color"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:291
+#: content_elements/bt_bb_headline/bt_bb_headline.php:292
 msgid "Custom font size"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:291
+#: content_elements/bt_bb_headline/bt_bb_headline.php:292
 msgid "E.g. 20px or 1.5rem"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:292
+#: content_elements/bt_bb_headline/bt_bb_headline.php:293
 msgid "Headline font weight"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:311
+#: content_elements/bt_bb_headline/bt_bb_headline.php:312
 msgid "Headline text transform"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:315
-#: content_elements/bt_bb_headline/bt_bb_headline.php:346
-#: content_elements/bt_bb_headline/bt_bb_headline.php:377
+#: content_elements/bt_bb_headline/bt_bb_headline.php:316
+#: content_elements/bt_bb_headline/bt_bb_headline.php:347
+#: content_elements/bt_bb_headline/bt_bb_headline.php:378
 msgid "Initial"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:319
-#: content_elements/bt_bb_headline/bt_bb_headline.php:350
-#: content_elements/bt_bb_headline/bt_bb_headline.php:381
+#: content_elements/bt_bb_headline/bt_bb_headline.php:320
+#: content_elements/bt_bb_headline/bt_bb_headline.php:351
+#: content_elements/bt_bb_headline/bt_bb_headline.php:382
 msgid "lowercase"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:322
+#: content_elements/bt_bb_headline/bt_bb_headline.php:323
 msgid "Superheadline font weight"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:342
+#: content_elements/bt_bb_headline/bt_bb_headline.php:343
 msgid "Superheadline text transform"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:353
+#: content_elements/bt_bb_headline/bt_bb_headline.php:354
 msgid "Subheadline font weight"
 msgstr ""
 
-#: content_elements/bt_bb_headline/bt_bb_headline.php:373
+#: content_elements/bt_bb_headline/bt_bb_headline.php:374
 msgid "Subheadline text transform"
 msgstr ""
 
@@ -3349,45 +3349,45 @@ msgstr ""
 msgid "Content alignment"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:161
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:162
 msgid "Rows"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:161
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:162
 #: content_elements/bt_bb_section/bt_bb_section.php:420
 msgid "E.g. 2"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:179
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:180
 msgid "Add category slug or leave empty to show all"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:186
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:187
 msgid "Image shape"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:193
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:194
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:354
 msgid "Show category"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:195
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:196
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:356
 #: widgets/bb_recent_posts/init.php:82
 msgid "Show date"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:197
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:198
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:358
 msgid "Show author"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:199
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:200
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:360
 msgid "Show number of comments"
 msgstr ""
 
-#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:203
+#: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:204
 msgid "Lazy load images"
 msgstr ""
 
@@ -3584,94 +3584,190 @@ msgstr ""
 msgid "Do NOT use HTML content generated by Bold Builder."
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:129
+#: content_elements/bt_bb_row/bt_bb_row.php:154
 msgid "Row"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:129
+#: content_elements/bt_bb_row/bt_bb_row.php:154
 msgid "Row element"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:131
+#: content_elements/bt_bb_row/bt_bb_row.php:156
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:88
 msgid "Column gap"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:139
+#: content_elements/bt_bb_row/bt_bb_row.php:164
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:96
 msgid "0px"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:162
+#: content_elements/bt_bb_row/bt_bb_row.php:187
 msgid "Columns layout"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:162
+#: content_elements/bt_bb_row/bt_bb_row.php:187
 msgid "For the best experience set Section Layout to Wide. Read more in our <a href=\"https://documentation.bold-themes.com/bold-builder/row-layouts/\" target=\"_blank\">documentation</a>."
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:166
+#: content_elements/bt_bb_row/bt_bb_row.php:191
 msgid "Row width 1200px"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:168
+#: content_elements/bt_bb_row/bt_bb_row.php:193
 msgid "First and last are boxed"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:169
+#: content_elements/bt_bb_row/bt_bb_row.php:194
 msgid "First is wide (boxed content)"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:170
+#: content_elements/bt_bb_row/bt_bb_row.php:195
 msgid "First is wide"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:171
+#: content_elements/bt_bb_row/bt_bb_row.php:196
 msgid "Last is wide (boxed content)"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:172
+#: content_elements/bt_bb_row/bt_bb_row.php:197
 msgid "Last is wide"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:173
+#: content_elements/bt_bb_row/bt_bb_row.php:198
 msgid "First and last are wide (boxed content)"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:174
+#: content_elements/bt_bb_row/bt_bb_row.php:199
 msgid "First and last are wide"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:176
+#: content_elements/bt_bb_row/bt_bb_row.php:201
+msgid "Row width 1300px"
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:203
+msgid "First and last are boxed  "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:204
+msgid "First is wide (boxed content)  "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:205
+msgid "First is wide  "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:206
+msgid "Last is wide (boxed content)  "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:207
+msgid "Last is wide  "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:208
+msgid "First and last are wide (boxed content)  "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:209
+msgid "First and last are wide  "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:211
 msgid "Row width 1400px"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:178
+#: content_elements/bt_bb_row/bt_bb_row.php:213
 msgid "First and last are boxed "
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:179
+#: content_elements/bt_bb_row/bt_bb_row.php:214
 msgid "First is wide (boxed content) "
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:180
+#: content_elements/bt_bb_row/bt_bb_row.php:215
 msgid "First is wide "
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:181
+#: content_elements/bt_bb_row/bt_bb_row.php:216
 msgid "Last is wide (boxed content) "
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:182
+#: content_elements/bt_bb_row/bt_bb_row.php:217
 msgid "Last is wide "
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:183
+#: content_elements/bt_bb_row/bt_bb_row.php:218
 msgid "First and last are wide (boxed content) "
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:184
+#: content_elements/bt_bb_row/bt_bb_row.php:219
 msgid "First and last are wide "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:221
+msgid "Row width 1500px"
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:223
+msgid "First and last are boxed   "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:224
+msgid "First is wide (boxed content)   "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:225
+msgid "First is wide   "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:226
+msgid "Last is wide (boxed content)   "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:227
+msgid "Last is wide   "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:228
+msgid "First and last are wide (boxed content)   "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:229
+msgid "First and last are wide   "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:231
+msgid "Row width 1600px"
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:233
+msgid "First and last are boxed    "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:234
+msgid "First is wide (boxed content)    "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:235
+msgid "First is wide    "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:236
+msgid "Last is wide (boxed content)    "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:237
+msgid "Last is wide    "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:238
+msgid "First and last are wide (boxed content)    "
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:239
+msgid "First and last are wide    "
 msgstr ""
 
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:85
@@ -3700,7 +3796,19 @@ msgid "Boxed 1200px"
 msgstr ""
 
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:123
+msgid "Boxed 1300px"
+msgstr ""
+
+#: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:124
 msgid "Boxed 1400px"
+msgstr ""
+
+#: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:125
+msgid "Boxed 1500px"
+msgstr ""
+
+#: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:126
+msgid "Boxed 1600px"
 msgstr ""
 
 #: content_elements/bt_bb_section/bt_bb_section.php:304

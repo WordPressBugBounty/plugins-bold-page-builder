@@ -115,7 +115,8 @@ class bt_bb_latest_posts extends BT_BB_Element {
 
 							if ( $show_author == 'show_author' ) {
 								$meta_output .= '<span class="' . esc_attr( $this->shortcode ) . '_item_author">';
-									$meta_output .= esc_html__( 'by', 'bold-page-builder' ) . ' ' . esc_html( $post_item['author'] );
+									// $post_item['author'] is pre-built safe HTML (anchor) from misc.php — do not esc_html(). See r122689.
+									$meta_output .= esc_html__( 'by', 'bold-page-builder' ) . ' ' . $post_item['author'];
 								$meta_output .= '</span>';
 							}
 

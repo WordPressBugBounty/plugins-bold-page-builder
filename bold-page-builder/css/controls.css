@@ -780,49 +780,49 @@ ul.menu {
 			}
 
 			/* Boxed 1400 */
-			&[for="bt_bb_row_row_width8"] {
+			&[for="bt_bb_row_row_width15"] {
 				&:before {
 					background-image: url(../fonts/row_layout/boxed-1400.png);
 					padding-bottom: 33%;
 				}
 			}
 			/* Boxed left 1400 */
-			&[for="bt_bb_row_row_width9"] {
+			&[for="bt_bb_row_row_width16"] {
 				&:before {
 					background-image: url(../fonts/row_layout/left-wide-1400.png);
 					padding-bottom: 33%;
 				}
 			}
 			/* Boxed left 1400 wide */
-			&[for="bt_bb_row_row_width10"] {
+			&[for="bt_bb_row_row_width17"] {
 				&:before {
 					background-image: url(../fonts/row_layout/left-wide-content-wide-1400.png);
 					padding-bottom: 33%;
 				}
 			}
 			/* Boxed right 1400 */
-			&[for="bt_bb_row_row_width11"] {
+			&[for="bt_bb_row_row_width18"] {
 				&:before {
 					background-image: url(../fonts/row_layout/right-wide-1400.png);
 					padding-bottom: 33%;
 				}
 			}
 			/* Boxed right 1400 wide */
-			&[for="bt_bb_row_row_width12"] {
+			&[for="bt_bb_row_row_width19"] {
 				&:before {
 					background-image: url(../fonts/row_layout/right-wide-content-wide-1200.png);
 					padding-bottom: 33%;
 				}
 			}
 			/* Boxed left and right 1400px */
-			&[for="bt_bb_row_row_width13"] {
+			&[for="bt_bb_row_row_width20"] {
 				&:before {
 					background-image: url(../fonts/row_layout/right-left-wide-1400.png);
 					padding-bottom: 33%;
 				}
 			}
 			/* Boxed left and right 1400px, wide content */
-			&[for="bt_bb_row_row_width14"] {
+			&[for="bt_bb_row_row_width21"] {
 				&:before {
 					background-image: url(../fonts/row_layout/right-left-wide-content-wide-1400.png);
 					padding-bottom: 33%;

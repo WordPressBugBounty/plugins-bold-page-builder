@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 6.9.4
-Stable tag: 5.8.1
+Stable tag: 5.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,14 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.0 =
+* Added 1300, 1500, and 1600 pixel boxed row widths to the Section and Row "Columns layout" / "Row width" dropdowns (alongside the existing 1200 and 1400 options).
+* Fixed an unwanted border that appeared around colored headlines on recent WordPress versions.
+* Fixed Latest Posts author meta rendering as literal HTML markup instead of a clickable author link.
+
+= 5.8.2 =
+* Minor bug fixes and improvements.
 
 = 5.8.1 =
 * Fixed JavaScript errors triggered by clicks on SVG elements from third-party plugins (cookie banners, social widgets, etc.).

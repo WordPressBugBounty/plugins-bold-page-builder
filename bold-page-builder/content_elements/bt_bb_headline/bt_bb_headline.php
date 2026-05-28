@@ -113,7 +113,8 @@ class bt_bb_headline extends BT_BB_Element {
 		if ( $color_scheme != '' ) $class[] = $this->prefix . 'color_scheme_' .  $color_scheme_id;
 
 		if ( $color != '' ) {
-			$el_style = $el_style . ';' . 'color:' . $color . ';border-color:' . $color . ';';
+			// No border-color — see r57877 (added) and r122832 (removed) for context.
+			$el_style = $el_style . ';' . 'color:' . $color . ';';
 		}
 
 		if ( $dash != '' ) {

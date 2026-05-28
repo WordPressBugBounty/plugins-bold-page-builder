@@ -59,10 +59,11 @@ class bt_bb_row extends BT_BB_Element {
 
 		if ( $row_width != '' && $row_width != 'default' ) {
 			$outer_class_1200_base = $this->prefix . 'row_width' . '_' . 'boxed_1200 ' . $this->prefix . 'row_width' . '_' . 'boxed';
+			$outer_class_1300_base = $this->prefix . 'row_width' . '_' . 'boxed_1300 ' . $this->prefix . 'row_width' . '_' . 'boxed';
 			$outer_class_1400_base = $this->prefix . 'row_width' . '_' . 'boxed_1400 ' . $this->prefix . 'row_width' . '_' . 'boxed';
-			
-			// TODO: srediti $el_style .= '; --row-width: 1200px;';
-			
+			$outer_class_1500_base = $this->prefix . 'row_width' . '_' . 'boxed_1500 ' . $this->prefix . 'row_width' . '_' . 'boxed';
+			$outer_class_1600_base = $this->prefix . 'row_width' . '_' . 'boxed_1600 ' . $this->prefix . 'row_width' . '_' . 'boxed';
+
 			if ( $row_width == 'boxed_1200' ) { $outer_class[] = $outer_class_1200_base; }
 			else if ( $row_width == 'boxed_1200_left' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1200_base; }
 			else if ( $row_width == 'boxed_1200_left_content_wide' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1200_base; }
@@ -70,7 +71,15 @@ class bt_bb_row extends BT_BB_Element {
 			else if ( $row_width == 'boxed_1200_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1200_base; }
 			else if ( $row_width == 'boxed_1200_left_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1200_base; }
 			else if ( $row_width == 'boxed_1200_left_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1200_base; }
-			
+
+			else if ( $row_width == 'boxed_1300' ) { $outer_class[] = $outer_class_1300_base; }
+			else if ( $row_width == 'boxed_1300_left' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1300_base; }
+			else if ( $row_width == 'boxed_1300_left_content_wide' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1300_base; }
+			else if ( $row_width == 'boxed_1300_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = $outer_class_1300_base; }
+			else if ( $row_width == 'boxed_1300_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1300_base; }
+			else if ( $row_width == 'boxed_1300_left_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1300_base; }
+			else if ( $row_width == 'boxed_1300_left_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1300_base; }
+
 			else if ( $row_width == 'boxed_1400' ) { $outer_class[] = $outer_class_1400_base; }
 			else if ( $row_width == 'boxed_1400_left' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1400_base; }
 			else if ( $row_width == 'boxed_1400_left_content_wide' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1400_base; }
@@ -78,6 +87,22 @@ class bt_bb_row extends BT_BB_Element {
 			else if ( $row_width == 'boxed_1400_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1400_base; }
 			else if ( $row_width == 'boxed_1400_left_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1400_base; }
 			else if ( $row_width == 'boxed_1400_left_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1400_base; }
+
+			else if ( $row_width == 'boxed_1500' ) { $outer_class[] = $outer_class_1500_base; }
+			else if ( $row_width == 'boxed_1500_left' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1500_base; }
+			else if ( $row_width == 'boxed_1500_left_content_wide' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1500_base; }
+			else if ( $row_width == 'boxed_1500_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = $outer_class_1500_base; }
+			else if ( $row_width == 'boxed_1500_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1500_base; }
+			else if ( $row_width == 'boxed_1500_left_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1500_base; }
+			else if ( $row_width == 'boxed_1500_left_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1500_base; }
+
+			else if ( $row_width == 'boxed_1600' ) { $outer_class[] = $outer_class_1600_base; }
+			else if ( $row_width == 'boxed_1600_left' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1600_base; }
+			else if ( $row_width == 'boxed_1600_left_content_wide' ) { $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1600_base; }
+			else if ( $row_width == 'boxed_1600_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = $outer_class_1600_base; }
+			else if ( $row_width == 'boxed_1600_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1600_base; }
+			else if ( $row_width == 'boxed_1600_left_right' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = $outer_class_1600_base; }
+			else if ( $row_width == 'boxed_1600_left_right_content_wide' ) { $outer_class[] = 'bt_bb_row_push_right'; $outer_class[] = 'bt_bb_row_push_left'; $outer_class[] = 'bt_bb_content_wide'; $outer_class[] = $outer_class_1600_base; }
 			else { $outer_class[] = $this->prefix . 'row_width' . '_' . $row_width; /* fix for old custom classes */ }
 		}
 
@@ -172,9 +197,19 @@ class bt_bb_row extends BT_BB_Element {
 						esc_html__( 'Last is wide', 'bold-page-builder' ) 									=> 'boxed_1200_right_content_wide',
 						esc_html__( 'First and last are wide (boxed content)', 'bold-page-builder' ) 		=> 'boxed_1200_left_right',
 						esc_html__( 'First and last are wide', 'bold-page-builder' ) 						=> 'boxed_1200_left_right_content_wide',
-						
+
+						esc_html__( 'Row width 1300px', 'bold-page-builder' )                                => '__text',
+
+						esc_html__( 'First and last are boxed  ', 'bold-page-builder' ) 						=> 'boxed_1300',
+						esc_html__( 'First is wide (boxed content)  ', 'bold-page-builder' ) 				=> 'boxed_1300_left',
+						esc_html__( 'First is wide  ', 'bold-page-builder' ) 								=> 'boxed_1300_left_content_wide',
+						esc_html__( 'Last is wide (boxed content)  ', 'bold-page-builder' ) 				=> 'boxed_1300_right',
+						esc_html__( 'Last is wide  ', 'bold-page-builder' ) 								=> 'boxed_1300_right_content_wide',
+						esc_html__( 'First and last are wide (boxed content)  ', 'bold-page-builder' ) 		=> 'boxed_1300_left_right',
+						esc_html__( 'First and last are wide  ', 'bold-page-builder' ) 						=> 'boxed_1300_left_right_content_wide',
+
 						esc_html__( 'Row width 1400px', 'bold-page-builder' )                                => '__text',
-						
+
 						esc_html__( 'First and last are boxed ', 'bold-page-builder' ) 						=> 'boxed_1400',
 						esc_html__( 'First is wide (boxed content) ', 'bold-page-builder' ) 					=> 'boxed_1400_left',
 						esc_html__( 'First is wide ', 'bold-page-builder' ) 									=> 'boxed_1400_left_content_wide',
@@ -182,6 +217,26 @@ class bt_bb_row extends BT_BB_Element {
 						esc_html__( 'Last is wide ', 'bold-page-builder' ) 									=> 'boxed_1400_right_content_wide',
 						esc_html__( 'First and last are wide (boxed content) ', 'bold-page-builder' ) 		=> 'boxed_1400_left_right',
 						esc_html__( 'First and last are wide ', 'bold-page-builder' ) 						=> 'boxed_1400_left_right_content_wide',
+
+						esc_html__( 'Row width 1500px', 'bold-page-builder' )                                => '__text',
+
+						esc_html__( 'First and last are boxed   ', 'bold-page-builder' ) 					=> 'boxed_1500',
+						esc_html__( 'First is wide (boxed content)   ', 'bold-page-builder' ) 				=> 'boxed_1500_left',
+						esc_html__( 'First is wide   ', 'bold-page-builder' ) 								=> 'boxed_1500_left_content_wide',
+						esc_html__( 'Last is wide (boxed content)   ', 'bold-page-builder' ) 				=> 'boxed_1500_right',
+						esc_html__( 'Last is wide   ', 'bold-page-builder' ) 								=> 'boxed_1500_right_content_wide',
+						esc_html__( 'First and last are wide (boxed content)   ', 'bold-page-builder' ) 		=> 'boxed_1500_left_right',
+						esc_html__( 'First and last are wide   ', 'bold-page-builder' ) 					=> 'boxed_1500_left_right_content_wide',
+
+						esc_html__( 'Row width 1600px', 'bold-page-builder' )                                => '__text',
+
+						esc_html__( 'First and last are boxed    ', 'bold-page-builder' ) 					=> 'boxed_1600',
+						esc_html__( 'First is wide (boxed content)    ', 'bold-page-builder' ) 				=> 'boxed_1600_left',
+						esc_html__( 'First is wide    ', 'bold-page-builder' ) 								=> 'boxed_1600_left_content_wide',
+						esc_html__( 'Last is wide (boxed content)    ', 'bold-page-builder' ) 				=> 'boxed_1600_right',
+						esc_html__( 'Last is wide    ', 'bold-page-builder' ) 								=> 'boxed_1600_right_content_wide',
+						esc_html__( 'First and last are wide (boxed content)    ', 'bold-page-builder' ) 	=> 'boxed_1600_left_right',
+						esc_html__( 'First and last are wide    ', 'bold-page-builder' ) 					=> 'boxed_1600_left_right_content_wide',
 					)
 				),
 				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' )  ),
