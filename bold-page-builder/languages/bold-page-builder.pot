@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bold Page Builder 5.9.0\n"
+"Project-Id-Version: Bold Page Builder 5.9.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-28T11:51:31+00:00\n"
+"POT-Creation-Date: 2026-06-05T08:49:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bold-page-builder\n"
@@ -310,12 +310,12 @@ msgid "bt_bb_css_post_grid"
 msgstr ""
 
 #: bold-builder-fe.php:563
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:548
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:547
 msgid "Post Grid"
 msgstr ""
 
 #: bold-builder-fe.php:564
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:548
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:547
 msgid "Post grid with images"
 msgstr ""
 
@@ -624,11 +624,11 @@ msgstr ""
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:213
 #: content_elements/bt_bb_countdown/bt_bb_countdown.php:114
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:164
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:487
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:486
 #: content_elements/bt_bb_image/bt_bb_image.php:258
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:206
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:161
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:350
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:351
 #: content_elements/bt_bb_section/bt_bb_section.php:386
 #: content_elements/bt_bb_section/bt_bb_section.php:402
 #: content_elements/bt_bb_slider/bt_bb_slider.php:266
@@ -645,10 +645,10 @@ msgstr ""
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:212
 #: content_elements/bt_bb_countdown/bt_bb_countdown.php:115
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:164
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:488
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:516
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:518
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:545
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:487
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:515
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:517
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:544
 #: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:173
 #: content_elements/bt_bb_headline/bt_bb_headline.php:254
 #: content_elements/bt_bb_image/bt_bb_image.php:259
@@ -663,15 +663,15 @@ msgstr ""
 #: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:151
 #: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:153
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:161
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:327
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:351
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:354
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:356
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:358
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:360
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:362
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:364
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:366
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:328
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:352
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:355
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:357
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:359
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:361
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:363
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:365
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:367
 #: content_elements/bt_bb_section/bt_bb_section.php:387
 #: content_elements/bt_bb_section/bt_bb_section.php:403
 #: content_elements/bt_bb_section/bt_bb_section.php:434
@@ -1272,7 +1272,7 @@ msgstr ""
 #: content_elements/bt_bb_accordion/bt_bb_accordion.php:98
 #: content_elements/bt_bb_button/bt_bb_button.php:233
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:149
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:472
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:471
 #: content_elements/bt_bb_icon/bt_bb_icon.php:198
 #: content_elements/bt_bb_image/bt_bb_image.php:249
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:133
@@ -1283,7 +1283,7 @@ msgstr ""
 #: content_elements/bt_bb_accordion/bt_bb_accordion.php:100
 #: content_elements/bt_bb_button/bt_bb_button.php:236
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:152
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:475
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:474
 #: content_elements/bt_bb_icon/bt_bb_icon.php:201
 #: content_elements/bt_bb_image/bt_bb_image.php:251
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:189
@@ -1296,7 +1296,7 @@ msgstr ""
 #: content_elements/bt_bb_accordion/bt_bb_accordion.php:101
 #: content_elements/bt_bb_button/bt_bb_button.php:237
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:153
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:476
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:475
 #: content_elements/bt_bb_image/bt_bb_image.php:252
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:190
 #: content_elements/bt_bb_tabs/bt_bb_tabs.php:110
@@ -1306,7 +1306,7 @@ msgstr ""
 #: content_elements/bt_bb_accordion/bt_bb_accordion.php:102
 #: content_elements/bt_bb_button/bt_bb_button.php:238
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:154
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:477
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:476
 #: content_elements/bt_bb_image/bt_bb_image.php:253
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:191
 #: content_elements/bt_bb_tabs/bt_bb_tabs.php:111
@@ -1389,7 +1389,7 @@ msgstr ""
 #: content_elements/bt_bb_button/bt_bb_button.php:250
 #: content_elements/bt_bb_button/bt_bb_button.php:275
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:151
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:474
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:473
 #: content_elements/bt_bb_headline/bt_bb_headline.php:257
 #: content_elements/bt_bb_headline/bt_bb_headline.php:269
 #: content_elements/bt_bb_headline/bt_bb_headline.php:287
@@ -1544,12 +1544,12 @@ msgstr ""
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:247
 #: content_elements/bt_bb_counter/bt_bb_counter.php:115
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:144
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:467
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:466
 #: content_elements/bt_bb_headline/bt_bb_headline.php:259
 #: content_elements/bt_bb_icon/bt_bb_icon.php:185
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:176
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:140
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:342
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:343
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:122
 #: content_elements/bt_bb_row/bt_bb_row.php:160
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:92
@@ -1590,7 +1590,7 @@ msgstr ""
 #: content_elements/bt_bb_countdown/bt_bb_countdown.php:109
 #: content_elements/bt_bb_counter/bt_bb_counter.php:116
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:145
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:468
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:467
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:87
 #: content_elements/bt_bb_headline/bt_bb_headline.php:261
 #: content_elements/bt_bb_headline/bt_bb_headline.php:296
@@ -1599,7 +1599,7 @@ msgstr ""
 #: content_elements/bt_bb_icon/bt_bb_icon.php:186
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:175
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:141
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:343
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:344
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:123
 #: content_elements/bt_bb_row/bt_bb_row.php:161
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:93
@@ -1622,14 +1622,14 @@ msgstr ""
 #: content_elements/bt_bb_countdown/bt_bb_countdown.php:110
 #: content_elements/bt_bb_counter/bt_bb_counter.php:117
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:146
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:469
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:468
 #: content_elements/bt_bb_headline/bt_bb_headline.php:262
 #: content_elements/bt_bb_icon/bt_bb_icon.php:187
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:177
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:142
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:147
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:155
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:344
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:345
 #: content_elements/bt_bb_row/bt_bb_row.php:163
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:95
 #: content_elements/bt_bb_section/bt_bb_section.php:329
@@ -1811,7 +1811,7 @@ msgid "Text transform"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:276
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:540
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:539
 #: content_elements/bt_bb_headline/bt_bb_headline.php:277
 #: content_elements/bt_bb_headline/bt_bb_headline.php:315
 #: content_elements/bt_bb_headline/bt_bb_headline.php:346
@@ -2397,67 +2397,67 @@ msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:218
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:132
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:456
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:526
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:535
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:455
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:525
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:534
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:165
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:128
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:331
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:332
 #: content_elements/bt_bb_slider/bt_bb_slider.php:245
 msgid "1"
 msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:219
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:133
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:457
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:525
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:534
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:456
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:524
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:533
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:166
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:129
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:332
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:333
 #: content_elements/bt_bb_slider/bt_bb_slider.php:246
 msgid "2"
 msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:220
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:134
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:458
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:524
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:533
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:457
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:523
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:532
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:167
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:130
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:333
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:334
 #: content_elements/bt_bb_slider/bt_bb_slider.php:247
 msgid "3"
 msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:221
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:135
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:459
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:523
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:532
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:458
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:522
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:531
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:168
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:131
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:334
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:335
 #: content_elements/bt_bb_slider/bt_bb_slider.php:248
 msgid "4"
 msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:222
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:136
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:460
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:459
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:132
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:335
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:336
 #: content_elements/bt_bb_slider/bt_bb_slider.php:249
 msgid "5"
 msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:223
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:137
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:461
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:460
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:169
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:133
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:336
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:337
 #: content_elements/bt_bb_slider/bt_bb_slider.php:250
 msgid "6"
 msgstr ""
@@ -2509,20 +2509,20 @@ msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:233
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:140
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:464
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:463
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:172
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:136
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:339
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:340
 #: content_elements/bt_bb_slider/bt_bb_slider.php:222
 msgid "Gap"
 msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:235
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:142
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:466
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:465
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:174
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:138
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:341
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:342
 #: content_elements/bt_bb_slider/bt_bb_slider.php:224
 msgid "No gap"
 msgstr ""
@@ -2543,7 +2543,7 @@ msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:244
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:252
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:447
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:446
 msgid "Navigation"
 msgstr ""
 
@@ -2758,27 +2758,27 @@ msgid "Images"
 msgstr ""
 
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:130
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:454
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:453
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:163
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:126
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:329
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:330
 msgid "Columns"
 msgstr ""
 
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:157
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:480
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:479
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:145
 msgid "Base image size"
 msgstr ""
 
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:160
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:483
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:482
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:160
 msgid "Tiles format"
 msgstr ""
 
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:160
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:483
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:482
 msgid "E.g. 21, 11, 11"
 msgstr ""
 
@@ -2791,198 +2791,198 @@ msgstr ""
 msgid "Disable lightbox"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:110
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:150
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:109
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:149
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:119
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:69
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:70
 #: widgets/bb_recent_comments/init.php:40
 msgid "by"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:376
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:522
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:531
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:273
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:375
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:521
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:530
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:274
 msgid "All"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:406
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:405
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:74
 msgid "No posts found."
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:411
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:410
 msgid "Load more"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:437
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:317
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:436
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:318
 msgid "Post Type"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:439
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:319
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:438
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:320
 msgid "Post"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:440
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:320
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:439
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:321
 msgid "Portfolio"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:446
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:445
 msgid "Inital number of items"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:446
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:445
 msgid "E.g. 6"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:446
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:445
 msgid "Enter initial number of items or leave empty to show all (up to 1000)"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:449
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:448
 msgid "No navigation"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:450
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:449
 msgid "Auto load more on scroll"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:451
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:450
 msgid "Load more on button click"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:483
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:482
 msgid "21, 11, 11"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:484
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:502
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:510
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:483
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:501
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:509
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:180
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:347
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:348
 msgid "Category"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:484
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:483
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:180
 msgid "E.g. music"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:484
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:347
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:483
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:348
 msgid "Enter category slug or leave empty to show all"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:485
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:484
 msgid "Show category filter"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:491
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:490
 #: content_elements/bt_bb_service/bt_bb_service.php:157
 msgid "Title HTML tag"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:493
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:492
 #: content_elements/bt_bb_headline/bt_bb_headline.php:245
 #: content_elements/bt_bb_service/bt_bb_service.php:160
 msgid "h1"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:494
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:493
 #: content_elements/bt_bb_headline/bt_bb_headline.php:246
 #: content_elements/bt_bb_service/bt_bb_service.php:161
 msgid "h2"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:495
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:494
 #: content_elements/bt_bb_headline/bt_bb_headline.php:247
 #: content_elements/bt_bb_service/bt_bb_service.php:162
 msgid "h3"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:496
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:495
 #: content_elements/bt_bb_headline/bt_bb_headline.php:248
 #: content_elements/bt_bb_service/bt_bb_service.php:163
 msgid "h4"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:497
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:496
 #: content_elements/bt_bb_headline/bt_bb_headline.php:249
 #: content_elements/bt_bb_service/bt_bb_service.php:164
 msgid "h5"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:498
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:497
 #: content_elements/bt_bb_headline/bt_bb_headline.php:250
 #: content_elements/bt_bb_service/bt_bb_service.php:165
 msgid "h6"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:500
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:499
 msgid "Show in superheadline"
+msgstr ""
+
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:502
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:510
+msgid "Date"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:503
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:511
-msgid "Date"
+msgid "Author"
 msgstr ""
 
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:504
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:512
-msgid "Author"
-msgstr ""
-
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:505
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:513
 msgid "Comments"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:508
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:507
 msgid "Show in subheadline"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:516
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:515
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:202
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:362
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:363
 msgid "Show excerpt"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:518
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:364
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:517
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:365
 msgid "Show share icons"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:520
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:519
 msgid "Title lines"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:529
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:528
 msgid "Excerpt lines"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:538
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:537
 #: content_elements/bt_bb_image/bt_bb_image.php:288
 msgid "Hover style"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:541
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:540
 msgid "Zoom image"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:542
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:541
 msgid "Zoom image & arrow icon"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:545
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:366
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:544
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:367
 msgid "Skip nonce verification"
 msgstr ""
 
-#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:545
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:366
+#: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:544
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:367
 msgid "If using long-term caching, either skip nonce verification (less secure) or reduce cache TTL to prevent failures."
 msgstr ""
 
@@ -3367,23 +3367,23 @@ msgid "Image shape"
 msgstr ""
 
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:194
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:354
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:355
 msgid "Show category"
 msgstr ""
 
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:196
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:356
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:357
 #: widgets/bb_recent_posts/init.php:82
 msgid "Show date"
 msgstr ""
 
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:198
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:358
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:359
 msgid "Show author"
 msgstr ""
 
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:200
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:360
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:361
 msgid "Show number of comments"
 msgstr ""
 
@@ -3488,31 +3488,31 @@ msgstr ""
 msgid "e.g. 21, 11, 11"
 msgstr ""
 
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:317
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:318
 msgid "Masonry post grid (deprecated, use css post grid element)"
 msgstr ""
 
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:326
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:327
 msgid "Number of items"
 msgstr ""
 
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:326
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:327
 msgid "Enter number of items or leave empty to show all (up to 1000)"
 msgstr ""
 
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:327
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:328
 msgid "Load more items on scroll"
 msgstr ""
 
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:348
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:349
 msgid "Category filter"
 msgstr ""
 
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:369
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:370
 msgid "Masonry Post Grid (deprecated)"
 msgstr ""
 
-#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:369
+#: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:370
 msgid "Use Post Grid element"
 msgstr ""
 

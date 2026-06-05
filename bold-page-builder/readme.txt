@@ -2,8 +2,8 @@
 Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
-Tested up to: 6.9.4
-Stable tag: 5.9.0
+Tested up to: 7.0
+Stable tag: 5.9.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,10 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.1 =
+* Fixed CSS Post Grid not rendering the excerpt, share, date, and super/subheadline when those options were enabled.
+* Fixed category filtering on the CSS Post Grid and Masonry Post Grid for categories with encoded (non-ASCII) slugs.
 
 = 5.9.0 =
 * Added 1300, 1500, and 1600 pixel boxed row widths to the Section and Row "Columns layout" / "Row width" dropdowns (alongside the existing 1200 and 1400 options).

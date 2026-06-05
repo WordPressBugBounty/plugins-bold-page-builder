@@ -426,6 +426,33 @@ if ( ! function_exists( 'bt_bb_get_grid_pagenum' ) ) {
 }
 
 /**
+ * Decode a post-grid "show flags" AJAX param into a whitelisted boolean array.
+ *
+ * The grid elements pass these flags as URL-encoded JSON (e.g. %7B%22date%22%3Atrue%7D).
+ * sanitize_text_field() cannot be used on the raw value — it strips every percent-encoded
+ * octet and destroys the JSON — so we urldecode, json_decode, and cast each known key to a
+ * bool. The result is only ever read in boolean context (never echoed), so the whitelist
+ * cast is the correct, complete sanitizer for this input.
+ *
+ * @param string $raw  Raw (unslashed) URL-encoded JSON value from $_POST.
+ * @param array  $keys Allowed flag keys to extract.
+ * @return array Map of $keys => bool.
+ */
+if ( ! function_exists( 'bt_bb_decode_show_flags' ) ) {
+	function bt_bb_decode_show_flags( $raw, $keys ) {
+		$decoded = json_decode( urldecode( (string) $raw ), true );
+		if ( ! is_array( $decoded ) ) {
+			$decoded = array();
+		}
+		$flags = array();
+		foreach ( $keys as $key ) {
+			$flags[ $key ] = ! empty( $decoded[ $key ] );
+		}
+		return $flags;
+	}
+}
+
+/**
  * Get array of data for a range of posts, used in grid layout
  *
  * @param int $number

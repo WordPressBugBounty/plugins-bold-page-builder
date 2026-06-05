@@ -19,10 +19,11 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 		}
 		$number             = isset( $_POST['number'] ) ? intval( $_POST['number'] ) : 0;
 		$offset             = isset( $_POST['offset'] ) ? intval( $_POST['offset'] ) : 0;
-		$category           = isset( $_POST['category'] ) ? sanitize_text_field( urldecode( sanitize_text_field( wp_unslash( $_POST['category'] ) ) ) ) : ''; // sanitize the raw value, urldecode, then re-sanitize the decoded value
-		$show               = isset( $_POST['show'] ) ? sanitize_text_field( wp_unslash( $_POST['show'] ) ) : '';
-		$show_superheadline = isset( $_POST['show_superheadline'] ) ? sanitize_text_field( wp_unslash( $_POST['show_superheadline'] ) ) : '';
-		$show_subheadline   = isset( $_POST['show_subheadline'] ) ? sanitize_text_field( wp_unslash( $_POST['show_subheadline'] ) ) : '';
+		$category           = isset( $_POST['category'] ) ? sanitize_text_field( urldecode( wp_unslash( $_POST['category'] ) ) ) : ''; // urldecode first (a pre-decode sanitize would strip %XX octets), then sanitize the decoded slug
+		// show* params are URL-encoded JSON; sanitize_text_field() would strip the percent-encoded octets and destroy the JSON, so decode + cast to a boolean whitelist instead (see bt_bb_decode_show_flags).
+		$show               = isset( $_POST['show'] ) ? bt_bb_decode_show_flags( wp_unslash( $_POST['show'] ), array( 'excerpt', 'share' ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$show_superheadline = isset( $_POST['show_superheadline'] ) ? bt_bb_decode_show_flags( wp_unslash( $_POST['show_superheadline'] ), array( 'category', 'date', 'author', 'comments' ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$show_subheadline   = isset( $_POST['show_subheadline'] ) ? bt_bb_decode_show_flags( wp_unslash( $_POST['show_subheadline'] ), array( 'category', 'date', 'author', 'comments' ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$post_type          = isset( $_POST['post-type'] ) ? sanitize_text_field( wp_unslash( $_POST['post-type'] ) ) : '';
 		$format             = isset( $_POST['format'] ) ? sanitize_text_field( wp_unslash( $_POST['format'] ) ) : '';
 		$title_html_tag     = isset( $_POST['title_html_tag'] ) ? sanitize_text_field( wp_unslash( $_POST['title_html_tag'] ) ) : '';
@@ -44,10 +45,8 @@ class bt_bb_css_post_grid extends BT_BB_Element {
 	}
 
 	static function dump_grid( $number, $offset, $category, $show, $show_superheadline, $show_subheadline, $post_type, $format, $title_html_tag, $img_base_size ) {
-		
-		$show				= json_decode( urldecode( $show ), true );
-		$show_superheadline = json_decode( urldecode( $show_superheadline ), true );
-		$show_subheadline	= json_decode( urldecode( $show_subheadline ), true );
+
+		// $show, $show_superheadline and $show_subheadline arrive as decoded boolean arrays (see bt_bb_decode_show_flags).
 
 		$title_html_tag		= $title_html_tag != '' ? $title_html_tag : 'h5';
 		$allowed_html_tags	= array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p' );

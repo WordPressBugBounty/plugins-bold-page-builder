@@ -56,7 +56,7 @@ class bt_bb_price_list extends BT_BB_Element {
 
 			$output .= '<ul>';
 				foreach ( $items_arr as $item ) {
-					$output .= '<li>' . esc_html( $item ) . '</li>';
+					$output .= '<li>' . wp_kses_post( $item ) . '</li>';
 				}
 			$output .= '</ul>';
 

@@ -18,8 +18,9 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 		}
 		$number    = isset( $_POST['number'] ) ? intval( $_POST['number'] ) : 0;
 		$offset    = isset( $_POST['offset'] ) ? intval( $_POST['offset'] ) : 0;
-		$category  = isset( $_POST['category'] ) ? sanitize_text_field( urldecode( sanitize_text_field( wp_unslash( $_POST['category'] ) ) ) ) : ''; // sanitize the raw value, urldecode, then re-sanitize the decoded value
-		$show      = isset( $_POST['show'] ) ? sanitize_text_field( wp_unslash( $_POST['show'] ) ) : '';
+		$category  = isset( $_POST['category'] ) ? sanitize_text_field( urldecode( wp_unslash( $_POST['category'] ) ) ) : ''; // urldecode first (a pre-decode sanitize would strip %XX octets), then sanitize the decoded slug
+		// show is URL-encoded JSON; sanitize_text_field() would strip the percent-encoded octets and destroy the JSON, so decode + cast to a boolean whitelist instead (see bt_bb_decode_show_flags).
+		$show      = isset( $_POST['show'] ) ? bt_bb_decode_show_flags( wp_unslash( $_POST['show'] ), array( 'category', 'date', 'author', 'comments', 'excerpt', 'share' ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$post_type = isset( $_POST['post-type'] ) ? sanitize_text_field( wp_unslash( $_POST['post-type'] ) ) : '';
 		// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
 		bt_bb_masonry_post_grid::dump_grid( $number, $offset, $category, $show, $post_type );
@@ -28,7 +29,7 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 	
 	static function dump_grid( $number, $offset, $category, $show, $post_type ) {
 
-		$show = json_decode( urldecode( $show ), true );
+		// $show arrives as a decoded boolean array (see bt_bb_decode_show_flags).
 
 		$output = '';
 
