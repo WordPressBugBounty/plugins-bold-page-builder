@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Page Builder
  * Description: WordPress page builder.
- * Version: 5.9.1
+ * Version: 5.9.2
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * License: GPL v2 or later
@@ -2223,10 +2223,30 @@ function bt_bb_honor_ssl_for_attachments( $url ) {
 add_action( 'content_save_pre', 'bt_bb_save_pre' );
 function bt_bb_save_pre( $content ) {
 	if ( ! current_user_can( 'unfiltered_html' ) ) {
-		if ( str_contains( $content, '[bt_bb_price_list' ) || str_contains( $content, '`{`bt_bb_price_list' ) ) {
+		// Normalize the content exactly the way the render path will, *before*
+		// matching, so an obfuscated payload cannot smuggle a dangerous element
+		// past this gate (CVE-2026-5920). At render time bt_bb_shortcode decodes
+		// the backtick bracket encoding ( `{` `}` `` -> [ ] " ) and wp_kses_post()
+		// then strips invalid control characters -- including a null byte planted
+		// inside the tag name -- so a stored `{`bt_b\0b_raw_content is reconstructed
+		// into a live [bt_bb_raw_content] and executed. A plain str_contains() on
+		// the raw string never sees that reconstructed tag and lets it through.
+		// Applying the same two transforms here makes the gate match what actually
+		// runs.
+		$normalized = str_ireplace(
+			array( '`{`', '`}`', '``' ),
+			array( '[', ']', '"' ),
+			$content
+		);
+		// Same control-character class wp_kses_post() removes (C0 controls except
+		// tab / newline / carriage-return). This collapses out null bytes and other
+		// control chars used to break up the tag name before matching.
+		$normalized = preg_replace( '/[\x00-\x08\x0b\x0c\x0e-\x1f]/', '', $normalized );
+
+		if ( preg_match( '/\[\s*bt_bb_price_list/i', $normalized ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to save Price List element.', 'bold-page-builder' ) );
 		}
-		if ( str_contains( $content, '[bt_bb_raw_content' ) || str_contains( $content, '`{`bt_bb_raw_content' ) ) {
+		if ( preg_match( '/\[\s*bt_bb_raw_content/i', $normalized ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to save Raw Content element.', 'bold-page-builder' ) );
 		}
 	}
