@@ -871,6 +871,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow-x: clip;
     color: var(--section-primary-color);
     background-color: var(--section-secondary-color);
     }

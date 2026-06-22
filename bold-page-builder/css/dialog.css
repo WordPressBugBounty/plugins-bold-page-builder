@@ -918,12 +918,6 @@
 				}
 			}
 		}
-		.bt_bb_dialog_content .bt_bb_dialog_item[data-param_name="row_width"][data-type="radio"] label {
-			flex-basis: calc(33% - 2em);
-		}
-		.bt_bb_dialog_content .bt_bb_dialog_item[data-param_name="row_width"][data-type="radio"] label[for="bt_bb_row_row_width7"] {
-			margin-right: 20em;
-		}
 	}
 }
 

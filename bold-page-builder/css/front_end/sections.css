@@ -8,7 +8,7 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-
+	overflow-x: clip; /* fix for rows with lagre gaps on small screens */
 	/* Height, vertical aligment & boxed */
 	&.bt_bb_full_screen > .bt_bb_port { min-height: 100vh; }
 	> .bt_bb_port {

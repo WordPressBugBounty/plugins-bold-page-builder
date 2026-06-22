@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bold Page Builder 5.9.2\n"
+"Project-Id-Version: Bold Page Builder 5.9.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-05T18:44:04+00:00\n"
+"POT-Creation-Date: 2026-06-22T09:50:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bold-page-builder\n"
@@ -576,7 +576,6 @@ msgstr ""
 #: content_elements/bt_bb_headline/bt_bb_headline.php:356
 #: content_elements/bt_bb_headline/bt_bb_headline.php:376
 #: content_elements/bt_bb_row/bt_bb_row.php:158
-#: content_elements/bt_bb_row/bt_bb_row.php:189
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:90
 #: content_elements/bt_bb_slider/bt_bb_slider.php:218
 msgid "Default"
@@ -1212,7 +1211,7 @@ msgstr ""
 #: content_elements/bt_bb_icon/bt_bb_icon.php:205
 #: content_elements/bt_bb_price_list/bt_bb_price_list.php:111
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:139
-#: content_elements/bt_bb_row/bt_bb_row.php:242
+#: content_elements/bt_bb_row/bt_bb_row.php:211
 #: content_elements/bt_bb_section/bt_bb_section.php:397
 #: content_elements/bt_bb_separator/bt_bb_separator.php:251
 #: content_elements/bt_bb_service/bt_bb_service.php:209
@@ -1229,7 +1228,7 @@ msgstr ""
 #: content_elements/bt_bb_icon/bt_bb_icon.php:205
 #: content_elements/bt_bb_price_list/bt_bb_price_list.php:111
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:139
-#: content_elements/bt_bb_row/bt_bb_row.php:242
+#: content_elements/bt_bb_row/bt_bb_row.php:211
 #: content_elements/bt_bb_section/bt_bb_section.php:397
 #: content_elements/bt_bb_separator/bt_bb_separator.php:251
 #: content_elements/bt_bb_service/bt_bb_service.php:209
@@ -1515,9 +1514,9 @@ msgstr ""
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:126
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:133
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:139
-#: content_elements/bt_bb_row/bt_bb_row.php:242
-#: content_elements/bt_bb_row/bt_bb_row.php:243
-#: content_elements/bt_bb_row/bt_bb_row.php:244
+#: content_elements/bt_bb_row/bt_bb_row.php:211
+#: content_elements/bt_bb_row/bt_bb_row.php:212
+#: content_elements/bt_bb_row/bt_bb_row.php:213
 #: content_elements/bt_bb_section/bt_bb_section.php:397
 #: content_elements/bt_bb_section/bt_bb_section.php:398
 #: content_elements/bt_bb_section/bt_bb_section.php:399
@@ -2272,7 +2271,7 @@ msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:359
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:360
-#: content_elements/bt_bb_row/bt_bb_row.php:243
+#: content_elements/bt_bb_row/bt_bb_row.php:212
 #: content_elements/bt_bb_section/bt_bb_section.php:398
 msgid "Background color"
 msgstr ""
@@ -2283,7 +2282,7 @@ msgid "Inner background color"
 msgstr ""
 
 #: content_elements/bt_bb_column/bt_bb_column.php:361
-#: content_elements/bt_bb_row/bt_bb_row.php:244
+#: content_elements/bt_bb_row/bt_bb_row.php:213
 msgid "Background color opacity (deprecated)"
 msgstr ""
 
@@ -3606,168 +3605,69 @@ msgstr ""
 msgid "Columns layout"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:187
-msgid "For the best experience set Section Layout to Wide. Read more in our <a href=\"https://documentation.bold-themes.com/bold-builder/row-layouts/\" target=\"_blank\">documentation</a>."
+#: content_elements/bt_bb_row/bt_bb_row.php:189
+#: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:119
+msgid "Row width"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:191
-msgid "Row width 1200px"
+#: content_elements/bt_bb_row/bt_bb_row.php:190
+msgid "Columns structure"
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:192
+msgid "Default (wide)"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:193
-msgid "First and last are boxed"
+msgid "1200px"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:194
-msgid "First is wide (boxed content)"
+msgid "1300px"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:195
-msgid "First is wide"
+msgid "1400px"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:196
-msgid "Last is wide (boxed content)"
+msgid "1500px"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:197
-msgid "Last is wide"
+msgid "1600px"
 msgstr ""
 
-#: content_elements/bt_bb_row/bt_bb_row.php:198
-msgid "First and last are wide (boxed content)"
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:199
-msgid "First and last are wide"
+#: content_elements/bt_bb_row/bt_bb_row.php:200
+msgid "All columns boxed"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:201
-msgid "Row width 1300px"
+msgid "First is wide (boxed content)"
+msgstr ""
+
+#: content_elements/bt_bb_row/bt_bb_row.php:202
+msgid "First is wide"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:203
-msgid "First and last are boxed  "
+msgid "Last is wide (boxed content)"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:204
-msgid "First is wide (boxed content)  "
+msgid "Last is wide"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:205
-msgid "First is wide  "
+msgid "First and last are wide (boxed content)"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:206
-msgid "Last is wide (boxed content)  "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:207
-msgid "Last is wide  "
+msgid "First and last are wide"
 msgstr ""
 
 #: content_elements/bt_bb_row/bt_bb_row.php:208
-msgid "First and last are wide (boxed content)  "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:209
-msgid "First and last are wide  "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:211
-msgid "Row width 1400px"
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:213
-msgid "First and last are boxed "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:214
-msgid "First is wide (boxed content) "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:215
-msgid "First is wide "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:216
-msgid "Last is wide (boxed content) "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:217
-msgid "Last is wide "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:218
-msgid "First and last are wide (boxed content) "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:219
-msgid "First and last are wide "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:221
-msgid "Row width 1500px"
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:223
-msgid "First and last are boxed   "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:224
-msgid "First is wide (boxed content)   "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:225
-msgid "First is wide   "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:226
-msgid "Last is wide (boxed content)   "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:227
-msgid "Last is wide   "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:228
-msgid "First and last are wide (boxed content)   "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:229
-msgid "First and last are wide   "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:231
-msgid "Row width 1600px"
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:233
-msgid "First and last are boxed    "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:234
-msgid "First is wide (boxed content)    "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:235
-msgid "First is wide    "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:236
-msgid "Last is wide (boxed content)    "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:237
-msgid "Last is wide    "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:238
-msgid "First and last are wide (boxed content)    "
-msgstr ""
-
-#: content_elements/bt_bb_row/bt_bb_row.php:239
-msgid "First and last are wide    "
+msgid "For the best experience set Section Layout to Wide. Read more in our <a href=\"https://documentation.bold-themes.com/bold-builder/row-layouts/\" target=\"_blank\">documentation</a>."
 msgstr ""
 
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:85
@@ -3776,10 +3676,6 @@ msgstr ""
 
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:85
 msgid "Inner Row element"
-msgstr ""
-
-#: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:119
-msgid "Row width"
 msgstr ""
 
 #: content_elements/bt_bb_row_inner/bt_bb_row_inner.php:119

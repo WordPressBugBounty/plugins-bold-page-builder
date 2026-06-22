@@ -184,59 +184,28 @@ class bt_bb_row extends BT_BB_Element {
 						esc_html__( '100px', 'bold-page-builder' ) => '100'
 					)
 				),
-				array( 'param_name' => 'row_width', 'type' => 'radio', 'heading' => esc_html__( 'Columns layout', 'bold-page-builder' ), 'default' => 'default', 'description' => __( 'For the best experience set Section Layout to Wide. Read more in our <a href="https://documentation.bold-themes.com/bold-builder/row-layouts/" target="_blank">documentation</a>.', 'bold-page-builder' ), 'preview' => true,
+				array( 'param_name' => 'row_width', 'type' => 'row_width_split', 'heading' => esc_html__( 'Columns layout', 'bold-page-builder' ), 'default' => 'default', 'preview' => true,
 					'value' => array(
-						esc_html__( 'Default', 'bold-page-builder' ) 										=> 'default',
-						
-						esc_html__( 'Row width 1200px', 'bold-page-builder' )                                => '__text',
-						
-						esc_html__( 'First and last are boxed', 'bold-page-builder' ) 						=> 'boxed_1200',
-						esc_html__( 'First is wide (boxed content)', 'bold-page-builder' ) 					=> 'boxed_1200_left',
-						esc_html__( 'First is wide', 'bold-page-builder' ) 									=> 'boxed_1200_left_content_wide',
-						esc_html__( 'Last is wide (boxed content)', 'bold-page-builder' ) 					=> 'boxed_1200_right',
-						esc_html__( 'Last is wide', 'bold-page-builder' ) 									=> 'boxed_1200_right_content_wide',
-						esc_html__( 'First and last are wide (boxed content)', 'bold-page-builder' ) 		=> 'boxed_1200_left_right',
-						esc_html__( 'First and last are wide', 'bold-page-builder' ) 						=> 'boxed_1200_left_right_content_wide',
-
-						esc_html__( 'Row width 1300px', 'bold-page-builder' )                                => '__text',
-
-						esc_html__( 'First and last are boxed  ', 'bold-page-builder' ) 						=> 'boxed_1300',
-						esc_html__( 'First is wide (boxed content)  ', 'bold-page-builder' ) 				=> 'boxed_1300_left',
-						esc_html__( 'First is wide  ', 'bold-page-builder' ) 								=> 'boxed_1300_left_content_wide',
-						esc_html__( 'Last is wide (boxed content)  ', 'bold-page-builder' ) 				=> 'boxed_1300_right',
-						esc_html__( 'Last is wide  ', 'bold-page-builder' ) 								=> 'boxed_1300_right_content_wide',
-						esc_html__( 'First and last are wide (boxed content)  ', 'bold-page-builder' ) 		=> 'boxed_1300_left_right',
-						esc_html__( 'First and last are wide  ', 'bold-page-builder' ) 						=> 'boxed_1300_left_right_content_wide',
-
-						esc_html__( 'Row width 1400px', 'bold-page-builder' )                                => '__text',
-
-						esc_html__( 'First and last are boxed ', 'bold-page-builder' ) 						=> 'boxed_1400',
-						esc_html__( 'First is wide (boxed content) ', 'bold-page-builder' ) 					=> 'boxed_1400_left',
-						esc_html__( 'First is wide ', 'bold-page-builder' ) 									=> 'boxed_1400_left_content_wide',
-						esc_html__( 'Last is wide (boxed content) ', 'bold-page-builder' ) 					=> 'boxed_1400_right',
-						esc_html__( 'Last is wide ', 'bold-page-builder' ) 									=> 'boxed_1400_right_content_wide',
-						esc_html__( 'First and last are wide (boxed content) ', 'bold-page-builder' ) 		=> 'boxed_1400_left_right',
-						esc_html__( 'First and last are wide ', 'bold-page-builder' ) 						=> 'boxed_1400_left_right_content_wide',
-
-						esc_html__( 'Row width 1500px', 'bold-page-builder' )                                => '__text',
-
-						esc_html__( 'First and last are boxed   ', 'bold-page-builder' ) 					=> 'boxed_1500',
-						esc_html__( 'First is wide (boxed content)   ', 'bold-page-builder' ) 				=> 'boxed_1500_left',
-						esc_html__( 'First is wide   ', 'bold-page-builder' ) 								=> 'boxed_1500_left_content_wide',
-						esc_html__( 'Last is wide (boxed content)   ', 'bold-page-builder' ) 				=> 'boxed_1500_right',
-						esc_html__( 'Last is wide   ', 'bold-page-builder' ) 								=> 'boxed_1500_right_content_wide',
-						esc_html__( 'First and last are wide (boxed content)   ', 'bold-page-builder' ) 		=> 'boxed_1500_left_right',
-						esc_html__( 'First and last are wide   ', 'bold-page-builder' ) 					=> 'boxed_1500_left_right_content_wide',
-
-						esc_html__( 'Row width 1600px', 'bold-page-builder' )                                => '__text',
-
-						esc_html__( 'First and last are boxed    ', 'bold-page-builder' ) 					=> 'boxed_1600',
-						esc_html__( 'First is wide (boxed content)    ', 'bold-page-builder' ) 				=> 'boxed_1600_left',
-						esc_html__( 'First is wide    ', 'bold-page-builder' ) 								=> 'boxed_1600_left_content_wide',
-						esc_html__( 'Last is wide (boxed content)    ', 'bold-page-builder' ) 				=> 'boxed_1600_right',
-						esc_html__( 'Last is wide    ', 'bold-page-builder' ) 								=> 'boxed_1600_right_content_wide',
-						esc_html__( 'First and last are wide (boxed content)    ', 'bold-page-builder' ) 	=> 'boxed_1600_left_right',
-						esc_html__( 'First and last are wide    ', 'bold-page-builder' ) 					=> 'boxed_1600_left_right_content_wide',
+						'width_label'     => esc_html__( 'Row width', 'bold-page-builder' ),
+						'structure_label' => esc_html__( 'Columns structure', 'bold-page-builder' ),
+						'widths' => array(
+							esc_html__( 'Default (wide)', 'bold-page-builder' ) => 'default',
+							esc_html__( '1200px', 'bold-page-builder' )         => '1200',
+							esc_html__( '1300px', 'bold-page-builder' )         => '1300',
+							esc_html__( '1400px', 'bold-page-builder' )         => '1400',
+							esc_html__( '1500px', 'bold-page-builder' )         => '1500',
+							esc_html__( '1600px', 'bold-page-builder' )         => '1600',
+						),
+						'structures' => array(
+							esc_html__( 'All columns boxed', 'bold-page-builder' )                      => '',
+							esc_html__( 'First is wide (boxed content)', 'bold-page-builder' )           => 'left',
+							esc_html__( 'First is wide', 'bold-page-builder' )                           => 'left_content_wide',
+							esc_html__( 'Last is wide (boxed content)', 'bold-page-builder' )            => 'right',
+							esc_html__( 'Last is wide', 'bold-page-builder' )                            => 'right_content_wide',
+							esc_html__( 'First and last are wide (boxed content)', 'bold-page-builder' ) => 'left_right',
+							esc_html__( 'First and last are wide', 'bold-page-builder' )                 => 'left_right_content_wide',
+						),
+						'description' => __( 'For the best experience set Section Layout to Wide. Read more in our <a href="https://documentation.bold-themes.com/bold-builder/row-layouts/" target="_blank">documentation</a>.', 'bold-page-builder' ),
 					)
 				),
 				array( 'param_name' => 'color_scheme', 'type' => 'dropdown', 'heading' => esc_html__( 'Color scheme', 'bold-page-builder' ), 'description' => esc_html__( 'Define color schemes in Bold Builder settings or define accent and alternate colors in theme customizer (if avaliable)', 'bold-page-builder' ), 'value' => $color_scheme_arr, 'preview' => true, 'group' => esc_html__( 'Design', 'bold-page-builder' )  ),

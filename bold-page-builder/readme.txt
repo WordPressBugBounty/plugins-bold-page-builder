@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.2
+Stable tag: 5.9.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,10 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.3 =
+* Redesigned the Row "Columns layout" control: row width and column structure are now selected separately, with the column structure shown as layout preview thumbnails.
+* Fixed horizontal page overflow on rows configured with large gaps.
 
 = 5.9.2 =
 * Security: hardened the Raw Content save filter against a null-byte / control-character bypass that could allow Contributor-level users to store executable scripts (CVE-2026-5920).
