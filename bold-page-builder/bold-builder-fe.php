@@ -798,6 +798,35 @@ function bt_bb_fe_get_html() {
             }
             return $tags;
         }, 10, 2 );
+		// Permit inline SVG (e.g. colored icons) so the wp_kses_post() below does not strip <svg>/<defs>/<style>/<path> in the FE editor preview. The published page renders the icon straight from the shortcode, so it is unaffected.
+		add_filter( 'wp_kses_allowed_html', function( $tags, $context ) {
+			if ( 'post' === $context ) {
+				$svg_common = array( 'class' => true, 'id' => true, 'style' => true, 'fill' => true, 'stroke' => true, 'stroke-width' => true, 'stroke-linecap' => true, 'stroke-linejoin' => true, 'stroke-miterlimit' => true, 'stroke-dasharray' => true, 'fill-rule' => true, 'clip-rule' => true, 'fill-opacity' => true, 'stroke-opacity' => true, 'opacity' => true, 'transform' => true, 'clip-path' => true, 'data-name' => true );
+				$tags = array_merge( $tags, array(
+					'svg'            => array_merge( $svg_common, array( 'xmlns' => true, 'xmlns:xlink' => true, 'viewbox' => true, 'width' => true, 'height' => true, 'preserveaspectratio' => true, 'role' => true, 'aria-hidden' => true ) ),
+					'g'              => $svg_common,
+					'defs'           => $svg_common,
+					'style'          => array( 'type' => true ),
+					'title'          => array( 'id' => true ),
+					'desc'           => array( 'id' => true ),
+					'path'           => array_merge( $svg_common, array( 'd' => true ) ),
+					'rect'           => array_merge( $svg_common, array( 'x' => true, 'y' => true, 'width' => true, 'height' => true, 'rx' => true, 'ry' => true ) ),
+					'circle'         => array_merge( $svg_common, array( 'cx' => true, 'cy' => true, 'r' => true ) ),
+					'ellipse'        => array_merge( $svg_common, array( 'cx' => true, 'cy' => true, 'rx' => true, 'ry' => true ) ),
+					'line'           => array_merge( $svg_common, array( 'x1' => true, 'y1' => true, 'x2' => true, 'y2' => true ) ),
+					'polygon'        => array_merge( $svg_common, array( 'points' => true ) ),
+					'polyline'       => array_merge( $svg_common, array( 'points' => true ) ),
+					'use'            => array_merge( $svg_common, array( 'xlink:href' => true, 'href' => true, 'x' => true, 'y' => true, 'width' => true, 'height' => true ) ),
+					'lineargradient' => array_merge( $svg_common, array( 'x1' => true, 'y1' => true, 'x2' => true, 'y2' => true, 'gradientunits' => true, 'gradienttransform' => true ) ),
+					'radialgradient' => array_merge( $svg_common, array( 'cx' => true, 'cy' => true, 'r' => true, 'fx' => true, 'fy' => true, 'gradientunits' => true, 'gradienttransform' => true ) ),
+					'stop'           => array_merge( $svg_common, array( 'offset' => true, 'stop-color' => true, 'stop-opacity' => true ) ),
+					'clippath'       => $svg_common,
+					'mask'           => $svg_common,
+				) );
+			}
+			return $tags;
+		}, 11, 2 );
+
 		echo wp_kses_post( $html );
 	}
 	wp_die();

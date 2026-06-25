@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bold Page Builder 5.9.3\n"
+"Project-Id-Version: Bold Page Builder 5.9.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-22T09:50:34+00:00\n"
+"POT-Creation-Date: 2026-06-25T11:40:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bold-page-builder\n"
@@ -485,48 +485,48 @@ msgstr ""
 msgid "Edit Footer"
 msgstr ""
 
-#: bold-builder-fe.php:850
+#: bold-builder-fe.php:879
 #: bold-builder.php:216
 #: bold-builder.php:227
 #: bold-builder.php:1073
 msgid "Edit"
 msgstr ""
 
-#: bold-builder-fe.php:851
+#: bold-builder-fe.php:880
 #: bold-builder.php:217
 msgid "Edit in back-end editor"
 msgstr ""
 
-#: bold-builder-fe.php:851
+#: bold-builder-fe.php:880
 #: bold-builder.php:217
 msgid "(new tab)"
 msgstr ""
 
-#: bold-builder-fe.php:852
+#: bold-builder-fe.php:881
 #: bold-builder.php:218
 msgid "Cut"
 msgstr ""
 
-#: bold-builder-fe.php:853
+#: bold-builder-fe.php:882
 #: bold-builder.php:219
 #: bold-builder.php:1091
 #: bold-builder.php:1161
 msgid "Copy"
 msgstr ""
 
-#: bold-builder-fe.php:854
+#: bold-builder-fe.php:883
 #: bold-builder.php:220
 #: bold-builder.php:1093
 #: bold-builder.php:1664
 msgid "Paste"
 msgstr ""
 
-#: bold-builder-fe.php:854
+#: bold-builder-fe.php:883
 #: bold-builder.php:220
 msgid "(above)"
 msgstr ""
 
-#: bold-builder-fe.php:855
+#: bold-builder-fe.php:884
 #: bold-builder.php:221
 #: bold-builder.php:1078
 msgid "Delete"

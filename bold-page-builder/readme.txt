@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.3
+Stable tag: 5.9.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,9 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.4 =
+* Fixed colored-icon SVGs being stripped in the front-end editor preview (added inline SVG to the editor re-render kses allowlist).
 
 = 5.9.3 =
 * Redesigned the Row "Columns layout" control: row width and column structure are now selected separately, with the column structure shown as layout preview thumbnails.
