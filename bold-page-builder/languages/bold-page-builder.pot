@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bold Page Builder 5.9.4\n"
+"Project-Id-Version: Bold Page Builder 5.9.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-25T11:40:16+00:00\n"
+"POT-Creation-Date: 2026-06-29T10:43:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bold-page-builder\n"
@@ -488,7 +488,7 @@ msgstr ""
 #: bold-builder-fe.php:879
 #: bold-builder.php:216
 #: bold-builder.php:227
-#: bold-builder.php:1073
+#: bold-builder.php:1079
 msgid "Edit"
 msgstr ""
 
@@ -509,15 +509,15 @@ msgstr ""
 
 #: bold-builder-fe.php:882
 #: bold-builder.php:219
-#: bold-builder.php:1091
-#: bold-builder.php:1161
+#: bold-builder.php:1097
+#: bold-builder.php:1167
 msgid "Copy"
 msgstr ""
 
 #: bold-builder-fe.php:883
 #: bold-builder.php:220
-#: bold-builder.php:1093
-#: bold-builder.php:1664
+#: bold-builder.php:1099
+#: bold-builder.php:1670
 msgid "Paste"
 msgstr ""
 
@@ -528,7 +528,7 @@ msgstr ""
 
 #: bold-builder-fe.php:884
 #: bold-builder.php:221
-#: bold-builder.php:1078
+#: bold-builder.php:1084
 msgid "Delete"
 msgstr ""
 
@@ -545,12 +545,12 @@ msgid "Add Elements"
 msgstr ""
 
 #: bold-builder.php:115
-#: bold-builder.php:1661
+#: bold-builder.php:1667
 msgid "Undo"
 msgstr ""
 
 #: bold-builder.php:116
-#: bold-builder.php:1662
+#: bold-builder.php:1668
 msgid "Redo"
 msgstr ""
 
@@ -589,35 +589,35 @@ msgstr ""
 msgid "Current Color"
 msgstr ""
 
-#: bold-builder.php:816
-#: bold-builder.php:837
+#: bold-builder.php:822
+#: bold-builder.php:843
 msgid "Bold Builder Settings"
 msgstr ""
 
-#: bold-builder.php:816
-#: bold-builder.php:1524
+#: bold-builder.php:822
+#: bold-builder.php:1530
 msgid "Bold Builder"
 msgstr ""
 
 #. translators: 1: Documentation URL, 2: Tooltip title text
-#: bold-builder.php:843
+#: bold-builder.php:849
 #, php-format
 msgid "For additional help check out <a href=\"%1$s\" title=\"%2$s\" target=\"_blank\">Online Documentation</a>."
 msgstr ""
 
-#: bold-builder.php:847
+#: bold-builder.php:853
 msgid "Bold Builder documentation"
 msgstr ""
 
-#: bold-builder.php:856
+#: bold-builder.php:862
 msgid "Show shortcode tag instead of mapped name"
 msgstr ""
 
-#: bold-builder.php:857
+#: bold-builder.php:863
 msgid "Show shortcode tags instead of mapped names"
 msgstr ""
 
-#: bold-builder.php:858
+#: bold-builder.php:864
 #: content_elements/bt_bb_column/bt_bb_column.php:354
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:355
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:213
@@ -637,7 +637,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: bold-builder.php:859
+#: bold-builder.php:865
 #: content_elements/bt_bb_accordion/bt_bb_accordion.php:105
 #: content_elements/bt_bb_column/bt_bb_column.php:355
 #: content_elements/bt_bb_column_inner/bt_bb_column_inner.php:356
@@ -681,67 +681,67 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: bold-builder.php:863
+#: bold-builder.php:869
 msgid "Post types"
 msgstr ""
 
-#: bold-builder.php:864
+#: bold-builder.php:870
 msgid "Post Types"
 msgstr ""
 
-#: bold-builder.php:882
+#: bold-builder.php:888
 msgid "Color schemes"
 msgstr ""
 
-#: bold-builder.php:883
+#: bold-builder.php:889
 msgid "Color Schemes"
 msgstr ""
 
-#: bold-builder.php:891
+#: bold-builder.php:897
 msgid "Tips"
 msgstr ""
 
-#: bold-builder.php:899
+#: bold-builder.php:905
 msgid "Show Tips"
 msgstr ""
 
-#: bold-builder.php:904
+#: bold-builder.php:910
 msgid "Slug in URL"
 msgstr ""
 
-#: bold-builder.php:912
+#: bold-builder.php:918
 msgid "Use post slug in URL input (when selecting existing content search result)"
 msgstr ""
 
-#: bold-builder.php:917
-#: bold-builder.php:918
+#: bold-builder.php:923
+#: bold-builder.php:924
 msgid "OpenAI API key"
 msgstr ""
 
-#: bold-builder.php:925
-#: bold-builder.php:926
+#: bold-builder.php:931
+#: bold-builder.php:932
 msgid "OpenAI Model"
 msgstr ""
 
-#: bold-builder.php:935
-#: bold-builder.php:1101
-#: bold-builder.php:1669
+#: bold-builder.php:941
+#: bold-builder.php:1107
+#: bold-builder.php:1675
 msgid "Save"
 msgstr ""
 
-#: bold-builder.php:1071
+#: bold-builder.php:1077
 msgid "Toggle"
 msgstr ""
 
-#: bold-builder.php:1072
+#: bold-builder.php:1078
 msgid "Add"
 msgstr ""
 
-#: bold-builder.php:1074
+#: bold-builder.php:1080
 msgid "Edit Content"
 msgstr ""
 
-#: bold-builder.php:1075
+#: bold-builder.php:1081
 #: content_elements/bt_bb_image/bt_bb_image.php:300
 #: content_elements/bt_bb_image/bt_bb_image.php:307
 #: content_elements/bt_bb_image/bt_bb_image.php:308
@@ -749,233 +749,233 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: bold-builder.php:1076
+#: bold-builder.php:1082
 msgid "Select parent"
 msgstr ""
 
-#: bold-builder.php:1077
+#: bold-builder.php:1083
 msgid "Clone"
 msgstr ""
 
-#: bold-builder.php:1079
+#: bold-builder.php:1085
 msgid "Do you really want to delete this Section?"
 msgstr ""
 
-#: bold-builder.php:1080
+#: bold-builder.php:1086
 msgid "Layout error!"
 msgstr ""
 
-#: bold-builder.php:1081
+#: bold-builder.php:1087
 msgid "Number of columns not equal for all breakpoints!"
 msgstr ""
 
-#: bold-builder.php:1082
+#: bold-builder.php:1088
 msgid "Add Element"
 msgstr ""
 
-#: bold-builder.php:1083
+#: bold-builder.php:1089
 msgid "Add elements (drag & drop)"
 msgstr ""
 
-#: bold-builder.php:1084
+#: bold-builder.php:1090
 msgid "Select Layout"
 msgstr ""
 
-#: bold-builder.php:1085
+#: bold-builder.php:1091
 msgid "Edit Layout"
 msgstr ""
 
-#: bold-builder.php:1086
+#: bold-builder.php:1092
 #: content_elements/bt_bb_cost_calculator_item/bt_bb_cost_calculator_item.php:102
 #: widgets/bb_text_image/init.php:204
 msgid "Select"
 msgstr ""
 
-#: bold-builder.php:1087
+#: bold-builder.php:1093
 msgid "Select Images"
 msgstr ""
 
-#: bold-builder.php:1088
-#: bold-builder.php:1745
+#: bold-builder.php:1094
+#: bold-builder.php:1751
 msgid "Submit"
 msgstr ""
 
-#: bold-builder.php:1089
+#: bold-builder.php:1095
 msgid "Search"
 msgstr ""
 
-#: bold-builder.php:1090
+#: bold-builder.php:1096
 msgid "Search for existing content"
 msgstr ""
 
-#: bold-builder.php:1092
+#: bold-builder.php:1098
 msgid "Copy+"
 msgstr ""
 
-#: bold-builder.php:1094
+#: bold-builder.php:1100
 msgid "Export"
 msgstr ""
 
-#: bold-builder.php:1095
+#: bold-builder.php:1101
 msgid "Import"
 msgstr ""
 
-#: bold-builder.php:1096
+#: bold-builder.php:1102
 msgid "Not allowed!"
 msgstr ""
 
-#: bold-builder.php:1097
+#: bold-builder.php:1103
 msgid "Manage Clipboard"
 msgstr ""
 
-#: bold-builder.php:1098
+#: bold-builder.php:1104
 msgid "Filter..."
 msgstr ""
 
-#: bold-builder.php:1099
+#: bold-builder.php:1105
 msgid "Shortcode Mapper"
 msgstr ""
 
-#: bold-builder.php:1100
+#: bold-builder.php:1106
 msgid "Insert Mapping"
 msgstr ""
 
-#: bold-builder.php:1102
+#: bold-builder.php:1108
 msgid "Switch Editor"
 msgstr ""
 
-#: bold-builder.php:1103
+#: bold-builder.php:1109
 msgid "Custom CSS"
 msgstr ""
 
-#: bold-builder.php:1104
+#: bold-builder.php:1110
 msgid "Are you sure you want to switch editor?"
 msgstr ""
 
-#: bold-builder.php:1105
+#: bold-builder.php:1111
 #: content_elements/bt_bb_section/bt_bb_section.php:306
 msgid "General"
 msgstr ""
 
-#: bold-builder.php:1106
-#: bold-builder.php:1655
-#: bold-builder.php:1668
+#: bold-builder.php:1112
+#: bold-builder.php:1661
+#: bold-builder.php:1674
 msgid "Preview"
 msgstr ""
 
-#: bold-builder.php:1107
+#: bold-builder.php:1113
 msgid "No results found."
 msgstr ""
 
-#: bold-builder.php:1108
+#: bold-builder.php:1114
 msgid "Edit in BE editor"
 msgstr ""
 
-#: bold-builder.php:1109
+#: bold-builder.php:1115
 msgid "parent"
 msgstr ""
 
-#: bold-builder.php:1110
+#: bold-builder.php:1116
 msgid "Or enter image URL..."
 msgstr ""
 
-#: bold-builder.php:1111
+#: bold-builder.php:1117
 msgid "Content not saved!"
 msgstr ""
 
-#: bold-builder.php:1113
+#: bold-builder.php:1119
 msgid "Previous Tip"
 msgstr ""
 
-#: bold-builder.php:1114
+#: bold-builder.php:1120
 msgid "Next Tip"
 msgstr ""
 
-#: bold-builder.php:1119
+#: bold-builder.php:1125
 msgid "Bold Builder tip: Hold CTRL key while moving (dragging) element to quickly clone it to another location."
 msgstr ""
 
-#: bold-builder.php:1120
+#: bold-builder.php:1126
 msgid "Bold Builder tip: You can edit Bold Builder settings in Settings > Bold Builder."
 msgstr ""
 
-#: bold-builder.php:1121
+#: bold-builder.php:1127
 msgid "Bold Builder tip: Did you know that you can move columns between rows?"
 msgstr ""
 
-#: bold-builder.php:1122
+#: bold-builder.php:1128
 msgid "Bold Builder tip: You can use CTRL key with Copy/Copy+ to cut the element."
 msgstr ""
 
-#: bold-builder.php:1123
+#: bold-builder.php:1129
 msgid "Bold Builder tip: Use Copy+ to copy multiple elements to clipboard."
 msgstr ""
 
-#: bold-builder.php:1124
+#: bold-builder.php:1130
 msgid "Bold Builder tip: Hold CTRL key and click Paste on content element toolbar to paste before the element."
 msgstr ""
 
-#: bold-builder.php:1128
+#: bold-builder.php:1134
 msgid "AI"
 msgstr ""
 
-#: bold-builder.php:1129
+#: bold-builder.php:1135
 msgid "AI Content Generator"
 msgstr ""
 
-#: bold-builder.php:1130
+#: bold-builder.php:1136
 msgid "Generate"
 msgstr ""
 
-#: bold-builder.php:1131
+#: bold-builder.php:1137
 msgid "Translate"
 msgstr ""
 
-#: bold-builder.php:1132
+#: bold-builder.php:1138
 msgid "Rephrase"
 msgstr ""
 
-#: bold-builder.php:1133
+#: bold-builder.php:1139
 msgid "Correct"
 msgstr ""
 
-#: bold-builder.php:1134
+#: bold-builder.php:1140
 msgid "Go"
 msgstr ""
 
-#: bold-builder.php:1135
+#: bold-builder.php:1141
 msgid "Keywords"
 msgstr ""
 
-#: bold-builder.php:1136
+#: bold-builder.php:1142
 msgid "System prompt"
 msgstr ""
 
-#: bold-builder.php:1137
+#: bold-builder.php:1143
 msgid "Randomness (temperature)"
 msgstr ""
 
-#: bold-builder.php:1138
+#: bold-builder.php:1144
 msgid "Desired length (in words)"
 msgstr ""
 
-#: bold-builder.php:1139
+#: bold-builder.php:1145
 msgid "Language"
 msgstr ""
 
-#: bold-builder.php:1140
+#: bold-builder.php:1146
 msgid "English"
 msgstr ""
 
-#: bold-builder.php:1141
+#: bold-builder.php:1147
 msgid "Tone"
 msgstr ""
 
-#: bold-builder.php:1143
+#: bold-builder.php:1149
 msgid "Default / Same"
 msgstr ""
 
-#: bold-builder.php:1144
+#: bold-builder.php:1150
 #: content_elements/bt_bb_button/bt_bb_button.php:258
 #: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:88
 #: content_elements/bt_bb_headline/bt_bb_headline.php:297
@@ -984,217 +984,217 @@ msgstr ""
 msgid "Bold"
 msgstr ""
 
-#: bold-builder.php:1145
+#: bold-builder.php:1151
 msgid "Conversational"
 msgstr ""
 
-#: bold-builder.php:1146
+#: bold-builder.php:1152
 msgid "Passionate"
 msgstr ""
 
-#: bold-builder.php:1147
+#: bold-builder.php:1153
 msgid "Professional"
 msgstr ""
 
-#: bold-builder.php:1148
+#: bold-builder.php:1154
 msgid "Witty"
 msgstr ""
 
-#: bold-builder.php:1149
+#: bold-builder.php:1155
 msgid "Help"
 msgstr ""
 
-#: bold-builder.php:1150
+#: bold-builder.php:1156
 msgid "(leave empty to use length of current content)"
 msgstr ""
 
 #. translators: 1: Opening <a> tag for settings link, 2: Closing </a> tag
-#: bold-builder.php:1153
+#: bold-builder.php:1159
 #, php-format
 msgid "Error. Please check OpenAI settings %1$shere%2$s."
 msgstr ""
 
-#: bold-builder.php:1157
+#: bold-builder.php:1163
 msgid "No content!"
 msgstr ""
 
-#: bold-builder.php:1160
+#: bold-builder.php:1166
 msgid "Move"
 msgstr ""
 
-#: bold-builder.php:1162
+#: bold-builder.php:1168
 msgid "before"
 msgstr ""
 
-#: bold-builder.php:1163
+#: bold-builder.php:1169
 msgid "after"
 msgstr ""
 
-#: bold-builder.php:1164
+#: bold-builder.php:1170
 msgid "to"
 msgstr ""
 
-#: bold-builder.php:1166
+#: bold-builder.php:1172
 msgid "Need help?"
 msgstr ""
 
-#: bold-builder.php:1167
+#: bold-builder.php:1173
 msgid "Read Documentation"
 msgstr ""
 
-#: bold-builder.php:1169
+#: bold-builder.php:1175
 msgid "Responsive Override"
 msgstr ""
 
-#: bold-builder.php:1666
+#: bold-builder.php:1672
 msgid "Clipboard Manager"
 msgstr ""
 
-#: bold-builder.php:1913
+#: bold-builder.php:1919
 msgid "Hide element on screens"
 msgstr ""
 
-#: bold-builder.php:1913
+#: bold-builder.php:1919
 msgid "Responsive"
 msgstr ""
 
-#: bold-builder.php:1915
+#: bold-builder.php:1921
 msgid "≤480px"
 msgstr ""
 
-#: bold-builder.php:1916
+#: bold-builder.php:1922
 msgid "481-768px"
 msgstr ""
 
-#: bold-builder.php:1917
+#: bold-builder.php:1923
 msgid "769-992px"
 msgstr ""
 
-#: bold-builder.php:1918
+#: bold-builder.php:1924
 msgid "993-1200px"
 msgstr ""
 
-#: bold-builder.php:1919
+#: bold-builder.php:1925
 msgid "1201-1400px"
 msgstr ""
 
-#: bold-builder.php:1920
+#: bold-builder.php:1926
 msgid ">1400px"
 msgstr ""
 
-#: bold-builder.php:1925
+#: bold-builder.php:1931
 msgid "Publish date"
 msgstr ""
 
-#: bold-builder.php:1925
-#: bold-builder.php:1926
+#: bold-builder.php:1931
+#: bold-builder.php:1932
 msgid "Fill both the date and time"
 msgstr ""
 
-#: bold-builder.php:1925
-#: bold-builder.php:1926
-#: bold-builder.php:1927
-#: bold-builder.php:1928
-#: bold-builder.php:1929
-#: bold-builder.php:1936
+#: bold-builder.php:1931
+#: bold-builder.php:1932
+#: bold-builder.php:1933
+#: bold-builder.php:1934
+#: bold-builder.php:1935
+#: bold-builder.php:1942
 msgid "Custom"
 msgstr ""
 
-#: bold-builder.php:1926
+#: bold-builder.php:1932
 msgid "Expiry date"
 msgstr ""
 
-#: bold-builder.php:1927
+#: bold-builder.php:1933
 msgid "Element ID"
 msgstr ""
 
-#: bold-builder.php:1927
+#: bold-builder.php:1933
 msgid "E.g. myid"
 msgstr ""
 
-#: bold-builder.php:1928
+#: bold-builder.php:1934
 msgid "Extra class name(s)"
 msgstr ""
 
-#: bold-builder.php:1928
+#: bold-builder.php:1934
 msgid "E.g. myclass"
 msgstr ""
 
-#: bold-builder.php:1929
+#: bold-builder.php:1935
 msgid "Inline CSS style"
 msgstr ""
 
-#: bold-builder.php:1929
+#: bold-builder.php:1935
 msgid "E.g. opacity: 0.5;"
 msgstr ""
 
-#: bold-builder.php:1936
+#: bold-builder.php:1942
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:197
 #: content_elements/bt_bb_slider/bt_bb_slider.php:216
 msgid "Animation"
 msgstr ""
 
-#: bold-builder.php:1938
+#: bold-builder.php:1944
 msgid "No Animation"
 msgstr ""
 
-#: bold-builder.php:1939
+#: bold-builder.php:1945
 msgid "Fade In"
 msgstr ""
 
-#: bold-builder.php:1940
+#: bold-builder.php:1946
 msgid "Move Up"
 msgstr ""
 
-#: bold-builder.php:1941
+#: bold-builder.php:1947
 msgid "Move Left"
 msgstr ""
 
-#: bold-builder.php:1942
+#: bold-builder.php:1948
 msgid "Move Right"
 msgstr ""
 
-#: bold-builder.php:1943
+#: bold-builder.php:1949
 msgid "Move Down"
 msgstr ""
 
-#: bold-builder.php:1944
+#: bold-builder.php:1950
 msgid "Zoom In"
 msgstr ""
 
-#: bold-builder.php:1945
+#: bold-builder.php:1951
 msgid "Zoom Out"
 msgstr ""
 
-#: bold-builder.php:1946
+#: bold-builder.php:1952
 msgid "Fade In / Move Up"
 msgstr ""
 
-#: bold-builder.php:1947
+#: bold-builder.php:1953
 msgid "Fade In / Move Left"
 msgstr ""
 
-#: bold-builder.php:1948
+#: bold-builder.php:1954
 msgid "Fade In / Move Right"
 msgstr ""
 
-#: bold-builder.php:1949
+#: bold-builder.php:1955
 msgid "Fade In / Move Down"
 msgstr ""
 
-#: bold-builder.php:1950
+#: bold-builder.php:1956
 msgid "Fade In / Zoom In"
 msgstr ""
 
-#: bold-builder.php:1951
+#: bold-builder.php:1957
 msgid "Fade In / Zoom Out"
 msgstr ""
 
-#: bold-builder.php:2247
+#: bold-builder.php:2263
 msgid "Sorry, you are not allowed to save Price List element."
 msgstr ""
 
-#: bold-builder.php:2250
+#: bold-builder.php:2266
 msgid "Sorry, you are not allowed to save Raw Content element."
 msgstr ""
 

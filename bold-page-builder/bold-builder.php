@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Page Builder
  * Description: WordPress page builder.
- * Version: 5.9.4
+ * Version: 5.9.5
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * License: GPL v2 or later
@@ -14,7 +14,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.9.4' );
+define( 'BT_BB_VERSION', '5.9.5' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -686,10 +686,16 @@ add_action( 'wp_ajax_bt_bb_get_custom_css', 'bt_bb_get_custom_css' );
  
 function bt_bb_search_links() {
 
-    // phpcs:disable WordPress.Security.NonceVerification.Missing -- read-only search over public post types (returns post titles + already-public permalinks); logged-in-only AJAX endpoint, output escaped.
+    // Builder link picker: restrict to users who edit content and verify the
+    // editor nonce, so a low-privileged or cross-site request can't enumerate
+    // posts/pages and (especially) attachment URLs + metadata via this search.
+    check_ajax_referer( 'bt_bb_nonce', 'nonce' );
+    if ( ! current_user_can( 'edit_posts' ) ) {
+        wp_send_json_error( 'forbidden', 403 );
+    }
+
     $search = sanitize_text_field( wp_unslash( $_POST['search'] ?? '' ) );
     $page   = max( 1, intval( $_POST['page'] ?? 1 ) );
-    // phpcs:enable WordPress.Security.NonceVerification.Missing
 
     $per_page = 50;
     $offset   = ( $page - 1 ) * $per_page;
@@ -2135,9 +2141,19 @@ class BT_BB_Element extends BT_BB_Basic_Element {
 // BB version
 function bt_bb_version( $output, $atts ) {
 	if ( isset( $atts['bb_version'] ) ) {
+		// Escape the user-supplied attribute value so a raw quote cannot break
+		// out of data-bb-version="..." and inject markup. Build the replacement
+		// in a callback so the (escaped) value is treated as a literal string,
+		// not as preg_replace backreferences ($1/$2/\1) it might contain.
+		$version = esc_attr( $atts['bb_version'] );
 		$pattern = '/([<a-zA-Z0-9]+)\s(.+)/s';
-		$replacement = '$1 data-bb-version="' . $atts['bb_version'] . '" $2';
-		return preg_replace( $pattern, $replacement, $output );
+		return preg_replace_callback(
+			$pattern,
+			function( $m ) use ( $version ) {
+				return $m[1] . ' data-bb-version="' . $version . '" ' . $m[2];
+			},
+			$output
+		);
 	}
 	return $output;
 }

@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.4
+Stable tag: 5.9.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,10 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.5 =
+* Security: escaped the shortcode `bb_version` attribute before it is written into the rendered output, preventing a stored XSS via a crafted attribute value (authenticated, content-editing users).
+* Security: added a capability check and nonce verification to the builder link-search AJAX endpoint, so it can no longer be used to enumerate posts, pages, and media URLs/metadata by low-privileged or cross-site requests.
 
 = 5.9.4 =
 * Fixed colored-icon SVGs being stripped in the front-end editor preview (added inline SVG to the editor re-render kses allowlist).
