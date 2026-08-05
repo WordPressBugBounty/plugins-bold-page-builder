@@ -16,8 +16,15 @@
 				var this_top = $( this ).offset().top;
 				if ( this_top < page_bottom + $( window ).height() ) {
 					var img_src = $( this ).data( 'src' );
-					if ( img_src !== '' && $( this ).find( '.bt_bb_grid_item_post_thumbnail a' ).html() == '' ) {
-						$( this ).find( '.bt_bb_grid_item_post_thumbnail a' ).html( '<img src="' + img_src + '" alt="' + $( this ).data( 'alt' ) + '">' );
+					var $link = $( this ).find( '.bt_bb_grid_item_post_thumbnail a' );
+					if ( img_src !== '' && $link.html() == '' ) {
+						// Build via DOM attributes -- data( 'alt' ) returns the decoded
+						// attribute value, so concatenating it into an HTML string would
+						// let a crafted attachment ALT text break out and inject markup.
+						var img = $( '<img>' );
+						img.attr( 'src', img_src );
+						img.attr( 'alt', $( this ).data( 'alt' ) || '' );
+						$link.empty().append( img );
 					}
 				}
 			});

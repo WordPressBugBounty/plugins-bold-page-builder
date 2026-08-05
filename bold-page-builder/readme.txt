@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.5
+Stable tag: 5.9.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,10 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.6 =
+* Security: the Post Grid and Image Grid elements now build their lazy-loaded images through DOM attributes instead of HTML string concatenation, preventing a stored XSS via a crafted attachment ALT text or title (authenticated, media-uploading users).
+* Security: the Service element now validates its title HTML tag against an allow list, preventing a stored XSS via a crafted tag name (authenticated, content-editing users).
 
 = 5.9.5 =
 * Security: escaped the shortcode `bb_version` attribute before it is written into the rendered output, preventing a stored XSS via a crafted attribute value (authenticated, content-editing users).

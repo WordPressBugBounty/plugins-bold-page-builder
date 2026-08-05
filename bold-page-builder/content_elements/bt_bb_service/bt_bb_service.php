@@ -32,7 +32,14 @@ class bt_bb_service extends BT_BB_Element {
 		$class = array( $this->shortcode );
 		$data_override_class = array();
 		
-		$html_tag = str_replace( [ ' ', '=', '&', 'script' ], '', $html_tag );
+		// Allowlist, matching the html_tag dropdown in map_shortcode(). A blocklist
+		// is not enough here: str_replace() is case-sensitive, so 'SCRIPT' passed
+		// straight through and the (kses'd, but tag-free) title was then emitted as
+		// the body of a real script element.
+		$allowed_html_tags = array( 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p' );
+		if ( ! in_array( $html_tag, $allowed_html_tags, true ) ) {
+			$html_tag = 'div';
+		}
 
 		if ( $el_class != '' ) {
 			$class[] = $el_class;

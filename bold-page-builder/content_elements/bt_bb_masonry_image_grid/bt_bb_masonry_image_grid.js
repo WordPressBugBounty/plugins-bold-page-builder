@@ -25,8 +25,17 @@
 					var img_src = $( this ).data( 'src' );
 					var img_title = $( this ).data( 'title' );
 					var img_src_full = $( this ).data( 'src-full' );
-					if ( img_src !== '' && $( this ).find('.bt_bb_grid_item_inner_image').html() == '' ) {
-						$( this ).find('.bt_bb_grid_item_inner_image').html( '<img src="' + img_src + '" title="' + img_title + '" alt="' + img_title + '" data-src-full="' + img_src_full + '">' );
+					var $holder = $( this ).find('.bt_bb_grid_item_inner_image');
+					if ( img_src !== '' && $holder.html() == '' ) {
+						// Build via DOM attributes -- data( 'title' ) returns the decoded
+						// attribute value, so concatenating it into an HTML string would
+						// let a crafted attachment title break out and inject markup.
+						var img = $( '<img>' );
+						img.attr( 'src', img_src );
+						img.attr( 'title', img_title || '' );
+						img.attr( 'alt', img_title || '' );
+						img.attr( 'data-src-full', img_src_full );
+						$holder.empty().append( img );
 					}
 				}
 			});
