@@ -24,7 +24,20 @@ class bt_bb_raw_content extends BT_BB_Element {
 			);
 		}
 
-		$output = '<div class="' . esc_attr( implode( ' ', $class ) ) . '">' . base64_decode( $raw_content ) . '</div>';
+		$raw = base64_decode( $raw_content );
+
+		// This element exists to emit unfiltered HTML/JS, so it is only safe when the
+		// person who stored it was trusted to publish unfiltered HTML. The save-time
+		// gate in bt_bb_save_pre() cannot be the only control -- it inspects content
+		// on its way into the database, where save-filter ordering can leave it
+		// looking at a different string than the one actually stored. Deciding here,
+		// against the stored post's author, is evaluated on exactly what will be
+		// printed and stays meaningful for anonymous visitors.
+		if ( ! function_exists( 'bt_bb_author_can_unfiltered_html' ) || ! bt_bb_author_can_unfiltered_html() ) {
+			$raw = wp_kses_post( $raw );
+		}
+
+		$output = '<div class="' . esc_attr( implode( ' ', $class ) ) . '">' . $raw . '</div>';
 		
 		$output = apply_filters( 'bt_bb_general_output', $output, $atts );
 		$output = apply_filters( $this->shortcode . '_output', $output, $atts );

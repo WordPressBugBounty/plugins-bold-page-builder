@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bold Page Builder 5.9.6\n"
+"Project-Id-Version: Bold Page Builder 5.9.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-05T11:11:03+00:00\n"
+"POT-Creation-Date: 2026-08-27T13:31:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bold-page-builder\n"
@@ -133,12 +133,12 @@ msgid "bt_bb_custom_menu"
 msgstr ""
 
 #: bold-builder-fe.php:493
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:81
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:82
 msgid "Custom Menu"
 msgstr ""
 
 #: bold-builder-fe.php:494
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:81
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:82
 msgid "Custom WordPress menu"
 msgstr ""
 
@@ -352,12 +352,12 @@ msgid "bt_bb_raw_content"
 msgstr ""
 
 #: bold-builder-fe.php:578
-#: content_elements/bt_bb_raw_content/bt_bb_raw_content.php:41
+#: content_elements/bt_bb_raw_content/bt_bb_raw_content.php:54
 msgid "Raw Content"
 msgstr ""
 
 #: bold-builder-fe.php:579
-#: content_elements/bt_bb_raw_content/bt_bb_raw_content.php:41
+#: content_elements/bt_bb_raw_content/bt_bb_raw_content.php:54
 msgid "Raw HTML/JS content"
 msgstr ""
 
@@ -568,7 +568,7 @@ msgstr ""
 
 #: bold-builder.php:447
 #: content_elements/bt_bb_button/bt_bb_button.php:256
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:86
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:87
 #: content_elements/bt_bb_headline/bt_bb_headline.php:295
 #: content_elements/bt_bb_headline/bt_bb_headline.php:314
 #: content_elements/bt_bb_headline/bt_bb_headline.php:325
@@ -977,7 +977,7 @@ msgstr ""
 
 #: bold-builder.php:1150
 #: content_elements/bt_bb_button/bt_bb_button.php:258
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:88
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:89
 #: content_elements/bt_bb_headline/bt_bb_headline.php:297
 #: content_elements/bt_bb_headline/bt_bb_headline.php:327
 #: content_elements/bt_bb_headline/bt_bb_headline.php:358
@@ -1190,11 +1190,11 @@ msgstr ""
 msgid "Fade In / Zoom Out"
 msgstr ""
 
-#: bold-builder.php:2263
+#: bold-builder.php:2307
 msgid "Sorry, you are not allowed to save Price List element."
 msgstr ""
 
-#: bold-builder.php:2266
+#: bold-builder.php:2310
 msgid "Sorry, you are not allowed to save Raw Content element."
 msgstr ""
 
@@ -1590,7 +1590,7 @@ msgstr ""
 #: content_elements/bt_bb_counter/bt_bb_counter.php:116
 #: content_elements/bt_bb_css_image_grid/bt_bb_css_image_grid.php:145
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:467
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:87
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:88
 #: content_elements/bt_bb_headline/bt_bb_headline.php:261
 #: content_elements/bt_bb_headline/bt_bb_headline.php:296
 #: content_elements/bt_bb_headline/bt_bb_headline.php:326
@@ -1705,12 +1705,12 @@ msgid "E.g. :ital,wght@0,200;1,700"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:254
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:84
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:85
 msgid "Font weight"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:259
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:89
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:90
 #: content_elements/bt_bb_headline/bt_bb_headline.php:298
 #: content_elements/bt_bb_headline/bt_bb_headline.php:328
 #: content_elements/bt_bb_headline/bt_bb_headline.php:359
@@ -1718,7 +1718,7 @@ msgid "Bolder"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:260
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:90
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:91
 #: content_elements/bt_bb_headline/bt_bb_headline.php:299
 #: content_elements/bt_bb_headline/bt_bb_headline.php:329
 #: content_elements/bt_bb_headline/bt_bb_headline.php:360
@@ -1726,7 +1726,7 @@ msgid "Lighter"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:261
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:91
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:92
 #: content_elements/bt_bb_headline/bt_bb_headline.php:300
 #: content_elements/bt_bb_headline/bt_bb_headline.php:330
 #: content_elements/bt_bb_headline/bt_bb_headline.php:361
@@ -1734,7 +1734,7 @@ msgid "Light"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:262
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:93
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:94
 #: content_elements/bt_bb_headline/bt_bb_headline.php:301
 #: content_elements/bt_bb_headline/bt_bb_headline.php:332
 #: content_elements/bt_bb_headline/bt_bb_headline.php:363
@@ -1742,7 +1742,7 @@ msgid "100"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:263
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:94
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:95
 #: content_elements/bt_bb_headline/bt_bb_headline.php:302
 #: content_elements/bt_bb_headline/bt_bb_headline.php:333
 #: content_elements/bt_bb_headline/bt_bb_headline.php:364
@@ -1750,7 +1750,7 @@ msgid "200"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:264
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:95
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:96
 #: content_elements/bt_bb_headline/bt_bb_headline.php:303
 #: content_elements/bt_bb_headline/bt_bb_headline.php:334
 #: content_elements/bt_bb_headline/bt_bb_headline.php:365
@@ -1758,7 +1758,7 @@ msgid "300"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:265
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:96
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:97
 #: content_elements/bt_bb_headline/bt_bb_headline.php:304
 #: content_elements/bt_bb_headline/bt_bb_headline.php:335
 #: content_elements/bt_bb_headline/bt_bb_headline.php:366
@@ -1766,7 +1766,7 @@ msgid "400"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:266
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:97
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:98
 #: content_elements/bt_bb_headline/bt_bb_headline.php:305
 #: content_elements/bt_bb_headline/bt_bb_headline.php:336
 #: content_elements/bt_bb_headline/bt_bb_headline.php:367
@@ -1774,7 +1774,7 @@ msgid "500"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:267
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:98
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:99
 #: content_elements/bt_bb_headline/bt_bb_headline.php:306
 #: content_elements/bt_bb_headline/bt_bb_headline.php:337
 #: content_elements/bt_bb_headline/bt_bb_headline.php:368
@@ -1782,7 +1782,7 @@ msgid "600"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:268
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:99
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:100
 #: content_elements/bt_bb_headline/bt_bb_headline.php:307
 #: content_elements/bt_bb_headline/bt_bb_headline.php:338
 #: content_elements/bt_bb_headline/bt_bb_headline.php:369
@@ -1790,7 +1790,7 @@ msgid "700"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:269
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:100
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:101
 #: content_elements/bt_bb_headline/bt_bb_headline.php:308
 #: content_elements/bt_bb_headline/bt_bb_headline.php:339
 #: content_elements/bt_bb_headline/bt_bb_headline.php:370
@@ -1798,7 +1798,7 @@ msgid "800"
 msgstr ""
 
 #: content_elements/bt_bb_button/bt_bb_button.php:270
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:101
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:102
 #: content_elements/bt_bb_headline/bt_bb_headline.php:309
 #: content_elements/bt_bb_headline/bt_bb_headline.php:340
 #: content_elements/bt_bb_headline/bt_bb_headline.php:371
@@ -2360,7 +2360,7 @@ msgid "Fade"
 msgstr ""
 
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:203
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:104
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:105
 msgid "Direction"
 msgstr ""
 
@@ -2985,25 +2985,25 @@ msgstr ""
 msgid "If using long-term caching, either skip nonce verification (less secure) or reduce cache TTL to prevent failures."
 msgstr ""
 
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:48
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:49
 msgid "No menus found."
 msgstr ""
 
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:83
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:84
 msgid "Menu name"
 msgstr ""
 
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:92
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:93
 #: content_elements/bt_bb_headline/bt_bb_headline.php:331
 #: content_elements/bt_bb_headline/bt_bb_headline.php:362
 msgid "Thin"
 msgstr ""
 
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:106
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:107
 msgid "Vertical"
 msgstr ""
 
-#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:107
+#: content_elements/bt_bb_custom_menu/bt_bb_custom_menu.php:108
 msgid "Horizontal"
 msgstr ""
 
@@ -3575,11 +3575,11 @@ msgstr ""
 msgid "Rounded"
 msgstr ""
 
-#: content_elements/bt_bb_raw_content/bt_bb_raw_content.php:43
+#: content_elements/bt_bb_raw_content/bt_bb_raw_content.php:56
 msgid "Raw content"
 msgstr ""
 
-#: content_elements/bt_bb_raw_content/bt_bb_raw_content.php:43
+#: content_elements/bt_bb_raw_content/bt_bb_raw_content.php:56
 msgid "Do NOT use HTML content generated by Bold Builder."
 msgstr ""
 

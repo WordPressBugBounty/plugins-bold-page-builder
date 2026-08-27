@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Page Builder
  * Description: WordPress page builder.
- * Version: 5.9.6
+ * Version: 5.9.7
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * License: GPL v2 or later
@@ -14,7 +14,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.9.6' );
+define( 'BT_BB_VERSION', '5.9.7' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -2236,27 +2236,71 @@ function bt_bb_honor_ssl_for_attachments( $url ) {
 	return ( isset( $_SERVER['HTTPS'] ) && sanitize_text_field( wp_unslash( $_SERVER['HTTPS'] ) ) === 'on' ) ? str_replace( $http, $https, $url ) : $url;
 }
 
-add_action( 'content_save_pre', 'bt_bb_save_pre' );
+/**
+ * Returns TRUE when the author of the post the shortcode is being rendered
+ * from was allowed to publish unfiltered HTML.
+ *
+ * The Raw Content element deliberately emits unescaped HTML/JS, so the only
+ * meaningful question at render time is whether the person who *stored* that
+ * markup was trusted to do so. Checking the current user is useless on the
+ * front end (visitors are anonymous); checking the post author is evaluated
+ * against what was actually saved and therefore survives every save-filter
+ * ordering quirk.
+ *
+ * @param int|WP_Post|null $post Optional. Post to test. Defaults to the current post.
+ * @return bool
+ */
+if ( ! function_exists( 'bt_bb_author_can_unfiltered_html' ) ) {
+	function bt_bb_author_can_unfiltered_html( $post = NULL ) {
+		$post = get_post( $post );
+
+		// No post context (widget, template, REST render, ...): assume untrusted
+		// and let the caller sanitize. Sites that intentionally emit raw markup
+		// from a template can opt back in through the filter below.
+		$trusted = ( $post && $post->post_author ) ? user_can( (int) $post->post_author, 'unfiltered_html' ) : FALSE;
+
+		/**
+		 * Filters whether raw, unsanitized element output is permitted.
+		 *
+		 * @param bool         $trusted Whether the post author may publish unfiltered HTML.
+		 * @param WP_Post|null $post    The post being rendered, if any.
+		 */
+		return (bool) apply_filters( 'bt_bb_allow_unfiltered_html', $trusted, $post );
+	}
+}
+
+// Priority 99: wp_filter_post_kses() runs on content_save_pre at priority 10
+// and balanceTags() at 50, so a gate registered at the default priority
+// inspects a *different* string than the one the database ends up storing.
+// A payload can hide a dangerous tag name behind markup that kses strips
+// afterwards ( [bt_bb_shortcode shortcode_content="`{`bt_bb<x>_raw_content ..."
+// is stored as a live `{`bt_bb_raw_content once <x> is removed ), slipping past
+// an early gate and executing on render. Running last means this gate sees
+// exactly what gets saved.
+add_action( 'content_save_pre', 'bt_bb_save_pre', 99 );
 function bt_bb_save_pre( $content ) {
 	if ( ! current_user_can( 'unfiltered_html' ) ) {
 		// Normalize the content exactly the way the render path will, *before*
 		// matching, so an obfuscated payload cannot smuggle a dangerous element
 		// past this gate (CVE-2026-5920). At render time bt_bb_shortcode decodes
-		// the backtick bracket encoding ( `{` `}` `` -> [ ] " ) and wp_kses_post()
-		// then strips invalid control characters -- including a null byte planted
-		// inside the tag name -- so a stored `{`bt_b\0b_raw_content is reconstructed
-		// into a live [bt_bb_raw_content] and executed. A plain str_contains() on
-		// the raw string never sees that reconstructed tag and lets it through.
-		// Applying the same two transforms here makes the gate match what actually
-		// runs.
+		// the backtick bracket encoding ( `{` `}` `` -> [ ] " ) and then runs
+		// wp_kses_post() over the result before handing it to do_shortcode(), so
+		// anything kses removes at that point becomes part of a live tag name.
+		// Mirroring both transforms here makes the gate match what actually runs.
+		// content_save_pre carries slashed data, and wp_filter_post_kses() re-slashes
+		// its own output, so match against the unslashed form the database actually
+		// stores and the renderer actually reads. This copy is only used for
+		// matching -- $content is returned untouched.
+		$normalized = wp_unslash( $content );
 		$normalized = str_ireplace(
 			array( '`{`', '`}`', '``' ),
 			array( '[', ']', '"' ),
-			$content
+			$normalized
 		);
-		// Same control-character class wp_kses_post() removes (C0 controls except
-		// tab / newline / carriage-return). This collapses out null bytes and other
-		// control chars used to break up the tag name before matching.
+		$normalized = wp_kses_post( $normalized );
+		// wp_kses_post() already drops invalid control characters, but the
+		// content may reach this filter through a path that does not, and a null
+		// byte planted inside a tag name is enough to break the match below.
 		$normalized = preg_replace( '/[\x00-\x08\x0b\x0c\x0e-\x1f]/', '', $normalized );
 
 		if ( preg_match( '/\[\s*bt_bb_price_list/i', $normalized ) ) {

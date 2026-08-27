@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.6
+Stable tag: 5.9.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,11 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.7 =
+* Security: the Raw Content element now sanitizes its output with wp_kses_post() unless the post author is allowed to publish unfiltered HTML, so a crafted element can no longer execute script for other users (authenticated, content-editing users).
+* Security: the builder's save-time element gate now runs after WordPress' own kses filter and matches the content in its stored form, closing a bypass that hid a restricted element behind markup kses removed afterwards.
+* Fixed the Custom Menu element discarding its responsive parameter overrides, so per-breakpoint values such as font size now apply instead of only the desktop value.
 
 = 5.9.6 =
 * Security: the Post Grid and Image Grid elements now build their lazy-loaded images through DOM attributes instead of HTML string concatenation, preventing a stored XSS via a crafted attachment ALT text or title (authenticated, media-uploading users).
