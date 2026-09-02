@@ -23,6 +23,9 @@ class bt_bb_content_slider extends BT_BB_Element {
 		$class = array( $this->shortcode );
 		$slider_class = array( 'slick-slider' );
 		$data_override_class = array();
+
+		// Mirrors bt_bb_slider. See the CVE-2025-5286 note at the data-slick sink below.
+		$additional_settings = sanitize_text_field( $additional_settings );
 		
 		if ( $el_class != '' ) {
 			$class[] = $el_class;
@@ -123,6 +126,15 @@ class bt_bb_content_slider extends BT_BB_Element {
 			$slides_to_show_arr[6] = ( intval( $slides_to_show_arr[0] ) > 1 ) ? '1' : $slides_to_show_arr[0];
 		}
 		
+		// Indices 2-6 are written straight into the single-quoted data-slick JSON
+		// below. Force them to integers here rather than at each of the five sinks:
+		// slides_to_show is a responsive_override param, so its value is a
+		// separator-joined list the author controls, and a "'" in any tier would
+		// otherwise close the attribute.
+		foreach ( array( 2, 3, 4, 5, 6 ) as $bt_bb_breakpoint_index ) {
+			$slides_to_show_arr[ $bt_bb_breakpoint_index ] = intval( $slides_to_show_arr[ $bt_bb_breakpoint_index ] );
+		}
+
 		$sts = intval( $slides_to_show_arr[0] );
 		if ( isset( $slides_to_show_arr[1] ) && $slides_to_show_arr[1] !== '' ) {
 			$sts = intval( $slides_to_show_arr[1] );
@@ -152,9 +164,17 @@ class bt_bb_content_slider extends BT_BB_Element {
 		}
 		
 		if ( $additional_settings != '' ) {
-			$additional_settings = str_replace('``', '"', $additional_settings);
-			$additional_settings = rtrim($additional_settings, ',');
-			$data_slick .= ', ' . ($additional_settings);
+			$additional_settings = str_replace( '``', '"', $additional_settings );
+			$additional_settings = rtrim( $additional_settings, ',' );
+			// DO NOT REMOVE esc_attr: $data_slick is a SINGLE-quoted attribute, and the
+			// line above deliberately turns the author's `` escape back into a literal
+			// double quote. Without this call a "'" in the value closes the attribute
+			// and the rest becomes markup -- that is CVE-2025-5286, which was fixed in
+			// 5.3.7 (r120114), silently dropped in 5.7.2 (r122517) while adding the ``
+			// convention, and reported again against 5.9.7. The escaping is compatible
+			// with the `` convention: esc_attr writes &quot;, and the HTML parser
+			// decodes attribute values before slick ever reads the JSON.
+			$data_slick .= ', ' . esc_attr( $additional_settings );
 		}
 		
 		$data_slick = $data_slick . '}\' ';
@@ -174,7 +194,7 @@ class bt_bb_content_slider extends BT_BB_Element {
 		
 		$class = apply_filters( $this->shortcode . '_class', $class, $atts );
 
-		$output = '<div' . $id_attr . ' class="' . esc_attr( implode( ' ', $class ) ) . '"' . $style_attr . '' . $dir_attr . ' data-bt-override-class="' . htmlspecialchars( json_encode( $data_override_class, JSON_FORCE_OBJECT ), ENT_QUOTES, 'UTF-8' ) . '"><div class="' . implode( ' ', $slider_class ) . '" ' . $data_slick .  '>' . do_shortcode( $content ) . '</div></div>';
+		$output = '<div' . $id_attr . ' class="' . esc_attr( implode( ' ', $class ) ) . '"' . $style_attr . '' . $dir_attr . ' data-bt-override-class="' . htmlspecialchars( json_encode( $data_override_class, JSON_FORCE_OBJECT ), ENT_QUOTES, 'UTF-8' ) . '"><div class="' . esc_attr( implode( ' ', $slider_class ) ) . '" ' . $data_slick .  '>' . do_shortcode( $content ) . '</div></div>';
 		
 		$output = apply_filters( 'bt_bb_general_output', $output, $atts );
 		$output = apply_filters( $this->shortcode . '_output', $output, $atts );

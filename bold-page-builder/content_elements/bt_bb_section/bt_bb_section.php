@@ -202,7 +202,10 @@ class bt_bb_section extends BT_BB_Element {
 			// $yt_video_settings .= ',cc_load_policy:false,showAnnotations:false,optimizeDisplay:true,anchor:\'center,center\'';
 			$yt_video_settings .= ',useNoCookie:false';
 
-			$background_video_attr = ' ' . 'data-property="{videoURL:\'' . $background_video_yt . '\',containment:\'#' . $el_id . '\',' . $yt_video_settings . '}"';
+			// All three values are author-controlled and land inside a double-quoted
+			// attribute, in turn inside single-quoted JS strings, so escape each one:
+			// a bare '"' closed data-property and let the rest become an event handler.
+			$background_video_attr = ' ' . 'data-property="{videoURL:\'' . esc_url( $background_video_yt ) . '\',containment:\'#' . esc_attr( $el_id ) . '\',' . esc_attr( $yt_video_settings ) . '}"';
 			
 			$video_html .= '<div class="' . $this->prefix . 'background_video_yt_inner" ' . $background_video_attr . ' ></div>';
 			

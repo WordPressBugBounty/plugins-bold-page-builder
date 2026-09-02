@@ -33,6 +33,86 @@ if ( ! function_exists( 'bt_bb_hex2rgb' ) ) {
 	}
 }
 
+if ( ! function_exists( 'bt_bb_get_allowed_url_schemes' ) ) {
+	/**
+	 * Schemes an element link is allowed to use.
+	 *
+	 * Deliberately an allow list, not a block list: a block list only ever knows
+	 * the spellings someone already thought of, and browsers accept many more.
+	 * 'javascript' is not on this list and must not be added back -- see the
+	 * note in bt_bb_get_permalink_by_slug().
+	 *
+	 * A site that genuinely needs another scheme can add it in code:
+	 *
+	 *     add_filter( 'bt_bb_allowed_url_schemes', function( $schemes ) {
+	 *         $schemes[] = 'callto';
+	 *         return $schemes;
+	 *     } );
+	 */
+	function bt_bb_get_allowed_url_schemes( $link = '' ) {
+		return apply_filters( 'bt_bb_allowed_url_schemes', array( 'http', 'https', 'mailto', 'tel', 'ftp', 'ftps', 'sms', 'skype', 'whatsapp' ), $link );
+	}
+}
+
+if ( ! function_exists( 'bt_bb_url_scheme_allowed' ) ) {
+	/**
+	 * Whether $link carries a scheme the browser would be allowed to execute.
+	 *
+	 * The test is run against a normalized *copy*: the caller keeps the value the
+	 * author typed, because bt_bb_get_url() has to hand a bare page slug back
+	 * unchanged. Normalization mirrors what a browser does before it decides what
+	 * a URL's scheme is -- resolve HTML entity and percent encodings, then drop
+	 * the characters it ignores outright (C0 controls, DEL, space). Without that
+	 * last step "java&#9;script:alert(1)" reads as an unknown scheme here and as
+	 * javascript: in the browser, which is exactly how the old str_contains()
+	 * block list was bypassed.
+	 */
+	function bt_bb_url_scheme_allowed( $link ) {
+		$test = (string) $link;
+
+		// Decoding can expose another layer of encoding ( '&amp;#58;', '%26colon%3B' ),
+		// so peel a few times rather than once. ENT_HTML5 matters: '&colon;' is not
+		// in the HTML 4.01 entity table PHP uses by default.
+		for ( $i = 0; $i < 3; $i++ ) {
+			$decoded = rawurldecode( html_entity_decode( $test, ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );
+			if ( $decoded === $test ) {
+				break;
+			}
+			$test = $decoded;
+		}
+
+		$test = preg_replace( '/[\x00-\x20\x7f]/', '', $test );
+
+		if ( $test === '' || $test === null ) {
+			return true;
+		}
+
+		$colon = strpos( $test, ':' );
+		if ( $colon === false ) {
+			return true; // relative path, anchor or query only -- no scheme to vet.
+		}
+
+		// A ':' that comes after the first '/', '?' or '#' is part of the path or
+		// query, not a scheme delimiter ( 'about/me:you', '?t=1:2' ).
+		foreach ( array( '/', '?', '#' ) as $delimiter ) {
+			$position = strpos( $test, $delimiter );
+			if ( $position !== false && $position < $colon ) {
+				return true;
+			}
+		}
+
+		$scheme = strtolower( substr( $test, 0, $colon ) );
+
+		// Not a syntactically valid scheme (RFC 3986), so the browser will not
+		// treat it as one either -- it is a relative URL with a colon in it.
+		if ( ! preg_match( '/^[a-z][a-z0-9+.\-]*$/', $scheme ) ) {
+			return true;
+		}
+
+		return in_array( $scheme, bt_bb_get_allowed_url_schemes( $link ), true );
+	}
+}
+
 if ( ! function_exists( 'bt_bb_get_url' ) ) {
 	function bt_bb_get_url( $link, $post_type = 'page' ) {
 		if ( substr( $link, 0, 4 ) == 'www.' ) {
@@ -44,15 +124,27 @@ if ( ! function_exists( 'bt_bb_get_url' ) ) {
 
 if ( ! function_exists( 'bt_bb_get_permalink_by_slug' ) ) {
 	function bt_bb_get_permalink_by_slug( $link, $post_type = 'page' ) {
-		if ( str_contains( strtolower( $link ), 'javascript:' ) || str_contains( strtolower( $link ), 'javascript&#58;' ) || str_contains( strtolower( $link ), 'javascript&amp;#58;' ) ) {
+		// Scheme allow list. This replaced a str_contains() block list on three
+		// literal spellings of 'javascript:', which a control character inside the
+		// scheme walked straight past ( "java\tscript:alert(1)" ): the value reached
+		// the href intact through esc_attr, and the browser stripped the tab and ran
+		// it. Note the callers print this with esc_attr and NOT esc_url, on purpose
+		// -- see the comments in bt_bb_button.php / bt_bb_headline.php -- so this
+		// function is the only thing standing between an author and a live
+		// javascript: URL.
+		if ( ! bt_bb_url_scheme_allowed( $link ) ) {
 			return '#';
 		} else if (
-			$link != '' && 
-			$link != '#' && 
-			substr( $link, 0, 5 ) != 'http:' && 
-			substr( $link, 0, 6 ) != 'https:' && 
-			substr( $link, 0, 7 ) != 'mailto:' && 
-			substr( $link, 0, 4 ) != 'tel:' 
+			// Distinct question from the one above: these prefixes decide whether the
+			// value is already a URL or is a bare page slug to look up. Do not merge
+			// the two lists -- widening this one silently widens what is treated as a
+			// URL, and narrowing it breaks slug resolution.
+			$link != '' &&
+			$link != '#' &&
+			substr( $link, 0, 5 ) != 'http:' &&
+			substr( $link, 0, 6 ) != 'https:' &&
+			substr( $link, 0, 7 ) != 'mailto:' &&
+			substr( $link, 0, 4 ) != 'tel:'
 		) {
 			$page = get_page_by_path( $link, OBJECT, $post_type ); // object-cached; replaces a direct $wpdb query (PCP DirectDatabaseQuery / NoCaching)
 			if ( $page ) {
@@ -253,7 +345,10 @@ if ( ! function_exists( 'bt_bb_enqueue_google_fonts' ) ) {
  */
 if ( ! function_exists( 'bt_bb_get_grid_pagination' ) ) {
 	function bt_bb_get_grid_pagination( $_page, $number, $post_type, $category, $ajax = true, $url = '', $class = '' ) {
-		$_page		= intval($_page);		
+		$_page		= intval($_page);
+		// $class is concatenated into class="..." further down. No core element calls
+		// this helper -- themes do -- so escape once here rather than at each sink.
+		$class		= esc_attr( $class );
 		$wp_query	= array();
 
 		$cat_slug_portfolio	= array();

@@ -222,9 +222,12 @@ class bt_bb_image extends BT_BB_Element {
 					if ( $content_background_opacity == '' ) {
 						$content_background_opacity = 1;
 					}
-					$content_background_style .= ' style="background-color: rgba(' . $content_background_color[0] . ', ' . $content_background_color[1] . ', ' . $content_background_color[2] . ', ' . $content_background_opacity . ');"';
+					// hex2rgb() returns hexdec() ints, so only the opacity needs constraining.
+					$content_background_style .= ' style="background-color: rgba(' . $content_background_color[0] . ', ' . $content_background_color[1] . ', ' . $content_background_color[2] . ', ' . floatval( $content_background_opacity ) . ');"';
 				} else {
-					$content_background_style .= 'style="background-color:' . $content_background_color . ';"';
+					// Not a hex value, so this is whatever the author typed (a colour
+					// keyword, a var(), or a '"' that used to close the style attribute).
+					$content_background_style .= 'style="background-color:' . esc_attr( $content_background_color ) . ';"';
 				}
 			}
 			$output .= '<div class="bt_bb_image_content" ' . $content_background_style . '><div class="bt_bb_image_content_flex"><div class="bt_bb_image_content_inner">' . $content . '</div></div></div>';

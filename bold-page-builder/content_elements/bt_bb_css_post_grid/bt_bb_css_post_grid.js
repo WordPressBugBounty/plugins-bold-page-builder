@@ -92,7 +92,12 @@ class bt_bb_css_post_grid {
 					root.data( 'loading', 'no_more' );
 					root.parent().find( '.bt_bb_post_grid_loader' ).hide();
 					if ( offset == 0 ) {
-						root.parent().find( '.bt_bb_css_post_grid_content' ).after( '<p class="bt_bb_css_post_grid_message">' + jQuery( '.bt_bb_css_post_grid_content' ).data( 'no-posts-text' ) + '</p>' );
+						// Build via DOM + .text(), not string concatenation: .data() hands back
+						// the decoded attribute value, which jQuery would then parse as HTML.
+						// Same reason the lazy-loaded <img> above is assembled with .attr().
+						var $bt_bb_no_posts_message = jQuery( '<p class="bt_bb_css_post_grid_message"></p>' )
+							.text( jQuery( '.bt_bb_css_post_grid_content' ).data( 'no-posts-text' ) || '' );
+						root.parent().find( '.bt_bb_css_post_grid_content' ).after( $bt_bb_no_posts_message );
 					}
 					return;
 				} else {

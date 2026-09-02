@@ -18,7 +18,12 @@ class bt_bb_icon extends BT_BB_Element {
 			'align'        => 'inherit'
 		) ), $atts, $this->shortcode ) );
 		
+		// Same pipeline as bt_bb_headline / bt_bb_service: $text is emitted as HTML
+		// further down, so it has to go through kses. This element was missed when the
+		// other text-bearing elements were brought onto the pattern in 5.7.3.
+		$text = html_entity_decode( $text, ENT_QUOTES, 'UTF-8' );
 		$text = str_ireplace( array( '``' ), array( '"' ), $text );
+		$text = wp_kses_post( $text );
 
 		$class = array( $this->shortcode );
 		$data_override_class = array();

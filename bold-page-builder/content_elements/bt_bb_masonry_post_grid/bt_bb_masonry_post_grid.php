@@ -271,7 +271,7 @@ class bt_bb_masonry_post_grid extends BT_BB_Element {
 			if ( ! is_wp_error( $cats ) ) {
 				if ( count( $cats ) > 0 ) {
 					$output .= '<div class="bt_bb_post_grid_filter">';
-						$output .= '<span class="bt_bb_post_grid_filter_item active" data-category="' . $category . '">' . esc_html__( 'All', 'bold-page-builder' ) . '</span>';
+						$output .= '<span class="bt_bb_post_grid_filter_item active" data-category="' . esc_attr( $category ) . '">' . esc_html__( 'All', 'bold-page-builder' ) . '</span>';
 							foreach ( $cats as $cat ) {
 								$output .= '<span class="bt_bb_post_grid_filter_item" data-category="' . esc_attr( $cat->slug ) . '">' . $cat->name . '</span>';
 							}

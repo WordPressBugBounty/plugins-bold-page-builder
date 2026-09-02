@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.7
+Stable tag: 5.9.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,14 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.8 =
+* Security: element link URLs are now checked against an allow list of schemes after control characters are removed, so a scheme disguised with an embedded control character or entity can no longer run script when the link is clicked (authenticated, content-editing users) — reported by Minaruzzaman Shovon.
+* Security: the Section element's background video settings and the Image element's content background colour are now escaped before they are written into the rendered markup, preventing a stored XSS via a crafted attribute value (authenticated, content-editing users) — reported by Revanth Hari Narayana Matte.
+* Security: the Content Slider element now escapes its additional settings before writing them into the slider configuration attribute, preventing a stored XSS via a crafted attribute value (authenticated, content-editing users) — reported by Luka Zimonjic (CVE-2025-5286).
+* Security: escaped the remaining unescaped element attributes found while reviewing the above — the number of slides in both slider elements, the Post Grid category filter, the Icon element's text, and the grid pagination class.
+* The publish and expiry dates on elements now use the site's timezone and the exact minute they are set to; previously they were evaluated in UTC and the minute was read incorrectly. Elements with no publish or expiry date set are unaffected.
+* Note for developers: `javascript:` URLs are no longer accepted in element link fields for any user. A site that needs an additional scheme can add one with the new `bt_bb_allowed_url_schemes` filter.
 
 = 5.9.7 =
 * Security: the Raw Content element now sanitizes its output with wp_kses_post() unless the post author is allowed to publish unfiltered HTML, so a crafted element can no longer execute script for other users (authenticated, content-editing users).

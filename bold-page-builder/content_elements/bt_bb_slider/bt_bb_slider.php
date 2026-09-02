@@ -102,6 +102,15 @@ class bt_bb_slider extends BT_BB_Element {
 		if ( $slides_to_show_arr[5] == '' ) { $slides_to_show_arr[5] = ( intval( $slides_to_show_arr[0] ) > 2 ) ? '2' : $slides_to_show_arr[0]; } // 768
 		if ( $slides_to_show_arr[6] == '' ) { $slides_to_show_arr[6] = ( intval( $slides_to_show_arr[0] ) > 1 ) ? '1' : $slides_to_show_arr[0];	} // 480
 		
+		// Indices 2-6 are written straight into the single-quoted data-slick JSON
+		// below. Force them to integers here rather than at each of the five sinks:
+		// slides_to_show is a responsive_override param, so its value is a
+		// separator-joined list the author controls, and a "'" in any tier would
+		// otherwise close the attribute.
+		foreach ( array( 2, 3, 4, 5, 6 ) as $bt_bb_breakpoint_index ) {
+			$slides_to_show_arr[ $bt_bb_breakpoint_index ] = intval( $slides_to_show_arr[ $bt_bb_breakpoint_index ] );
+		}
+
 		$sts = intval( $slides_to_show_arr[0] );
 		if ( isset( $slides_to_show_arr[1] ) && $slides_to_show_arr[1] !== '' ) {
 			$sts = intval( $slides_to_show_arr[1] );

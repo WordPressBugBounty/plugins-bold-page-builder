@@ -167,10 +167,18 @@ class bt_bb_button extends BT_BB_Element {
 
 		$link = bt_bb_get_url( $url );
 
-		// IMPORTANT: esc_attr (not esc_url) is intentional here.
-		// Authors are allowed to put javascript: / mailto: / tel: / non-standard schemes
-		// in the button URL. esc_url would strip them. Do not "fix" this to esc_url —
-		// it has been flagged by automated security audits before; it is by design.
+		// IMPORTANT: esc_attr (not esc_url) is intentional here, and is NOT what keeps
+		// the scheme safe. The URL field accepts a bare page slug, and bt_bb_get_url()
+		// hands back whatever was typed when no page matches it; esc_url would then
+		// prepend http:// and turn a slug into a dead absolute link. Do not "fix" this
+		// to esc_url -- it has been flagged by automated security audits before.
+		//
+		// The scheme is vetted inside bt_bb_get_url() by an allow list
+		// ( bt_bb_url_scheme_allowed(), content_elements_misc/misc.php ). javascript:
+		// is blocked for every author, whatever their capabilities. This reverses the
+		// older "authors may use javascript: URLs" position, which cost us CVE-worthy
+		// reports twice; a site that needs an extra scheme adds it through the
+		// 'bt_bb_allowed_url_schemes' filter.
 		$output = '<a href="' . esc_attr( $link ) . '" target="' . esc_attr( $target ) . '" class="' . esc_attr( $this->prefix ) . 'link" title="' . esc_attr( $text ) . '">';
 			if ( $icon == '' || $icon == 'no_icon' ) {
 				$output .= $text_output;
