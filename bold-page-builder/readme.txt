@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.8
+Stable tag: 5.9.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,11 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.9 =
+* Security: the additional settings on both slider elements can no longer carry HTML in any encoding, preventing a stored XSS where an entity-encoded tag survived escaping, was decoded again when the browser read the slider configuration attribute, and was then built as markup by the slider (authenticated, content-editing users) — reported by WPScan. This supersedes the Content Slider fix in 5.9.8, which escaped the value but did not stop it being decoded back into markup (CVE-2025-5286).
+* The Additional settings field on the Slider and Content Slider elements no longer accepts HTML, so a slider configured with custom arrow markup falls back to the built-in arrows.
+* Note for developers: the new `bt_bb_slick_additional_settings` filter is the supported way to put markup back into a slider configuration. A callback that overrides it is responsible for escaping what it returns.
 
 = 5.9.8 =
 * Security: element link URLs are now checked against an allow list of schemes after control characters are removed, so a scheme disguised with an embedded control character or entity can no longer run script when the link is clicked (authenticated, content-editing users) — reported by Minaruzzaman Shovon.

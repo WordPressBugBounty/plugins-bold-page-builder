@@ -128,7 +128,11 @@ class bt_bb_slider extends BT_BB_Element {
 		}
 		
 		if ( $additional_settings != '' ) {
-			$data_slick .= ', ' . esc_attr( $additional_settings );
+			// Not esc_attr(): $data_slick is decoded by the HTML parser before slick
+			// reads it, and slick builds prevArrow/nextArrow/appendArrows/appendDots
+			// as markup. See bt_bb_sanitize_slick_settings() and the longer note in
+			// bt_bb_content_slider, which takes this field down the same path.
+			$data_slick .= ', ' . bt_bb_sanitize_slick_settings( $additional_settings );
 		}
 		
 		$data_slick = $data_slick . '}\' ';

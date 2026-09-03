@@ -113,6 +113,58 @@ if ( ! function_exists( 'bt_bb_url_scheme_allowed' ) ) {
 	}
 }
 
+if ( ! function_exists( 'bt_bb_sanitize_slick_settings' ) ) {
+	/**
+	 * Make the slider "Additional settings" field safe to write into data-slick.
+	 *
+	 * esc_attr() is NOT enough here, and never was. It is _wp_specialchars() with
+	 * $double_encode = false, so an entity already present in the stored value is
+	 * passed through untouched: an author saves "&lt;img src=x onerror=alert(1)&gt;",
+	 * the HTML parser decodes the attribute once when it reads it, slick hands the
+	 * value to jQuery, and jQuery builds it as markup. That is how the 5.9.8 fix was
+	 * bypassed (reported by WPScan). It applies to every setting slick passes on that
+	 * way -- prevArrow, nextArrow, appendArrows, appendDots -- not to one of them.
+	 *
+	 * Three steps, and all three are load bearing:
+	 *
+	 *   1. peel every layer of entity encoding, so what we inspect is what the
+	 *      browser will hand to slick after it decodes the attribute value;
+	 *   2. drop '<' and '>', so nothing in the field can become markup;
+	 *   3. escape with double encoding ON, so the browser's single decode reproduces
+	 *      step 2 byte for byte and no encoding can smuggle a '<' back in.
+	 *
+	 * A site that genuinely needs custom arrow markup can take it back in code. The
+	 * filter is handed the escaped string and the raw one, and a callback that
+	 * overrides it owns the escaping from that point on:
+	 *
+	 *     add_filter( 'bt_bb_slick_additional_settings', function( $safe, $raw ) {
+	 *         return $safe;
+	 *     }, 10, 2 );
+	 */
+	function bt_bb_sanitize_slick_settings( $settings ) {
+		$raw = $settings;
+		$settings = (string) $settings;
+
+		// Decoding can expose another layer of encoding ( '&amp;lt;' ), so peel a few
+		// times rather than once. ENT_HTML5 matters here for the same reason it does
+		// in bt_bb_url_scheme_allowed() above.
+		for ( $i = 0; $i < 5; $i++ ) {
+			$decoded = html_entity_decode( $settings, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+			if ( $decoded === $settings ) {
+				break;
+			}
+			$settings = $decoded;
+		}
+
+		$settings = str_replace( array( '<', '>' ), '', $settings );
+
+		// htmlspecialchars(), not esc_attr(): the fourth argument is the whole point.
+		$settings = htmlspecialchars( $settings, ENT_QUOTES, 'UTF-8', true );
+
+		return apply_filters( 'bt_bb_slick_additional_settings', $settings, $raw );
+	}
+}
+
 if ( ! function_exists( 'bt_bb_get_url' ) ) {
 	function bt_bb_get_url( $link, $post_type = 'page' ) {
 		if ( substr( $link, 0, 4 ) == 'www.' ) {

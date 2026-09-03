@@ -166,15 +166,18 @@ class bt_bb_content_slider extends BT_BB_Element {
 		if ( $additional_settings != '' ) {
 			$additional_settings = str_replace( '``', '"', $additional_settings );
 			$additional_settings = rtrim( $additional_settings, ',' );
-			// DO NOT REMOVE esc_attr: $data_slick is a SINGLE-quoted attribute, and the
-			// line above deliberately turns the author's `` escape back into a literal
-			// double quote. Without this call a "'" in the value closes the attribute
-			// and the rest becomes markup -- that is CVE-2025-5286, which was fixed in
-			// 5.3.7 (r120114), silently dropped in 5.7.2 (r122517) while adding the ``
-			// convention, and reported again against 5.9.7. The escaping is compatible
-			// with the `` convention: esc_attr writes &quot;, and the HTML parser
-			// decodes attribute values before slick ever reads the JSON.
-			$data_slick .= ', ' . esc_attr( $additional_settings );
+			// DO NOT go back to esc_attr() here. $data_slick is a SINGLE-quoted
+			// attribute, and the line above deliberately turns the author's ``
+			// escape back into a literal double quote -- but the attribute is also
+			// decoded by the HTML parser before slick ever reads the JSON, and slick
+			// hands prevArrow/nextArrow/appendArrows/appendDots to jQuery to be built
+			// as markup. esc_attr() leaves an entity that is already in the stored
+			// value alone ($double_encode = false), so "&lt;img onerror=...&gt;"
+			// survives it and comes back as a live tag on the other side. That is
+			// CVE-2025-5286: fixed in 5.3.7 (r120114), dropped in 5.7.2 (r122517),
+			// re-fixed with esc_attr() in 5.9.8 -- which WPScan then bypassed exactly
+			// that way. bt_bb_sanitize_slick_settings() is the only sufficient call.
+			$data_slick .= ', ' . bt_bb_sanitize_slick_settings( $additional_settings );
 		}
 		
 		$data_slick = $data_slick . '}\' ';

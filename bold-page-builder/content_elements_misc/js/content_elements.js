@@ -715,6 +715,114 @@
 			observer_RowInner.observe(element);
 		});
 
+		// slick hands prevArrow, nextArrow, appendArrows and appendDots straight to
+		// jQuery, which builds any string starting with "<" as markup. The PHP side
+		// strips markup out of the "Additional settings" field before it can reach
+		// data-slick, but theme forks of the slider elements carry their own copy of
+		// that code and may not, so re-check here before slick reads the attribute.
+		// The settings slick hands to jQuery, either as markup or as a selector.
+		const bt_bb_slick_jquery_keys = [
+			"prevArrow",
+			"nextArrow",
+			"appendArrows",
+			"appendDots",
+			"asNavFor",
+		];
+		const bt_bb_slick_allowed_tags = ["BUTTON", "DIV", "SPAN", "I", "A"];
+		const bt_bb_slick_allowed_attrs = [
+			"type",
+			"class",
+			"aria-label",
+			"tabindex",
+			"role",
+			"title",
+		];
+
+		function bt_bb_slick_safe_markup(html) {
+			// A <template> is inert: setting innerHTML parses the markup without
+			// fetching or running anything, so no onerror fires while we clean it.
+			const tpl = document.createElement("template");
+			tpl.innerHTML = html;
+
+			const walk = function (node) {
+				Array.prototype.slice.call(node.children).forEach(function (el) {
+					if (bt_bb_slick_allowed_tags.indexOf(el.tagName) === -1) {
+						el.parentNode.removeChild(el);
+						return;
+					}
+					Array.prototype.slice.call(el.attributes).forEach(function (attr) {
+						const name = attr.name.toLowerCase();
+						if (
+							bt_bb_slick_allowed_attrs.indexOf(name) === -1 &&
+							name.indexOf("data-") !== 0
+						) {
+							el.removeAttribute(attr.name);
+						}
+					});
+					walk(el);
+				});
+			};
+
+			walk(tpl.content);
+
+			return tpl.innerHTML;
+		}
+
+		function bt_bb_sanitize_slick_data(settings) {
+			// A data-slick that is not valid JSON comes back from .data() as a
+			// string; there is nothing for slick to read in it, so leave it alone.
+			if (!settings || typeof settings !== "object") {
+				return settings;
+			}
+
+			Object.keys(settings).forEach(function (key) {
+				const value = settings[key];
+
+				if (value && typeof value === "object") {
+					bt_bb_sanitize_slick_data(value); // "responsive" nests settings
+					return;
+				}
+
+				if (typeof value !== "string") {
+					return;
+				}
+
+				if (bt_bb_slick_jquery_keys.indexOf(key) !== -1) {
+					if (value.indexOf("<") !== -1) {
+						const safe = bt_bb_slick_safe_markup(value);
+						// Nothing survived the allow list, so there is no arrow to
+						// build. Drop the key and let slick use its own default.
+						if (safe.indexOf("<") === -1) {
+							delete settings[key];
+							return;
+						}
+						settings[key] = safe;
+						return;
+					}
+
+					// No "<", so jQuery reads it as a CSS selector. A value that is
+					// not one -- including anything the PHP side stripped its markup
+					// out of -- throws inside Sizzle, and that exception escapes
+					// .slick() and stops every later slider on the page from
+					// initialising. Check it here and drop it if it is unusable.
+					try {
+						$(value);
+					} catch (e) {
+						delete settings[key];
+					}
+					return;
+				}
+
+				// Nothing else in a slick config is meant to be markup. Drop the key
+				// rather than blanking it, so slick falls back to its own default.
+				if (value.indexOf("<") !== -1) {
+					delete settings[key];
+				}
+			});
+
+			return settings;
+		}
+
 		// .slick-slider
 
 		const targetElements_Slick = document.querySelectorAll(".slick-slider");
@@ -725,7 +833,16 @@
 		) {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
-					$(entry.target).slick();
+					bt_bb_sanitize_slick_data($(entry.target).data("slick"));
+					try {
+						$(entry.target).slick();
+					} catch (e) {
+						// slick throws on a configuration it cannot use. Contain it here so
+						// one bad slider does not stop every later one on the page.
+						if (window.console && window.console.warn) {
+							window.console.warn("bt_bb: slider init failed", e);
+						}
+					}
 
 					$(entry.target)
 						.find(".slick-prev")
