@@ -165,6 +165,228 @@ if ( ! function_exists( 'bt_bb_sanitize_slick_settings' ) ) {
 	}
 }
 
+if ( ! function_exists( 'bt_bb_get_yt_video_settings_schema' ) ) {
+	/**
+	 * Which settings the Section element's "YouTube video settings" field may set,
+	 * and the type each one is read back as.
+	 *
+	 * This is the option list of jquery.mb.YTPlayer minus the keys that are not the
+	 * author's to set: videoURL and containment are built from other fields by
+	 * bt_bb_build_yt_player_property(), and the onReady / onEnd style options are
+	 * functions. A key that is not named here is dropped.
+	 *
+	 * The types are not cosmetic, they are the fix. The field used to be spliced
+	 * into the data-property attribute as bare object literal source and the player
+	 * ran that source through eval(), so "mute:true}));alert(1);void({a:1" was
+	 * script -- esc_attr() does not encode '}', ')', '(' or ';' and never stood in
+	 * the way. Nothing reaches the attribute now unless it is a key on this list
+	 * whose value casts cleanly to the type named here, and the result is written
+	 * as JSON, not as source. gaTrack deserves a mention of its own: the player
+	 * passes that one to eval() a second time, on its own, so it has to leave here
+	 * as a real boolean and never as text.
+	 *
+	 * 'mask' and 'addFilters' also accept an object in the player's own API. There
+	 * is no way to write one in a comma separated text field, so they are booleans
+	 * here; a site that needs the object form can set it in code.
+	 */
+	function bt_bb_get_yt_video_settings_schema() {
+		$schema = array(
+			'ratio'              => 'ratio',
+			'fadeOnStartTime'    => 'int',
+			'startAt'            => 'int',
+			'stopAt'             => 'int',
+			'autoPlay'           => 'bool',
+			'delayAtStart'       => 'int',
+			'coverImage'         => 'url',
+			'loop'               => 'bool',
+			'addRaster'          => 'token',
+			'mask'               => 'bool',
+			'opacity'            => 'float',
+			'quality'            => 'quality',
+			'vol'                => 'int',
+			'mute'               => 'bool',
+			'showControls'       => 'bool',
+			'anchor'             => 'anchor',
+			'showAnnotations'    => 'bool',
+			'cc_load_policy'     => 'bool',
+			'showYTLogo'         => 'bool',
+			'useOnMobile'        => 'bool',
+			'playOnlyIfVisible'  => 'bool',
+			'onScreenPercentage' => 'int',
+			'goFullScreenOnPlay' => 'bool',
+			'realFullscreen'     => 'bool',
+			'stopMovieOnBlur'    => 'bool',
+			'optimizeDisplay'    => 'bool',
+			'abundance'          => 'float',
+			'gaTrack'            => 'bool',
+			'remember_last_time' => 'bool',
+			'addFilters'         => 'bool',
+			'useNoCookie'        => 'bool',
+		);
+		return apply_filters( 'bt_bb_yt_video_settings_schema', $schema );
+	}
+}
+
+if ( ! function_exists( 'bt_bb_cast_yt_video_setting' ) ) {
+	/**
+	 * Cast one "YouTube video settings" value to the type its key was declared as.
+	 * Returns null when the value is not a clean member of that type, which is the
+	 * signal to drop the setting rather than pass a repaired version of it on.
+	 * Reject, do not repair: a value that has to be repaired to be safe is a value
+	 * nobody meant to write.
+	 */
+	function bt_bb_cast_yt_video_setting( $type, $value ) {
+		$value = trim( (string) $value );
+
+		switch ( $type ) {
+			case 'bool':
+				$lower = strtolower( $value );
+				if ( in_array( $lower, array( 'true', '1', 'yes', 'on' ), true ) ) {
+					return true;
+				}
+				if ( in_array( $lower, array( 'false', '0', 'no', 'off' ), true ) ) {
+					return false;
+				}
+				return null;
+
+			case 'int':
+				return preg_match( '/^-?[0-9]{1,9}$/', $value ) ? (int) $value : null;
+
+			case 'float':
+				return preg_match( '/^-?(?:[0-9]{1,9}(?:\.[0-9]{1,9})?|\.[0-9]{1,9})$/', $value ) ? (float) $value : null;
+
+			case 'ratio':
+				// 'auto', or the 'w/h' form the player accepts.
+				return preg_match( '/^(?:auto|[0-9]{1,4}\/[0-9]{1,4})$/', $value ) ? $value : null;
+
+			case 'quality':
+				$allowed = array( 'default', 'small', 'medium', 'large', 'hd720', 'hd1080', 'highres' );
+				return in_array( $value, $allowed, true ) ? $value : null;
+
+			case 'anchor':
+				// Two words. Written unquoted, the comma between them ends the setting,
+				// so only the quoted form can produce a valid pair -- that is the
+				// player's own convention, not a new restriction.
+				if ( preg_match( '/^(left|center|right)\s*,\s*(top|center|bottom)$/', $value, $parts ) ) {
+					return $parts[1] . ',' . $parts[2];
+				}
+				return null;
+
+			case 'token':
+				// A bare word, or a boolean written as one.
+				$lower = strtolower( $value );
+				if ( in_array( $lower, array( 'true', 'yes', 'on' ), true ) ) {
+					return true;
+				}
+				if ( in_array( $lower, array( 'false', 'no', 'off' ), true ) ) {
+					return false;
+				}
+				return preg_match( '/^[a-z0-9_-]{1,32}$/i', $value ) ? $value : null;
+
+			case 'url':
+				$url = esc_url_raw( $value );
+				return $url === '' ? null : $url;
+		}
+
+		return null;
+	}
+}
+
+if ( ! function_exists( 'bt_bb_parse_yt_video_settings' ) ) {
+	/**
+	 * Read the Section element's "YouTube video settings" free text field into an
+	 * array of typed values, dropping everything that is not a known setting.
+	 *
+	 * The field is written the way the player's own documentation writes it,
+	 * "startAt:20, mute:true, anchor:'center,center'", so it is read as a list of
+	 * key:value pairs where a quoted value may contain a comma and an unquoted one
+	 * ends at the next comma.
+	 */
+	function bt_bb_parse_yt_video_settings( $settings ) {
+		$raw      = $settings;
+		$settings = (string) $settings;
+		$schema   = bt_bb_get_yt_video_settings_schema();
+		$parsed   = array();
+
+		// Inspect what the browser would see, not what is stored: the value travels
+		// through the post content, so it can arrive already entity encoded, and one
+		// decode can expose another layer of it. Same reason as in
+		// bt_bb_sanitize_slick_settings() above.
+		for ( $i = 0; $i < 5; $i++ ) {
+			$decoded = html_entity_decode( $settings, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+			if ( $decoded === $settings ) {
+				break;
+			}
+			$settings = $decoded;
+		}
+
+		preg_match_all(
+			'/([A-Za-z_][A-Za-z0-9_]*)\s*:\s*(\'[^\']*\'|"[^"]*"|[^,]*)/',
+			$settings,
+			$pairs,
+			PREG_SET_ORDER
+		);
+
+		foreach ( $pairs as $pair ) {
+			$key = $pair[1];
+			if ( ! isset( $schema[ $key ] ) ) {
+				continue;
+			}
+
+			$value = trim( $pair[2] );
+			$quote = substr( $value, 0, 1 );
+			if ( strlen( $value ) >= 2 && ( $quote === '"' || $quote === "'" ) && substr( $value, -1 ) === $quote ) {
+				$value = substr( $value, 1, -1 );
+			}
+
+			$cast = bt_bb_cast_yt_video_setting( $schema[ $key ], $value );
+			if ( $cast !== null ) {
+				$parsed[ $key ] = $cast;
+			}
+		}
+
+		return apply_filters( 'bt_bb_yt_video_settings', $parsed, $raw );
+	}
+}
+
+if ( ! function_exists( 'bt_bb_build_yt_player_property' ) ) {
+	/**
+	 * Build the escaped value of the data-property attribute the YouTube background
+	 * player reads its configuration from.
+	 *
+	 * The object is assembled here and encoded as JSON, so what lands in the
+	 * attribute is data with a shape this function chose and not a fragment of
+	 * JavaScript the author wrote. jQuery's .data() parses it before the player
+	 * looks at it, so the player's eval() branch is never reached; the player's own
+	 * copy of that branch was replaced with JSON.parse() as well, because a sink
+	 * that is merely unreachable is one refactor away from being reachable again.
+	 *
+	 * htmlspecialchars() with double encoding on, not esc_attr(): esc_attr() leaves
+	 * an entity that is already in the value alone, the browser then decodes it when
+	 * it reads the attribute, and a '&quot;' stored in an element id would come back
+	 * as a bare '"' in the middle of the JSON. That is the same mistake that made
+	 * the 5.9.8 slider fix bypassable -- see bt_bb_sanitize_slick_settings().
+	 */
+	function bt_bb_build_yt_player_property( $video_url, $containment, $settings, $overrides = array() ) {
+		$property = array_merge(
+			bt_bb_parse_yt_video_settings( $settings ),
+			(array) $overrides
+		);
+
+		// Not author settings: these two are built from other fields, and letting the
+		// text field name them would let it point the player at another element.
+		$property['videoURL']    = esc_url_raw( $video_url );
+		$property['containment'] = (string) $containment;
+
+		$json = wp_json_encode( $property );
+		if ( $json === false ) {
+			$json = '{}';
+		}
+
+		return htmlspecialchars( $json, ENT_QUOTES, 'UTF-8', true );
+	}
+}
+
 if ( ! function_exists( 'bt_bb_get_url' ) ) {
 	function bt_bb_get_url( $link, $post_type = 'page' ) {
 		if ( substr( $link, 0, 4 ) == 'www.' ) {

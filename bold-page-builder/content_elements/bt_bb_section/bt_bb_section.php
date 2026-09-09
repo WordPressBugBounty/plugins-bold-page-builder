@@ -196,16 +196,22 @@ class bt_bb_section extends BT_BB_Element {
 				// $yt_video_settings = '';
 			}
 			
-			$yt_video_settings .= $show_video_on_mobile ? ',useOnMobile:true' : ',useOnMobile:false';
-			
-			$yt_video_settings .= '';
-			// $yt_video_settings .= ',cc_load_policy:false,showAnnotations:false,optimizeDisplay:true,anchor:\'center,center\'';
-			$yt_video_settings .= ',useNoCookie:false';
+			// Settings the element decides, not the text field, so they are applied on
+			// top of whatever the author wrote rather than appended to it.
+			$yt_video_overrides = array(
+				'useOnMobile' => $show_video_on_mobile ? true : false,
+				'useNoCookie' => false,
+			);
+			// 'cc_load_policy' => false, 'showAnnotations' => false, 'optimizeDisplay' => true, 'anchor' => 'center,center'
 
-			// All three values are author-controlled and land inside a double-quoted
-			// attribute, in turn inside single-quoted JS strings, so escape each one:
-			// a bare '"' closed data-property and let the rest become an event handler.
-			$background_video_attr = ' ' . 'data-property="{videoURL:\'' . esc_url( $background_video_yt ) . '\',containment:\'#' . esc_attr( $el_id ) . '\',' . esc_attr( $yt_video_settings ) . '}"';
+			// The player is handed an object this plugin built and encoded as JSON, not
+			// a fragment of JavaScript the author wrote. Escaping the field was never
+			// enough on its own: the value used to be spliced in as bare object literal
+			// source and the player ran the whole attribute through eval(), and
+			// esc_attr() does not encode '}', ')', '(' or ';', so "mute:true}));
+			// alert(1);void({a:1" closed the object and ran. See
+			// bt_bb_build_yt_player_property() in content_elements_misc/misc.php.
+			$background_video_attr = ' ' . 'data-property="' . bt_bb_build_yt_player_property( $background_video_yt, '#' . $el_id, $yt_video_settings, $yt_video_overrides ) . '"';
 			
 			$video_html .= '<div class="' . $this->prefix . 'background_video_yt_inner" ' . $background_video_attr . ' ></div>';
 			
@@ -453,7 +459,19 @@ class BT_BB_YT_Video_Proxy {
 		// wp_register_script( 'boldthemes-script-bt-bb-section-js-init', '' );
 		// wp_enqueue_script( 'boldthemes-script-bt-bb-section-js-init' );
 		// wp_add_inline_script( 'boldthemes-script-bt-bb-section-js-init', 'jQuery(function() { jQuery( "#' . esc_html( $this->el_id ) . ' .' . esc_html( $this->prefix ) . 'background_video_yt_inner" ).YTPlayer();});' );
-		wp_add_inline_script( 'bt_bb_yt', 'jQuery(function() { jQuery( "#' . esc_html( $this->el_id ) . ' .' . esc_html( $this->prefix ) . 'background_video_yt_inner" ).YTPlayer();});' );
+		// The id is author-controlled and this is script, not markup, so build the
+		// selector as a JSON string literal rather than concatenating it into one.
+		// esc_html() is the wrong tool inside a <script>: entities are not decoded
+		// there, so it turns a legitimate id into a broken selector while doing
+		// nothing about the characters that matter here.
+		$selector = wp_json_encode(
+			'#' . $this->el_id . ' .' . $this->prefix . 'background_video_yt_inner',
+			JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+		);
+		if ( $selector === false ) {
+			return;
+		}
+		wp_add_inline_script( 'bt_bb_yt', 'jQuery(function() { jQuery( ' . $selector . ' ).YTPlayer();});' );
     }
 
 }

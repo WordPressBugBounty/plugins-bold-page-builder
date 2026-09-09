@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.9
+Stable tag: 5.9.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,12 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.10 =
+* Security: the Section element's YouTube video settings are now read into a fixed list of known settings, checked against the type each one expects, and written to the page as data rather than as JavaScript, preventing a stored XSS where a crafted value closed the settings object and ran script for every visitor to the page (authenticated, content-editing users) — reported by LevinityCyber. This completes the Section element fix in 5.9.8, which escaped the value but left it being evaluated as JavaScript.
+* Security: the bundled YouTube background player no longer evaluates any of its settings as JavaScript.
+* The YouTube video settings field now only accepts the settings the background player actually has, so a misspelled or unsupported setting is ignored instead of being passed on. Values must be written in the form the player documents, for example `startAt:20, mute:true, anchor:'center,center'`.
+* Note for developers: the new `bt_bb_yt_video_settings_schema` filter adds a setting to that list, and `bt_bb_yt_video_settings` adjusts the finished set of settings for an element.
 
 = 5.9.9 =
 * Security: the additional settings on both slider elements can no longer carry HTML in any encoding, preventing a stored XSS where an entity-encoded tag survived escaping, was decoded again when the browser read the slider configuration attribute, and was then built as markup by the slider (authenticated, content-editing users) — reported by WPScan. This supersedes the Content Slider fix in 5.9.8, which escaped the value but did not stop it being decoded back into markup (CVE-2025-5286).
