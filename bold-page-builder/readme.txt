@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.10
+Stable tag: 5.9.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,13 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.11 =
+* Rank Math SEO: content analysis now reads the rendered page built with the builder instead of its raw shortcodes, so headings (including an H1 set on a Headline element), images, links and word count are detected. The analysis updates while you edit, without saving first, and Rank Math's Recalculate SEO Scores tool scores builder pages the same way.
+* Yoast SEO: the analysis now updates while you edit instead of only after saving, and the first analysis on page load waits for the rendered page rather than starting from raw shortcodes.
+* The Yoast SEO integration now loads only when Yoast SEO is active, and no longer overrides the builder's own AJAX settings.
+* Clicking a duplicated slide in an infinitely looping slider with lightbox enabled now opens the lightbox at the right image; previously those slides did nothing.
+* New "Separator (Medium)" section template, a separator with no line; the existing template is now named "Separator (Solid)".
 
 = 5.9.10 =
 * Security: the Section element's YouTube video settings are now read into a fixed list of known settings, checked against the type each one expects, and written to the page as data rather than as JavaScript, preventing a stored XSS where a crafted value closed the settings object and ran script for every visitor to the page (authenticated, content-editing users) — reported by LevinityCyber. This completes the Section element fix in 5.9.8, which escaped the value but left it being evaluated as JavaScript.

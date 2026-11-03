@@ -1,46 +1,50 @@
+/**
+ * Yoast SEO compatibility - feeds rendered builder HTML to Yoast's content
+ * analysis via its JS analysis plugin API (registerPlugin / pluginReady /
+ * registerModification / pluginReloaded).
+ *
+ * Rendering and change detection live in bt.bb.seo.js.
+ */
 ( function( $ ) {
+	'use strict';
 
-	var BTBBYoastCompatibilityPlugin = function() {
-        YoastSEO.app.registerPlugin('BTBBYoastCompatibilityPlugin', { status: 'loading'});
-        this.getAndSetHTMLContent();
-    };
+	if ( ! window.bt_bb_seo ) {
+		return;
+	}
 
-    BTBBYoastCompatibilityPlugin.prototype.getAndSetHTMLContent = function() {	
-	
-		var _self = this;
-		
-		var data = {
-			'action': 'bt_bb_get_html',
-			'nonce': window.bt_bb_ajax.nonce,
-			'post_id': post_ID.value,
-			'content': content.value
+	var NAME = 'BTBBYoastCompatibilityPlugin';
+	var html = null; // null = let Yoast use its own content
+	var started = false;
+	var ready = false;
+
+	function modify_content( content ) {
+		return html !== null ? html : content;
+	}
+
+	function start() {
+		if ( started || ! window.YoastSEO || ! YoastSEO.app || typeof YoastSEO.app.registerPlugin !== 'function' ) {
+			return;
 		}
-		
-		$.ajax({
-			method: 'POST',
-			url: window.bt_bb_ajax_url,
-			data: data,
-		}).done( function( response ) {
-			window.bt_bb_yoast_check_finished = true;
-			_self.html_content = response;
-		});
+		started = true;
 
-        YoastSEO.app.pluginReady( 'BTBBYoastCompatibilityPlugin' );
+		// 'loading' makes Yoast hold its first analysis until pluginReady(),
+		// so it starts from rendered HTML rather than raw shortcodes.
+		YoastSEO.app.registerPlugin( NAME, { status: 'loading' } );
 
-        YoastSEO.app.registerModification( 'content', $.proxy( _self.getCustomContent, _self ), 'BTBBYoastCompatibilityPlugin', 5 );
+		window.bt_bb_seo.watch( function( new_html ) {
+			var changed = new_html !== html;
+			html = new_html;
+			if ( ! ready ) {
+				ready = true;
+				YoastSEO.app.pluginReady( NAME );
+				YoastSEO.app.registerModification( 'content', modify_content, NAME, 5 );
+			} else if ( changed ) {
+				YoastSEO.app.pluginReloaded( NAME );
+			}
+		} );
+	}
 
-    };
+	$( window ).on( 'YoastSEO:ready', start );
+	start(); // in case Yoast was ready before this script ran
 
-
-    BTBBYoastCompatibilityPlugin.prototype.getCustomContent = function( content ) {
-      // console.log( this.html_content );
-	  return this.html_content !== undefined ? this.html_content : content;
-    };
-
-    $( window ).on( 'YoastSEO:ready', function () {
-	  new BTBBYoastCompatibilityPlugin();
-    });
-
-	
-})( jQuery );
-
+} )( jQuery );

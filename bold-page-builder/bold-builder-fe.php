@@ -580,8 +580,13 @@ function bt_bb_fe_init() {
 			),
 			'separator' => array(
 				'base' => esc_html__( 'bt_bb_separator', 'bold-page-builder' ),
-				'name' => esc_html__( 'Separator', 'bold-page-builder' ),
+				'name' => esc_html__( 'Separator (Solid)', 'bold-page-builder' ),
 				'description' => esc_html__( 'Separator line', 'bold-page-builder' ),
+			),
+			'separator_medium' => array(
+				'base' => esc_html__( 'bt_bb_separator', 'bold-page-builder' ),
+				'name' => esc_html__( 'Separator (Medium)', 'bold-page-builder' ),
+				'description' => esc_html__( 'Separator (no line)', 'bold-page-builder' ),
 			),
 			'service' => array(
 				'base' => esc_html__( 'bt_bb_service', 'bold-page-builder' ),

@@ -916,6 +916,31 @@
 			observer_lightBox.observe(element);
 		});
 
+		// Slick fills an infinite slider out with clones, and the delegate above
+		// deliberately skips them so the gallery holds each image once instead of
+		// three times. But a clone is a slide the visitor can see and click: with
+		// 5 images and 4 shown, the tail of the row is clones at most positions,
+		// so those slides simply did nothing. Hand the click to the original the
+		// clone was made from - slick numbers clones outside the real range
+		// (-4..-1 before the first slide, count.. after the last), so the real
+		// index is that number wrapped back into it. Delegated on document
+		// because slick rebuilds its clones on resize and on slickRefresh.
+		$(document).on(
+			"click",
+			".bt_bb_slider.bt_bb_use_lightbox .bt_bb_slider_item.slick-cloned",
+			function () {
+				var $originals = $(this)
+						.closest(".slick-slider")
+						.find(".bt_bb_slider_item:not(.slick-cloned)"),
+					count = $originals.length,
+					index = parseInt($(this).attr("data-slick-index"), 10);
+
+				if (!count || isNaN(index)) return;
+
+				$originals.eq(((index % count) + count) % count).trigger("click");
+			}
+		);
+
 		// .bt_bb_masonry_image_grid
 
 		const targetElements_masonryImageGrid = document.querySelectorAll(

@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Page Builder
  * Description: WordPress page builder.
- * Version: 5.9.10
+ * Version: 5.9.11
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * License: GPL v2 or later
@@ -14,7 +14,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.9.10' );
+define( 'BT_BB_VERSION', '5.9.11' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -22,10 +22,6 @@ define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
 /**
  * Enqueue scripts and styles
  */
-
-if ( file_exists( plugin_dir_path( __FILE__ ) . 'css-crush/CssCrush.php' ) && isset( $_SERVER['SERVER_NAME'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ), '-dev' ) ) {
-	require_once( 'css-crush/CssCrush.php' );
-}
 
 if ( file_exists( get_template_directory() . '/bt_bb_config.php' ) ) {
 	require_once( get_template_directory() . '/bt_bb_config.php' );
@@ -384,11 +380,24 @@ function bt_bb_enqueue() {
 	
 	wp_enqueue_script( 'bt_bb_ai', plugins_url( 'ai/ai.js', __FILE__ ), array( 'jquery' ), BT_BB_VERSION );
 	
-	wp_enqueue_script( 'bt_bb_yoast_compatibility', plugins_url( 'bt.bb.yoast.js', __FILE__ ), array(), BT_BB_VERSION, true );
-	wp_localize_script( 'bt_bb_yoast_compatibility', 'bt_bb_ajax', array(
-		'url' => admin_url( 'admin-ajax.php' ),
-		'nonce' => wp_create_nonce( 'bt_bb_yoast_compatibility' )
-	));
+	// SEO plugin content analysis (Yoast, Rank Math) - send rendered builder HTML instead of raw shortcodes.
+	// Shared core in bt.bb.seo.js; own localized object so it does not overwrite window.bt_bb_ajax.
+	$bt_bb_seo_yoast     = defined( 'WPSEO_VERSION' );
+	$bt_bb_seo_rank_math = defined( 'RANK_MATH_VERSION' );
+	if ( $screen->base == 'post' && ( $bt_bb_seo_yoast || $bt_bb_seo_rank_math ) ) {
+		wp_register_script( 'bt_bb_seo', plugins_url( 'bt.bb.seo.js', __FILE__ ), array( 'jquery' ), BT_BB_VERSION, true );
+		wp_localize_script( 'bt_bb_seo', 'bt_bb_seo_config', array(
+			'url'   => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( 'bt_bb_yoast_compatibility' ), // checked by bt_bb_get_html()
+		));
+		if ( $bt_bb_seo_yoast ) {
+			wp_enqueue_script( 'bt_bb_yoast_compatibility', plugins_url( 'bt.bb.yoast.js', __FILE__ ), array( 'jquery', 'bt_bb_seo' ), BT_BB_VERSION, true );
+		}
+		if ( $bt_bb_seo_rank_math ) {
+			// WP skips the script if Rank Math did not register 'rank-math-analyzer' (e.g. analysis disabled for this post type).
+			wp_enqueue_script( 'bt_bb_rank_math_compatibility', plugins_url( 'bt.bb.rankmath.js', __FILE__ ), array( 'wp-hooks', 'rank-math-analyzer', 'bt_bb_seo' ), BT_BB_VERSION, true );
+		}
+	}
 
 }
 add_action( 'admin_enqueue_scripts', 'bt_bb_enqueue' );
@@ -795,7 +804,7 @@ add_action( 'wp_ajax_bt_bb_search_links', 'bt_bb_search_links' );
 
 
 /**
- * Get page HTML, used in Yoast compatibility plugin
+ * Get page HTML, used by the SEO plugin integrations (bt.bb.seo.js)
  */
 function bt_bb_get_html() {
 	check_ajax_referer( 'bt_bb_yoast_compatibility', 'nonce' );
@@ -813,6 +822,40 @@ function bt_bb_get_html() {
 	wp_die();
 }
 add_action( 'wp_ajax_bt_bb_get_html', 'bt_bb_get_html' );
+
+/**
+ * Rank Math "Recalculate SEO Scores" tool (Status & Tools > Database Tools) analyses raw
+ * post_content outside the editor, so bt.bb.rankmath.js never runs there. Render builder
+ * shortcodes to HTML first, otherwise bulk recalculation overwrites editor scores.
+ */
+function bt_bb_rank_math_recalculate_score_data( $values, $post_id ) {
+	$post = get_post( $post_id );
+	if ( ! $post || ( strpos( $post->post_content, '[bt_bb_' ) === false && strpos( $post->post_content, '[bt_section' ) === false ) ) {
+		return $values;
+	}
+
+	$GLOBALS['post'] = $post;
+	setup_postdata( $post );
+
+	$autop_priority = has_filter( 'the_content', 'wpautop' );
+	if ( $autop_priority !== false ) {
+		remove_filter( 'the_content', 'wpautop', $autop_priority );
+	}
+	$html = apply_filters( 'the_content', $post->post_content );
+	if ( $autop_priority !== false ) {
+		add_filter( 'the_content', 'wpautop', $autop_priority );
+	}
+
+	wp_reset_postdata();
+
+	// Same special-char decoding as bt_bb_get_html().
+	$html = str_ireplace( array( '``', '`{`', '`}`' ), array( '&quot;', '&#91;', '&#93;' ), $html );
+	$html = str_ireplace( array( '*`*`*', '*`*{*`*', '*`*}*`*' ), array( '``', '`{`', '`}`' ), $html );
+
+	$values['content'] = $html;
+	return $values;
+}
+add_filter( 'rank_math/recalculate_score/data', 'bt_bb_rank_math_recalculate_score_data', 10, 2 );
 
 /**
  * Settings menu
