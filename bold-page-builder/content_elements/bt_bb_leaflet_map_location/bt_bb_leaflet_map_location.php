@@ -15,13 +15,10 @@ class bt_bb_leaflet_map_location extends BT_BB_Element {
 		
 		$class = array( $this->shortcode, $class_master );
 		
-		if ( $latitude == '' ) {
-			$latitude = 0;
-		}
-		
-		if ( $longitude == '' ) {
-			$longitude = 0;
-		}
+		// Coordinates are read back by the map script, so only numbers go out
+		// (empty or non-numeric falls back to 0, as an empty value always did).
+		$latitude  = bt_bb_sanitize_map_coordinate( $latitude, 0 );
+		$longitude = bt_bb_sanitize_map_coordinate( $longitude, 0 );
                 
         if ( $el_class != '' ) {
 			$class[] = $el_class;

@@ -1260,36 +1260,85 @@
 
 		var lat_sum = 0;
 		var lng_sum = 0;
-		var markerStr = '';
+		var markers = [];
 		var n = 0;
 		var colors = ['blue', 'green', 'red', 'purple', 'yellow', 'gray', 'orange', 'white', 'black', 'brown'];
 
 		var centerLatLng;
 
+		// Every value below comes back out of the page's data-* attributes, which
+		// jQuery.data() returns entity-decoded, so it is attacker text again by the
+		// time it gets here. Coordinates are reduced to numbers and every value is
+		// placed with the URL API, then assigned to img.src through the DOM: nothing
+		// is ever concatenated into an HTML string, so a quote has nothing to close.
 		locations.each(function () {
 
-			var lat = jQuery(this).data('lat');
-			var lng = jQuery(this).data('lng');
-			var iconStr = jQuery(this).data('icon') != "" ? 'scale:2%7Cicon:' + jQuery(this).data('icon') : 'size:mid%7Ccolor:' + colors[n];
+			var lat = parseFloat(jQuery(this).data('lat'));
+			var lng = parseFloat(jQuery(this).data('lng'));
+			if (!isFinite(lat) || !isFinite(lng)) return;
 
-			lat_sum += parseFloat(lat);
-			lng_sum += parseFloat(lng);
+			var icon = jQuery(this).data('icon');
+			icon = (typeof icon === 'string') ? icon.trim() : '';
+			var iconStr = icon != '' ? 'scale:2|icon:' + icon : 'size:mid|color:' + colors[n % colors.length];
 
-			markerStr += '&markers=' + iconStr + '%7C' + lat + ',' + lng;
+			lat_sum += lat;
+			lng_sum += lng;
+
+			markers.push(iconStr + '|' + lat + ',' + lng);
 
 			centerLatLng = [lat, lng];
 
 			n++;
 		});
 
+		if (n == 0) {
+			jQuery('#' + map_id).data('init-finished', true);
+			return;
+		}
+
 		if (center_map) {
 			centerLatLng = [lat_sum / n, lng_sum / n];
 		}
 
-		if (atob(custom_style).startsWith('[')) custom_style = '';
+		var styleStr = '';
+		try {
+			styleStr = custom_style ? atob(String(custom_style)) : '';
+		} catch (e) {
+			styleStr = '';
+		}
+		if (styleStr.trim().startsWith('[')) styleStr = ''; // interactive-map style array, not a querystring
 
-		var img_src = '<img src="https://maps.googleapis.com/maps/api/staticmap?center=' + centerLatLng.toString() + '&zoom=' + zoom + markerStr + '&size=640x' + height + '&scale=2&style=' + atob(custom_style) + '&key=' + api_key + '">';
-		container.find('.bt_bb_google_maps_map.bt_bb_map_map').append(img_src).on('click', function () {
+		height = parseInt(height, 10);
+		if (!(height > 0)) height = 400;
+		zoom = parseInt(zoom, 10);
+		if (!isFinite(zoom)) zoom = 8;
+
+		var url = new URL('https://maps.googleapis.com/maps/api/staticmap');
+		url.searchParams.append('center', centerLatLng.join(','));
+		url.searchParams.append('zoom', zoom);
+		$.each(markers, function (index, marker) {
+			url.searchParams.append('markers', marker);
+		});
+		url.searchParams.append('size', '640x' + height);
+		url.searchParams.append('scale', 2);
+		// The style field holds a Static Maps querystring that continues "style=",
+		// e.g. "feature:water|color:0x0000ff&style=feature:road|visibility:off".
+		// Parsed into pairs and re-encoded, it can only ever add query parameters
+		// to this fixed maps.googleapis.com URL.
+		if (styleStr != '') {
+			new URLSearchParams('style=' + styleStr).forEach(function (value, key) {
+				url.searchParams.append(key, value);
+			});
+		}
+		if (api_key) {
+			url.searchParams.append('key', String(api_key));
+		}
+
+		var img = document.createElement('img');
+		img.alt = '';
+		img.src = url.toString();
+
+		container.find('.bt_bb_google_maps_map.bt_bb_map_map').append(img).on('click', function () {
 
 			var parent = $(this).parent();
 			var locations = parent.find('.bt_bb_map_location');
@@ -1436,6 +1485,52 @@
 
 	}
 
+	// Map attribution text is author content that Leaflet assigns to innerHTML.
+	// Parse it in an inert DOMParser document (no scripts run, no resources load,
+	// so an onerror cannot fire there) and rebuild it from scratch keeping only
+	// text, a few inline formatting tags and links with an http(s) href.
+	// Everything else is unwrapped to its text; script-like containers are dropped.
+	function bt_bb_sanitize_map_attribution(html) {
+		if (typeof html !== 'string' || html.trim() === '') return '';
+		var allowed = { A: 1, B: 1, STRONG: 1, I: 1, EM: 1, SMALL: 1, SPAN: 1, BR: 1 };
+		var dropped = { SCRIPT: 1, STYLE: 1, TEMPLATE: 1, NOSCRIPT: 1, IFRAME: 1, OBJECT: 1, EMBED: 1, TEXTAREA: 1, TITLE: 1, XMP: 1, NOEMBED: 1, NOFRAMES: 1, SVG: 1, MATH: 1 };
+		var doc;
+		try {
+			doc = new DOMParser().parseFromString('<!DOCTYPE html><body>' + html, 'text/html');
+		} catch (e) {
+			return '';
+		}
+		var out = document.createElement('span');
+		(function walk(src, dst) {
+			for (var i = 0; i < src.childNodes.length; i++) {
+				var node = src.childNodes[i];
+				if (node.nodeType === 3) {
+					dst.appendChild(document.createTextNode(node.nodeValue));
+					continue;
+				}
+				if (node.nodeType !== 1) continue;
+				var name = node.nodeName.toUpperCase();
+				if (dropped[name]) continue;
+				if (!allowed[name]) {
+					walk(node, dst);
+					continue;
+				}
+				var el = document.createElement(name.toLowerCase());
+				if (name === 'A') {
+					var href = (node.getAttribute('href') || '').trim();
+					if (/^(https?:)?\/\//i.test(href)) {
+						el.setAttribute('href', href);
+						el.setAttribute('rel', 'noopener noreferrer');
+						if (node.getAttribute('target') === '_blank') el.setAttribute('target', '_blank');
+					}
+				}
+				walk(node, el);
+				dst.appendChild(el);
+			}
+		})(doc.body, out);
+		return out.innerHTML;
+	}
+
 	// leaflet map init
 
 	var map = null;
@@ -1517,8 +1612,12 @@
 			tiles_arr = tiles_arr.concat(map_leaflet_source_arr[predefined_style]);
 		}
 
-		if (custom_style != '') {
-			custom_style = atob(custom_style);
+		if (custom_style) {
+			try {
+				custom_style = atob(String(custom_style));
+			} catch (e) {
+				custom_style = '';
+			}
 			var tmp_arr = custom_style.split('\n');
 			$.each(tmp_arr, function (index, tmp) {
 
@@ -1527,10 +1626,14 @@
 		}
 
 		$.each(tiles_arr, function (index, tile) {
+			var tile_url = (typeof tile[0] === 'string') ? tile[0].trim() : '';
+			// Tile templates are absolute http(s) or protocol-relative URLs.
+			if (!/^(https?:)?\/\//i.test(tile_url)) return;
 			L.tileLayer(
-				tile[0],
+				tile_url,
 				{
-					attribution: tile[1],
+					// Leaflet writes attributions into the control with innerHTML.
+					attribution: bt_bb_sanitize_map_attribution(tile[1]),
 					maxZoom: max_zoom,
 					subdomains: ['a', 'b', 'c']
 				}

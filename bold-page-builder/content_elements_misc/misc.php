@@ -387,6 +387,85 @@ if ( ! function_exists( 'bt_bb_build_yt_player_property' ) ) {
 	}
 }
 
+if ( ! function_exists( 'bt_bb_sanitize_map_coordinate' ) ) {
+	/**
+	 * Returns a map latitude/longitude as a plain number string, or $fallback.
+	 *
+	 * Map scripts read coordinates back out of data-* attributes, where
+	 * jQuery.data() hands them back entity-decoded; esc_attr() on output does
+	 * not make a non-numeric value safe once a script builds markup or URLs
+	 * from it. The trimmed original string is returned (not a float cast) so
+	 * the decimal separator never depends on the PHP locale.
+	 *
+	 * @param mixed $value    Raw attribute value.
+	 * @param mixed $fallback Returned for empty or non-numeric input.
+	 * @return mixed
+	 */
+	function bt_bb_sanitize_map_coordinate( $value, $fallback = '' ) {
+		if ( ! is_scalar( $value ) ) {
+			return $fallback;
+		}
+		$value = trim( (string) $value );
+		if ( $value === '' || ! is_numeric( $value ) || ! is_finite( (float) $value ) ) {
+			return $fallback;
+		}
+		return $value;
+	}
+}
+
+if ( ! function_exists( 'bt_bb_sanitize_leaflet_custom_style' ) ) {
+	/**
+	 * Sanitizes the Leaflet map "Additional map layers" value.
+	 *
+	 * The field is stored base64-encoded, so post-content kses never sees the
+	 * decoded text. Each line is "tile URL,attribution". Lines whose URL is not
+	 * an absolute http(s) or protocol-relative URL are dropped, and every
+	 * attribution field is passed through wp_kses() with a small inline
+	 * allowlist, because Leaflet writes attributions with innerHTML.
+	 *
+	 * @param string $custom_style Base64-encoded layer list.
+	 * @return string Base64-encoded sanitized layer list, or '' if nothing is left.
+	 */
+	function bt_bb_sanitize_leaflet_custom_style( $custom_style ) {
+		$custom_style = trim( (string) $custom_style );
+		if ( $custom_style === '' ) {
+			return '';
+		}
+
+		$decoded = base64_decode( $custom_style, true );
+		if ( $decoded === false || $decoded === '' ) {
+			return '';
+		}
+
+		$allowed_html = array(
+			'a'      => array( 'href' => true, 'title' => true, 'target' => true, 'rel' => true ),
+			'b'      => array(),
+			'strong' => array(),
+			'i'      => array(),
+			'em'     => array(),
+			'small'  => array(),
+			'span'   => array(),
+			'br'     => array(),
+		);
+
+		$lines = array();
+		foreach ( explode( "\n", $decoded ) as $line ) {
+			$fields = explode( ',', $line );
+			$fields[0] = trim( $fields[0] );
+			if ( ! preg_match( '#^(https?:)?//#i', $fields[0] ) ) {
+				continue;
+			}
+			$count = count( $fields );
+			for ( $i = 1; $i < $count; $i++ ) {
+				$fields[ $i ] = wp_kses( $fields[ $i ], $allowed_html );
+			}
+			$lines[] = implode( ',', $fields );
+		}
+
+		return empty( $lines ) ? '' : base64_encode( implode( "\n", $lines ) );
+	}
+}
+
 if ( ! function_exists( 'bt_bb_get_url' ) ) {
 	function bt_bb_get_url( $link, $post_type = 'page' ) {
 		if ( substr( $link, 0, 4 ) == 'www.' ) {

@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Bold Page Builder
  * Description: WordPress page builder.
- * Version: 5.9.11
+ * Version: 5.9.12
  * Author: BoldThemes
  * Author URI: https://www.bold-themes.com
  * License: GPL v2 or later
@@ -14,7 +14,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // VERSION --------------------------------------------------------- \\
-define( 'BT_BB_VERSION', '5.9.11' );
+define( 'BT_BB_VERSION', '5.9.12' );
 // VERSION --------------------------------------------------------- \\
  
 define( 'BT_BB_FEATURE_ADD_ELEMENTS', true );
@@ -1728,9 +1728,13 @@ function bt_bb_do_shortcode( $content ) {
 		$pattern = get_shortcode_regex();
 		
 		global $bt_bb_array;
-		
-		$callback = new BT_BB_Callback( $bt_bb_array );
-		
+
+		// Text nodes built here are handed to the editors as HTML. Content saved
+		// by an author without unfiltered_html is re-filtered (see the callback).
+		$author_trusted = function_exists( 'bt_bb_author_can_unfiltered_html' ) && bt_bb_author_can_unfiltered_html();
+
+		$callback = new BT_BB_Callback( $bt_bb_array, $author_trusted );
+
 		$preg_cb = preg_replace_callback( "/$pattern/s", array( $callback, 'bt_bb_do_shortcode_tag' ), $content );
 	}
 }
@@ -1739,8 +1743,11 @@ class BT_BB_Callback {
 
 	private $bt_bb_array;
 
-    function __construct( &$bt_bb_array ) {
+	private $author_trusted;
+
+    function __construct( &$bt_bb_array, $author_trusted = FALSE ) {
         $this->bt_bb_array = &$bt_bb_array;
+        $this->author_trusted = (bool) $author_trusted;
     }
 
 	function bt_bb_do_shortcode_tag( $m ) {
@@ -1768,10 +1775,27 @@ class BT_BB_Callback {
 			
 			if ( isset( $bt_bb_map[ $m[2] ]['accept']['_content'] ) && $bt_bb_map[ $m[2] ]['accept']['_content'] ) {
 				$r = $m[5];
+				// A contiguous slice of what was saved: every tag in it is one kses
+				// already saw. Re-filter for untrusted authors as defense in depth.
+				if ( ! $this->author_trusted ) {
+					$r = wp_kses_post( $r );
+				}
 			} else {
-				$callback = new BT_BB_Callback( $this->bt_bb_array[ count( $this->bt_bb_array ) - 1 ]['children'] );
+				$callback = new BT_BB_Callback( $this->bt_bb_array[ count( $this->bt_bb_array ) - 1 ]['children'], $this->author_trusted );
 				$r = preg_replace_callback( "/$pattern/s", array( $callback, 'bt_bb_do_shortcode_tag' ), $m[5] );
 				$r = trim( $r );
+				// What is left here is the text *between* the shortcode matches, with
+				// the matches cut out. The shortcode regex does not understand HTML, so
+				// a match can start inside an attribute value and end in text, and
+				// joining the two sides produces markup kses never saw: e.g.
+				// <img title="[bt_bb_headline"> x ]" onerror=...> loses everything
+				// from the bracket to the bracket and comes out as a live onerror.
+				// The builder never writes text into a container that does not accept
+				// it, so this is only ever leftover text: always filter it, whoever
+				// the author is.
+				if ( $r != '' ) {
+					$r = trim( wp_kses_post( $r ) );
+				}
 			}
 		
 			if ( $r != '' ) {

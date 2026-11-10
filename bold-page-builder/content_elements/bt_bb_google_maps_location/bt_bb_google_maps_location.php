@@ -10,8 +10,12 @@ class bt_bb_google_maps_location extends BT_BB_Element {
 			'longitude' => '',
 			'icon'      => ''
 		) ), $atts, $this->shortcode ) );
-		
-        $class_master = 'bt_bb_map_location'; 
+
+		// Coordinates are read back by the map script, so only numbers go out.
+		$latitude  = bt_bb_sanitize_map_coordinate( $latitude, '' );
+		$longitude = bt_bb_sanitize_map_coordinate( $longitude, '' );
+
+        $class_master = 'bt_bb_map_location';
 		
 		$class = array( $this->shortcode, $class_master );  
 		

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bold Page Builder 5.9.11\n"
+"Project-Id-Version: Bold Page Builder 5.9.12\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trunk\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-03T15:59:59+00:00\n"
+"POT-Creation-Date: 2026-11-10T09:24:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bold-page-builder\n"
@@ -147,12 +147,12 @@ msgid "bt_bb_google_maps"
 msgstr ""
 
 #: bold-builder-fe.php:498
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:157
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:161
 msgid "Google Maps"
 msgstr ""
 
 #: bold-builder-fe.php:499
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:157
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:161
 msgid "Google Maps map with custom content"
 msgstr ""
 
@@ -178,10 +178,10 @@ msgstr ""
 
 #: bold-builder-fe.php:508
 #: content_elements/bt_bb_button/bt_bb_button.php:203
-#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:76
+#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:80
 #: content_elements/bt_bb_icon/bt_bb_icon.php:166
 #: content_elements/bt_bb_icon/bt_bb_icon.php:168
-#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:90
+#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:87
 #: content_elements/bt_bb_separator/bt_bb_separator.php:252
 #: content_elements/bt_bb_service/bt_bb_service.php:162
 msgid "Icon"
@@ -296,12 +296,12 @@ msgid "bt_bb_leaflet_map"
 msgstr ""
 
 #: bold-builder-fe.php:558
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:125
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:129
 msgid "OpenStreetMap"
 msgstr ""
 
 #: bold-builder-fe.php:559
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:125
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:129
 msgid "OpenStreetMap with custom content"
 msgstr ""
 
@@ -655,7 +655,7 @@ msgstr ""
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:515
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:517
 #: content_elements/bt_bb_css_post_grid/bt_bb_css_post_grid.php:544
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:173
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:177
 #: content_elements/bt_bb_headline/bt_bb_headline.php:258
 #: content_elements/bt_bb_image/bt_bb_image.php:262
 #: content_elements/bt_bb_image/bt_bb_image.php:278
@@ -665,9 +665,9 @@ msgstr ""
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:200
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:202
 #: content_elements/bt_bb_latest_posts/bt_bb_latest_posts.php:207
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:147
 #: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:151
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:153
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:155
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:157
 #: content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.php:161
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:328
 #: content_elements/bt_bb_masonry_post_grid/bt_bb_masonry_post_grid.php:352
@@ -803,7 +803,7 @@ msgid "Select Images"
 msgstr ""
 
 #: bold-builder.php:1137
-#: bold-builder.php:1794
+#: bold-builder.php:1818
 msgid "Submit"
 msgstr ""
 
@@ -1057,151 +1057,151 @@ msgstr ""
 msgid "Clipboard Manager"
 msgstr ""
 
-#: bold-builder.php:1962
+#: bold-builder.php:1986
 msgid "Hide element on screens"
 msgstr ""
 
-#: bold-builder.php:1962
+#: bold-builder.php:1986
 msgid "Responsive"
 msgstr ""
 
-#: bold-builder.php:1964
+#: bold-builder.php:1988
 msgid "≤480px"
 msgstr ""
 
-#: bold-builder.php:1965
+#: bold-builder.php:1989
 msgid "481-768px"
 msgstr ""
 
-#: bold-builder.php:1966
+#: bold-builder.php:1990
 msgid "769-992px"
 msgstr ""
 
-#: bold-builder.php:1967
+#: bold-builder.php:1991
 msgid "993-1200px"
 msgstr ""
 
-#: bold-builder.php:1968
+#: bold-builder.php:1992
 msgid "1201-1400px"
 msgstr ""
 
-#: bold-builder.php:1969
+#: bold-builder.php:1993
 msgid ">1400px"
 msgstr ""
 
-#: bold-builder.php:1974
+#: bold-builder.php:1998
 msgid "Publish date"
 msgstr ""
 
-#: bold-builder.php:1974
-#: bold-builder.php:1975
+#: bold-builder.php:1998
+#: bold-builder.php:1999
 msgid "Fill both the date and time"
 msgstr ""
 
-#: bold-builder.php:1974
-#: bold-builder.php:1975
-#: bold-builder.php:1976
-#: bold-builder.php:1977
-#: bold-builder.php:1978
-#: bold-builder.php:1985
+#: bold-builder.php:1998
+#: bold-builder.php:1999
+#: bold-builder.php:2000
+#: bold-builder.php:2001
+#: bold-builder.php:2002
+#: bold-builder.php:2009
 msgid "Custom"
 msgstr ""
 
-#: bold-builder.php:1975
+#: bold-builder.php:1999
 msgid "Expiry date"
 msgstr ""
 
-#: bold-builder.php:1976
+#: bold-builder.php:2000
 msgid "Element ID"
 msgstr ""
 
-#: bold-builder.php:1976
+#: bold-builder.php:2000
 msgid "E.g. myid"
 msgstr ""
 
-#: bold-builder.php:1977
+#: bold-builder.php:2001
 msgid "Extra class name(s)"
 msgstr ""
 
-#: bold-builder.php:1977
+#: bold-builder.php:2001
 msgid "E.g. myclass"
 msgstr ""
 
-#: bold-builder.php:1978
+#: bold-builder.php:2002
 msgid "Inline CSS style"
 msgstr ""
 
-#: bold-builder.php:1978
+#: bold-builder.php:2002
 msgid "E.g. opacity: 0.5;"
 msgstr ""
 
-#: bold-builder.php:1985
+#: bold-builder.php:2009
 #: content_elements/bt_bb_content_slider/bt_bb_content_slider.php:220
 #: content_elements/bt_bb_slider/bt_bb_slider.php:229
 msgid "Animation"
 msgstr ""
 
-#: bold-builder.php:1987
+#: bold-builder.php:2011
 msgid "No Animation"
 msgstr ""
 
-#: bold-builder.php:1988
+#: bold-builder.php:2012
 msgid "Fade In"
 msgstr ""
 
-#: bold-builder.php:1989
+#: bold-builder.php:2013
 msgid "Move Up"
 msgstr ""
 
-#: bold-builder.php:1990
+#: bold-builder.php:2014
 msgid "Move Left"
 msgstr ""
 
-#: bold-builder.php:1991
+#: bold-builder.php:2015
 msgid "Move Right"
 msgstr ""
 
-#: bold-builder.php:1992
+#: bold-builder.php:2016
 msgid "Move Down"
 msgstr ""
 
-#: bold-builder.php:1993
+#: bold-builder.php:2017
 msgid "Zoom In"
 msgstr ""
 
-#: bold-builder.php:1994
+#: bold-builder.php:2018
 msgid "Zoom Out"
 msgstr ""
 
-#: bold-builder.php:1995
+#: bold-builder.php:2019
 msgid "Fade In / Move Up"
 msgstr ""
 
-#: bold-builder.php:1996
+#: bold-builder.php:2020
 msgid "Fade In / Move Left"
 msgstr ""
 
-#: bold-builder.php:1997
+#: bold-builder.php:2021
 msgid "Fade In / Move Right"
 msgstr ""
 
-#: bold-builder.php:1998
+#: bold-builder.php:2022
 msgid "Fade In / Move Down"
 msgstr ""
 
-#: bold-builder.php:1999
+#: bold-builder.php:2023
 msgid "Fade In / Zoom In"
 msgstr ""
 
-#: bold-builder.php:2000
+#: bold-builder.php:2024
 msgid "Fade In / Zoom Out"
 msgstr ""
 
-#: bold-builder.php:2350
+#: bold-builder.php:2374
 msgid "Sorry, you are not allowed to save Price List element."
 msgstr ""
 
-#: bold-builder.php:2353
+#: bold-builder.php:2377
 msgid "Sorry, you are not allowed to save Raw Content element."
 msgstr ""
 
@@ -1406,7 +1406,7 @@ msgstr ""
 #: content_elements/bt_bb_image/bt_bb_image.php:268
 #: content_elements/bt_bb_progress_bar/bt_bb_progress_bar.php:113
 #: content_elements/bt_bb_service/bt_bb_service.php:179
-#: content_elements_misc/misc.php:434
+#: content_elements_misc/misc.php:513
 msgid "Inherit"
 msgstr ""
 
@@ -3014,113 +3014,113 @@ msgstr ""
 msgid "Horizontal"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:150
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:153
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:154
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:157
 msgid "API key"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:150
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:154
 msgid "Google Maps require an API key for site domains.<br><a href=\"https://developers.google.com/maps/documentation/javascript/get-api-key\" target=\"_blank\">Get your API key here</a>. Save and reload page to make sure API is initialized."
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:151
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:121
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:155
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:125
 msgid "You can edit location(s) on back end."
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:153
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:157
 msgid "Google Maps require an API key for site domains. <a href=\"https://developers.google.com/maps/documentation/javascript/get-api-key\" target=\"_blank\">Get your API key here</a>."
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:160
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:127
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:164
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:131
 msgid "Zoom"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:160
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:164
 msgid "E.g. 14"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:161
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:129
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:165
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:133
 #: content_elements/bt_bb_slider/bt_bb_slider.php:218
 msgid "Height"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:161
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:129
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:165
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:133
 msgid "E.g. 250px"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:161
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:165
 msgid "Used for static map or for interactive map without content; static image map width is 1280px "
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:162
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:166
 msgid "Map ID (Google API)"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:162
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:166
 msgid "The Google Maps Platform offers <a href=\"https://developers.google.com/maps/documentation/cloud-customization\" target=\"_blank\">cloud-based maps styling</a> in the Google Cloud Console. Copy Map ID there and copy here."
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:163
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:167
 msgid "Custom map style array (interactive map) or querystring (static image map)"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:163
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:167
 msgid "Find more custom styles on <a href=\"https://snazzymaps.com/\" target=\"_blank\">Snazzy Maps</a> or <a href=\"https://mapstyle.withgoogle.com/\" target=\"_blank\">Map Style (for static maps)</a>. "
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:164
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:168
 msgid "Map type"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:166
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:170
 msgid "Interactive (JavaScript API)"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:167
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:171
 msgid "Static image (Maps Static API)"
-msgstr ""
-
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:170
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:144
-msgid "Center map"
-msgstr ""
-
-#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:172
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:146
-msgid "No (use first location as center)"
 msgstr ""
 
 #: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:174
 #: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:148
+msgid "Center map"
+msgstr ""
+
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:176
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:150
+msgid "No (use first location as center)"
+msgstr ""
+
+#: content_elements/bt_bb_google_maps/bt_bb_google_maps.php:178
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:152
 msgid "Yes (without overlay initially)"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:72
+#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:76
 msgid "Google Maps Location"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:72
+#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:76
 msgid "Google Map Location"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:74
-#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:88
+#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:78
+#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:85
 msgid "Latitude"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:74
-#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:75
-#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:88
-#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:89
+#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:78
+#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:79
+#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:85
+#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:86
 msgid "E.g. 40.000000"
 msgstr ""
 
-#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:75
-#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:89
+#: content_elements/bt_bb_google_maps_location/bt_bb_google_maps_location.php:79
+#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:86
 msgid "Longitude"
 msgstr ""
 
@@ -3397,79 +3397,79 @@ msgstr ""
 msgid "Lazy load images"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:127
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:131
 msgid "E.g. 9"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:128
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:132
 msgid "Max zoom"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:128
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:132
 msgid "E.g. 15"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:129
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:133
 msgid "Used when there is no content"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:130
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:134
 msgid "Predefined (base) map layer"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:132
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:136
 msgid "No base layer (use only additional map layers)"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:133
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:137
 msgid "Mapnik OSM"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:135
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:139
 msgid "OSM Hot"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:136
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:140
 msgid "Stamen Watercolor"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:137
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:141
 msgid "Stamen Terrain"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:138
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:142
 msgid "Stamen Toner"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:139
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:143
 msgid "Carto Dark"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:140
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:144
 msgid "Carto Light"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:143
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:147
 msgid "Additional map layers"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:143
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:147
 msgid "Add Map tiles URL. E.g. https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png, Attribution text separated by new line"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:151
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:155
 msgid "Enable scroll wheel zoom on map"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:153
+#: content_elements/bt_bb_leaflet_map/bt_bb_leaflet_map.php:157
 msgid "Enable zoom control on map"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:86
+#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:83
 msgid "Leaflet Maps Location"
 msgstr ""
 
-#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:86
+#: content_elements/bt_bb_leaflet_map_location/bt_bb_leaflet_map_location.php:83
 msgid "OpenSteet Map Location"
 msgstr ""
 

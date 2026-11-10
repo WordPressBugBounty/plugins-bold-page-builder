@@ -16,6 +16,10 @@ class bt_bb_leaflet_map extends BT_BB_Element {
 			'zoom_control'          => ''
 		) ), $atts, $this->shortcode ) );
 
+		// Tile URLs and attribution text are base64-encoded into the page, where
+		// kses never saw them; the attribution ends up in Leaflet's innerHTML.
+		$custom_style = bt_bb_sanitize_leaflet_custom_style( $custom_style );
+
 		$zoom		= $zoom == '' ? '9' : $zoom;
 		$max_zoom	= $max_zoom == '' ? '15' : $max_zoom;
 		

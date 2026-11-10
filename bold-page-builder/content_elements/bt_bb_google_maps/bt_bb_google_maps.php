@@ -14,7 +14,11 @@ class bt_bb_google_maps extends BT_BB_Element {
 			'map_type'   	=> 'interactive',
 			'center_map'   	=> ''
 		) ), $atts, $this->shortcode ) );
-		
+
+		// Google API keys are [A-Za-z0-9_-]. Anything else could only be used to
+		// add parameters to the Maps script URL or the static map image URL.
+		$api_key = preg_replace( '/[^A-Za-z0-9_\-]/', '', (string) $api_key );
+
 		$class_master = 'bt_bb_map';
 		
 		$class = array( $this->shortcode, $class_master );

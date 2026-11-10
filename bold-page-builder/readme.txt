@@ -3,7 +3,7 @@ Contributors: boldthemes
 Tags: wordpress page builder, drag and drop, editor, page builder, site builder
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.9.11
+Stable tag: 5.9.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,13 @@ Please report security bugs found in the source code of the Bold Page Builder pl
 8. Bold Page Builder - Settings
 
 == Changelog ==
+
+= 5.9.12 =
+* Security: the Google Maps element's static image map now builds its image address from numeric coordinates and encoded values instead of writing location and style values into page markup, preventing a stored XSS where a crafted latitude, marker icon or style value ran script for every visitor to the page (authenticated, content-editing users) — reported by Patchstack.
+* Security: Leaflet (OpenStreetMap) map layer attributions are now limited to text, links and basic formatting, preventing a stored XSS through the "Additional map layers" field (authenticated, content-editing users) — reported by Patchstack. Layer lines whose tile address is not an http(s) URL are now ignored.
+* Security: text that the builder finds outside any element when it opens a post is now filtered before it is shown in the editor, preventing a stored XSS where content crafted to look harmless to WordPress's HTML filter turned into a working script once the builder took it apart, running in the session of an editor or administrator who opened the post (authenticated, content-editing users) — reported by Patchstack. Text inside elements written by authors who may not post unfiltered HTML is filtered the same way.
+* Security: the editor's text previews are now sanitized before they are displayed, so HTML in a post's content cannot run script in wp-admin while the post is being edited. What is saved is unchanged.
+* Map location latitude and longitude now only accept numbers, and the Google Maps API key field only accepts the characters a Google API key can contain.
 
 = 5.9.11 =
 * Rank Math SEO: content analysis now reads the rendered page built with the builder instead of its raw shortcodes, so headings (including an H1 set on a Headline element), images, links and word count are detected. The analysis updates while you edit, without saving first, and Rank Math's Recalculate SEO Scores tool scores builder pages the same way.
